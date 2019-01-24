@@ -20,6 +20,7 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
+                sh 'scp dist root@157.230.91.255:/var/www/'
             }
         }
     }
