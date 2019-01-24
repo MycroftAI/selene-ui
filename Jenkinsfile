@@ -20,7 +20,9 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
-                sh 'scp dist root@157.230.91.255:/var/www/'
+                withCredentials([sshUserPrivateKey(credentialsId: '6413826d-79f6-4d03-9902-ee1b73a96efd', keyFileVariable: 'JENKINS_SSH_KEY', passphraseVariable: '', usernameVariable: '')]) {
+                    sh 'scp dist root@157.230.91.255:/var/www/'
+                }
             }
         }
     }
