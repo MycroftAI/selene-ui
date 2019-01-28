@@ -33,19 +33,6 @@
     }
 }
 
-#preferences-panel {
-    background-color: mat-color($mycroft-accent, A700);
-    color: mat-contrast($mycroft-accent, A700);
-
-    .mat-h1 {
-        margin-bottom: 0;
-    }
-
-    .mat-expansion-panel-header .mat-expansion-indicator {
-        color: mat-color($mycroft-accent, 'A200') !important;
-    }
-}
-
 mat-expansion-panel {
     @include panel-defaults;
     margin-top: 16px;

@@ -21,7 +21,7 @@
         <div id="device-settings" fxLayout.xs="row wrap">
             <div fxLayout="row wrap" fxLayoutGap.gt-xs="16px">
                 <!-- Navigation to skill settings for this device. -->
-                <mat-form-field fxFlex.xl=30 fxFlex.lt-xl [appearance]="'outline'">
+                <mat-form-field fxFlex.xl=40 fxFlex.lt-xl [appearance]="'outline'">
                     <mat-label>Name</mat-label>
                     <input
                         id="deviceName"
@@ -34,11 +34,11 @@
                     <mat-hint>Must be unique within a device group (if defined)</mat-hint>
                 </mat-form-field>
 
-                <account-device-group-view fxFlex.xl=30 fxFlex.lt-xl [device]="device"></account-device-group-view>
-                <account-device-geography-view fxFlex.xl=30 fxFlex.lt-xl [device]="device"></account-device-geography-view>
-                <account-device-placement-view fxFlex.xl=30 fxFlex.lt-xl [device]="device"></account-device-placement-view>
-                <account-device-voice-view fxFlex.xl=30 fxFlex.lt-xl [device]="device"></account-device-voice-view>
-                <account-device-wake-word-view fxFlex.xl=30 fxFlex.lt-xl [device]="device"></account-device-wake-word-view>
+                <account-device-group-view fxFlex.xl=40 fxFlex.lt-xl [device]="device"></account-device-group-view>
+                <account-device-geography-view fxFlex.xl=40 fxFlex.lt-xl [device]="device"></account-device-geography-view>
+                <account-device-placement-view fxFlex.xl=40 fxFlex.lt-xl [device]="device"></account-device-placement-view>
+                <account-device-voice-view fxFlex.xl=40 fxFlex.lt-xl [device]="device"></account-device-voice-view>
+                <account-device-wake-word-view fxFlex.xl=40 fxFlex.lt-xl [device]="device"></account-device-wake-word-view>
             </div>
 
             <div fxFlex.xl="25" fxFlex.lt-xl>
