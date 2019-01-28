@@ -1,6 +1,8 @@
 @import "~src/stylesheets/components/cards";
 
 mat-card {
+    @include section-card;
+
     button {
         color: white;
         margin-bottom: 10px;

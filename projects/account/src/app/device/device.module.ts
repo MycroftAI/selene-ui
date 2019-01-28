@@ -14,7 +14,8 @@ import {
     MatRadioModule,
     MatSelectModule,
     MatSlideToggleModule,
-    MatTabsModule
+    MatTabsModule,
+    MatToolbarModule
 } from '@angular/material';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -80,7 +81,8 @@ import { WakeWordViewComponent } from './attribute/wake-word/wake-word-view.comp
         MatRadioModule,
         MatSelectModule,
         MatSlideToggleModule,
-        MatTabsModule
+        MatTabsModule,
+        MatToolbarModule
     ],
     providers: [
         DeviceService

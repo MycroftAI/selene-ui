@@ -1,5 +1,9 @@
 @import "~src/stylesheets/components/cards";
 
-#agreement-panels {
-    margin: 8px;
+mat-card {
+    @include section-card;
+
+    #agreement-panels {
+        margin: 8px;
+    }
 }

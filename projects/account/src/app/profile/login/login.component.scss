@@ -1,39 +1,43 @@
 @import "~src/stylesheets/components/cards";
 
-#antisocial-login {
-    margin: 16px;
+mat-card {
+    @include section-card;
 
-    mat-form-field {
-        max-width: 350px;
-    }
+    #antisocial-login {
+        margin: 16px;
 
-}
-
-#social-login {
-    margin: 16px;
-
-    .mat-subheading-2 {
-        font-weight: bold;
-        margin: 0;
-    }
-
-    #social-platform {
-        margin: 8px;
-
-        fa-icon {
-            font-size: 30px;
-            margin-right: 10px;
+        mat-form-field {
+            max-width: 350px;
         }
 
-        img {
-            height: 30px;
-            margin-right: 10px;
-            width: 30px;
+    }
+
+    #social-login {
+        margin: 16px;
+
+        .mat-subheading-2 {
+            font-weight: bold;
+            margin: 0;
         }
 
-        mat-label {
-            color: rgba(0, 0, 0, 0.6);
-            width: 100px;
+        #social-platform {
+            margin: 8px;
+
+            fa-icon {
+                font-size: 30px;
+                margin-right: 10px;
+            }
+
+            img {
+                height: 30px;
+                margin-right: 10px;
+                width: 30px;
+            }
+
+            mat-label {
+                color: rgba(0, 0, 0, 0.6);
+                width: 100px;
+            }
         }
     }
 }

@@ -19,3 +19,22 @@ $button-border-radius: 4px;
     background-color: mat-color($mycroft-warn);
     color: mat-contrast($mycroft-warn, 500)
 }
+
+@mixin options-button-group {
+    border: none;
+
+    .mat-button-toggle {
+        background-color: mat-color($mycroft-accent, 50);
+        border: none;
+        border-radius: 4px;
+        margin: 8px;
+    }
+
+    .mat-button-toggle-checked {
+        background-color: mat-color($mycroft-primary);
+
+        .mat-button-toggle-label-content {
+            color: mat-contrast($mycroft-primary, 500);
+        }
+    }
+}
