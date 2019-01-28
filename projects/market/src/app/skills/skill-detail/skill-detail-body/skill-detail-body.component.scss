@@ -1,8 +1,9 @@
+@import '~@angular/material/theming';
 @import 'mycroft-colors';
 @import "components/text";
 
 #skill-detail-body {
-    background-color: $mycroft-white;
+    background-color: mat-contrast($mycroft-primary, 500);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     margin-bottom: 50px;
@@ -12,14 +13,14 @@
     padding-top: 3vh;
 
     .mat-subheading-1 {
-        color: $mycroft-dark-grey;
+        color: mat-color($mycroft-accent, A700);
         font-variant: small-caps;
         font-weight: 500;
         margin-bottom: 5px;
     }
 
     .mat-body-1 {
-        color: $mycroft-secondary;
+        color: mat-color($mycroft-accent);
     }
 
     #kde-icon {

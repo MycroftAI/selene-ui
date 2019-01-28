@@ -1,3 +1,4 @@
+@import "~@angular/material/theming";
 @import 'mycroft-colors';
 
 #card-header {
@@ -16,7 +17,7 @@
     width: 20px;
 
     fa-icon {
-        color: $mycroft-tertiary-green;
+        color: mat-color($mycroft-accent, A100);
         font-size: 20px;
     }
 }

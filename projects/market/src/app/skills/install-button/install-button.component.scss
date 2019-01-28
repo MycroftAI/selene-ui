@@ -1,3 +1,4 @@
+@import '~@angular/material/theming';
 @import 'mycroft-colors';
 
 @mixin install-status {
@@ -26,13 +27,13 @@ fa-icon {
 
 #install-button {
     @include install-status;
-    background-color: $mycroft-primary ;
-    color: $mycroft-white;
+    background-color: mat-color($mycroft-primary) ;
+    color: mat-contrast($mycroft-primary, 500);
 }
 #install-button:hover {
     @include install-status;
-    background-color: $mycroft-tertiary-green;
-    color: $mycroft-secondary;
+    background-color: mat-color($mycroft-accent, A100);
+    color: mat-color($mycroft-accent);
 }
 
 #installed-button {
@@ -41,8 +42,8 @@ fa-icon {
 
 #installing-button {
     @include install-status;
-    background-color: $mycroft-tertiary-green;
-    color: $mycroft-secondary;
+    background-color: mat-color($mycroft-accent, A100);;
+    color: mat-color($mycroft-accent);
     mat-spinner {
         float: left;
         margin-right: 10px;
@@ -51,30 +52,30 @@ fa-icon {
 }
 #installing-spinner {
     @include spinner-common;
-    border-right-color: $mycroft-secondary;
-    border-top-color: $mycroft-secondary;
+    border-right-color: mat-color($mycroft-accent);
+    border-top-color: mat-color($mycroft-accent);
 }
 
 
 #uninstall-button {
     @include install-status;
-    background-color: $mycroft-dark-grey;
-    color: $mycroft-white;
+    background-color: mat-color($mycroft-accent, A700);
+    color: mat-contrast($mycroft-accent, 500);
 }
 .uninstall-button:hover {
     @include install-status;
     border: none;
-    background-color: #eb5757;
-    color: $mycroft-white;
+    background-color: mat-color($mycroft-warn);
+    color: mat-contrast($mycroft-primary, 500);
 }
 
 #uninstalling-button {
     @include install-status;
-    background-color: #eb5757;
-    color: $mycroft-white;
+    background-color: mat-color($mycroft-warn);
+    color: mat-contrast($mycroft-primary, 500);
 }
 #uninstalling-spinner {
     @include spinner-common;
-    border-right-color: $mycroft-white;
-    border-top-color: $mycroft-white;
+    border-right-color: mat-contrast($mycroft-primary, 500);
+    border-top-color: mat-contrast($mycroft-primary, 500);
 }

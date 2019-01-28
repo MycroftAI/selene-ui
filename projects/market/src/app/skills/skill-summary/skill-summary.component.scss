@@ -1,11 +1,12 @@
+@import "~@angular/material/theming";
 @import 'mycroft-colors';
 
 #skill-category {
-    background-color: $market-background;
+    //background-color: $market-background;
 
     mat-toolbar {
-        background-color: $market-background;
-        color: $mycroft-dark-grey;
+        //background-color: $market-background;
+        color: mat-color($mycroft-accent, A700);
         font-size: xx-large;
         margin-top: 20px;
         padding-left: 10px;

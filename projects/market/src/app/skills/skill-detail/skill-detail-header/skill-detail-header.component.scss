@@ -1,3 +1,4 @@
+@import "~@angular/material/theming";
 @import 'mycroft-colors';
 @import "components/buttons";
 
@@ -10,7 +11,7 @@
     padding-right: 4vw;
     padding-top: 4vh;
     #skill-detail-header-left {
-        color: $mycroft-secondary;
+        color: mat-color($mycroft-accent);
         margin-right: 50px;
         min-width: 340px;
         fa {
@@ -34,13 +35,13 @@
             @include action-button;
             width: 140px;
             &:hover {
-                background-color: $mycroft-tertiary-green;
-                color: $mycroft-secondary;
+                background-color: mat-color($mycroft-accent, A100);
+                color: mat-color($mycroft-accent);
             }
         }
 
         #github-button {
-            color: $mycroft-dark-grey;
+            color: mat-color($mycroft-accent, A700);
             font-weight: normal;
             width: 135px;
             fa-icon {
