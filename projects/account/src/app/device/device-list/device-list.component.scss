@@ -1,0 +1,90 @@
+@import '~@angular/material/theming';
+@import '~src/stylesheets/mycroft-colors';
+@import '~src/stylesheets/components/buttons';
+
+@mixin panel-defaults {
+    border-radius: 12px;
+    max-width: 1000px;
+    min-width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+#add-device-button {
+    @include action-button-primary;
+    @include panel-defaults;
+    border-radius: 12px;
+    cursor: pointer;
+    height: 50px;
+    margin-top: 32px;
+
+    img {
+        height: 32px;
+        margin-left: 16px;
+    }
+    .mat-h2 {
+        margin-bottom: 0;
+    }
+
+    fa-icon {
+        color: mat-color($mycroft-accent, 'A200');
+        margin-right: 16px;
+    }
+}
+
+#preferences-panel {
+    background-color: mat-color($mycroft-accent, A700);
+    color: mat-contrast($mycroft-accent, A700);
+
+    .mat-h1 {
+        margin-bottom: 0;
+    }
+
+    .mat-expansion-panel-header .mat-expansion-indicator {
+        color: mat-color($mycroft-accent, 'A200') !important;
+    }
+}
+
+mat-expansion-panel {
+    @include panel-defaults;
+    margin-top: 16px;
+
+    button {
+        width: 100%;
+    }
+
+    fa-icon {
+        padding-right: 10px
+    }
+
+    img {
+        height: 60px;
+    }
+
+    mat-form-field {
+        margin-bottom: 20px;
+        width: 100%;
+    }
+
+    //.delete-button {
+    //    margin-top: 20px;
+    //}
+
+    .mat-body-primary {
+        margin-bottom: 0;
+    }
+
+    .mat-h2 {
+        color: mat-color($mycroft-primary);
+        margin-bottom: 0;
+    }
+
+    .mat-subheader {
+        padding: 0;
+    }
+
+    .settings-button {
+        margin-bottom: 20px;
+    }
+}

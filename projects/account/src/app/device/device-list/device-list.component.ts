@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 
-import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { faCog, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 
-import { DeviceService, Device } from './device.service';
-import { RemoveComponent } from './remove/remove.component';
+import { DeviceService, Device } from '../device.service';
+import { RemoveComponent } from '../remove/remove.component';
 
 @Component({
-    selector: 'account-device',
-    templateUrl: './device.component.html',
-    styleUrls: ['./device.component.scss']
+    selector: 'account-device-list',
+    templateUrl: './device-list.component.html',
+    styleUrls: ['./device-list.component.scss']
 })
-export class DeviceComponent implements OnInit {
+export class DeviceListComponent implements OnInit {
     public addIcon = faPlus;
     public deleteIcon = faTrash;
     public devices: Device[];
@@ -22,6 +22,7 @@ export class DeviceComponent implements OnInit {
         'kde': {icon: '../assets/kde-icon.svg', displayName: 'KDE'}
     };
     private selectedDevice: Device;
+    public settingsIcon = faCog;
 
     constructor(public dialog: MatDialog, private deviceService: DeviceService) { }
 

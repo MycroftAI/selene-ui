@@ -1,0 +1,67 @@
+    <div id="add-device-button" fxLayout="row" fxLayoutAlign="start center">
+        <img src="../assets/generic-device-icon-blue.svg">
+        <span fxFlex class="mat-h2">ADD DEVICE</span>
+        <fa-icon class="mat-h2" [icon]="addIcon"></fa-icon>
+    </div>
+
+    <!-- Device listing - show summary in expansion panel header and editable fields in expansion panel detail -->
+    <mat-expansion-panel *ngFor="let device of devices">
+
+        <!-- Put the platform icon, device name and device placement in the panel header -->
+        <mat-expansion-panel-header [expandedHeight]="'100px'" [collapsedHeight]="'100px'">
+            <div fxLayout="row" fxLayoutAlign="start" fxLayoutGap="16px">
+                <img [src]="getDeviceIcon(device)"/>
+                <div>
+                    <div class="mat-h2">{{device.name}}</div>
+                    <div class="mat-subheader">{{device.placement.name}}</div>
+                </div>
+            </div>
+        </mat-expansion-panel-header>
+
+        <div id="device-settings" fxLayout.xs="row wrap">
+            <div fxLayout="row wrap" fxLayoutGap.gt-xs="16px">
+                <!-- Navigation to skill settings for this device. -->
+                <mat-form-field fxFlex.xl=30 fxFlex.lt-xl [appearance]="'outline'">
+                    <mat-label>Name</mat-label>
+                    <input
+                        id="deviceName"
+                        matInput
+                        name="deviceName"
+                        required
+                        type="text"
+                        value="{{device.name}}"
+                    >
+                    <mat-hint>Must be unique within a device group (if defined)</mat-hint>
+                </mat-form-field>
+
+                <account-device-group-view fxFlex.xl=30 fxFlex.lt-xl [device]="device"></account-device-group-view>
+                <account-device-geography-view fxFlex.xl=30 fxFlex.lt-xl [device]="device"></account-device-geography-view>
+                <account-device-placement-view fxFlex.xl=30 fxFlex.lt-xl [device]="device"></account-device-placement-view>
+                <account-device-voice-view fxFlex.xl=30 fxFlex.lt-xl [device]="device"></account-device-voice-view>
+                <account-device-wake-word-view fxFlex.xl=30 fxFlex.lt-xl [device]="device"></account-device-wake-word-view>
+            </div>
+
+            <div fxFlex.xl="25" fxFlex.lt-xl>
+                <div fxLayout="column">
+                <!-- Static fields that display platform, software version and hardware version -->
+                    <div>
+                        <div *ngFor="let staticData of defineStaticDeviceFields(device)">
+                            <span class="mat-body">{{staticData.name}}:&nbsp;&nbsp;</span>
+                            <span class="mat-body-primary">{{staticData.value}}</span>
+                        </div>
+                    </div>
+
+                    <!-- Last but not least, the delete device button -->
+                    <button mat-flat-button color="primary" class="settings-button">
+                        <fa-icon [icon]="settingsIcon"></fa-icon>
+                        SKILL SETTINGS
+                    </button>
+
+                    <button mat-flat-button color="warn" class="delete-button" (click)="onRemovalClick(device)">
+                        <fa-icon [icon]="deleteIcon"></fa-icon>
+                        REMOVE DEVICE
+                    </button>
+                </div>
+            </div>
+        </div>
+    </mat-expansion-panel>

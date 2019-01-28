@@ -1,0 +1,40 @@
+<mat-card>
+    <mat-card-title class="mat-h2-primary">Device Preferences</mat-card-title>
+    <mat-tab-group>
+        <mat-tab label="Basic">
+            <div id="basic-settings" fxLayout="column" fxLayoutAlign="start start">
+                <mat-slide-toggle [labelPosition]="'before'">Use device groups</mat-slide-toggle>
+                <mat-label>Measurement System</mat-label>
+                <mat-button-toggle-group>
+                    <mat-button-toggle>Imperial</mat-button-toggle>
+                    <mat-button-toggle>Metric</mat-button-toggle>
+                </mat-button-toggle-group>
+                <mat-label>Time Format</mat-label>
+                <mat-button-toggle-group>
+                    <mat-button-toggle>12 Hour</mat-button-toggle>
+                    <mat-button-toggle>24 Hour</mat-button-toggle>
+                </mat-button-toggle-group>
+                <mat-label>Date Format</mat-label>
+                <mat-button-toggle-group>
+                    <mat-button-toggle>DD/MM/YYYY</mat-button-toggle>
+                    <mat-button-toggle>MM/DD/YYYY</mat-button-toggle>
+                </mat-button-toggle-group>
+                <mat-label>Default Location</mat-label>
+                    <mat-select placeholder="None Selected">
+                    </mat-select>
+                <div style="margin-top: 32px">
+                    <button mat-button>CANCEL</button>
+                    <button mat-button class="action-button">SAVE</button>
+                </div>
+            </div>
+        </mat-tab>
+        <mat-tab label="Advanced">
+            <div id="advanced-settings">
+                <div class="mat-body" *ngFor="let paragraph of advancedSettingsDesc">
+                    <p>{{paragraph}}</p>
+                </div>
+                <button mat-flat-button class="action-button">VIEW DOCUMENTATION</button>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</mat-card>

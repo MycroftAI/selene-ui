@@ -1,0 +1,29 @@
+mat-card {
+    width: 330px;
+
+    #basic-settings {
+        margin-top: 16px;
+
+        mat-button-toggle-group {
+            border: none;
+
+            mat-button-toggle {
+                margin: 8px;
+                width: 130px;
+            }
+        }
+
+        mat-label {
+            margin-bottom: 8px;
+            margin-top: 16px;
+        }
+    }
+
+    #advanced-settings {
+        margin-top: 16px;
+
+        button {
+            margin-top: 16px;
+        }
+    }
+}

@@ -15,6 +15,8 @@ export interface Device {
     name: string;
     placement: DeviceAttribute;
     platform: string;
+    voice: DeviceAttribute;
+    wakeWord: DeviceAttribute;
 }
 
 @Injectable({
@@ -30,7 +32,9 @@ export class DeviceService {
             location: {id: '1a2b-3c4d-5e6f', name: 'United States, 64101, CST', preDefined: false},
             name: 'Mark',
             placement: {id: 'bbb-bbb-bbb', name: 'Living Room', preDefined: false},
-            platform: 'mark-one'
+            platform: 'mark-one',
+            voice: {id: '1a2b-3c4d-5e6f', name: 'British Male', preDefined: true},
+            wakeWord: {id: '1a2b-3c4d-5e6f', name: 'Hey Mycroft', preDefined: true},
         },
         {
             coreVersion: '18.08',
@@ -40,7 +44,9 @@ export class DeviceService {
             location: {id: '1a2b-3c4d-5e6f', name: 'United States, 64101, CST', preDefined: false},
             name: 'Marky Mark',
             placement: {id: 'bbb-bbb-bbb', name: 'Kitchen', preDefined: true},
-            platform: 'mark-two'
+            platform: 'mark-two',
+            voice: {id: '1a2b-3c4d-5e6f', name: 'British Male', preDefined: true},
+            wakeWord: {id: 'a1b2-c3d4-e5f6', name: 'Christopher', preDefined: true}
         },
         {
             coreVersion: '18.08',
@@ -50,7 +56,9 @@ export class DeviceService {
             location: {id: '1a2b-3c4d-5e6f', name: 'United States, 64101, CST', preDefined: false},
             name: 'American Pie',
             placement: {id: 'ddd-ddd-ddd', name: 'Bedroom', preDefined: true},
-            platform: 'picroft'
+            platform: 'picroft',
+            voice: {id: '1a2b-3c4d-5e6f', name: 'British Male', preDefined: true},
+            wakeWord: {id: 'a1b2-c3d4-e5f6', name: 'Christopher', preDefined: true}
         },
         {
             coreVersion: '18.08',
@@ -60,7 +68,9 @@ export class DeviceService {
             location: {id: '1a2b-3c4d-5e6f', name: 'United States, 64101, CST', preDefined: false},
             name: 'Kappa Delta Epsilon',
             placement: {id: 'fff-fff-fff', name: 'Kitchen', preDefined: true},
-            platform: 'kde'
+            platform: 'kde',
+            voice: {id: '1a2b-3c4d-5e6f', name: 'British Male', preDefined: true},
+            wakeWord: {id: 'abcd-efgh-ijkl', name: 'Hey Jarvis', preDefined: true}
         }
     ];
 
@@ -81,6 +91,18 @@ export class DeviceService {
     public deviceGeographies: DeviceAttribute[] = [
         {id: '1a2b-3c4d-5e6f', name: 'United States, 64101, CST', preDefined: false},
         {id: 'a1b2-c3d4-e5f6', name: 'United Kingdom, ABCDE, BST', preDefined: false}
+    ];
+
+    public deviceVoices: DeviceAttribute[] = [
+        {id: '1a2b-3c4d-5e6f', name: 'British Male', preDefined: true},
+        {id: 'a1b2-c3d4-e5f6', name: 'American Female', preDefined: true},
+        {id: 'abcd-efgh-ijkl', name: 'American Male', preDefined: true}
+    ];
+
+    public deviceWakeWords: DeviceAttribute[] = [
+        {id: '1a2b-3c4d-5e6f', name: 'Hey Mycroft', preDefined: true},
+        {id: 'a1b2-c3d4-e5f6', name: 'Christopher', preDefined: true},
+        {id: 'abcd-efgh-ijkl', name: 'Hey Jarvis', preDefined: true}
     ];
 
     constructor() { }
