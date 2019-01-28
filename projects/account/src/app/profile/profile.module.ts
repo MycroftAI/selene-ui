@@ -18,7 +18,6 @@ import {
 
 import { ProfileComponent } from './profile.component';
 import { LoginComponent } from './login/login.component';
-import { PersonalComponent } from './personal/personal.component';
 import { SubscriptionComponent } from './subscription/subscription.component';
 import { DeleteComponent } from './delete/delete.component';
 import { AgreementsComponent } from './agreements/agreements.component';
@@ -27,7 +26,6 @@ import { AgreementsComponent } from './agreements/agreements.component';
     declarations: [
         ProfileComponent,
         LoginComponent,
-        PersonalComponent,
         SubscriptionComponent,
         DeleteComponent,
         AgreementsComponent
