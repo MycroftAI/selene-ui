@@ -10,11 +10,10 @@ import { GlobalnavModule } from 'globalnav';
 import { PageNotFoundModule } from 'page-not-found';
 import { MaterialModule } from './shared/material.module';
 import { SkillsModule } from './skills/skills.module';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule(
     {
-        declarations: [ AppComponent, PageNotFoundComponent ],
+        declarations: [ AppComponent ],
         imports: [
             BrowserModule,
             BrowserAnimationsModule,
