@@ -1,5 +1,5 @@
 import { Component, OnDestroy } from '@angular/core';
-import { MediaChange, ObservableMedia } from '@angular/flex-layout';
+import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
 
 export interface SubscriptionType {
@@ -36,8 +36,8 @@ export class SubscriptionComponent implements OnDestroy {
     public alignVertical: boolean;
     private mediaWatcher: Subscription;
 
-  constructor(public media: ObservableMedia) {
-      this.mediaWatcher = media.subscribe(
+  constructor(public mediaObserver: MediaObserver) {
+      this.mediaWatcher = mediaObserver.media$.subscribe(
           (change: MediaChange) => {
               this.alignVertical = ['xs', 'sm'].includes(change.mqAlias);
           }

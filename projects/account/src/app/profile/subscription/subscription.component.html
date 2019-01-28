@@ -3,6 +3,7 @@
         <span>Support Mycroft</span>
     </mat-toolbar>
     <div fxLayout="column" fxLayoutAlign="center center">
+        <span>Mycroft supporters gain access to premium services, such as voices.</span>
         <mat-button-toggle-group [vertical]="alignVertical">
             <ng-container *ngFor="let subscription of subscriptionTypes">
                 <mat-button-toggle style="padding: 8px">
@@ -11,7 +12,7 @@
                 </mat-button-toggle>
             </ng-container>
         </mat-button-toggle-group>
-        <div id="subscription-date" class="mat-body">Proudly supporting Mycroft for {{subscriptionDuration}}</div>
+        <span id="subscription-date" class="mat-body">Proudly supporting Mycroft for {{subscriptionDuration}}</span>
     </div>
 </mat-card>
 
