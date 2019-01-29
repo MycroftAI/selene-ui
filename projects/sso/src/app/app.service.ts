@@ -16,7 +16,7 @@ export interface SocialLoginData {
     expiration: string;
 }
 
-const antisocialAuthUrl = '/api/antisocial';
+const antisocialAuthUrl = '/api/internal-login';
 const facebookAuthUrl = '/api/social/facebook';
 const githubAuthUrl = '/api/social/github';
 const googleAuthUrl = '/api/social/google';
@@ -36,8 +36,18 @@ export class AppService {
         setTimeout(() => { window.location.assign(redirectURI); }, delay);
     }
 
-    authorizeAntisocial (username, password): Observable<AuthResponse> {
-        const rawCredentials = `${username}:${password}`;
+    /**
+     * Authenticate a user that provides their email address and password as an authentication mechanism
+     *
+     * For security purposes, encode the raw email address and password using the btoa (binary to ASCII)
+     * function so that the raw string values are not included in the request.  Email and password are
+     * considered "internal-login" because the authentication data is stored on Mycroft servers.
+     *
+     * @param emailAddress: email address of the user
+     * @param password: password for the account
+     */
+    authorizeInternal (emailAddress, password): Observable<AuthResponse> {
+        const rawCredentials = `${emailAddress}:${password}`;
         const codedCredentials = btoa(rawCredentials);
         const httpHeaders = new HttpHeaders(
             {'Authorization': 'Basic ' + codedCredentials}
