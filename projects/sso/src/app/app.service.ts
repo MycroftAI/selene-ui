@@ -16,11 +16,11 @@ export interface SocialLoginData {
     expiration: string;
 }
 
-const antisocialAuthUrl = '/api/internal-login';
-const facebookAuthUrl = '/api/social/facebook';
-const githubAuthUrl = '/api/social/github';
-const googleAuthUrl = '/api/social/google';
-const generateTokensUrl = 'api/social/tokens';
+const antisocialAuthUrl = '/api/internal';
+const facebookAuthUrl = '/api/external/facebook';
+const githubAuthUrl = '/api/external/github';
+const googleAuthUrl = '/api/external/google';
+const generateTokensUrl = 'api/external/tokens';
 const logoutUrl = '/api/logout';
 
 
@@ -67,7 +67,7 @@ export class AppService {
         window.location.assign(googleAuthUrl);
     }
 
-    generateSocialLoginTokens(socialLoginData: any) {
+    generateExternalLoginTokens(socialLoginData: any) {
         return this.http.post<AuthResponse>(
             generateTokensUrl,
             socialLoginData
