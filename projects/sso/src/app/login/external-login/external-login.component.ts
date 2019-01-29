@@ -5,11 +5,11 @@ import { faFacebook, faGithub } from '@fortawesome/free-brands-svg-icons';
 import { AppService } from '../../app.service';
 
 @Component({
-  selector: 'sso-social-login',
-  templateUrl: './social.component.html',
-  styleUrls: ['./social.component.scss']
+  selector: 'sso-external-login',
+  templateUrl: './external-login.component.html',
+  styleUrls: ['./external-login.component.scss']
 })
-export class SocialComponent implements OnInit {
+export class ExternalLoginComponent implements OnInit {
     public facebookIcon = faFacebook;
     public githubIcon = faGithub;
 

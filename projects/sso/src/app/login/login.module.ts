@@ -14,16 +14,16 @@ import {
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
+import { ExternalLoginComponent } from './external-login/external-login.component';
 import { InternalLoginComponent } from './internal-login/internal-login.component';
 import { LoginComponent } from './login.component';
 import { AppService } from '../app.service';
-import { SocialComponent } from './social/social.component';
 
 @NgModule({
     declarations: [
+        ExternalLoginComponent,
         InternalLoginComponent,
-        LoginComponent,
-        SocialComponent
+        LoginComponent
     ],
     entryComponents: [ LoginComponent ],
     exports: [ LoginComponent ],
