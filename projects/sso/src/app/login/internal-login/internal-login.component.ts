@@ -6,11 +6,11 @@ import { AuthResponse, AppService } from '../../app.service';
 
 const noDelay = 0;
 @Component({
-  selector: 'sso-antisocial-login',
-  templateUrl: './antisocial.component.html',
-  styleUrls: ['./antisocial.component.scss']
+  selector: 'sso-internal-login',
+  templateUrl: './internal-login.component.html',
+  styleUrls: ['./internal-login.component.scss']
 })
-export class AntisocialComponent implements OnInit {
+export class InternalLoginComponent implements OnInit {
     public authFailed: boolean;
     public password: string;
     public passwordIcon = faLock;
@@ -22,7 +22,7 @@ export class AntisocialComponent implements OnInit {
   ngOnInit() { }
 
   authorizeUser(): void {
-      this.authService.authorizeAntisocial(this.username, this.password).subscribe(
+      this.authService.authorizeInternal(this.username, this.password).subscribe(
           (response) => { this.onAuthSuccess(response); },
           (response) => { this.onAuthFailure(response); }
       );

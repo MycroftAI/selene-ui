@@ -14,14 +14,14 @@ import {
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import { AntisocialComponent } from './antisocial/antisocial.component';
+import { InternalLoginComponent } from './internal-login/internal-login.component';
 import { LoginComponent } from './login.component';
 import { AppService } from '../app.service';
 import { SocialComponent } from './social/social.component';
 
 @NgModule({
     declarations: [
-        AntisocialComponent,
+        InternalLoginComponent,
         LoginComponent,
         SocialComponent
     ],
