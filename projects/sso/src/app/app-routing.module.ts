@@ -6,7 +6,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { PageNotFoundComponent } from 'page-not-found';
 
 const routes: Routes = [
-    { path: 'profile', component: LoginComponent },
+    { path: 'login', component: LoginComponent },
     { path: 'logout', component: LogoutComponent },
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: '**', component: PageNotFoundComponent }
