@@ -1,3 +1,4 @@
+@import "~@angular/material/theming";
 @import "mycroft-colors";
 
 // The angular material spinner was limiting in color choices we built our own
@@ -15,7 +16,7 @@
 }
 
 .mat-h3 {
-    color: $mycroft-secondary;
+    color: mat-color($mycroft-accent);
     font-size: 40px;
     margin-top: 50px;
     text-align: center;
@@ -23,6 +24,6 @@
 
 #logout-spinner {
     @include spinner-common;
-    border-right-color: $mycroft-secondary;
-    border-top-color: $mycroft-secondary;
+    border-right-color: mat-color($mycroft-accent);
+    border-top-color: mat-color($mycroft-accent);
 }

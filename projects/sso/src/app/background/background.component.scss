@@ -1,3 +1,4 @@
+@import "~@angular/material/theming";
 @import "mycroft-colors";
 
 /* Split the screen in half */
@@ -15,7 +16,7 @@
 #top-half {
     @include half-screen;
     top: 0;
-    background-color: $mycroft-primary;
+    background-color: mat-color($mycroft-primary);
 }
 
 /* Bottom Half */
