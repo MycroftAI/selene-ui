@@ -1,4 +1,4 @@
-.app-body {
+z.app-body {
     height: 100vh;
     margin: 3vmin;
 }
@@ -9,4 +9,8 @@
 }
 .mycroft-snackbar .mat-simple-snackbar-action {
     color: #22a7f0
+}
+
+.mycroft-no-action-snackbar .mat-simple-snackbar {
+    justify-content: center;
 }
