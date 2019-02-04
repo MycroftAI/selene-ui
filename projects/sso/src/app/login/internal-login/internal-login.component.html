@@ -1,33 +1,37 @@
 <form
     fxLayout="column"
-    #loginForm="ngForm"
     (ngSubmit)="authorizeUser()"
 >
     <mat-form-field>
-        <fa-icon [icon]="usernameIcon" matPrefix></fa-icon>
+        <mat-label>Email Address</mat-label>
         <input
-            id="username"
             matInput
-            name="username"
-            placeholder="Email Address"
             required
-            type="text"
-            [(ngModel)]="username"
+            [(ngModel)]="emailAddress"
+            [formControl]="emailFormControl"
         >
+        <mat-hint>Mycroft Account Email</mat-hint>
+        <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+            Must be a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailFormControl.hasError('required')">
+            Email is required
+        </mat-error>
     </mat-form-field>
     <mat-form-field>
-        <fa-icon [icon]="passwordIcon" matPrefix></fa-icon>
+        <mat-label>Password</mat-label>
         <input
-            id="password"
             matInput
-            name="password"
-            placeholder="Password"
             required
             type="password"
             [(ngModel)]="password"
+            [formControl]="passwordFormControl"
         >
-        <mat-hint>Forgot password?</mat-hint>
+        <mat-hint>Mycroft Account Password</mat-hint>
+        <mat-error *ngIf="passwordFormControl.hasError('required')">
+            Password is required
+        </mat-error>
     </mat-form-field>
     <button mat-button type="submit">LOG IN</button>
+    <a class="mat-body-2" href="http://market.mycroft-test.net">Forgot password?</a>
 </form>
-<div class="mat-body-2" *ngIf="authFailed">Invalid username/password combination; try again</div>
