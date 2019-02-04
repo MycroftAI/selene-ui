@@ -56,7 +56,6 @@ export class LoginComponent implements OnInit {
             socialLoginData = <SocialLoginData>parsedQuery;
             this.authService.generateExternalLoginTokens(socialLoginData).subscribe(
                 (response) => {
-                    this.authService.generateTokenCookies(response);
                     this.authService.navigateToRedirectURI(noDelay);
                 }
             );
