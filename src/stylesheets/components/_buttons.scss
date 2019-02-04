@@ -13,6 +13,11 @@ $button-border-radius: 4px;
     @include action-button;
     background-color: mat-color($mycroft-primary);
     color: mat-contrast($mycroft-primary, 500);
+
+    &:hover {
+        background-color: mat-color($mycroft-accent, A100);
+        color: mat-color($mycroft-accent);
+    }
 }
 
 @mixin action-button-warn {
