@@ -11,41 +11,16 @@
         </a>
     </div>
 
-    <!-- At the end of the title bar is a login/logout control -->
-    <!-- The logout control is displayed whenever the user is logged in... -->
-    <div *ngIf="isLoggedIn" fxLayout="row" fxLayoutAlign="end center">
-        <button
-            mat-flat-button
-            class="sign-in-button"
-            [matMenuTriggerFor]="authMenu"
-        >
-            <fa-icon [icon]="userIcon"></fa-icon>
-            {{userName}}
-        </button>
-        <mat-menu #authMenu="matMenu">
-            <button mat-menu-item (click)="navigateToSignOut()">
-                <fa-icon [icon]="signOutIcon" style="margin-right: 10px;"></fa-icon>
-                Logout
-            </button>
-        </mat-menu>
-    </div>
-
-    <!-- ...and the login control is displayed whenever the user is logged out. -->
-    <button
-        *ngIf="!isLoggedIn"
-        mat-flat-button
-        class="sign-in-button"
-        (click)="navigateToSignIn()"
-    >
-        <fa-icon [icon]="signInIcon"></fa-icon>
-        SIGN IN
-    </button>
-
 </mat-toolbar>
 
 <mat-sidenav-container>
 
-    <!-- This is the global sidenav menu for navigating all Mycroft sites -->
+    <!--
+        This is the global sidenav menu for navigating all Mycroft sites.
+        When the viewport is mobile device size, the menu is hidden until
+        the user selects the menu icon.  On larger screens, the menu will
+        be shown by default can be hidden by selecting the menu icon.
+    -->
     <mat-sidenav
         #snav
         [mode]="mobileQuery.matches ? 'over' : 'side'"
@@ -64,9 +39,11 @@
         </div>
     </mat-sidenav>
 
-    <!-- This is the area where any non-menu content can go. -->
-    <!-- Mycroft web apps must specify the appBody identifier so that their -->
-    <!-- content is placed within the mat-sidenav-content area. -->
+    <!--
+        This is the area where any non-menu content can go.
+        Mycroft web apps must specify the appBody identifier so that their
+        content is placed within the mat-sidenav-content area.
+    -->
     <mat-sidenav-content>
         <ng-content select="[appBody]"></ng-content>
     </mat-sidenav-content>
