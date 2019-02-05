@@ -5,36 +5,35 @@
     border-radius: 4px;
     color: mat-contrast($mycroft-primary, 500);
     font-weight: normal;
+    margin-bottom: 8px;
+    padding-left: 8px;
     text-align: left;
     width: 280px;
 }
 
 #external-login {
-    padding: 20px;
-    button {
-        margin-bottom: 15px;
-    }
+    padding: 16px;
     fa-icon {
-        margin-right: 15px;
-        font-size: 28px;
+        margin-right: 16px;
+        font-size: 24px;
     }
     #facebook-button {
         @include login-button;
         background-color: #3b5998;
-        padding-left: 5px;
     }
     #github-button {
         @include login-button;
         background-color: #333333;
-        padding-left: 5px;
     }
     #google-button {
         @include login-button;
         background-color: #4285F4;
-        padding-left: 1px;
         img {
-            margin-right: 10px;
-            width: 14%;
+            height: 24px;
+            margin-left: -1px;
+            margin-right: 16px;
+            margin-top: -2px;
+            width: 24px;
         }
     }
 }
