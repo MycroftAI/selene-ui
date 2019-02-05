@@ -5,8 +5,8 @@ import { Observable } from 'rxjs';
 
 export interface AuthResponse {
     expiration: number;
-    seleneToken: string;
-    tartarusToken: string;
+    seleneAccess: string;
+    seleneRefresh: string;
 }
 
 export interface SocialLoginData {
@@ -16,11 +16,8 @@ export interface SocialLoginData {
     expiration: string;
 }
 
-const antisocialAuthUrl = '/api/internal';
-const facebookAuthUrl = '/api/external/facebook';
-const githubAuthUrl = '/api/external/github';
-const googleAuthUrl = '/api/external/google';
-const generateTokensUrl = 'api/external/tokens';
+const internalAuthUrl = '/api/internal-login';
+const federatedAuthUrl = '/api/validate-federated';
 const logoutUrl = '/api/logout';
 
 
@@ -52,36 +49,14 @@ export class AppService {
         const httpHeaders = new HttpHeaders(
             {'Authorization': 'Basic ' + codedCredentials}
         );
-        return this.http.get<AuthResponse>(antisocialAuthUrl, {headers: httpHeaders});
+        return this.http.get<AuthResponse>(internalAuthUrl, {headers: httpHeaders});
     }
 
-    authenticateWithFacebook() {
-        window.location.assign(facebookAuthUrl);
-    }
-
-    authenticateWithGithub() {
-        window.location.assign(githubAuthUrl);
-    }
-
-    authenticateWithGoogle() {
-        window.location.assign(googleAuthUrl);
-    }
-
-    generateExternalLoginTokens(socialLoginData: any) {
+    validateFederatedLogin(socialLoginData: any) {
         return this.http.post<AuthResponse>(
-            generateTokensUrl,
+            federatedAuthUrl,
             socialLoginData
         );
-    }
-
-    generateTokenCookies(authResponse: AuthResponse) {
-        const expirationDate = new Date(authResponse.expiration * 1000);
-        document.cookie = 'seleneToken=' + authResponse.seleneToken +
-            '; expires=' + expirationDate.toUTCString() +
-            '; domain=' + this.cookieDomain;
-        document.cookie = 'tartarusToken=' + authResponse.tartarusToken +
-            '; expires=' + expirationDate.toUTCString() +
-            '; domain=' + this.cookieDomain;
     }
 
     logout(): Observable<any> {
@@ -90,12 +65,18 @@ export class AppService {
 
     expireTokenCookies(): void {
         const expiration = new Date();
-        document.cookie = 'seleneToken=""' +
+        document.cookie = 'seleneAccess=""' +
             '; expires=' + expiration.toUTCString() +
             '; domain=' + this.cookieDomain;
-        document.cookie = 'tartarusToken=""' +
+        document.cookie = 'seleneRefresh=""' +
             '; expires=' + expiration.toUTCString() +
             '; domain=' + this.cookieDomain;
 
-  }
+    }
+
+    gitHubLogin() {
+        return this.http.get<string>('https://github.com/login/oauth/authorize' +
+            '?scope=user:email&client_id=752bb0864dd667c902f4');
+    }
+
 }
