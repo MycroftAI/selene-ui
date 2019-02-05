@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
+
+import { CookieService } from 'ngx-cookie-service';
 import {
     faBars,
     faLightbulb,
@@ -19,7 +21,8 @@ import {
     NavItem,
     PrimaryNavItem,
     setLoginStatus,
-    User
+    User,
+    WebApps
 } from './globalnav.service';
 
 @Component({
@@ -29,16 +32,13 @@ import {
 })
 
 export class GlobalnavComponent implements OnInit {
-    @Input() mycroftUrls: any;
+    @Input() mycroftUrls: WebApps;
     @Input() user$: Observable<User>;
     public footerItems: NavItem[];
     public isLoggedIn: boolean;
-    public signInIcon = faSignInAlt;
-    public signOutIcon = faSignOutAlt;
     public menuIcon = faBars;
     public mobileQuery: MediaQueryList;
     public navigationItems: PrimaryNavItem[];
-    public userIcon = faUserCircle;
     public userName: string;
 
     constructor(private media: MediaMatcher) {
@@ -49,7 +49,7 @@ export class GlobalnavComponent implements OnInit {
         this.isLoggedIn = setLoginStatus();
         this.getUser();
         this.buildNavigationItems();
-        this.buildAccountNav();
+        this.buildSignInNav();
     }
 
     getUser() {
@@ -121,6 +121,15 @@ export class GlobalnavComponent implements OnInit {
             icon: faStore,
             text: 'Marketplace'
         };
+        const accountNav: PrimaryNavItem = {
+            children: [
+                {text: 'Devices', url: this.mycroftUrls.account + '/device'},
+                {text: 'Skills', url: this.mycroftUrls.account + '/skill'},
+                {text: 'Profile', url: this.mycroftUrls.account + '/profile'},
+            ],
+            icon: faUserCircle,
+            text: 'My Account',
+        };
 
         this.navigationItems = [
             aboutMycroftNav,
@@ -129,43 +138,32 @@ export class GlobalnavComponent implements OnInit {
             communityNav,
             contributeNav,
             marketplaceNav,
+            accountNav
         ];
 
         this.footerItems = [
             {text: 'Contact Us', url: this.mycroftUrls.wordpress + '/contact'},
-            {text: 'Media Kit', url: this.mycroftUrls.wordpress + '/media'},
+            {text: 'Media Kit', url: this.mycroftUrls.wordpress + '/mediaObserver'},
             {text: 'Privacy Policy', url: this.mycroftUrls.account + '/#/privacy-policy'},
             {text: 'Terms of Use', url: this.mycroftUrls.account + '/#/terms-of-use'}
         ];
     }
 
-    buildAccountNav() {
-        const accountNav: PrimaryNavItem = {
-            children: [
-                {text: 'Devices', url: this.mycroftUrls.account + '/#/device'},
-                {text: 'Profile', url: this.mycroftUrls.account + '/#/profile'},
-                {text: 'Skill Settings', url: this.mycroftUrls.account + '/#/skill'},
-                {text: 'Subscription', url: this.mycroftUrls.account + '/#/account'},
-                {text: 'User Settings', url: this.mycroftUrls.account + '/#/setting/basic'},
-            ],
-            icon: faUserCircle,
-            text: 'My Account',
+    buildSignInNav() {
+        let authenticateNav: PrimaryNavItem = {
+            icon: faSignInAlt,
+            text: 'Sign In',
+            url: this.mycroftUrls.singleSignOn + '/login?redirect=' + window.location.href
         };
 
         if (this.isLoggedIn) {
-            this.navigationItems.push(accountNav);
+            authenticateNav = {
+                icon: faSignOutAlt,
+                text: 'Sign Out',
+                url: this.mycroftUrls.singleSignOn + '/logout?redirect=' + window.location.href
+            };
         }
-    }
 
-    navigateToSignIn() {
-        window.location.assign(
-            this.mycroftUrls.singleSignOn + '/login?redirect=' + window.location.href
-        );
-    }
-
-    navigateToSignOut() {
-        window.location.assign(
-            this.mycroftUrls.singleSignOn + '/logout?redirect=' + window.location.href
-        );
+        this.navigationItems.push(authenticateNav);
     }
 }

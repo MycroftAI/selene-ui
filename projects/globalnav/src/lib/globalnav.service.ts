@@ -1,6 +1,15 @@
-import { Injectable } from '@angular/core';
-
 import { IconDefinition } from '@fortawesome/free-solid-svg-icons';
+
+export interface WebApps {
+    account: string;
+    chat: string;
+    forum: string;
+    marketplace: string;
+    mimic: string;
+    singleSignOn: string;
+    translate: string;
+    wordpress: string;
+}
 
 export interface NavItem {
   text: string;
@@ -32,7 +41,8 @@ export function expireTokenCookies(): void {
 
 export function setLoginStatus(): boolean {
     const cookies = document.cookie;
-    const seleneTokenExists = cookies.includes('seleneToken');
-    const seleneTokenEmpty = cookies.includes('seleneToken=""');
+    const seleneTokenExists = cookies.includes('seleneAccess');
+    const seleneTokenEmpty = cookies.includes('seleneAccess=""');
+
     return seleneTokenExists && !seleneTokenEmpty;
 }
