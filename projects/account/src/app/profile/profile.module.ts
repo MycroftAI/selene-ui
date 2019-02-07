@@ -7,12 +7,9 @@ import {
     MatButtonModule,
     MatButtonToggleModule,
     MatCardModule,
-    MatDividerModule,
     MatExpansionModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule,
-    MatSlideToggleModule,
     MatToolbarModule
 } from '@angular/material';
 
@@ -40,12 +37,9 @@ import { AgreementsComponent } from './agreements/agreements.component';
         MatButtonModule,
         MatButtonToggleModule,
         MatCardModule,
-        MatDividerModule,
         MatExpansionModule,
         MatFormFieldModule,
         MatInputModule,
-        MatSelectModule,
-        MatSlideToggleModule,
         MatToolbarModule
     ]
 })
