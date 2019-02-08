@@ -79,8 +79,6 @@ export class GlobalnavComponent implements OnInit {
             this.defineForumNav(),
             this.defineContributeNav(),
             this.defineMarketNav(),
-            this.defineAccountNav(),
-            this.defineAuthenticationNav()
         ];
 
         this.footerItems = [
@@ -155,46 +153,5 @@ export class GlobalnavComponent implements OnInit {
             icon: faStore,
             text: 'Marketplace'
         };
-    }
-
-    private defineAccountNav(): PrimaryNavItem {
-        let deviceUrl = this.mycroftUrls.account + '/device';
-        let skillUrl = this.mycroftUrls.account + '/skill';
-        let profileUrl = this.mycroftUrls.account + '/profile';
-        const singleSignOnUrl = this.mycroftUrls.singleSignOn + '/login?redirect=';
-
-        if (!this.isLoggedIn) {
-            deviceUrl = singleSignOnUrl + deviceUrl;
-            skillUrl = singleSignOnUrl + skillUrl;
-            profileUrl = singleSignOnUrl + profileUrl;
-        }
-        return {
-            children: [
-                {text: 'Devices', url: deviceUrl},
-                {text: 'Skills', url: skillUrl},
-                {text: 'Profile', url: profileUrl},
-            ],
-            icon: faUserCircle,
-            text: 'My Account',
-        };
-
-    }
-
-    private defineAuthenticationNav(): PrimaryNavItem {
-        let authenticateNav: PrimaryNavItem = {
-            icon: faSignInAlt,
-            text: 'Sign In',
-            url: this.mycroftUrls.singleSignOn + '/login?redirect=' + window.location.href
-        };
-
-        if (this.isLoggedIn) {
-            authenticateNav = {
-                icon: faSignOutAlt,
-                text: 'Sign Out',
-                url: this.mycroftUrls.singleSignOn + '/logout?redirect=' + window.location.href
-            };
-        }
-
-        return authenticateNav;
     }
 }

@@ -15,6 +15,7 @@ import { GlobalnavComponent } from './globalnav.component';
 import { NavItemComponent } from './nav-item/nav-item.component';
 import { PrimaryNavItemComponent } from './primary-nav-item/primary-nav-item.component';
 import { FooterComponent } from './footer/footer.component';
+import { AccountMenuComponent } from './account-menu/account-menu.component';
 
 @NgModule({
     imports: [
@@ -33,7 +34,8 @@ import { FooterComponent } from './footer/footer.component';
         GlobalnavComponent,
         NavItemComponent,
         PrimaryNavItemComponent,
-        FooterComponent
+        FooterComponent,
+        AccountMenuComponent
     ],
     exports: [
         GlobalnavComponent

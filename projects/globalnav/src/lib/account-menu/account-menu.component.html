@@ -1,0 +1,42 @@
+<button mat-button [mat-menu-trigger-for]="menu" class="account-button">
+    <fa-icon [icon]="accountIcon"></fa-icon>
+</button>
+<mat-menu #menu>
+    <!--
+        If the user is not authenticated, the menu will present them with
+        "Log In" or "Create Account" options
+    -->
+    <button *ngIf="!isAuthenticated" mat-menu-item>
+        <fa-icon [icon]="logInIcon" class="menu-item-icon"></fa-icon>
+        <span class="menu-item-text">Log In</span>
+    </button>
+    <button *ngIf="!isAuthenticated" mat-menu-item>
+        <fa-icon [icon]="accountIcon" class="menu-item-icon"></fa-icon>
+        <span class="menu-item-text">Create Account</span>
+    </button>
+    <!--
+        If the user is authenticated, the menu will present them with
+        account management options
+    -->
+    <button *ngIf="isAuthenticated" mat-menu-item>
+        <fa-icon [icon]="skillsIcon" class="menu-item-icon"></fa-icon>
+        <span class="menu-item-text">Skills</span>
+    </button>
+    <button *ngIf="isAuthenticated" mat-menu-item>
+        <fa-icon [icon]="devicesIcon" class="menu-item-icon"></fa-icon>
+        <span class="menu-item-text">Devices</span>
+    </button>
+    <button *ngIf="isAuthenticated" mat-menu-item>
+        <fa-icon [icon]="accountIcon" class="menu-item-icon"></fa-icon>
+        <span class="menu-item-text">Profile</span>
+    </button>
+    <mat-divider *ngIf="isAuthenticated" class="menu-divider"></mat-divider>
+    <button *ngIf="isAuthenticated" mat-menu-item>
+        <fa-icon [icon]="addDeviceIcon" class="menu-item-icon"></fa-icon>
+        <span class="menu-item-text">Add Device</span>
+    </button>
+    <button *ngIf="isAuthenticated" mat-menu-item>
+        <fa-icon [icon]="logOutIcon" class="menu-item-icon"></fa-icon>
+        <span class="menu-item-text">Logout</span>
+    </button>
+</mat-menu>

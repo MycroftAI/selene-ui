@@ -4,32 +4,20 @@ mat-toolbar {
     z-index: 2;  // Put this on top of the sidenav container
 
     .menu-button {
-        margin-left: -10px;
-        margin-right: 10px;
+        margin-left: -8px;
         fa-icon {
-            color: white;
+            color: #2c3e50;
             font-size: 20px;
         }
     }
 
-     // Use inline css to display the logo at top of sidebar because Angular
+    // Use inline css to display the logo at top of sidebar because Angular
     // libraries do not support static assets yet.
-   .globalnav-logo {
+   .mycroft-logo {
         background: url("toolbar-logo.svg") no-repeat;
         height: 25px;
         margin-top: -5px;
         width: 168px;
-    }
-
-    .sign-in-button {
-        background-color: #22a7f0;
-        color: white;
-        font-size: 16px;
-        fa-icon {
-            color: white;
-            font-size: 16px;
-            margin-right: 10px
-        }
     }
 }
 
