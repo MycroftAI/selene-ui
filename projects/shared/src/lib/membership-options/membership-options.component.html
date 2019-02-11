@@ -1,0 +1,6 @@
+<mat-button-toggle-group class="options-button-group" [vertical]="alignVertical">
+    <mat-button-toggle *ngFor="let membership of membershipTypes">
+        <div class="mat-h3">{{membership.name}}</div>
+        <div class="mat-body">{{membership.price}} USD</div>
+    </mat-button-toggle>
+</mat-button-toggle-group>
