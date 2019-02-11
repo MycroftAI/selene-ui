@@ -8,10 +8,7 @@ import {
     faRobot,
     faRocket,
     faRss,
-    faSignInAlt,
-    faSignOutAlt,
     faStore,
-    faUserCircle,
     faUsers
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -85,7 +82,7 @@ export class GlobalnavComponent implements OnInit {
             {text: 'Contact Us', url: this.mycroftUrls.wordpress + '/contact'},
             {text: 'Media Kit', url: this.mycroftUrls.wordpress + '/mediaObserver'},
             {text: 'Privacy Policy', url: this.mycroftUrls.account + '/#/privacy-policy'},
-            {text: 'Terms of Use', url: this.mycroftUrls.account + '/#/terms-of-use'}
+            {text: 'Terms of Use', url: this.mycroftUrls.account + '/#/agreement-step'}
         ];
     }
 

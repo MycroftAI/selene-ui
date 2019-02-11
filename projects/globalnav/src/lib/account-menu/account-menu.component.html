@@ -1,3 +1,4 @@
+<!-- Account Menu -->
 <button mat-button [mat-menu-trigger-for]="menu" class="account-button">
     <fa-icon [icon]="accountIcon"></fa-icon>
 </button>
@@ -7,7 +8,7 @@
         "Log In" or "Create Account" options
     -->
     <button *ngIf="!isAuthenticated" mat-menu-item>
-        <fa-icon [icon]="logInIcon" class="menu-item-icon"></fa-icon>
+        <fa-icon [icon]="logInIcon" class="menu-item-icon" (click)="navigate_to_log_in()"></fa-icon>
         <span class="menu-item-text">Log In</span>
     </button>
     <button *ngIf="!isAuthenticated" mat-menu-item>
@@ -35,7 +36,7 @@
         <fa-icon [icon]="addDeviceIcon" class="menu-item-icon"></fa-icon>
         <span class="menu-item-text">Add Device</span>
     </button>
-    <button *ngIf="isAuthenticated" mat-menu-item>
+    <button *ngIf="isAuthenticated" mat-menu-item (click)="navigate_to_log_out()">
         <fa-icon [icon]="logOutIcon" class="menu-item-icon"></fa-icon>
         <span class="menu-item-text">Logout</span>
     </button>

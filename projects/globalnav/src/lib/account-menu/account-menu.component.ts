@@ -10,9 +10,9 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'globalnav-account-menu',
-  templateUrl: './account-menu.component.html',
-  styleUrls: ['./account-menu.component.scss']
+    selector: 'globalnav-account-menu',
+    templateUrl: './account-menu.component.html',
+    styleUrls: ['./account-menu.component.scss']
 })
 export class AccountMenuComponent implements OnInit {
     public accountIcon = faUserCircle;
@@ -21,11 +21,20 @@ export class AccountMenuComponent implements OnInit {
     @Input() isAuthenticated: boolean;
     public logInIcon = faSignInAlt;
     public logOutIcon = faSignOutAlt;
+    @Input() mycroftUrls;
     public skillsIcon = faComment;
 
-  constructor() { }
+    constructor() { }
 
-  ngOnInit() {
+    ngOnInit() {
   }
+
+    navigate_to_log_in() {
+        const url = this.mycroftUrls.singleSignOn + '/login?redirect=' + window.location.href;
+    }
+
+    navigate_to_log_out() {
+        const url = this.mycroftUrls.singleSignOn + '/logout?redirect=' + window.location.href;
+    }
 
 }
