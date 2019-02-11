@@ -42,6 +42,7 @@
 
         <!-- Step 6: DONE! -->
         <mat-step label="Done!">
+            <account-done-step [newAcctForm]="newAcctForm"></account-done-step>
         </mat-step>
     </mat-horizontal-stepper>
 
@@ -82,7 +83,12 @@
         <!-- Step 5: Support Mycroft -->
         <mat-step label="Support Mycroft" [stepControl]="subscriptionControl">
             <account-subscription-step [newAcctForm]="newAcctForm"></account-subscription-step>
-            <button mat-button matStepperNext type="button">Next</button>
+            <button mat-button matStepperNext>Next</button>
+        </mat-step>
+
+        <!-- Step 6: DONE! -->
+        <mat-step label="Done!">
+            <account-done-step [newAcctForm]="newAcctForm"></account-done-step>
         </mat-step>
 
     </mat-vertical-stepper>

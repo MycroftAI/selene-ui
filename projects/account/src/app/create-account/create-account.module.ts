@@ -19,6 +19,7 @@ import { CreateAccountComponent } from './create-account.component';
 import { UsernameStepComponent } from './username-step/username-step.component';
 import { SharedModule } from 'shared';
 import { SupportStepComponent } from './support-step/support-step.component';
+import { DoneStepComponent } from './done-step/done-step.component';
 
 @NgModule({
     declarations: [
@@ -26,7 +27,8 @@ import { SupportStepComponent } from './support-step/support-step.component';
         AgreementStepComponent,
         UsernameStepComponent,
         AuthenticationStepComponent,
-        SupportStepComponent
+        SupportStepComponent,
+        DoneStepComponent
     ],
     imports: [
         CommonModule,
