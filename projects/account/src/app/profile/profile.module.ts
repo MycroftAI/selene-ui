@@ -13,19 +13,19 @@ import {
     MatToolbarModule
 } from '@angular/material';
 
-import { ProfileComponent } from './profile.component';
-import { LoginComponent } from './login/login.component';
-import { SubscriptionComponent } from './subscription/subscription.component';
-import { DeleteComponent } from './delete/delete.component';
 import { AgreementsComponent } from './agreements/agreements.component';
+import { DeleteComponent } from './delete/delete.component';
+import { LoginComponent } from './login/login.component';
+import { ProfileComponent } from './profile.component';
+import { SubscriptionComponent } from './subscription/subscription.component';
 
 @NgModule({
     declarations: [
-        ProfileComponent,
-        LoginComponent,
-        SubscriptionComponent,
+        AgreementsComponent,
         DeleteComponent,
-        AgreementsComponent
+        LoginComponent,
+        ProfileComponent,
+        SubscriptionComponent
     ],
     entryComponents: [
         LoginComponent
@@ -41,6 +41,8 @@ import { AgreementsComponent } from './agreements/agreements.component';
         MatFormFieldModule,
         MatInputModule,
         MatToolbarModule
+    ],
+    providers: [
     ]
 })
 export class ProfileModule { }
