@@ -1,0 +1,22 @@
+@import "~@angular/material/theming";
+@import "mycroft-colors";
+@import "~src/stylesheets/components/buttons";
+
+mat-card {
+    height: 60vh;
+    margin-bottom: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 300px;
+    max-width: 1000px;
+
+}
+
+button {
+    @include action-button-primary;
+    width: 120px;
+
+    .accepted-button {
+        background-color: mat-color($mycroft-accent, A100);
+    }
+}

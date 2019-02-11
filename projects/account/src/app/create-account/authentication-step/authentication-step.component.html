@@ -1,0 +1,40 @@
+<mat-card class="mat-elevation-z0">
+    <mat-card>
+        <h2 class="mat-h2">Federated Log In</h2>
+        <ul>
+            <li class="mat-body" *ngFor="let bullet of federatedLoginBullets">{{bullet}}</li>
+        </ul>
+        <p class="mat-body">{{federatedLoginParagraph}}</p>
+        <div fxLayout="column">
+            <shared-google-button></shared-google-button>
+            <shared-facebook-button></shared-facebook-button>
+            <shared-github-button></shared-github-button>
+        </div>
+    </mat-card>
+    <h1 class="mat-h1">OR</h1>
+    <mat-card>
+        <h2 class="mat-h2">Mycroft Log In</h2>
+        <ul>
+            <li class="mat-body" *ngFor="let bullet of internalLoginBullets">{{bullet}}</li>
+        </ul>
+        <div fxLayout="column">
+            <mat-form-field>
+                <mat-label>Email Address</mat-label>
+                <input matInput required type="email" [formControl]="emailFormControl">
+                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                    Must be a valid email address
+                </mat-error>
+                <mat-error *ngIf="emailFormControl.hasError('required')">
+                    Email is required
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput required type="password" [formControl]="passwordFormControl">
+                <mat-error *ngIf="passwordFormControl.hasError('required')">
+                    Password is required
+                </mat-error>
+            </mat-form-field>
+        </div>
+    </mat-card>
+</mat-card>

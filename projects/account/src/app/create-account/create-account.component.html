@@ -1,0 +1,89 @@
+<form [formGroup]="newAcctForm" (ngSubmit)="onFormSubmit()">
+
+    <!-- Show a horizontal stepper on larger devices -->
+    <mat-horizontal-stepper *ngIf="!alignVertical" labelPosition="bottom">
+        <!-- Use font awesome icons in the stepper to indicate progress -->
+        <ng-template matStepperIcon="done">
+            <fa-icon [icon]="stepDoneIcon"></fa-icon>
+        </ng-template>
+        <ng-template matStepperIcon="edit">
+            <fa-icon [icon]="stepDoneIcon"></fa-icon>
+        </ng-template>
+
+        <!-- Step 1: Accept Terms of Use -->
+        <mat-step label="{{termsOfUse}}" [stepControl]="termsOfUseControl">
+            <account-agreement-step [newAcctForm]="newAcctForm" [step]="termsOfUse"></account-agreement-step>
+            <button mat-button matStepperNext type="button">Next</button>
+        </mat-step>
+
+        <!-- Step 2: Accept Privacy Policy -->
+        <mat-step label="{{privacyPolicy}}" [stepControl]="privacyPolicyControl">
+            <account-agreement-step [newAcctForm]="newAcctForm" [step]="privacyPolicy"></account-agreement-step>
+            <button mat-button matStepperNext type="button">Next</button>
+        </mat-step>
+
+        <!-- Step 3: Authentication -->
+        <mat-step label="Log In Method" [stepControl]="emailControl">
+            <account-authentication-step [newAcctForm]="newAcctForm"></account-authentication-step>
+            <button mat-button matStepperNext type="button">Next</button>
+        </mat-step>
+
+        <!-- Step 4: Username -->
+        <mat-step label="Username" [stepControl]="openDatasetControl">
+            <account-dataset-step [newAcctForm]="newAcctForm"></account-dataset-step>
+            <button mat-button matStepperNext type="button">Next</button>
+        </mat-step>
+
+        <!-- Step 5: Support Mycroft -->
+        <mat-step label="Support Mycroft" [stepControl]="subscriptionControl">
+            <account-subscription-step [newAcctForm]="newAcctForm"></account-subscription-step>
+            <button mat-button matStepperNext type="button">Next</button>
+        </mat-step>
+
+        <!-- Step 6: DONE! -->
+        <mat-step label="Done!">
+        </mat-step>
+    </mat-horizontal-stepper>
+
+    <!-- Show a vertical stepper on smaller devices -->
+    <mat-vertical-stepper *ngIf="alignVertical" [linear]="true">
+        <!-- Use font awesome icons in the stepper to indicate progress -->
+        <ng-template matStepperIcon="done">
+            <fa-icon [icon]="stepDoneIcon"></fa-icon>
+        </ng-template>
+        <ng-template matStepperIcon="edit">
+            <fa-icon [icon]="stepDoneIcon"></fa-icon>
+        </ng-template>
+
+        <!-- Step 1: Accept Terms of Use -->
+        <mat-step label="{{termsOfUse}}" [stepControl]="termsOfUseControl">
+            <account-agreement-step [newAcctForm]="newAcctForm" [step]="termsOfUse"></account-agreement-step>
+            <button mat-button matStepperNext type="button">Next</button>
+        </mat-step>
+
+        <!-- Step 2: Accept Privacy Policy -->
+        <mat-step label="{{privacyPolicy}}" [stepControl]="privacyPolicyControl">
+            <account-agreement-step [newAcctForm]="newAcctForm" [step]="privacyPolicy"></account-agreement-step>
+            <button mat-button matStepperNext type="button">Next</button>
+        </mat-step>
+
+        <!-- Step 3: Authentication -->
+        <mat-step label="Log In Method" [stepControl]="emailControl">
+            <account-authentication-step [newAcctForm]="newAcctForm"></account-authentication-step>
+            <button mat-button matStepperNext type="button">Next</button>
+        </mat-step>
+
+        <!-- Step 4: Username -->
+        <mat-step label="Username" [stepControl]="openDatasetControl">
+            <account-dataset-step [newAcctForm]="newAcctForm"></account-dataset-step>
+            <button mat-button matStepperNext type="button">Next</button>
+        </mat-step>
+
+        <!-- Step 5: Support Mycroft -->
+        <mat-step label="Support Mycroft" [stepControl]="subscriptionControl">
+            <account-subscription-step [newAcctForm]="newAcctForm"></account-subscription-step>
+            <button mat-button matStepperNext type="button">Next</button>
+        </mat-step>
+
+    </mat-vertical-stepper>
+</form>

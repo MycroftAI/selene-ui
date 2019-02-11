@@ -1,0 +1,11 @@
+<mat-card class="mat-elevation-z0">
+    <h2 class="mat-h2">Pick a Username</h2>
+    <p class="mat-body">{{whyUsernameParagraph}}</p>
+    <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input matInput required type="text" [formControl]="usernameFormControl">
+        <mat-error *ngIf="usernameFormControl.hasError('required')">
+            Username is required
+        </mat-error>
+    </mat-form-field>
+</mat-card>

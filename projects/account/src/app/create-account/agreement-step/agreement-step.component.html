@@ -1,0 +1,12 @@
+<mat-card>
+    <mat-card-content>Herein Lies the {{step}}</mat-card-content>
+    <mat-card-footer>
+        <button *ngIf="!agreementAccepted" mat-button (click)="acceptAgreement()">
+            Accept
+        </button>
+        <button *ngIf="agreementAccepted" class="accepted-button" mat-button (click)="declineAgreement()">
+            <fa-icon [icon]="acceptedIcon"></fa-icon>
+            Accepted
+        </button>
+    </mat-card-footer>
+</mat-card>
