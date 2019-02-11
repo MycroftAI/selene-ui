@@ -30,11 +30,14 @@ export class AccountMenuComponent implements OnInit {
   }
 
     navigate_to_log_in() {
-        const url = this.mycroftUrls.singleSignOn + '/login?redirect=' + window.location.href;
+       window.location.href = this.mycroftUrls.singleSignOn + '/login?redirect=' + window.location.href;
+    }
+
+    navigate_to_create_account() {
+        window.location.href =  this.mycroftUrls.account + '/create-account/';
     }
 
     navigate_to_log_out() {
-        const url = this.mycroftUrls.singleSignOn + '/logout?redirect=' + window.location.href;
+        window.location.href = this.mycroftUrls.singleSignOn + '/logout?redirect=' + window.location.href;
     }
-
 }
