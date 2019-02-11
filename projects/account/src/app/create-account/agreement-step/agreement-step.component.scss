@@ -15,8 +15,8 @@ mat-card {
 button {
     @include action-button-primary;
     width: 120px;
+}
 
-    .accepted-button {
-        background-color: mat-color($mycroft-accent, A100);
-    }
+.accepted-button {
+    background-color: mat-color($mycroft-accent, A100);
 }
