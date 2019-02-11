@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AppService } from './app.service';
+// import { AppService } from './app.service';
 import { CreateAccountModule } from './create-account/create-account.module';
 import { GlobalnavModule } from 'globalnav';
 import { PageNotFoundModule } from 'page-not-found';
@@ -28,7 +28,7 @@ import { SharedModule } from 'shared';
             SharedModule,
             AppRoutingModule
         ],
-        providers: [ AppService ],
+        // providers: [ AppService ],
         bootstrap: [ AppComponent ]
     }
 )
