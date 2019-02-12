@@ -3,6 +3,8 @@ import { FormGroup } from '@angular/forms';
 
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
+import { Agreement, CreateAccountService } from '../create-account.service';
+
 
 @Component({
   selector: 'account-agreement-step',
@@ -10,15 +12,19 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./agreement-step.component.scss']
 })
 export class AgreementStepComponent implements OnInit {
+    public acceptedIcon = faCheck;
+    public agreementAccepted = false;
+    public agreementContent: string;
     @Input() newAcctForm: FormGroup;
     @Input() step: string;
-    public agreementAccepted = false;
-    public acceptedIcon = faCheck;
 
-    constructor() {
+    constructor(private newAcctService: CreateAccountService) {
     }
 
     ngOnInit() {
+        this.newAcctService.getAgreement(this.step).subscribe(
+            (response) => { this.agreementContent = response.content; }
+        );
     }
 
     acceptAgreement() {
@@ -31,6 +37,11 @@ export class AgreementStepComponent implements OnInit {
     }
 
     declineAgreement () {
+        if (this.step === 'Terms of Use') {
+            this.newAcctForm.controls.termsOfUse.setValue(false);
+        } else {
+            this.newAcctForm.controls.privacyPolicy.setValue(false);
+        }
         this.agreementAccepted = false;
     }
 }

@@ -1,0 +1,11 @@
+@import "~@angular/material/theming";
+@import "mycroft-colors";
+@import "~src/stylesheets/components/buttons";
+
+button {
+    @include action-button-primary;
+}
+
+button:disabled {
+    background-color: mat-color($mycroft-accent, 200);
+}

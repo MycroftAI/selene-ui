@@ -19,8 +19,8 @@ export class AuthenticationStepComponent implements OnInit {
         this.emailFormControl = this.newAcctForm.controls.emailAddress;
         this.passwordFormControl = this.newAcctForm.controls.password;
         this.federatedLoginBullets = [
-            'This option can only selected if you use an email address log into these platforms.',
-            'Once authenticated, Mycroft will obtain your email address from the chosen platform. ' +
+            'This option can only selected if you use an email address login for the selected platforms.',
+            'Once authenticated, Mycroft will obtain your email address from the chosen platform ' +
             'and store it to identify you when you login.'
         ];
         this.internalLoginBullets = [

@@ -12,18 +12,18 @@ import { Subscription } from 'rxjs';
 })
 export class CreateAccountComponent implements OnInit {
     public alignVertical: boolean;
+    public displayNameControl = new FormControl('', Validators.required);
+    public emailControl = new FormControl('', Validators.email);
     public newAcctForm: FormGroup;
     private mediaWatcher: Subscription;
+    public membershipControl = new FormControl(null);
+    public openDatasetControl = new FormControl(null, Validators.required);
+    public passwordControl = new FormControl('', Validators.required);
+    public privacyPolicy = 'Privacy Policy';
+    public privacyPolicyControl = new FormControl(false, Validators.requiredTrue);
     public stepDoneIcon = faCheck;
     public termsOfUse = 'Terms of Use';
-    public privacyPolicy = 'Privacy Policy';
     public termsOfUseControl = new FormControl(false, Validators.requiredTrue);
-    public privacyPolicyControl = new FormControl(false, Validators.requiredTrue);
-    public openDatasetControl = new FormControl(null, Validators.required);
-    public emailControl = new FormControl('', Validators.email);
-    public passwordControl = new FormControl('', Validators.required);
-    public usernameControl = new FormControl('', Validators.required);
-    public subscriptionControl = new FormControl(null);
 
     constructor(public mediaObserver: MediaObserver) {
         this.mediaWatcher = mediaObserver.media$.subscribe(
@@ -35,13 +35,13 @@ export class CreateAccountComponent implements OnInit {
     ngOnInit() {
         this.newAcctForm = new FormGroup(
             {
-                termsOfUse: this.termsOfUseControl,
-                privacyPolicy: this.privacyPolicyControl,
-                openDataset: this.openDatasetControl,
+                displayName: this.displayNameControl,
                 emailAddress: this.emailControl,
+                privacyPolicy: this.privacyPolicyControl,
+                membership: this.membershipControl,
+                openDataset: this.openDatasetControl,
                 password: this.passwordControl,
-                username: this.usernameControl,
-                subscription: this.subscriptionControl
+                termsOfUse: this.termsOfUseControl
             }
         );
     }
