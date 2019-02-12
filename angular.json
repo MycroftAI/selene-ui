@@ -614,6 +614,22 @@
                   "maximumError": "5mb"
                 }
               ]
+            },
+            "development": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/account/src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }
+              ]
+            },
+            "test": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/account/src/environments/environment.ts",
+                  "with": "src/environments/environment.test.ts"
+                }
+              ]
             }
           }
         },
