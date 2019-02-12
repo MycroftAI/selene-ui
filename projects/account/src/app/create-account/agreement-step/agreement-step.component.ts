@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
@@ -14,16 +15,16 @@ import { Agreement, CreateAccountService } from '../create-account.service';
 export class AgreementStepComponent implements OnInit {
     public acceptedIcon = faCheck;
     public agreementAccepted = false;
-    public agreementContent: string;
+    public agreementContent: SafeHtml;
     @Input() newAcctForm: FormGroup;
     @Input() step: string;
 
-    constructor(private newAcctService: CreateAccountService) {
+    constructor(private newAcctService: CreateAccountService, private sanitizer: DomSanitizer) {
     }
 
     ngOnInit() {
         this.newAcctService.getAgreement(this.step).subscribe(
-            (response) => { this.agreementContent = response.content; }
+            (response) => { this.agreementContent = this.sanitizer.bypassSecurityTrustHtml(response.content); }
         );
     }
 
