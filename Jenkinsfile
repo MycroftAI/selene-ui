@@ -5,13 +5,11 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh '''
-                    npm install
-                    ng build --project shared
-                    ng build --project globalnav
-                    ng build --project page-not-found
-                    ng build --project account
-                '''
+                sh 'npm install'
+                sh 'ng build --project shared --configuration test'
+                sh 'ng build --project globalnav --configuration test'
+                sh 'ng build --project page-not-found --configuration test'
+                sh 'ng build --project account --configuration test'
             }
         }
         stage('Test') {
