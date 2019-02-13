@@ -43,10 +43,10 @@ export class SupportStepComponent implements OnInit {
     }
 
     onOptIn() {
-        this.newAcctForm.controls.openDataset.setValue(true);
+        this.newAcctForm.setValue({support: {openDataset: true}});
     }
 
     onOptOut() {
-        this.newAcctForm.controls.openDataset.setValue(false);
+        this.newAcctForm.setValue({support: {openDataset: false}});
     }
 }
