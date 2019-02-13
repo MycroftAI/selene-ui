@@ -10,43 +10,50 @@
             <fa-icon [icon]="stepDoneIcon"></fa-icon>
         </ng-template>
 
-        <!-- Step 1: Accept Terms of Use -->
-        <mat-step label="{{termsOfUse}}" [stepControl]="termsOfUseControl">
-            <account-agreement-step [newAcctForm]="newAcctForm" [step]="termsOfUse"></account-agreement-step>
+        <mat-step label="Terms Of Use" [stepControl]="'termsOfUse'">
+            <account-agreement-step [newAcctForm]="newAcctForm" [step]="'Terms of Use'">
+            </account-agreement-step>
             <div fxLayout="row" fxLayoutAlign="end">
-                <button mat-button matStepperNext type="button" [disabled]="!termsOfUseControl.valid">Next</button>
+                <button mat-button matStepperNext type="button" [disabled]="!termsOfUseControl.valid">
+                    Next
+                </button>
             </div>
         </mat-step>
 
-        <!-- Step 2: Accept Privacy Policy -->
-        <mat-step label="{{privacyPolicy}}" [stepControl]="privacyPolicyControl">
-            <account-agreement-step [newAcctForm]="newAcctForm" [step]="privacyPolicy"></account-agreement-step>
+        <mat-step label="Privacy Policy" [stepControl]="'privacyPolicy'">
+            <account-agreement-step [newAcctForm]="newAcctForm" [step]="'Privacy Policy'">
+            </account-agreement-step>
             <div fxLayout="row" fxLayoutAlign="end">
-                <button mat-button matStepperNext type="button" [disabled]="!privacyPolicyControl.valid">Next</button>
+                <button mat-button matStepperNext type="button" [disabled]="!privacyPolicyControl.valid">
+                    Next
+                </button>
             </div>
         </mat-step>
 
-        <!-- Step 3: Authentication -->
-        <mat-step label="Log In Method" [stepControl]="emailControl">
+        <mat-step label="Log In Method" [stepControl]="'login'">
             <account-authentication-step [newAcctForm]="newAcctForm"></account-authentication-step>
             <div fxLayout="row" fxLayoutAlign="end">
-                <button mat-button matStepperNext type="button">Next</button>
+                <button mat-button matStepperNext type="button" [disabled]="!loginControl.valid">
+                    Next
+                </button>
             </div>
         </mat-step>
 
-        <!-- Step 4: Username -->
-        <mat-step label="Display Name" [stepControl]="displayNameControl">
+        <mat-step label="Display Name" [stepControl]="'displayName'">
             <account-display-name-step [newAcctForm]="newAcctForm"></account-display-name-step>
             <div fxLayout="row" fxLayoutAlign="end">
-                <button mat-button matStepperNext type="button" [disabled]="!displayNameControl.valid">Next</button>
+                <button mat-button matStepperNext type="button" [disabled]="!displayNameControl.valid">
+                    Next
+                </button>
             </div>
         </mat-step>
 
-        <!-- Step 5: Support Mycroft -->
-        <mat-step label="Support Mycroft" [stepControl]="membershipControl">
+        <mat-step label="Support Mycroft" [stepControl]="'support'">
             <account-subscription-step [newAcctForm]="newAcctForm"></account-subscription-step>
             <div fxLayout="row" fxLayoutAlign="end">
-                <button mat-button matStepperNext type="button">Next</button>
+                <button mat-button matStepperNext type="button" [disabled]="!supportControl.valid">
+                    Next
+                </button>
             </div>
         </mat-step>
 
@@ -74,35 +81,50 @@
             </div>
         </mat-step>
 
-        <!-- Step 2: Accept Privacy Policy -->
-        <mat-step label="{{privacyPolicy}}" [stepControl]="privacyPolicyControl">
-            <account-agreement-step [newAcctForm]="newAcctForm" [step]="privacyPolicy"></account-agreement-step>
+        <mat-step label="Terms Of Use" [stepControl]="'termsOfUse'">
+            <account-agreement-step [newAcctForm]="newAcctForm" [step]="'Terms of Use'">
+            </account-agreement-step>
             <div fxLayout="row" fxLayoutAlign="end">
-                <button mat-button matStepperNext type="button" [disabled]="!privacyPolicyControl.valid">Next</button>
+                <button mat-button matStepperNext type="button" [disabled]="!termsOfUseControl.valid">
+                    Next
+                </button>
             </div>
         </mat-step>
 
-        <!-- Step 3: Authentication -->
-        <mat-step label="Log In Method" [stepControl]="emailControl">
+        <mat-step label="Privacy Policy" [stepControl]="'privacyPolicy'">
+            <account-agreement-step [newAcctForm]="newAcctForm" [step]="'Privacy Policy'">
+            </account-agreement-step>
+            <div fxLayout="row" fxLayoutAlign="end">
+                <button mat-button matStepperNext type="button" [disabled]="!privacyPolicyControl.valid">
+                    Next
+                </button>
+            </div>
+        </mat-step>
+
+        <mat-step label="Log In Method" [stepControl]="'login'">
             <account-authentication-step [newAcctForm]="newAcctForm"></account-authentication-step>
             <div fxLayout="row" fxLayoutAlign="end">
-                <button mat-button matStepperNext type="button">Next</button>
+                <button mat-button matStepperNext type="button" [disabled]="!loginControl.valid">
+                    Next
+                </button>
             </div>
         </mat-step>
 
-        <!-- Step 4: Username -->
-        <mat-step label="Display Name" [stepControl]="displayNameControl">
+        <mat-step label="Display Name" [stepControl]="'displayName'">
             <account-display-name-step [newAcctForm]="newAcctForm"></account-display-name-step>
             <div fxLayout="row" fxLayoutAlign="end">
-                <button mat-button matStepperNext type="button" [disabled]="!displayNameControl.valid">Next</button>
+                <button mat-button matStepperNext type="button" [disabled]="!displayNameControl.valid">
+                    Next
+                </button>
             </div>
         </mat-step>
 
-        <!-- Step 5: Support Mycroft -->
-        <mat-step label="Support Mycroft" [stepControl]="membershipControl">
+        <mat-step label="Support Mycroft" [stepControl]="'support'">
             <account-subscription-step [newAcctForm]="newAcctForm"></account-subscription-step>
             <div fxLayout="row" fxLayoutAlign="end">
-                <button mat-button matStepperNext type="button">Next</button>
+                <button mat-button matStepperNext type="button" [disabled]="!supportControl.valid">
+                    Next
+                </button>
             </div>
         </mat-step>
 
@@ -110,6 +132,5 @@
         <mat-step label="Done!">
             <account-done-step [newAcctForm]="newAcctForm"></account-done-step>
         </mat-step>
-
     </mat-vertical-stepper>
 </form>

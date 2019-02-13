@@ -1,10 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+    AbstractControl,
+    FormBuilder,
+    FormGroup,
+    ValidatorFn,
+    Validators
+} from '@angular/forms';
 
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
 
+export function loginValidator(): ValidatorFn {
+    return (loginGroup: FormGroup) => {
+        let valid = true;
+        const federatedPlatformControl = loginGroup.controls['federatedPlatform'];
+        const passwordControl = loginGroup.controls['password'];
+        if (!passwordControl && !federatedPlatformControl) {
+            valid = false;
+        }
+        return valid ? null : {platformOrPassword: true};
+    };
+}
 @Component({
   selector: 'account-create-account',
   templateUrl: './create-account.component.html',
@@ -12,20 +29,16 @@ import { Subscription } from 'rxjs';
 })
 export class CreateAccountComponent implements OnInit {
     public alignVertical: boolean;
-    public displayNameControl = new FormControl('', Validators.required);
-    public emailControl = new FormControl('', Validators.email);
-    public newAcctForm: FormGroup;
+    public displayNameControl: AbstractControl;
+    public loginControl: AbstractControl;
     private mediaWatcher: Subscription;
-    public membershipControl = new FormControl(null);
-    public openDatasetControl = new FormControl(null, Validators.required);
-    public passwordControl = new FormControl('', Validators.required);
-    public privacyPolicy = 'Privacy Policy';
-    public privacyPolicyControl = new FormControl(false, Validators.requiredTrue);
+    public newAcctForm: FormGroup;
+    public privacyPolicyControl: AbstractControl;
     public stepDoneIcon = faCheck;
-    public termsOfUse = 'Terms of Use';
-    public termsOfUseControl = new FormControl(false, Validators.requiredTrue);
+    public supportControl: AbstractControl;
+    public termsOfUseControl: AbstractControl;
 
-    constructor(public mediaObserver: MediaObserver) {
+    constructor(private formBuilder: FormBuilder, public mediaObserver: MediaObserver) {
         this.mediaWatcher = mediaObserver.media$.subscribe(
             (change: MediaChange) => {
                 this.alignVertical = ['xs', 'sm'].includes(change.mqAlias);
@@ -33,19 +46,41 @@ export class CreateAccountComponent implements OnInit {
         );
     }
     ngOnInit() {
-        this.newAcctForm = new FormGroup(
-            {
-                displayName: this.displayNameControl,
-                emailAddress: this.emailControl,
-                privacyPolicy: this.privacyPolicyControl,
-                membership: this.membershipControl,
-                openDataset: this.openDatasetControl,
-                password: this.passwordControl,
-                termsOfUse: this.termsOfUseControl
-            }
-        );
+        this.buildForm();
+        this.setControlFormAliases();
     }
 
+    private buildForm() {
+        const loginGroup = this.formBuilder.group(
+            {
+                federatedPlatform: [null],
+                emailAddress: [null, [Validators.required, Validators.email]],
+                password: [null]
+            },
+            {validator: loginValidator()}
+        );
+        const supportGroup = this.formBuilder.group({
+            openDataset: [null, Validators.required],
+            membership: [null, Validators.required]
+        });
+
+        this.newAcctForm = this.formBuilder.group({
+            displayName: ['', Validators.required],
+            privacyPolicy: [false, Validators.requiredTrue],
+            termsOfUse: [false, Validators.requiredTrue],
+            login: loginGroup,
+            support: supportGroup
+        });
+    }
+
+    private setControlFormAliases() {
+        this.displayNameControl = this.newAcctForm.controls['displayName'];
+        this.loginControl = this.newAcctForm.controls['login'];
+        this.privacyPolicyControl = this.newAcctForm.controls['privacyPolicy'];
+        this.supportControl = this.newAcctForm.controls['support'];
+        this.termsOfUseControl = this.newAcctForm.controls['termsOfUse'];
+
+    }
     onFormSubmit() {
         console.log(this.newAcctForm.value);
     }
