@@ -7,8 +7,8 @@ pipeline {
                 echo 'Building..'
                 sh 'npm install'
                 sh 'ng build --project shared'
-                sh 'ng build --project globalnav --configuration test'
-                sh 'ng build --project page-not-found --configuration test'
+                sh 'ng build --project globalnav'
+                sh 'ng build --project page-not-found'
                 sh 'ng build --project account --configuration test'
             }
         }
