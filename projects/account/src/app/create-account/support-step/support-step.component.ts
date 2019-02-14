@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 @Component({
-    selector: 'account-subscription-step',
+    selector: 'account-support-step',
     templateUrl: './support-step.component.html',
     styleUrls: ['./support-step.component.scss']
 })
@@ -43,10 +43,14 @@ export class SupportStepComponent implements OnInit {
     }
 
     onOptIn() {
-        this.newAcctForm.setValue({support: {openDataset: true}});
+        this.newAcctForm.patchValue({support: {openDataset: true}});
     }
 
     onOptOut() {
-        this.newAcctForm.setValue({support: {openDataset: false}});
+        this.newAcctForm.patchValue({support: {openDataset: false}});
+    }
+
+    onMembershipSelection(selectedMembership: string) {
+        this.newAcctForm.patchValue({support: {membership: selectedMembership}});
     }
 }

@@ -14,5 +14,5 @@
     <p *ngFor="let paragraph of membershipDescription" class="mat-body">
         {{paragraph}}
     </p>
-    <shared-membership-options></shared-membership-options>
+    <shared-membership-options (selectedMembership)="onMembershipSelection($event)"></shared-membership-options>
 </mat-card>
