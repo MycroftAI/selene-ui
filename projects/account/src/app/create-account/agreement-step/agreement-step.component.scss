@@ -3,6 +3,9 @@
 @import "~src/stylesheets/components/buttons";
 
 mat-card {
+    border-color: mat-color($mycroft-primary, 700);
+    border-style: groove;
+    border-width: 2px;
     height: 60vh;
     margin-bottom: 16px;
     margin-left: auto;
@@ -11,6 +14,7 @@ mat-card {
     mat-card-content {
         max-height: 85%;
         overflow-y: auto;
+        padding: 8px;
     }
 
     mat-card-actions {
