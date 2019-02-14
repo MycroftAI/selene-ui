@@ -2,7 +2,7 @@
     <h2 class="mat-h2">Pick a Display Name</h2>
     <p class="mat-body">{{whyDisplayNameParagraph}}</p>
     <mat-form-field>
-        <mat-label>Username</mat-label>
+        <mat-label>Display Name</mat-label>
         <input matInput required type="text" [formControl]="displayNameControl">
         <mat-error *ngIf="displayNameControl.hasError('required')">
             Username is required
