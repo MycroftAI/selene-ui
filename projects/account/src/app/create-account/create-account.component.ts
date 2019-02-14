@@ -14,14 +14,23 @@ import { Subscription } from 'rxjs';
 export function loginValidator(): ValidatorFn {
     return (loginGroup: FormGroup) => {
         let valid = true;
-        const federatedPlatformControl = loginGroup.controls['federatedPlatform'];
-        const passwordControl = loginGroup.controls['password'];
-        if (!passwordControl && !federatedPlatformControl) {
-            valid = false;
+        const federatedEmail = loginGroup.controls['federatedEmail'];
+        const userEnteredEmail  = loginGroup.controls['userEnteredEmail'];
+        const password = loginGroup.controls['password'];
+
+        if (federatedEmail.value) {
+            if (userEnteredEmail.value || password.value) {
+                valid = false;
+            }
+        } else {
+            if (!userEnteredEmail.valid || !password.value) {
+                valid = false;
+            }
         }
-        return valid ? null : {platformOrPassword: true};
+        return valid ? null : {loginInvalid: true};
     };
 }
+
 @Component({
   selector: 'account-create-account',
   templateUrl: './create-account.component.html',
@@ -53,8 +62,8 @@ export class CreateAccountComponent implements OnInit {
     private buildForm() {
         const loginGroup = this.formBuilder.group(
             {
-                federatedPlatform: [null],
-                emailAddress: [null, [Validators.required, Validators.email]],
+                federatedEmail: [null],
+                userEnteredEmail: [null, Validators.email],
                 password: [null]
             },
             {validator: loginValidator()}
@@ -81,6 +90,7 @@ export class CreateAccountComponent implements OnInit {
         this.termsOfUseControl = this.newAcctForm.controls['termsOfUse'];
 
     }
+
     onFormSubmit() {
         console.log(this.newAcctForm.value);
     }

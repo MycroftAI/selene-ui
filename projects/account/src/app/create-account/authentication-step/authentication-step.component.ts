@@ -7,9 +7,10 @@ import { FormGroup } from '@angular/forms';
     styleUrls: ['./authentication-step.component.scss']
 })
 export class AuthenticationStepComponent implements OnInit {
-    @Input() newAcctForm: FormGroup;
+    public disableInternal = false;
     public federatedLoginText: string;
     public internalLoginText: string;
+    @Input() newAcctForm: FormGroup;
 
     constructor() { }
 
@@ -21,8 +22,7 @@ export class AuthenticationStepComponent implements OnInit {
     }
 
     onFacebookLogin(email: string) {
-        this.newAcctForm.patchValue({login: {emailAddress: email, federatedPlatform: 'facebook'}});
-        console.log(this.newAcctForm.value);
+        this.newAcctForm.patchValue({login: {federatedEmail: email}});
+        this.disableInternal = true;
     }
-
 }

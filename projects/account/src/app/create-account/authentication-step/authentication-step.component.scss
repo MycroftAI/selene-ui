@@ -19,7 +19,12 @@ mat-card {
         border-color: mat-color($mycroft-primary, 700);
         border-style: groove;
         border-width: 2px;
+        height: 300px;
         max-width: 500px;
+
+        #federated-buttons {
+            height: 180px;
+        }
     }
 }
 

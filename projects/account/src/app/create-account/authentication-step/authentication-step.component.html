@@ -3,7 +3,7 @@
     <mat-card>
         <h2 class="mat-h2">Log In Using...</h2>
         <p>{{federatedLoginText}}</p>
-        <div fxLayout="column">
+        <div id="federated-buttons" fxLayout="column" fxLayoutAlign="center center">
             <shared-google-button></shared-google-button>
             <shared-facebook-button (facebookEmail)="onFacebookLogin($event)"></shared-facebook-button>
             <shared-github-button></shared-github-button>
@@ -17,22 +17,16 @@
         <h2 class="mat-h2">Email and Password</h2>
         <p>{{internalLoginText}}</p>
         <div fxLayout="column">
-            <mat-form-field>
+            <mat-form-field [appearance]="'outline'">
                 <mat-label>Email Address</mat-label>
-                <input matInput type="email" formControlName="emailAddress">
-                <!--<mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">-->
-                    <!--Must be a valid email address-->
-                <!--</mat-error>-->
-                <!--<mat-error *ngIf="emailFormControl.hasError('required')">-->
-                    <!--Email is required-->
-                <!--</mat-error>-->
+                <input matInput type="email" formControlName="userEnteredEmail" [readonly]="disableInternal">
+                <mat-error>
+                    Must be a valid email address
+                </mat-error>
             </mat-form-field>
-            <mat-form-field>
+            <mat-form-field [appearance]="'outline'">
                 <mat-label>Password</mat-label>
-                <input matInput type="password" formControlName="password">
-                <!--<mat-error *ngIf="passwordFormControl.hasError('required')">-->
-                    <!--Password is required-->
-                <!--</mat-error>-->
+                <input matInput type="password" formControlName="password" [readonly]="disableInternal">
             </mat-form-field>
         </div>
     </mat-card>
