@@ -74,13 +74,6 @@
         </ng-template>
 
         <!-- Step 1: Accept Terms of Use -->
-        <mat-step label="{{termsOfUse}}" [stepControl]="termsOfUseControl">
-            <account-agreement-step [newAcctForm]="newAcctForm" [step]="termsOfUse"></account-agreement-step>
-            <div fxLayout="row" fxLayoutAlign="end">
-                <button mat-button matStepperNext type="button" [disabled]="!termsOfUseControl.valid">Next</button>
-            </div>
-        </mat-step>
-
         <mat-step label="Terms Of Use" [stepControl]="'termsOfUse'">
             <account-agreement-step [newAcctForm]="newAcctForm" [step]="'Terms of Use'">
             </account-agreement-step>
