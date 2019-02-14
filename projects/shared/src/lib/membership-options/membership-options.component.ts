@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
 
@@ -33,6 +33,7 @@ export class MembershipOptionsComponent implements OnDestroy {
     public alignVertical: boolean;
     public membershipTypes: MembershipType[];
     public mediaWatcher: Subscription;
+    @Output() selectedMembership = new EventEmitter<string>();
 
     constructor(public mediaObserver: MediaObserver) {
         this.mediaWatcher = mediaObserver.media$.subscribe(
@@ -43,6 +44,9 @@ export class MembershipOptionsComponent implements OnDestroy {
         this.membershipTypes = [yearlySupporter, monthlySupporter, nonSupporter];
     }
 
+    onMembershipSelect(membership: MembershipType) {
+        this.selectedMembership.emit(membership.name);
+    }
     ngOnDestroy(): void {
       this.mediaWatcher.unsubscribe();
     }
