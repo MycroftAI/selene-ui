@@ -1,10 +1,8 @@
-<mat-card class="mat-elevation-z0" [formGroup]="newAcctForm.get('login')">
+<mat-card fxLayout.gt-sm="row" fxLayoutAlign="center center" class="mat-elevation-z0" [formGroup]="newAcctForm.get('login')">
     <!-- Federated Log In Controls -->
     <mat-card>
-        <h2 class="mat-h2">Federated Log In</h2>
-        <ul>
-            <li class="mat-body" *ngFor="let bullet of federatedLoginBullets">{{bullet}}</li>
-        </ul>
+        <h2 class="mat-h2">Log In Using...</h2>
+        <p>{{federatedLoginText}}</p>
         <div fxLayout="column">
             <shared-google-button></shared-google-button>
             <shared-facebook-button (facebookEmail)="onFacebookLogin($event)"></shared-facebook-button>
@@ -16,10 +14,8 @@
 
     <!-- Mycroft Log In Controls-->
     <mat-card>
-        <h2 class="mat-h2">Mycroft Log In</h2>
-        <ul>
-            <li class="mat-body" *ngFor="let bullet of internalLoginBullets">{{bullet}}</li>
-        </ul>
+        <h2 class="mat-h2">Email and Password</h2>
+        <p>{{internalLoginText}}</p>
         <div fxLayout="column">
             <mat-form-field>
                 <mat-label>Email Address</mat-label>

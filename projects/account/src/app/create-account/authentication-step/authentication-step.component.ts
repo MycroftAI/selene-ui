@@ -8,22 +8,16 @@ import { FormGroup } from '@angular/forms';
 })
 export class AuthenticationStepComponent implements OnInit {
     @Input() newAcctForm: FormGroup;
-    public federatedLoginBullets: string[];
-    public internalLoginBullets: string[];
+    public federatedLoginText: string;
+    public internalLoginText: string;
 
     constructor() { }
 
     ngOnInit() {
-        this.federatedLoginBullets = [
-            'This option can only selected if you use an email address login for the selected platforms.',
-            'Once authenticated, Mycroft will obtain your email address from the chosen platform ' +
-            'and store it to identify you when you login.'
-        ];
-        this.internalLoginBullets = [
-            'Your credentials will be stored on Mycroft servers.',
-            'All personal information stored on Mycroft servers is encrypted for your privacy ' +
-            'and protection.'
-        ];
+        this.federatedLoginText = 'To use this option, you must allow the ' +
+            'provider to share your email address with Mycroft';
+        this.internalLoginText = 'Login credentials stored on Mycroft ' +
+            'servers are encrypted for your privacy and protection.';
     }
 
     onFacebookLogin(email: string) {
