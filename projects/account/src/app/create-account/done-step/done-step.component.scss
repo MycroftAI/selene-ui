@@ -1,6 +1,17 @@
 @import "~@angular/material/theming";
 @import "~src/stylesheets/components/buttons";
 
-button {
-    @include action-button-primary;
+mat-card {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 700px;
+
+    h1 {
+        color: mat-color($mycroft-primary);
+    }
+
+    button {
+        @include action-button-primary;
+        margin-top: 16px;
+    }
 }
