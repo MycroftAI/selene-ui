@@ -51,7 +51,7 @@
         <mat-step label="Support Mycroft" [stepControl]="'support'">
             <account-support-step [newAcctForm]="newAcctForm"></account-support-step>
             <div fxLayout="row" fxLayoutAlign="end">
-                <button mat-button matStepperNext type="button" [disabled]="!supportControl.valid">
+                <button mat-button matStepperNext [disabled]="!supportControl.valid">
                     Next
                 </button>
             </div>
