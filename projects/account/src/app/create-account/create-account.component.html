@@ -1,7 +1,7 @@
 <form [formGroup]="newAcctForm" (ngSubmit)="onFormSubmit()">
 
     <!-- Show a horizontal stepper on larger devices -->
-    <mat-horizontal-stepper *ngIf="!alignVertical" labelPosition="bottom">
+    <mat-horizontal-stepper *ngIf="!alignVertical" labelPosition="bottom" [linear]="true">
         <!-- Use font awesome icons in the stepper to indicate progress -->
         <ng-template matStepperIcon="done">
             <fa-icon [icon]="stepDoneIcon"></fa-icon>
@@ -10,7 +10,7 @@
             <fa-icon [icon]="stepDoneIcon"></fa-icon>
         </ng-template>
 
-        <mat-step label="Terms Of Use" [stepControl]="'termsOfUse'">
+        <mat-step label="Terms Of Use" [stepControl]="termsOfUseControl">
             <account-agreement-step [newAcctForm]="newAcctForm" [step]="'Terms of Use'">
             </account-agreement-step>
             <div fxLayout="row" fxLayoutAlign="end">
@@ -20,7 +20,7 @@
             </div>
         </mat-step>
 
-        <mat-step label="Privacy Policy" [stepControl]="'privacyPolicy'">
+        <mat-step label="Privacy Policy" [stepControl]="privacyPolicyControl">
             <account-agreement-step [newAcctForm]="newAcctForm" [step]="'Privacy Policy'">
             </account-agreement-step>
             <div fxLayout="row" fxLayoutAlign="end">
@@ -30,7 +30,7 @@
             </div>
         </mat-step>
 
-        <mat-step label="Log In Method" [stepControl]="'login'">
+        <mat-step label="Log In Method" [stepControl]="loginControl">
             <account-authentication-step [newAcctForm]="newAcctForm"></account-authentication-step>
             <div fxLayout="row" fxLayoutAlign="end">
                 <button mat-button matStepperNext type="button" [disabled]="!loginControl.valid">
@@ -39,7 +39,7 @@
             </div>
         </mat-step>
 
-        <mat-step label="Display Name" [stepControl]="'displayName'">
+        <mat-step label="Display Name" [stepControl]="displayNameControl">
             <account-display-name-step [newAcctForm]="newAcctForm"></account-display-name-step>
             <div fxLayout="row" fxLayoutAlign="end">
                 <button mat-button matStepperNext type="button" [disabled]="!displayNameControl.valid">
@@ -48,7 +48,7 @@
             </div>
         </mat-step>
 
-        <mat-step label="Support Mycroft" [stepControl]="'support'">
+        <mat-step label="Support Mycroft" [stepControl]="supportControl">
             <account-support-step [newAcctForm]="newAcctForm"></account-support-step>
             <div fxLayout="row" fxLayoutAlign="end">
                 <button mat-button matStepperNext [disabled]="!supportControl.valid">
