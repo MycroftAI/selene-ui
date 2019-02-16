@@ -8,6 +8,7 @@ import {
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
+    MatSnackBarModule,
     MatStepperModule
 } from '@angular/material';
 
@@ -41,6 +42,7 @@ import { DoneStepComponent } from './done-step/done-step.component';
         MatCardModule,
         MatFormFieldModule,
         MatInputModule,
+        MatSnackBarModule,
         MatStepperModule,
         ReactiveFormsModule,
         SharedModule,
