@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
+const accountUrl = '/api/account';
 const agreementUrl = '/api/agreement/';
 
 export interface Agreement {
@@ -25,5 +27,9 @@ export class CreateAccountService {
             url_suffix = 'privacy-policy';
         }
         return this.http.get<Agreement>(agreementUrl + url_suffix);
+    }
+
+    addAccount(newAcctForm: FormGroup) {
+        return this.http.post<any>(accountUrl, newAcctForm.value);
     }
 }
