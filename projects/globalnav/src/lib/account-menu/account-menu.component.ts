@@ -34,7 +34,7 @@ export class AccountMenuComponent implements OnInit {
     }
 
     navigate_to_create_account() {
-        window.location.href =  this.mycroftUrls.account + '/create-account/';
+        window.location.href =  this.mycroftUrls.account + '/create-account?redirect=' + window.location.href;
     }
 
     navigate_to_log_out() {
