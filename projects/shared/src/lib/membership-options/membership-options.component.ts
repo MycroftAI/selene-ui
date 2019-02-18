@@ -9,7 +9,7 @@ export interface MembershipType {
 }
 
 const nonSupporter: MembershipType = {
-    name: 'NON-SUPPORTER',
+    name: 'MAYBE LATER',
     price: '$0',
     period: null
 };
