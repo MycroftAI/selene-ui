@@ -12,9 +12,13 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { MatSnackBar } from '@angular/material';
 import { Subscription } from 'rxjs';
 
-import { CreateAccountService } from './create-account.service';
+import {
+    CreateAccountService,
+    navigateToLogin,
+    storeRedirect
+} from './create-account.service';
 
-const fiveSeconds = 5000;
+const noDelay = 0;
 
 export function loginValidator(): ValidatorFn {
     return (loginGroup: FormGroup) => {
@@ -51,6 +55,7 @@ export function membershipValidator(): ValidatorFn {
     };
 }
 
+
 @Component({
   selector: 'account-create-account',
   templateUrl: './create-account.component.html',
@@ -80,6 +85,7 @@ export class CreateAccountComponent implements OnInit {
         );
     }
     ngOnInit() {
+        storeRedirect();
         this.buildForm();
         this.setControlFormAliases();
     }
@@ -124,19 +130,7 @@ export class CreateAccountComponent implements OnInit {
 
     onFormSubmit() {
         this.newAcctService.addAccount(this.newAcctForm).subscribe(
-            (response) => { console.log(response); },
-            (response) => { this.handleNewAcctError(response); }
+            (response) => { navigateToLogin(noDelay); }
         );
-    }
-
-    private handleNewAcctError(response) {
-        if (response.status === 400) {
-            this.errorSnackbar.open(
-                'Account creation failed.',
-                null,
-                {panelClass: 'mycroft-snackbar', duration: fiveSeconds}
-            );
-        }
-
     }
 }
