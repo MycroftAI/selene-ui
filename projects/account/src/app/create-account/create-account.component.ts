@@ -9,7 +9,12 @@ import {
 } from '@angular/forms';
 
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { MatSnackBar } from '@angular/material';
 import { Subscription } from 'rxjs';
+
+import { CreateAccountService } from './create-account.service';
+
+const fiveSeconds = 5000;
 
 export function loginValidator(): ValidatorFn {
     return (loginGroup: FormGroup) => {
@@ -31,6 +36,21 @@ export function loginValidator(): ValidatorFn {
     };
 }
 
+export function membershipValidator(): ValidatorFn {
+    return (supportGroup: FormGroup) => {
+        let valid = true;
+        const membershipType = supportGroup.controls['membership'];
+        const stripeCustomerId  = supportGroup.controls['stripeCustomerId'];
+
+        if (membershipType.value !== 'MAYBE LATER') {
+            if (!stripeCustomerId.value) {
+                valid = false;
+            }
+        }
+        return valid ? null : {membershipInvalid: true};
+    };
+}
+
 @Component({
   selector: 'account-create-account',
   templateUrl: './create-account.component.html',
@@ -47,7 +67,12 @@ export class CreateAccountComponent implements OnInit {
     public supportControl: AbstractControl;
     public termsOfUseControl: AbstractControl;
 
-    constructor(private formBuilder: FormBuilder, public mediaObserver: MediaObserver) {
+    constructor(
+        private formBuilder: FormBuilder,
+        public mediaObserver: MediaObserver,
+        private newAcctService: CreateAccountService,
+        private errorSnackbar: MatSnackBar
+    ) {
         this.mediaWatcher = mediaObserver.media$.subscribe(
             (change: MediaChange) => {
                 this.alignVertical = ['xs', 'sm'].includes(change.mqAlias);
@@ -68,10 +93,15 @@ export class CreateAccountComponent implements OnInit {
             },
             {validator: loginValidator()}
         );
-        const supportGroup = this.formBuilder.group({
+        const supportGroup = this.formBuilder.group(
+            {
             openDataset: [null, Validators.required],
-            membership: [null, Validators.required]
-        });
+            membership: [null, Validators.required],
+            stripeCustomerId: [null]
+
+            },
+            {validator: membershipValidator()}
+        );
 
         this.newAcctForm = this.formBuilder.group({
             displayName: ['', Validators.required],
@@ -80,6 +110,7 @@ export class CreateAccountComponent implements OnInit {
             login: loginGroup,
             support: supportGroup
         });
+        this.newAcctForm.patchValue({support: {stripeCustomerId: 'foostripe'}});
     }
 
     private setControlFormAliases() {
@@ -92,6 +123,20 @@ export class CreateAccountComponent implements OnInit {
     }
 
     onFormSubmit() {
-        console.log(this.newAcctForm.value);
+        this.newAcctService.addAccount(this.newAcctForm).subscribe(
+            (response) => { console.log(response); },
+            (response) => { this.handleNewAcctError(response); }
+        );
+    }
+
+    private handleNewAcctError(response) {
+        if (response.status === 400) {
+            this.errorSnackbar.open(
+                'Account creation failed.',
+                null,
+                {panelClass: 'mycroft-snackbar', duration: fiveSeconds}
+            );
+        }
+
     }
 }
