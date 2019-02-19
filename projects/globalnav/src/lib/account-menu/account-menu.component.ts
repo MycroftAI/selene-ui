@@ -29,8 +29,8 @@ export class AccountMenuComponent implements OnInit {
     ngOnInit() {
   }
 
-    navigate_to_log_in() {
-       window.location.href = this.mycroftUrls.singleSignOn + '/login?redirect=' + window.location.href;
+    navigateToLogin() {
+        window.location.href = this.mycroftUrls.singleSignOn + '/login?redirect=' + window.location.href;
     }
 
     navigate_to_create_account() {

@@ -7,8 +7,8 @@
         If the user is not authenticated, the menu will present them with
         "Log In" or "Create Account" options
     -->
-    <button *ngIf="!isAuthenticated" mat-menu-item>
-        <fa-icon [icon]="logInIcon" class="menu-item-icon" (click)="navigate_to_log_in()"></fa-icon>
+    <button *ngIf="!isAuthenticated" mat-menu-item (click)="navigateToLogin()">
+        <fa-icon [icon]="logInIcon" class="menu-item-icon" ></fa-icon>
         <span class="menu-item-text">Log In</span>
     </button>
     <button *ngIf="!isAuthenticated" mat-menu-item (click)="navigate_to_create_account()">
