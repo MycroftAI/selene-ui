@@ -63,7 +63,7 @@ export function membershipValidator(): ValidatorFn {
 })
 export class CreateAccountComponent implements OnInit {
     public alignVertical: boolean;
-    public displayNameControl: AbstractControl;
+    public usernameControl: AbstractControl;
     public loginControl: AbstractControl;
     private mediaWatcher: Subscription;
     public newAcctForm: FormGroup;
@@ -110,7 +110,7 @@ export class CreateAccountComponent implements OnInit {
         );
 
         this.newAcctForm = this.formBuilder.group({
-            displayName: ['', Validators.required],
+            username: ['', Validators.required],
             privacyPolicy: [false, Validators.requiredTrue],
             termsOfUse: [false, Validators.requiredTrue],
             login: loginGroup,
@@ -120,7 +120,7 @@ export class CreateAccountComponent implements OnInit {
     }
 
     private setControlFormAliases() {
-        this.displayNameControl = this.newAcctForm.controls['displayName'];
+        this.usernameControl = this.newAcctForm.controls['displayName'];
         this.loginControl = this.newAcctForm.controls['login'];
         this.privacyPolicyControl = this.newAcctForm.controls['privacyPolicy'];
         this.supportControl = this.newAcctForm.controls['support'];
