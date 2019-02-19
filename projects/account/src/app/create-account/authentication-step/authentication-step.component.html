@@ -1,6 +1,6 @@
 <mat-card fxLayout.gt-sm="row" fxLayoutAlign="center center" class="mat-elevation-z0" [formGroup]="newAcctForm.get('login')">
     <!-- Federated Log In Controls -->
-    <mat-card>
+    <mat-card class="mat-elevation-z0">
         <h2 class="mat-h2">Log In Using...</h2>
         <p>{{federatedLoginText}}</p>
         <div id="federated-buttons" fxLayout="column" fxLayoutAlign="center center">
@@ -13,7 +13,7 @@
     <h1 class="mat-h1">OR</h1>
 
     <!-- Mycroft Log In Controls-->
-    <mat-card>
+    <mat-card class="mat-elevation-z0">
         <h2 class="mat-h2">Email and Password</h2>
         <p>{{internalLoginText}}</p>
         <div fxLayout="column">

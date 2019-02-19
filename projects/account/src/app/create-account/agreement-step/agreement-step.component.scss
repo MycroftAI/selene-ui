@@ -3,9 +3,6 @@
 @import "~src/stylesheets/components/buttons";
 
 mat-card {
-    border-color: mat-color($mycroft-primary, 700);
-    border-style: groove;
-    border-width: 2px;
     height: 60vh;
     margin-bottom: 16px;
     margin-left: auto;
