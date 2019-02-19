@@ -17,6 +17,7 @@ import { AgreementsComponent } from './agreements/agreements.component';
 import { DeleteComponent } from './delete/delete.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile.component';
+import { ProfileService } from './profile.service';
 import { SubscriptionComponent } from './subscription/subscription.component';
 
 @NgModule({
@@ -43,6 +44,7 @@ import { SubscriptionComponent } from './subscription/subscription.component';
         MatToolbarModule
     ],
     providers: [
+        ProfileService
     ]
 })
 export class ProfileModule { }
