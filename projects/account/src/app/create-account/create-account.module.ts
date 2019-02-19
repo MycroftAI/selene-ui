@@ -18,7 +18,7 @@ import { AuthenticationStepComponent } from './authentication-step/authenticatio
 import { AgreementStepComponent } from './agreement-step/agreement-step.component';
 import { CreateAccountComponent } from './create-account.component';
 import { CreateAccountService } from './create-account.service';
-import { DisplayNameStepComponent } from './display-name-step/display-name-step.component';
+import { UsernameStepComponent } from './username-step/username-step.component';
 import { SharedModule } from 'shared';
 import { SupportStepComponent } from './support-step/support-step.component';
 import { DoneStepComponent } from './done-step/done-step.component';
@@ -27,7 +27,7 @@ import { DoneStepComponent } from './done-step/done-step.component';
     declarations: [
         CreateAccountComponent,
         AgreementStepComponent,
-        DisplayNameStepComponent,
+        UsernameStepComponent,
         AuthenticationStepComponent,
         SupportStepComponent,
         DoneStepComponent

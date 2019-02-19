@@ -3,19 +3,19 @@ import { AbstractControl, FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'account-display-name-step',
-    templateUrl: './display-name-step.component.html',
-    styleUrls: ['./display-name-step.component.scss']
+    templateUrl: './username-step.component.html',
+    styleUrls: ['./username-step.component.scss']
 })
-export class DisplayNameStepComponent implements OnInit {
+export class UsernameStepComponent implements OnInit {
     @Input() newAcctForm: FormGroup;
-    public whyDisplayNameParagraph: string;
-    public displayNameControl: AbstractControl;
+    public whyUsernameParagraph: string;
+    public usernameControl: AbstractControl;
 
     constructor() { }
 
     ngOnInit() {
-        this.displayNameControl = this.newAcctForm.controls.displayName;
-        this.whyDisplayNameParagraph = 'In some Mycroft web applications, like our community ' +
+        this.usernameControl = this.newAcctForm.controls.displayName;
+        this.whyUsernameParagraph = 'In some Mycroft web applications, like our community ' +
             'forum, you will interact with other community members.  In these cases, displaying ' +
             'your email address to other users is not ideal.  Your display name will be used instead ' +
             'of your email address to identify you on these sites.';
