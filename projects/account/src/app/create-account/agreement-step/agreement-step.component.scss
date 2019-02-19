@@ -2,6 +2,13 @@
 @import "mycroft-colors";
 @import "~src/stylesheets/components/buttons";
 
+h2 {
+    margin-left: 16px;
+    margin-bottom: 0;
+    color: mat-color($mycroft-primary);
+    font-weight: bold;
+}
+
 mat-card {
     height: 60vh;
     margin-bottom: 16px;
