@@ -120,7 +120,7 @@ export class CreateAccountComponent implements OnInit {
     }
 
     private setControlFormAliases() {
-        this.usernameControl = this.newAcctForm.controls['displayName'];
+        this.usernameControl = this.newAcctForm.controls['username'];
         this.loginControl = this.newAcctForm.controls['login'];
         this.privacyPolicyControl = this.newAcctForm.controls['privacyPolicy'];
         this.supportControl = this.newAcctForm.controls['support'];

@@ -14,7 +14,7 @@ export class UsernameStepComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
-        this.usernameControl = this.newAcctForm.controls.displayName;
+        this.usernameControl = this.newAcctForm.controls.username;
         this.whyUsernameParagraph = 'In some Mycroft web applications, like our community ' +
             'forum, you will interact with other community members.  In these cases, displaying ' +
             'your email address to other users is not ideal.  Your display name will be used instead ' +
