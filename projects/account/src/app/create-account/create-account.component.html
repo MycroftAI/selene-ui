@@ -30,7 +30,7 @@
             </div>
         </mat-step>
 
-        <mat-step label="Log In Method" [stepControl]="loginControl">
+        <mat-step label="Login" [stepControl]="loginControl">
             <account-authentication-step [newAcctForm]="newAcctForm"></account-authentication-step>
             <div fxLayout="row" fxLayoutAlign="end">
                 <button mat-button matStepperNext type="button" [disabled]="!loginControl.valid">
@@ -39,8 +39,8 @@
             </div>
         </mat-step>
 
-        <mat-step label="Display Name" [stepControl]="displayNameControl">
-            <account-display-name-step [newAcctForm]="newAcctForm"></account-display-name-step>
+        <mat-step label="Username" [stepControl]="displayNameControl">
+            <account-username-step [newAcctForm]="newAcctForm"></account-username-step>
             <div fxLayout="row" fxLayoutAlign="end">
                 <button mat-button matStepperNext type="button" [disabled]="!displayNameControl.valid">
                     Next
@@ -102,7 +102,7 @@
         </mat-step>
 
         <mat-step label="Display Name" [stepControl]="displayNameControl">
-            <account-display-name-step [newAcctForm]="newAcctForm"></account-display-name-step>
+            <account-username-step [newAcctForm]="newAcctForm"></account-username-step>
             <div fxLayout="row" fxLayoutAlign="end">
                 <button mat-button matStepperNext type="button" [disabled]="!displayNameControl.valid">
                     Next

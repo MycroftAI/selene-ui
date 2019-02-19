@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormGroup } from '@angular/forms';
 
 @Component({
-    selector: 'account-display-name-step',
+    selector: 'account-username-step',
     templateUrl: './username-step.component.html',
     styleUrls: ['./username-step.component.scss']
 })
