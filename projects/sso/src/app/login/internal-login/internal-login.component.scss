@@ -7,11 +7,7 @@ form {
     padding: 16px;
 
     mat-form-field {
-        margin-bottom: 8px;
-    }
-
-    #forgot-password {
-        margin-left: 32px;
+        width: 100%;
     }
 
     button {
@@ -22,8 +18,11 @@ form {
     }
 
     a {
+        color: mat-color($mycroft-primary);
         margin-left: auto;
         margin-right: auto;
+        margin-bottom: 0px;
+        text-decoration: none;
     }
 
 }

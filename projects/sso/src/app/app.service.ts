@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 
 import { Observable } from 'rxjs';
+import { FormGroup } from '@angular/forms';
 
 export interface AuthResponse {
     expiration: number;
@@ -20,6 +21,12 @@ const internalAuthUrl = '/api/internal-login';
 const federatedAuthUrl = '/api/validate-federated';
 const logoutUrl = '/api/logout';
 
+export function storeRedirect() {
+    localStorage.setItem(
+        'redirect',
+        decodeURIComponent(window.location.search).slice(10)
+    );
+}
 
 @Injectable()
 export class AppService {
@@ -40,11 +47,11 @@ export class AppService {
      * function so that the raw string values are not included in the request.  Email and password are
      * considered "internal-login" because the authentication data is stored on Mycroft servers.
      *
-     * @param emailAddress: email address of the user
-     * @param password: password for the account
+     * @param loginForm: form containing the email and password of a user not using federated login
      */
-    authorizeInternal (emailAddress, password): Observable<AuthResponse> {
-        const rawCredentials = `${emailAddress}:${password}`;
+    authorizeInternal (loginForm: FormGroup): Observable<AuthResponse> {
+        const loginFormValues = loginForm.value;
+        const rawCredentials = `${loginFormValues.email}:${loginFormValues.password}`;
         const codedCredentials = btoa(rawCredentials);
         const httpHeaders = new HttpHeaders(
             {'Authorization': 'Basic ' + codedCredentials}

@@ -5,6 +5,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 import {
     MatButtonModule,
+    MatCardModule,
     MatCheckboxModule,
     MatDividerModule,
     MatFormFieldModule,
@@ -55,6 +56,7 @@ export function getAuthServiceConfigs() {
         FormsModule,
         HttpClientModule,
         MatButtonModule,
+        MatCardModule,
         MatCheckboxModule,
         MatDividerModule,
         MatFormFieldModule,

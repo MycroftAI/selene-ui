@@ -1,20 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 
+import { environment } from '../../environments/environment';
+import { storeRedirect } from '../app.service';
 
 @Component({
-  selector: 'sso-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+    selector: 'sso-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+    public environment = environment;
+    public createAccountUrl: string;
 
-    constructor() { }
-
-    ngOnInit() {
-        localStorage.setItem(
-            'redirect',
-            decodeURIComponent(window.location.search).slice(10)
-        );
+    constructor() {
+        this.createAccountUrl = environment.mycroftUrls.account + '/create-account';
     }
 
+    ngOnInit() {
+        storeRedirect();
+    }
 }
