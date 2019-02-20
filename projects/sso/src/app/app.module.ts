@@ -6,6 +6,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BackgroundModule } from './background/background.module';
+import { GlobalnavModule } from 'globalnav';
 import { LoginModule } from './login/login.module';
 import { LogoutModule } from './logout/logout.module';
 import { PageNotFoundModule } from 'page-not-found';
@@ -17,6 +18,7 @@ import { PageNotFoundModule } from 'page-not-found';
         BackgroundModule,
         BrowserAnimationsModule,
         FlexLayoutModule,
+        GlobalnavModule,
         LoginModule,
         LogoutModule,
         PageNotFoundModule,

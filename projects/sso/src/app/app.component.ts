@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { environment } from '../environments/environment';
 
 @Component({
   selector: 'sso-root',
@@ -8,6 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AppComponent implements OnInit {
     title = 'Mycroft Login';
+    public environment = environment;
     public socialLoginDataFound = false;
 
     constructor () {
