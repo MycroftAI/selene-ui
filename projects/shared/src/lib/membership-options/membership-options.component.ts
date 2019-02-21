@@ -1,25 +1,25 @@
-import { Component, EventEmitter, OnDestroy, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
 
 export interface MembershipType {
-    name: string;
+    type: string;
     price: string;
     period: string;
 }
 
 const nonSupporter: MembershipType = {
-    name: 'MAYBE LATER',
+    type: 'Maybe Later',
     price: '$0',
     period: null
 };
 const monthlySupporter: MembershipType = {
-    name: 'MONTHLY SUPPORTER',
+    type: 'Monthly Supporter',
     price: '$1.99',
     period: 'month'
 };
 const yearlySupporter: MembershipType = {
-    name: 'YEARLY SUPPORTER',
+    type: 'Yearly Supporter',
     price: '$19.99',
     period: 'year'
 };
@@ -30,6 +30,7 @@ const yearlySupporter: MembershipType = {
     styleUrls: ['./membership-options.component.scss']
 })
 export class MembershipOptionsComponent implements OnDestroy {
+    @Input() accountMembership: string;
     public alignVertical: boolean;
     public membershipTypes: MembershipType[];
     public mediaWatcher: Subscription;
@@ -41,12 +42,13 @@ export class MembershipOptionsComponent implements OnDestroy {
                 this.alignVertical = ['xs', 'sm'].includes(change.mqAlias);
             }
         );
-        this.membershipTypes = [yearlySupporter, monthlySupporter, nonSupporter];
+        this.membershipTypes = [yearlySupporter, monthlySupporter];
     }
 
     onMembershipSelect(membership: MembershipType) {
-        this.selectedMembership.emit(membership.name);
+        this.selectedMembership.emit(membership.type);
     }
+
     ngOnDestroy(): void {
       this.mediaWatcher.unsubscribe();
     }
