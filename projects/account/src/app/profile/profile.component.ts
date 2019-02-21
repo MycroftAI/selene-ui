@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ProfileService, Account } from './profile.service';
+import { Observable } from 'rxjs';
 
 @Component({
     selector: 'account-profile',
@@ -8,13 +9,11 @@ import { ProfileService, Account } from './profile.service';
     styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
-    public account: Account;
+    public account$: Observable<Account>;
 
     constructor(private service: ProfileService) { }
 
     ngOnInit() {
-        this.service.getAccount().subscribe(
-            (account) => { this.account = account; }
-        );
+        this.account$ = this.service.getAccount();
     }
 }
