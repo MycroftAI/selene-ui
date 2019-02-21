@@ -1,6 +1,8 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, Input, OnDestroy } from '@angular/core';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
+
+import { Membership } from '../profile.service';
 
 export interface SubscriptionType {
     name: string;
@@ -9,17 +11,17 @@ export interface SubscriptionType {
 }
 
 const nonSupporter: SubscriptionType = {
-  name: 'NON-SUPPORTER',
+  name: 'Maybe Later',
   price: '$0',
   period: null
 };
 const monthlySupporter: SubscriptionType = {
-  name: 'MONTHLY SUPPORTER',
+  name: 'Monthly Supporter',
   price: '$1.99',
   period: 'month'
 };
 const yearlySupporter: SubscriptionType = {
-  name: 'YEARLY SUPPORTER',
+  name: 'Yearly Supporter',
   price: '$19.99',
   period: 'year'
 };
@@ -31,6 +33,7 @@ const yearlySupporter: SubscriptionType = {
   styleUrls: ['./subscription.component.scss']
 })
 export class SubscriptionComponent implements OnDestroy {
+    @Input() accountMembership: Membership;
     public subscriptionTypes: SubscriptionType[];
     public subscriptionDuration = '3 years 10 months';
     public alignVertical: boolean;

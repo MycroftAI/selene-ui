@@ -19,6 +19,7 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile.component';
 import { ProfileService } from './profile.service';
 import { SubscriptionComponent } from './subscription/subscription.component';
+import { SharedModule } from 'shared';
 
 @NgModule({
     declarations: [
@@ -41,7 +42,8 @@ import { SubscriptionComponent } from './subscription/subscription.component';
         MatExpansionModule,
         MatFormFieldModule,
         MatInputModule,
-        MatToolbarModule
+        MatToolbarModule,
+        SharedModule
     ],
     providers: [
         ProfileService
