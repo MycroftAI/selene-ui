@@ -5,9 +5,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
     MatButtonModule,
-    MatButtonToggleModule,
     MatCardModule,
-    MatExpansionModule,
     MatFormFieldModule,
     MatInputModule,
     MatToolbarModule
@@ -37,9 +35,7 @@ import { SharedModule } from 'shared';
         FlexLayoutModule,
         FontAwesomeModule,
         MatButtonModule,
-        MatButtonToggleModule,
         MatCardModule,
-        MatExpansionModule,
         MatFormFieldModule,
         MatInputModule,
         MatToolbarModule,
