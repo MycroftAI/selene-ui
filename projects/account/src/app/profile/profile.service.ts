@@ -10,19 +10,19 @@ const accountUrl = '/api/account';
 
 export interface Agreement {
     type: string;
-    signature_date: string;
+    acceptDate: string;
 }
 
 export interface Membership {
     type: string;
-    startDate: string;
+    duration: string;
     stripeCustomerId: string;
 }
 
 export interface Account {
     id: string;
     emailAddress: string;
-    displayName: string;
+    username: string;
     subscription: Membership;
     agreements: Agreement[];
 }
