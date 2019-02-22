@@ -35,7 +35,6 @@ const yearlySupporter: SubscriptionType = {
 export class SubscriptionComponent implements OnDestroy {
     @Input() accountMembership: Membership;
     public subscriptionTypes: SubscriptionType[];
-    public subscriptionDuration = '3 years 10 months';
     public alignVertical: boolean;
     private mediaWatcher: Subscription;
 
