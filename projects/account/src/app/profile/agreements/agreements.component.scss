@@ -3,7 +3,24 @@
 mat-card {
     @include section-card;
 
-    #agreement-panels {
-        margin: 8px;
+    mat-card-content {
+        margin-left: 16px;
+        margin-right: 8px;
+
+        .mat-subheading-2 {
+            color: mat-color($mycroft-accent, A700);
+            font-weight: bold;
+            margin: 8px;
+            min-width: 120px;
+        }
+        .mat-body {
+            margin: 0;
+            min-width: 200px;
+        }
+
+    //    button {
+    //        @include action-button-primary;
+    //        margin: 8px;
+    //    }
     }
 }

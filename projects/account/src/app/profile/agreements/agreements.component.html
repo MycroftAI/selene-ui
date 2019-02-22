@@ -1,47 +1,21 @@
 <mat-card>
     <mat-toolbar>
-        <span class="section-card-title">Agreements</span>
+        <span>Agreements</span>
     </mat-toolbar>
-    <div id="agreement-panels">
-        <mat-accordion>
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Terms of Use
-                    </mat-panel-title>
-                    <mat-panel-description>
-                        Accepted July 10, 2018
-                    </mat-panel-description>
-                </mat-expansion-panel-header>
-                Terms of Use goes here.
-            </mat-expansion-panel>
-
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Privacy Policy
-                    </mat-panel-title>
-                    <mat-panel-description>
-                        Accepted July 10, 2018
-                    </mat-panel-description>
-                </mat-expansion-panel-header>
-                Privacy Policy goes here.
-            </mat-expansion-panel>
-
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                    <mat-panel-title>
-                        Open Data Set
-                    </mat-panel-title>
-                    <mat-panel-description>
-                        Opted In July 10, 2018
-                    </mat-panel-description>
-                </mat-expansion-panel-header>
-                Open Data Set agreement goes here.
-                <mat-action-row>
-                    <button mat-button>OPT OUT</button>
-                </mat-action-row>
-            </mat-expansion-panel>
-        </mat-accordion>
-    </div>
+    <mat-card-content fxLayout="column" fxLayoutAlign="start none">
+        <ng-container *ngFor="let agreement of account.agreements">
+            <div *ngIf="agreement.type !== 'Open Dataset'" class="profile-text" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start center">
+                <span class="mat-subheading-2">{{agreement.type}}:</span>
+                <p class="mat-body">Accepted {{agreement.acceptDate}}</p>
+            </div>
+        </ng-container>
+        <!--<div fxLayout="row" fxLayoutAlign="start center">-->
+            <!--<span class="mat-subheading-2">Username:</span>-->
+            <!--<p class="mat-body">{{agreement.username}}</p>-->
+        <!--</div>-->
+        <!--<div fxLayout="column" fxLayoutAlign="center">-->
+            <!--<button mat-button>CHANGE USERNAME</button>-->
+            <!--<button mat-button>CHANGE PASSWORD</button>-->
+        <!--</div>-->
+    </mat-card-content>
 </mat-card>
