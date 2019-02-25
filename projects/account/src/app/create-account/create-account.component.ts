@@ -84,6 +84,7 @@ export class CreateAccountComponent implements OnInit {
             }
         );
     }
+
     ngOnInit() {
         storeRedirect();
         this.buildForm();
