@@ -1,0 +1,57 @@
+@import "~@angular/material/theming";
+@import "mycroft-colors";
+@import "~src/stylesheets/components/buttons";
+
+h1 {
+    color: mat-color($mycroft-primary, 700);
+    font-weight: bold;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 700px;
+}
+
+p {
+    max-width: 660px;
+    margin-right: auto;
+    margin-left: auto;
+}
+a {
+    color: mat-color($mycroft-primary, 700);
+    text-decoration: none;
+}
+mat-expansion-panel {
+    border-radius: 10px;
+    margin-bottom: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 700px;
+
+    fa-icon {
+        color: mat-color($mycroft-primary);
+        font-size: 24px;
+        margin-right: 16px;
+    }
+
+    mat-panel-title {
+        color: mat-color($mycroft-accent, A700);
+        font-weight: bold;
+        margin: 0;
+    }
+
+    #marketplace-button {
+        @include action-button-primary;
+        margin-top: 16px;
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+
+    #remove-button {
+        @include  action-button-warn;
+    }
+
+    #save-button {
+        @include  action-button-primary;
+        margin-right: 16px;
+    }
+}

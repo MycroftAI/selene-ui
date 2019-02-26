@@ -1,0 +1,10 @@
+<ng-container  *ngFor="let section of sections">
+    <mat-card class="mat-elevation-z0">
+        <mat-card-content>
+            <h2 class="mat-h2">{{section.name}}</h2>
+            <div fxLayout="column" *ngFor="let setting of section.settings">
+                <account-skill-setting [setting]="setting"></account-skill-setting>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</ng-container>
