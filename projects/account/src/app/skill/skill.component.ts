@@ -53,7 +53,7 @@ export class SkillComponent implements OnInit {
             'Select the skill to see a list of the devices using those settings.';
         this.moreSkillsText = 'To add skills to your device(s), you can use voice commands ' +
             '(e.g. "Hey Mycroft, install alarm skill.") or ';
-        this.marketplaceLink = 'visit our marketplace.';
+        this.marketplaceLink = 'visit our skill marketplace.';
     }
 
     private checkForDuplicateSkills() {
