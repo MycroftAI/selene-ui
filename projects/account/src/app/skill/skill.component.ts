@@ -13,7 +13,7 @@ export interface WebApps {
     mimic: string;
     singleSignOn: string;
     translate: string;
-    wordpress: string;
+    wordPress: string;
 }
 
 @Component({
