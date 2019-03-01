@@ -8,7 +8,7 @@ export interface WebApps {
     mimic: string;
     singleSignOn: string;
     translate: string;
-    wordpress: string;
+    wordPress: string;
 }
 
 export interface NavItem {
@@ -21,22 +21,6 @@ export interface PrimaryNavItem {
   icon: IconDefinition;
   text: string;
   url?: string;
-}
-
-export interface User {
-    name: string;
-}
-
-export function expireTokenCookies(): void {
-    const expiration = new Date();
-    const cookieDomain: string = document.domain.replace('market.', '');
-
-    document.cookie = 'seleneToken=""' +
-        '; expires=' + expiration.toUTCString() +
-        '; domain=' + cookieDomain;
-    document.cookie = 'tartarusToken=""' +
-        '; expires=' + expiration.toUTCString() +
-        '; domain=' + cookieDomain;
 }
 
 export function setLoginStatus(): boolean {

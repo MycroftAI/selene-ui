@@ -13,11 +13,9 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import {
-    expireTokenCookies,
     NavItem,
     PrimaryNavItem,
     setLoginStatus,
-    User,
     WebApps
 } from './globalnav.service';
 
@@ -29,13 +27,11 @@ import {
 
 export class GlobalnavComponent implements OnInit {
     @Input() mycroftUrls: WebApps;
-    @Input() user$: Observable<User>;
     public footerItems: NavItem[];
     public isLoggedIn: boolean;
     public menuIcon = faBars;
     public mobileQuery: MediaQueryList;
     public navigationItems: PrimaryNavItem[];
-    public userName: string;
 
     constructor(private media: MediaMatcher) {
         this.mobileQuery = media.matchMedia('(max-width: 600px)');
@@ -43,30 +39,8 @@ export class GlobalnavComponent implements OnInit {
 
     ngOnInit() {
         this.isLoggedIn = setLoginStatus();
-        this.getUser();
         this.buildNavigationItems();
     }
-
-    getUser() {
-        if (this.isLoggedIn) {
-            this.user$.subscribe(
-                (user) => {
-                    if (user.name) {
-                        this.userName = user.name;
-                    } else {
-                        this.userName = 'Logged In';
-                    }
-                },
-                (response) => {
-                    if (response.status === 401) {
-                        expireTokenCookies();
-                        this.isLoggedIn = setLoginStatus();
-                    }
-                }
-            );
-        }
-    }
-
 
     buildNavigationItems(): void {
         this.navigationItems = [
@@ -79,8 +53,8 @@ export class GlobalnavComponent implements OnInit {
         ];
 
         this.footerItems = [
-            {text: 'Contact Us', url: this.mycroftUrls.wordpress + '/contact'},
-            {text: 'Media Kit', url: this.mycroftUrls.wordpress + '/mediaObserver'},
+            {text: 'Contact Us', url: this.mycroftUrls.wordPress + '/contact'},
+            {text: 'Media Kit', url: this.mycroftUrls.wordPress + '/mediaObserver'},
             {text: 'Privacy Policy', url: this.mycroftUrls.account + '/#/privacy-policy'},
             {text: 'Terms of Use', url: this.mycroftUrls.account + '/#/agreement-step'}
         ];
@@ -89,8 +63,8 @@ export class GlobalnavComponent implements OnInit {
     private defineAboutNav(): PrimaryNavItem {
         return {
             children: [
-                {text: 'Team', url: this.mycroftUrls.wordpress + '/team'},
-                {text: 'Careers', url: this.mycroftUrls.wordpress + '/careers'}
+                {text: 'Team', url: this.mycroftUrls.wordPress + '/team'},
+                {text: 'Careers', url: this.mycroftUrls.wordPress + '/careers'}
             ],
             icon: faRobot,
             text: 'About Mycroft'
@@ -101,7 +75,7 @@ export class GlobalnavComponent implements OnInit {
         return {
             icon: faRss,
             text: 'Blog',
-            url: this.mycroftUrls.wordpress + '/blog'
+            url: this.mycroftUrls.wordPress + '/blog'
         };
     }
 
@@ -133,8 +107,8 @@ export class GlobalnavComponent implements OnInit {
     private defineGetStartedNav(): PrimaryNavItem {
         return {
             children: [
-                {text: 'Get Mycroft', url: this.mycroftUrls.wordpress + '/download'},
-                {text: 'Documentation', url: this.mycroftUrls.wordpress + '/documentation'}
+                {text: 'Get Mycroft', url: this.mycroftUrls.wordPress + '/download'},
+                {text: 'Documentation', url: this.mycroftUrls.wordPress + '/documentation'}
             ],
             icon: faRocket,
             text: 'Get Started'
@@ -145,7 +119,7 @@ export class GlobalnavComponent implements OnInit {
         return {
             children: [
                 {text: 'Skills', url: this.mycroftUrls.marketplace + '/skills'},
-                {text: 'Hardware', url: this.mycroftUrls.wordpress + '/shop'}
+                {text: 'Hardware', url: this.mycroftUrls.wordPress + '/shop'}
             ],
             icon: faStore,
             text: 'Marketplace'
