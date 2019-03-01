@@ -49,7 +49,7 @@ export class SkillService {
 
     constructor(private http: HttpClient) { }
 
-    getDevices(): Observable<any[]> {
+    getDeviceCount(): Observable<any[]> {
         return this.http.get<any[]>(accountDeviceCountUrl);
     }
 

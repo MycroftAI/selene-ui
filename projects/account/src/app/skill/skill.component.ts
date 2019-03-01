@@ -37,7 +37,7 @@ export class SkillComponent implements OnInit {
     ngOnInit() {
         this.defineAssistiveText();
         this.skills$ = this.skillService.getSkills();
-        this.skillService.getDevices().subscribe(
+        this.skillService.getDeviceCount().subscribe(
             (result) => { this.deviceCount = result['deviceCount']; console.log(this.deviceCount); }
         );
     }
