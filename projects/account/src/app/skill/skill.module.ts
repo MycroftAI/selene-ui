@@ -6,20 +6,25 @@ import {
     MatCheckboxModule,
     MatExpansionModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatTabsModule
 } from '@angular/material';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import { SettingSectionComponent } from './setting-section/setting-section.component';
+import { SkillSettingsComponent } from './skill-setting/skill-settings.component';
 import { SkillComponent } from './skill.component';
-import { SettingComponent } from './setting/setting.component';
+import { SettingFieldComponent } from './setting-field/setting-field.component';
+import { SettingSectionComponent } from './setting-section/setting-section.component';
+import { SkillPanelComponent } from './skill-panel/skill-panel.component';
 
 @NgModule({
     declarations: [
-        SettingSectionComponent,
+        SkillSettingsComponent,
         SkillComponent,
-        SettingComponent
+        SettingFieldComponent,
+        SettingSectionComponent,
+        SkillPanelComponent
     ],
     imports: [
         CommonModule,
@@ -29,7 +34,8 @@ import { SettingComponent } from './setting/setting.component';
         MatCheckboxModule,
         MatExpansionModule,
         MatInputModule,
-        MatSelectModule
+        MatSelectModule,
+        MatTabsModule
     ]
 })
 export class SkillModule { }

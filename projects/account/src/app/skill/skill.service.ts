@@ -1,13 +1,22 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
-const accountSkillUrl = '/api/skill';
+const accountSkillUrl = '/api/skills';
+const accountDeviceCountUrl = '/api/device-count';
 
 export interface SelectOptions {
     display: string;
     value: string;
 }
-export interface Setting {
+export interface Skill {
+    id: string;
+    name: string;
+    hasSettings: boolean;
+}
+
+export interface SettingField {
+    name: string;
     type: string;
     label: string;
     options?: SelectOptions[];
@@ -16,12 +25,21 @@ export interface Setting {
 
 export interface SettingSection {
     name: string;
-    settings: Setting[];
+    fields: SettingField[];
 }
 
-export interface Skill {
+export interface SettingsDefinition {
+    sections: SettingSection[];
+}
+export interface SkillSettings {
+    settingsDefinition: SettingsDefinition;
+    settingsValues: any;
+    devices: string[];
+}
+
+export interface SettingChange {
     name: string;
-    sections?: SettingSection[];
+    value: string;
 }
 
 @Injectable({
@@ -31,7 +49,25 @@ export class SkillService {
 
     constructor(private http: HttpClient) { }
 
-    getSkills() {
+    getDevices(): Observable<any[]> {
+        return this.http.get<any[]>(accountDeviceCountUrl);
+    }
+
+    getSkills(): Observable<Skill[]> {
         return this.http.get<Skill[]>(accountSkillUrl);
     }
+
+    getSkillSettings(skillId: string): Observable<SkillSettings[]> {
+        return this.http.get<SkillSettings[]>(`/api/skills/${skillId}/settings`);
+    }
+
+    updateSkillSettings(skillId: string, skillSettings: SkillSettings[]) {
+        this.http.put(
+            `/api/skills/${skillId}/settings`,
+            {skillSettings: skillSettings}
+        ).subscribe(
+            (response) => { console.log(response); }
+        );
+    }
+
 }

@@ -1,18 +1,24 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
-import { SettingSection } from '../skill.service';
+import { SettingChange, SettingSection } from '../skill.service';
 
 @Component({
-    selector: 'account-setting-section',
+    selector: 'account-skill-setting-section',
     templateUrl: './setting-section.component.html',
     styleUrls: ['./setting-section.component.scss']
 })
 export class SettingSectionComponent implements OnInit {
-    @Input() sections: SettingSection[];
+    @Input() sectionDefinition: SettingSection;
+    @Input() settingsValues: object;
+    @Output() newValue = new EventEmitter<SettingChange>();
 
-    constructor() { }
+    constructor() {
+    }
 
     ngOnInit() {
-  }
+    }
 
+    onValueChange(newValue: SettingChange)  {
+        this.newValue.emit(newValue);
+    }
 }

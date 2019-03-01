@@ -1,27 +1,11 @@
 <h1 class="mat-h1">Configure Your Skills</h1>
 <p class="mat-subheading-1">{{helpText}}</p>
-<p class="mat-subheading-1" [hidden]="!duplicateSkills">{{duplicateSkillText}}</p>
 <p class="mat-subheading-1">
     {{moreSkillsText}}
     <a [href]="mycroftUrls.marketplace">{{marketplaceLink}}</a>
 </p>
-<ng-container *ngFor="let skill of skills">
-    <mat-expansion-panel>
-        <mat-expansion-panel-header
-                fxLayout="row"
-                fxLayoutAlign="space-between center"
-                [expandedHeight]="'80px'"
-                [collapsedHeight]="'80px'"
-        >
-            <mat-panel-title class="mat-h1">{{skill.name}}</mat-panel-title>
-            <fa-icon *ngIf="skill.sections" [icon]="settingsIcon"></fa-icon>
-        </mat-expansion-panel-header>
-        <button mat-button id="marketplace-button">SKILL DETAILS</button>
-        <button mat-button id="remove-button">REMOVE SKILL</button>
-        <account-setting-section *ngIf="skill.sections" [sections]="skill.sections"></account-setting-section>
-       <mat-action-row *ngIf="skill.sections">
-            <button mat-button>CANCEL</button>
-            <button mat-button id="save-button">SAVE</button>
-        </mat-action-row>
-    </mat-expansion-panel>
-</ng-container>
+<account-skill-panel
+        *ngFor="let skill of skills$ | async" [skill]="skill"
+        [deviceCount]="deviceCount"
+>
+</account-skill-panel>
