@@ -5,13 +5,13 @@ import { CreateAccountComponent } from './create-account/create-account.componen
 import { DeviceComponent } from './device/device.component';
 import { PageNotFoundComponent } from 'page-not-found';
 import { ProfileComponent } from './profile/profile.component';
-// import { SkillComponent } from './skill/skill.component';
+import { SkillComponent } from './skill/skill.component';
 
 const routes: Routes = [
     { path: 'create-account', component: CreateAccountComponent },
     { path: 'device', component: DeviceComponent },
     { path: 'profile', component: ProfileComponent },
-    // { path: 'skill', component: ProfileComponent },
+    { path: 'skill', component: SkillComponent },
     { path: '', redirectTo: '/profile', pathMatch: 'full' },
     { path: '**', component: PageNotFoundComponent }
 ];
