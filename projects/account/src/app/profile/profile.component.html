@@ -1,0 +1,6 @@
+<ng-container *ngIf="account$ | async as account">
+    <account-login [account]="account"></account-login>
+    <account-subscription [accountMembership]="account.membership"></account-subscription>
+    <account-agreements [account]="account"></account-agreements>
+    <account-delete></account-delete>
+</ng-container>

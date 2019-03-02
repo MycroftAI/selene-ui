@@ -1,0 +1,7 @@
+@import "~@angular/material/theming";
+@import "mycroft-colors";
+
+.mat-h2 {
+    color: mat-color($mycroft-primary);
+    font-weight: bold;
+}

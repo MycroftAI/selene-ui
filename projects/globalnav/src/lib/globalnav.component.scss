@@ -1,0 +1,52 @@
+mat-toolbar {
+    height: 50px;
+    position: fixed;
+    z-index: 2;  // Put this on top of the sidenav container
+
+    .menu-button {
+        width: 38px;
+        fa-icon {
+            color: #2c3e50;
+            font-size: 20px;
+        }
+    }
+
+    // Use inline css to display the logo at top of sidebar because Angular
+    // libraries do not support static assets yet.
+   .mycroft-logo {
+        background: url("toolbar-logo.svg") no-repeat;
+        height: 25px;
+        margin-top: -5px;
+        width: 168px;
+    }
+}
+
+mat-sidenav-container {
+    min-height: 100vh;
+    width: 100%;
+
+    .mat-drawer-container{
+        overflow: visible;
+    }
+
+    mat-sidenav {
+        border: none;
+        margin-top: 50px;
+
+        mat-divider {
+            width: 200px;
+            margin-left: 10px;
+        }
+
+        mat-nav-list {
+            overflow-y: auto;
+        }
+    }
+
+    mat-sidenav-content {
+        padding-left: 3vw;
+        padding-right: 3vw;
+        margin-top: 80px;
+    }
+}
+

@@ -1,0 +1,29 @@
+.options-button-group {
+    border: none;
+    padding: 16px;
+
+    .mat-button-toggle {
+        background-color: #e6e8ea;
+        border: none;
+        border-radius: 4px;
+        height: 80px;
+        margin: 8px;
+        padding: 8px;
+        width: 200px;
+
+        .mat-h3 {
+            font-weight: bold;
+            margin-top: 8px;
+            margin-bottom: 8px;
+        }
+
+        #non-supporter {
+            margin-top: 24px;
+        }
+    }
+
+    .mat-button-toggle-checked {
+        background-color: #22a7f0;
+        color: white;
+    }
+}

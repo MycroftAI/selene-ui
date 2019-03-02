@@ -1,0 +1,13 @@
+<mat-card class="mat-elevation-z0">
+    <mat-card-content>
+        <h2 class="mat-h2">{{sectionDefinition.name}}</h2>
+        <div fxLayout="column" *ngFor="let field of sectionDefinition.fields">
+            <account-skill-setting-field
+                [fieldDefinition]="field"
+                [settingsValues]="settingsValues"
+                (newValue)="onValueChange($event)"
+            >
+            </account-skill-setting-field>
+        </div>
+    </mat-card-content>
+</mat-card>

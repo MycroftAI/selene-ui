@@ -1,0 +1,30 @@
+@import "~@angular/material/theming";
+@import 'mycroft-colors';
+
+fa-icon {
+    color: mat-color($mycroft-accent, A700);
+}
+
+#skill-toolbar {
+    margin-left: 15px;
+
+    #search-field {
+        background-color: white;
+        border-radius: 10px;
+        color: mat-color($mycroft-accent, A700);
+        min-width: 330px;
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 10px;
+
+        mat-form-field {
+            width: 100%;
+        }
+    }
+}
+
+#back-button {
+    color: mat-color($mycroft-accent, A700);
+    margin-left: 20px;
+    width: 100px;
+}

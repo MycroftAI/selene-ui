@@ -1,0 +1,10 @@
+<div fxLayout="column" fxLayoutAlign="start center">
+    <h1 class="mat-h1">Log into Mycroft</h1>
+    <p class="mat-subheading-2">Need to <a [href]="createAccountUrl">Create an Account</a> first?</p>
+    <!--<form [formGroup]="loginForm" (ngSubmit)="onFormSubmit()">-->
+    <mat-card>
+        <sso-federated-login></sso-federated-login>
+        <div class="mat-subheading-2">OR</div>
+        <sso-internal-login></sso-internal-login>
+    </mat-card>
+</div>

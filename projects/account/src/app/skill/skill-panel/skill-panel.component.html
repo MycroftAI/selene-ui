@@ -1,0 +1,22 @@
+<mat-expansion-panel [(expanded)]="panelExpanded">
+    <mat-expansion-panel-header
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            [expandedHeight]="'80px'"
+            [collapsedHeight]="'80px'"
+    >
+        <mat-panel-title class="mat-h1">{{skill.name}}</mat-panel-title>
+        <fa-icon *ngIf="skill.hasSettings" [icon]="settingsIcon"></fa-icon>
+    </mat-expansion-panel-header>
+    <ng-template matExpansionPanelContent>
+        <button mat-button id="marketplace-button">SKILL DETAILS</button>
+        <button mat-button id="remove-button">REMOVE SKILL</button>
+        <account-skill-settings
+                *ngIf="skill.hasSettings"
+                [deviceCount]="deviceCount"
+                [skill]="skill"
+                (done)="closePanel()"
+        >
+        </account-skill-settings>
+    </ng-template>
+</mat-expansion-panel>

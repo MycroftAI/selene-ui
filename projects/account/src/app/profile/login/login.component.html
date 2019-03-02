@@ -1,0 +1,21 @@
+<mat-card>
+    <mat-toolbar>
+        <span>Profile</span>
+    </mat-toolbar>
+    <mat-card-content fxLayout="row" fxLayout.lt-md="column"  fxLayoutAlign="space-between center">
+        <div fxFlex>
+            <div class="profile-text" fxLayout="row" fxLayoutAlign="start center">
+                <span class="mat-subheading-2">Email:</span>
+                <p class="mat-body">{{account.emailAddress}}</p>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="start center">
+                <span class="mat-subheading-2">Username:</span>
+                <p class="mat-body">{{account.username}}</p>
+            </div>
+        </div>
+        <div fxLayout="column" fxLayoutAlign="center">
+            <button mat-button>CHANGE USERNAME</button>
+            <button mat-button>CHANGE PASSWORD</button>
+        </div>
+    </mat-card-content>
+</mat-card>

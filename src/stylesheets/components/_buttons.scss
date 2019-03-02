@@ -1,0 +1,45 @@
+@import "~@angular/material/theming";
+@import "mycroft-colors";
+
+$button-border-radius: 4px;
+
+@mixin action-button {
+    border-radius: $button-border-radius;
+    font-weight: normal;
+    letter-spacing: 0.5px;
+}
+
+@mixin action-button-primary {
+    @include action-button;
+    background-color: mat-color($mycroft-primary);
+    color: mat-contrast($mycroft-primary, 500);
+
+    &:hover {
+        background-color: mat-color($mycroft-accent, A100);
+        color: mat-color($mycroft-accent);
+    }
+}
+
+@mixin action-button-warn {
+    background-color: mat-color($mycroft-warn);
+    color: mat-contrast($mycroft-warn, 500)
+}
+
+@mixin options-button-group {
+    border: none;
+
+    .mat-button-toggle {
+        background-color: mat-color($mycroft-accent, 50);
+        border: none;
+        border-radius: 4px;
+        margin: 8px;
+    }
+
+    .mat-button-toggle-checked {
+        background-color: mat-color($mycroft-primary);
+
+        .mat-button-toggle-label-content {
+            color: mat-contrast($mycroft-primary, 500);
+        }
+    }
+}
