@@ -406,8 +406,8 @@
                         "test": {
                             "fileReplacements": [
                                 {
-                                    "replace": "projects/market/src/environments/environment.ts",
-                                    "with": "projects/market/src/environments/environment.test.ts"
+                                    "replace": "projects/sso/src/environments/environment.ts",
+                                    "with": "projects/sso/src/environments/environment.test.ts"
                                 }
                             ],
                             "outputHashing": "all"
@@ -415,8 +415,8 @@
                         "development": {
                             "fileReplacements": [
                                 {
-                                    "replace": "projects/market/src/environments/environment.ts",
-                                    "with": "projects/market/src/environments/environment.dev.ts"
+                                    "replace": "projects/sso/src/environments/environment.ts",
+                                    "with": "projects/sso/src/environments/environment.dev.ts"
                                 }
                             ]
                         }

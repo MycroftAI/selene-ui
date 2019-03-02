@@ -3,10 +3,10 @@ export const environment = {
     mycroftUrls: {
         chat: 'https://chat.mycroft.ai',
         forum: 'https://community.mycroft.ai',
-        singleSignOn: 'http://sso.mycroft.test',
+        singleSignOn: 'https://sso.mycroft.test',
         account: 'https://home-test.mycroft.ai',
-        marketplace: 'http://market.mycroft.test',
-        mimic: 'http://mimic.mycroft.ai',
+        marketplace: 'https://market.mycroft.test',
+        mimic: 'https://mimic.mycroft.ai',
         translate: 'https://translate-test.mycroft.ai',
         wordPress: 'https://test.mycroft.ai'
     }

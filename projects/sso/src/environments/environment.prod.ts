@@ -1,5 +1,15 @@
 export const environment = {
-    production: true
+    production: true,
+    mycroftUrls: {
+        chat: 'https://chat.mycroft.ai',
+        forum: 'https://community.mycroft.ai',
+        singleSignOn: 'https://sso.mycroft.ai',
+        account: 'https://account.mycroft.ai',
+        marketplace: 'https://market.mycroft.ai',
+        mimic: 'https://mimic.mycroft.ai',
+        translate: 'https://translate.mycroft.ai',
+        wordpress: 'https://mycroft.ai'
+    }
 };
 
 document.write(
