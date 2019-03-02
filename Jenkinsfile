@@ -26,13 +26,13 @@ pipeline {
             steps {
                 echo 'Deploying to test environment web servers...'
                 withCredentials([sshUserPrivateKey(credentialsId: '6413826d-79f6-4d03-9902-ee1b73a96efd', keyFileVariable: 'JENKINS_SSH_KEY', passphraseVariable: '', usernameVariable: 'SERVER_USER')]) {
-                    # Deploy account application and its associated libraries
+                    // Deploy account application and its associated libraries
                     sh 'scp -r dist/shared root@192.81.211.55:/var/www/'
                     sh 'scp -r dist/globalnav root@192.81.211.55:/var/www/'
                     sh 'scp -r dist/page-not-found root@192.81.211.55:/var/www/'
                     sh 'scp -r dist/account root@192.81.211.55:/var/www/'
 
-                    # Deploy single sign on application and its associated libraries
+                    // Deploy single sign on application and its associated libraries
                     sh 'scp -r dist/shared root@198.199.90.118:/var/www/'
                     sh 'scp -r dist/globalnav root@198.199.90.118:/var/www/'
                     sh 'scp -r dist/page-not-found root@198.199.90.118:/var/www/'
