@@ -16,14 +16,14 @@ export interface Agreement {
 export interface Membership {
     type: string;
     duration: string;
-    stripeCustomerId: string;
+    paymentAccountId: string;
 }
 
 export interface Account {
     id: string;
     emailAddress: string;
     username: string;
-    subscription: Membership;
+    membership: Membership;
     agreements: Agreement[];
 }
 

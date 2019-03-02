@@ -28,11 +28,11 @@ export interface SettingSection {
     fields: SettingField[];
 }
 
-export interface SettingsDefinition {
+export interface SettingsDisplay {
     sections: SettingSection[];
 }
 export interface SkillSettings {
-    settingsDefinition: SettingsDefinition;
+    settingsDisplay: SettingsDisplay;
     settingsValues: any;
     devices: string[];
 }

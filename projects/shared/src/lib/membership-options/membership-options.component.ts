@@ -8,18 +8,13 @@ export interface MembershipType {
     period: string;
 }
 
-const nonSupporter: MembershipType = {
-    type: 'Maybe Later',
-    price: '$0',
-    period: null
-};
 const monthlySupporter: MembershipType = {
-    type: 'Monthly Supporter',
+    type: 'Monthly Membership',
     price: '$1.99',
     period: 'month'
 };
 const yearlySupporter: MembershipType = {
-    type: 'Yearly Supporter',
+    type: 'Yearly Membership',
     price: '$19.99',
     period: 'year'
 };

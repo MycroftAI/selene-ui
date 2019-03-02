@@ -44,10 +44,10 @@ export function membershipValidator(): ValidatorFn {
     return (supportGroup: FormGroup) => {
         let valid = true;
         const membershipType = supportGroup.controls['membership'];
-        const stripeCustomerId  = supportGroup.controls['stripeCustomerId'];
+        const paymentAccountId  = supportGroup.controls['paymentAccountId'];
 
         if (membershipType.value !== 'MAYBE LATER') {
-            if (!stripeCustomerId.value) {
+            if (!paymentAccountId.value) {
                 valid = false;
             }
         }
@@ -104,7 +104,8 @@ export class CreateAccountComponent implements OnInit {
             {
             openDataset: [null, Validators.required],
             membership: [null, Validators.required],
-            stripeCustomerId: [null]
+            paymentMethod: [null],
+            paymentAccountId: [null]
 
             },
             {validator: membershipValidator()}
@@ -117,7 +118,9 @@ export class CreateAccountComponent implements OnInit {
             login: loginGroup,
             support: supportGroup
         });
-        this.newAcctForm.patchValue({support: {stripeCustomerId: 'foostripe'}});
+        this.newAcctForm.patchValue(
+            {support: {paymentMethod: 'Stripe', paymentAccountId: 'foostripe'}}
+        );
     }
 
     private setControlFormAliases() {
