@@ -623,8 +623,7 @@
                                     "replace": "projects/account/src/environments/environment.ts",
                                     "with": "projects/account/src/environments/environment.dev.ts"
                                 }
-                            ],
-                            "outputHashing": "all"
+                            ]
                         },
                         "test": {
                             "fileReplacements": [
