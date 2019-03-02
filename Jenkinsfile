@@ -3,6 +3,22 @@ pipeline {
 
     stages {
 
+        // Run the build in the against the dev branch to check for compile errors
+        stage('Build dev branch') {
+            when {
+                branch 'dev'
+            }
+            steps {
+                echo 'Building code in the "dev" branch...'
+                sh 'npm install'
+                sh 'ng build --project shared'
+                sh 'ng build --project globalnav'
+                sh 'ng build --project page-not-found'
+                sh 'ng build --project account --configuration dev'
+                sh 'ng build --project sso --configuration dev'
+            }
+        }
+
         // Deploy to the Test environment
         stage('Build for Test Environment') {
             when {
