@@ -7,6 +7,6 @@ export const environment = {
         account: 'https://account.mycroft-test.net',
         marketplace: 'https://market.mycroft-test.net',
         translate: 'https://translate-test.mycroft.ai',
-        wordpress: 'https://test.mycroft.ai'
+        wordPress: 'https://test.mycroft.ai'
     }
 };
