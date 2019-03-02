@@ -1,0 +1,39 @@
+@import "~@angular/material/theming";
+@import 'mycroft-colors';
+
+@mixin login-button {
+    border-radius: 4px;
+    color: mat-contrast($mycroft-primary, 500);
+    font-weight: normal;
+    margin-bottom: 8px;
+    text-align: left;
+    width: 100%;
+}
+
+#external-login {
+    padding: 16px;
+    fa-icon {
+        margin-right: 16px;
+        font-size: 24px;
+    }
+    #facebook-button {
+        @include login-button;
+        background-color: #3b5998;
+    }
+    #github-button {
+        @include login-button;
+        background-color: #333333;
+    }
+    #google-button {
+        @include login-button;
+        background-color: #4285F4;
+        img {
+            height: 24px;
+            margin-left: -1px;
+            margin-right: 16px;
+            margin-top: -2px;
+            width: 24px;
+        }
+    }
+}
+

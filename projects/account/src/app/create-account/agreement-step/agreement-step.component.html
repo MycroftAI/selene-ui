@@ -1,0 +1,14 @@
+<h2 *ngIf="step === 'Terms of Use'" class="mat-h2">First, the legal stuff...</h2>
+<h2 *ngIf="step === 'Privacy Policy'" class="mat-h2">We value your privacy!</h2>
+<mat-card class="mat-elevation-z0" fxLayout="column" fxLayoutAlign="space-around">
+    <mat-card-content [innerHTML]="agreementContent"></mat-card-content>
+    <mat-card-actions align="right">
+        <button *ngIf="!agreementAccepted" mat-button (click)="acceptAgreement()">
+            Accept
+        </button>
+        <button *ngIf="agreementAccepted" class="accepted-button" mat-button (click)="declineAgreement()">
+            <fa-icon [icon]="acceptedIcon"></fa-icon>
+            Accepted
+        </button>
+    </mat-card-actions>
+</mat-card>

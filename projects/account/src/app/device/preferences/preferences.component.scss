@@ -1,0 +1,33 @@
+@import "~src/stylesheets/components/buttons";
+@import "~src/stylesheets/components/cards";
+
+#basic-settings-card {
+    @include section-card;
+    margin-top: 16px;
+
+    mat-button-toggle-group {
+        @include options-button-group;
+
+        mat-button-toggle {
+            width: 130px;
+        }
+    }
+
+    mat-label {
+        margin-bottom: 8px;
+        margin-top: 16px;
+    }
+}
+
+#default-settings-card {
+    @include section-card;
+}
+#advanced-settings-card {
+    @include section-card;
+    button {
+        @include action-button-primary;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 16px;
+    }
+}

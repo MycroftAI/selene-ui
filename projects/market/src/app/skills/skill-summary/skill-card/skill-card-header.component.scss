@@ -1,0 +1,24 @@
+@import "~@angular/material/theming";
+@import 'mycroft-colors';
+
+#card-header {
+    margin-bottom: 16px;
+}
+
+#mycroft-icon {
+    width: 20px;
+    img {
+        height: 20px;
+        width: 20px;
+    }
+}
+
+#installed-icon {
+    width: 20px;
+
+    fa-icon {
+        color: mat-color($mycroft-accent, A100);
+        font-size: 20px;
+    }
+}
+

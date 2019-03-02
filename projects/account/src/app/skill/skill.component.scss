@@ -1,0 +1,21 @@
+@import "~@angular/material/theming";
+@import "mycroft-colors";
+
+h1 {
+    color: mat-color($mycroft-primary, 700);
+    font-weight: bold;
+    text-align: center;
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 700px;
+}
+
+p {
+    max-width: 660px;
+    margin-right: auto;
+    margin-left: auto;
+}
+a {
+    color: mat-color($mycroft-primary, 700);
+    text-decoration: none;
+}

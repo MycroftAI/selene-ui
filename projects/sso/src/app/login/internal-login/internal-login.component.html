@@ -1,0 +1,21 @@
+<form fxLayout="column" [formGroup]="loginForm" (ngSubmit)="authorizeUser()">
+    <mat-form-field [appearance]="'outline'">
+        <mat-label>Email</mat-label>
+        <input matInput required type="email" [formControl]="emailControl">
+        <mat-error *ngIf="emailControl.hasError('email') && !emailControl.hasError('required')">
+            Must be a valid email address
+        </mat-error>
+        <mat-error *ngIf="emailControl.hasError('required')">
+            Email is required
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field [appearance]="'outline'">
+        <mat-label>Password</mat-label>
+        <input matInput required type="password" [formControl]="passwordControl">
+        <mat-error *ngIf="passwordControl.hasError('required')">
+            Password is required
+        </mat-error>
+    </mat-form-field>
+    <button mat-button type="submit">LOG IN</button>
+    <a class="mat-subheading-2" href="http://market.mycroft-test.net">Forgot password?</a>
+</form>

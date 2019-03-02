@@ -1,0 +1,30 @@
+@import "~@angular/material/theming";
+@import "mycroft-colors";
+
+@mixin section-card {
+    margin-bottom: 32px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+    min-width: 320px;
+
+    mat-toolbar {
+        background-color: mat-color($mycroft-primary, 50);
+        border-radius: 6px;
+        margin-bottom: 20px;
+        max-width: 1000px;
+        min-width: 260px;
+
+        span {
+            color: mat-color($mycroft-primary, 500);
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            width: 100%;
+        }
+    }
+
+    .section-content {
+        padding: 16px;
+    }
+}

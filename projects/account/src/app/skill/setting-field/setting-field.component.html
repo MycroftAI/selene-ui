@@ -1,0 +1,28 @@
+<ng-container [ngSwitch]="fieldDefinition.type">
+    <p *ngSwitchCase="'label'" class="mat-body" [innerHTML]="fieldDefinition.label"></p>
+
+    <mat-form-field *ngSwitchCase="'select'" [appearance]="'outline'">
+        <mat-label>{{fieldDefinition.label}}</mat-label>
+        <mat-select [value]="fieldValue" (valueChange)="onSelectChange($event)">
+            <mat-option *ngFor="let option of fieldDefinition.options" value="{{option.value}}">
+                {{option.display}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-checkbox
+            *ngSwitchCase="'checkbox'"
+            [value]="fieldValue"
+            [checked]="fieldValue === 'true'"
+            (change)="onCheckboxChange($event)"
+    >
+        {{fieldDefinition.label}}
+    </mat-checkbox>
+
+    <mat-form-field *ngSwitchCase="'text'" [appearance]="'outline'">
+        <mat-label>{{fieldDefinition.label}}</mat-label>
+        <input matInput type="text" value="{{fieldValue}}" (change)="onInputChange($event)">
+    </mat-form-field>
+
+    <button *ngSwitchCase="'oauth'" mat-button>Connect</button>
+</ng-container>
