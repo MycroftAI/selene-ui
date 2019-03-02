@@ -14,8 +14,8 @@ pipeline {
                 sh 'ng build --project shared'
                 sh 'ng build --project globalnav'
                 sh 'ng build --project page-not-found'
-                sh 'ng build --project account --configuration dev'
-                sh 'ng build --project sso --configuration dev'
+                sh 'ng build --project account --configuration development'
+                sh 'ng build --project sso --configuration development'
             }
         }
 
