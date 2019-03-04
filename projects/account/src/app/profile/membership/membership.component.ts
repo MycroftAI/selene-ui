@@ -29,10 +29,10 @@ const yearlySupporter: SubscriptionType = {
 
 @Component({
   selector: 'account-subscription',
-  templateUrl: './subscription.component.html',
-  styleUrls: ['./subscription.component.scss']
+  templateUrl: './membership.component.html',
+  styleUrls: ['./membership.component.scss']
 })
-export class SubscriptionComponent implements OnDestroy {
+export class MembershipComponent implements OnDestroy {
     @Input() accountMembership: Membership;
     public subscriptionTypes: SubscriptionType[];
     public alignVertical: boolean;

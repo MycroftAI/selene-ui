@@ -16,7 +16,7 @@ import { DeleteComponent } from './delete/delete.component';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile.component';
 import { ProfileService } from './profile.service';
-import { SubscriptionComponent } from './subscription/subscription.component';
+import { MembershipComponent } from './membership/membership.component';
 import { SharedModule } from 'shared';
 
 @NgModule({
@@ -25,7 +25,7 @@ import { SharedModule } from 'shared';
         DeleteComponent,
         LoginComponent,
         ProfileComponent,
-        SubscriptionComponent
+        MembershipComponent
     ],
     entryComponents: [
         LoginComponent
