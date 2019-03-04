@@ -20,7 +20,7 @@ pipeline {
         }
 
         // Deploy to the Test environment
-        stage('Build for Test Environment') {
+        stage('Build for Test') {
             when {
                 branch 'test'
             }
@@ -35,7 +35,7 @@ pipeline {
             }
         }
 
-        stage('Deploy to Test Environment') {
+        stage('Deploy to Test') {
             when {
                 branch 'test'
             }
@@ -60,7 +60,7 @@ pipeline {
         }
 
         // Deploy to the Production environment
-        stage('Build for Production Environment') {
+        stage('Build for Production') {
             when {
                 branch 'master'
             }
@@ -75,7 +75,7 @@ pipeline {
             }
         }
 
-        stage('Deploy to Production Environment') {
+        stage('Deploy to Production') {
             when {
                 branch 'master'
             }
