@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DragDropModule } from '@angular/cdk/drag-drop';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 import {
@@ -8,66 +7,47 @@ import {
     MatButtonToggleModule,
     MatCardModule,
     MatDialogModule,
+    MatDividerModule,
     MatExpansionModule,
     MatFormFieldModule,
     MatInputModule,
     MatRadioModule,
-    MatSelectModule,
-    MatSlideToggleModule,
     MatTabsModule,
     MatToolbarModule
 } from '@angular/material';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import { AttrEditComponent } from './attribute/attr-edit.component';
-import { AttrViewComponent } from './attribute/attr-view.component';
+import { AttributeComponent } from './attribute/attribute.component';
 import { DeviceComponent } from './device.component';
 import { DeviceListComponent } from './device-list/device-list.component';
 import { DeviceService } from './device.service';
-import { GeographyEditComponent } from './attribute/geography/geography-edit.component';
-import { GeographyViewComponent } from './attribute/geography/geography-view.component';
-import { GroupEditComponent } from './attribute/group/group-edit.component';
-import { GroupViewComponent } from './attribute/group/group-view.component';
-import { PlacementEditComponent } from './attribute/placement/placement-edit.component';
-import { PlacementViewComponent } from './attribute/placement/placement-view.component';
+import { GeographyComponent } from './attribute/geography/geography.component';
+import { GroupComponent } from './attribute/group/group.component';
+import { PlacementComponent } from './attribute/placement/placement.component';
 import { RemoveComponent } from './remove/remove.component';
-import { VoiceEditComponent } from './attribute/voice/voice-edit.component';
-import { VoiceViewComponent } from './attribute/voice/voice-view.component';
+import { VoiceComponent } from './attribute/voice/voice.component';
 import { PreferencesComponent } from './preferences/preferences.component';
-import { WakeWordEditComponent } from './attribute/wake-word/wake-word-edit.component';
-import { WakeWordViewComponent } from './attribute/wake-word/wake-word-view.component';
+import { WakeWordComponent } from './attribute/wake-word/wake-word.component';
 
 @NgModule({
     declarations: [
-        AttrEditComponent,
-        AttrViewComponent,
+        AttributeComponent,
         DeviceComponent,
         DeviceListComponent,
-        GeographyEditComponent,
-        GeographyViewComponent,
-        GroupEditComponent,
-        GroupViewComponent,
-        PlacementEditComponent,
-        PlacementViewComponent,
+        GeographyComponent,
+        GroupComponent,
+        PlacementComponent,
         RemoveComponent,
-        VoiceEditComponent,
-        VoiceViewComponent,
+        VoiceComponent,
         PreferencesComponent,
-        WakeWordEditComponent,
-        WakeWordViewComponent
+        WakeWordComponent,
     ],
     entryComponents: [
-        GeographyEditComponent,
-        GroupEditComponent,
-        PlacementEditComponent,
-        RemoveComponent,
-        VoiceEditComponent,
-        WakeWordEditComponent
+        RemoveComponent
     ],
     imports: [
         CommonModule,
-        DragDropModule,
         FlexLayoutModule,
         FontAwesomeModule,
         FormsModule,
@@ -75,12 +55,11 @@ import { WakeWordViewComponent } from './attribute/wake-word/wake-word-view.comp
         MatButtonToggleModule,
         MatCardModule,
         MatDialogModule,
+        MatDividerModule,
         MatExpansionModule,
         MatFormFieldModule,
         MatInputModule,
         MatRadioModule,
-        MatSelectModule,
-        MatSlideToggleModule,
         MatTabsModule,
         MatToolbarModule
     ],

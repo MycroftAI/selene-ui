@@ -4,41 +4,76 @@
 
 @mixin panel-defaults {
     border-radius: 12px;
-    max-width: 1000px;
-    min-width: 250px;
+    width: 330px;
     margin-left: auto;
     margin-right: auto;
-
+    margin-bottom: 16px;
 }
 
 #add-device-button {
     @include action-button-primary;
     @include panel-defaults;
-    border-radius: 12px;
     cursor: pointer;
     height: 50px;
     margin-top: 32px;
-
-    img {
-        height: 32px;
-        margin-left: 16px;
-    }
-    .mat-h2 {
-        margin-bottom: 0;
-    }
 
     fa-icon {
         color: mat-color($mycroft-accent, 'A200');
         margin-right: 16px;
     }
+
+    img {
+        height: 32px;
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+
+    .mat-h2 {
+        margin-bottom: 0;
+    }
+
+}
+
+mat-card {
+    @include panel-defaults;
+
+    button {
+        margin-bottom: 8px;
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+
+    mat-card-content {
+        margin-top: 32px;
+    }
+
+    mat-card-title {
+        color: mat-color($mycroft-primary, 700);
+        font-weight: bold;
+
+        img {
+            height: 60px;
+            margin-right: 16px;
+        }
+    }
+
+    mat-divider {
+        margin-left: 16px;
+        width: 90%;
+    }
+
+    mat-label {
+        color: mat-color($mycroft-primary);
+    }
+
 }
 
 mat-expansion-panel {
     @include panel-defaults;
-    margin-top: 16px;
+    margin-bottom: 16px;
 
     button {
-        width: 100%;
+        margin-left: 16px;
     }
 
     fa-icon {
@@ -51,19 +86,15 @@ mat-expansion-panel {
 
     mat-form-field {
         margin-bottom: 20px;
-        width: 100%;
+        max-width: 320px;
     }
 
-    //.delete-button {
-    //    margin-top: 20px;
-    //}
-
     .mat-body-primary {
+        color: mat-color($mycroft-primary);
         margin-bottom: 0;
     }
 
     .mat-h2 {
-        color: mat-color($mycroft-primary);
         margin-bottom: 0;
     }
 
@@ -71,7 +102,7 @@ mat-expansion-panel {
         padding: 0;
     }
 
-    .settings-button {
-        margin-bottom: 20px;
+    .static-data {
+        margin-top: 16px;
     }
 }

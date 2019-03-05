@@ -2,6 +2,12 @@
 @import '~src/stylesheets/mycroft-colors';
 @import '~src/stylesheets/components/buttons';
 
+mat-expansion-panel {
+    margin-bottom: 16px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 500px;
+}
 .predefined-group {
     margin-bottom: 12px;
     margin-top: 12px;
@@ -9,7 +15,7 @@
 
 .mat-body{
     margin-bottom: 16px;
-    width: 250px;
+    max-width: 500px;
 }
 
 fa-icon {

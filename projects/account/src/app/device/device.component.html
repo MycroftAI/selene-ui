@@ -1,10 +1,12 @@
-<div fxLayout="row" fxLayoutAlign="center center">
+<div fxLayout="column" fxLayoutAlign="center center">
     <mat-tab-group mat-stretch-tabs>
         <mat-tab [label]="'Devices'">
             <account-device-list></account-device-list>
         </mat-tab>
         <mat-tab [label]="'Preferences'">
-            <account-device-preferences></account-device-preferences>
+            <ng-template matTabContent>
+                <account-device-preferences></account-device-preferences>
+            </ng-template>
         </mat-tab>
     </mat-tab-group>
 </div>
