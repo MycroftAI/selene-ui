@@ -37,9 +37,6 @@ $button-border-radius: 4px;
 
     .mat-button-toggle-checked {
         background-color: mat-color($mycroft-primary);
-
-        .mat-button-toggle-label-content {
-            color: mat-contrast($mycroft-primary, 500);
-        }
+        color: mat-contrast($mycroft-primary, 500);
     }
 }
