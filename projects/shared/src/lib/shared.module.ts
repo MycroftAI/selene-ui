@@ -15,7 +15,6 @@ import { GithubButtonComponent } from './github-button/github-button.component';
 import { GoogleButtonComponent } from './google-button/google-button.component';
 import { MembershipOptionsComponent } from './membership-options/membership-options.component';
 import { SharedComponent } from './shared.component';
-import { SharedService } from './shared.service';
 
 export function getAuthServiceConfigs() {
     return new AuthServiceConfig(
@@ -24,10 +23,12 @@ export function getAuthServiceConfigs() {
                 id: FacebookLoginProvider.PROVIDER_ID,
                 provider: new FacebookLoginProvider('2266714353557295')
             },
-            // {
-            //     id: GoogleLoginProvider.PROVIDER_ID,
-            //     provider: new GoogleLoginProvider("Your-Google-Client-Id")
-            // }
+            {
+                id: GoogleLoginProvider.PROVIDER_ID,
+                provider: new GoogleLoginProvider(
+                    '17489788035-6jpef494tdpiidg80vvfldh2biueiqfi.apps.googleusercontent.com'
+                )
+            }
         ]
     );
 }
@@ -55,7 +56,6 @@ export function getAuthServiceConfigs() {
         SharedComponent
     ],
     providers: [
-        SharedService,
         { provide: AuthServiceConfig, useFactory: getAuthServiceConfigs }
     ]
 })

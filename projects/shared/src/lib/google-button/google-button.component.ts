@@ -1,6 +1,7 @@
-import { Component} from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { AuthService, GoogleLoginProvider } from 'angular-6-social-login';
 
 @Component({
     selector: 'shared-google-button',
@@ -9,6 +10,15 @@ import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 })
 export class GoogleButtonComponent {
     public googleIcon = faGoogle;
+    @Output() googleEmail = new EventEmitter<string>();
 
-    constructor() { }
+    constructor(private authService: AuthService) { }
+
+    googleLogin() {
+        const platformProvider = GoogleLoginProvider.PROVIDER_ID;
+        this.authService.signIn(platformProvider).then(
+            (userData) => { this.googleEmail.emit(userData.email); }
+    );
+}
+
 }
