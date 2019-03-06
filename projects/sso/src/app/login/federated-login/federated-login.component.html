@@ -1,13 +1,7 @@
 <div id="external-login" fxLayout="column" fxLayoutAlign="center center">
-    <button mat-button id="google-button"  (click)="federatedSignIn('google')">
-        <img src="../../../assets/google-logo.svg">
-        Log in with Google
-    </button>
-    <button mat-button id="facebook-button" (click)="federatedSignIn('facebook')">
-        <fa-icon [icon]="facebookIcon"></fa-icon>
-        Log in with Facebook
-    </button>
-    <button mat-button id="github-button" (click)="federatedSignIn('github')">
+    <shared-google-button (googleEmail)="validateFederatedLogin($event)"></shared-google-button>
+    <shared-facebook-button (facebookEmail)="validateFederatedLogin($event)"></shared-facebook-button>
+    <button mat-button id="github-button">
         <fa-icon [icon]="githubIcon"></fa-icon>
         Log in with GitHub
     </button>

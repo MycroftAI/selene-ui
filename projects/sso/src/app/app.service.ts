@@ -59,11 +59,8 @@ export class AppService {
         return this.http.get<AuthResponse>(internalAuthUrl, {headers: httpHeaders});
     }
 
-    validateFederatedLogin(socialLoginData: any) {
-        return this.http.post<AuthResponse>(
-            federatedAuthUrl,
-            socialLoginData
-        );
+    validateFederatedLogin(email: string) {
+        return this.http.post<AuthResponse>(federatedAuthUrl, {email: email});
     }
 
     logout(): Observable<any> {
