@@ -40,8 +40,8 @@ export class MembershipOptionsComponent implements OnDestroy {
         this.membershipTypes = [yearlySupporter, monthlySupporter];
     }
 
-    onMembershipSelect(membership: MembershipType) {
-        this.selectedMembership.emit(membership.type);
+    onMembershipSelect(membershipType: string) {
+        this.selectedMembership.emit(membershipType);
     }
 
     ngOnDestroy(): void {
