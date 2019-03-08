@@ -7,6 +7,7 @@ import { environment } from '../../environments/environment';
 import { catchError } from 'rxjs/operators';
 
 const accountUrl = '/api/account';
+const membershipTypesUrl = '/api/memberships';
 
 export interface Agreement {
     type: string;
@@ -25,6 +26,13 @@ export interface Account {
     username: string;
     membership: Membership;
     agreements: Agreement[];
+}
+
+export interface MembershipType {
+    type: string;
+    rate: string;
+    ratePeriod: string;
+    stripePlan: string;
 }
 
 @Injectable()
@@ -60,5 +68,9 @@ export class ProfileService {
         return this.http.get<Account>(accountUrl).pipe(
             catchError(this.handleError)
         );
+    }
+
+    getMembershipTypes(): Observable<MembershipType[]> {
+        return this.http.get<MembershipType[]>(membershipTypesUrl);
     }
 }

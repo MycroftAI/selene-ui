@@ -2,16 +2,16 @@
         class="options-button-group"
         [vertical]="alignVertical"
         [value]="accountMembership"
+        (change)="onMembershipSelect($event)"
 >
     <mat-button-toggle
             *ngFor="let membership of membershipTypes"
-            (click)="onMembershipSelect(membership.type)"
             [value]="membership.type"
     >
         <h3 class="mat-h3">{{membership.type}}</h3>
-        <p class="mat-body" *ngIf="membership.type != 'Maybe Later'">{{membership.price}} USD</p>
+        <p class="mat-body" *ngIf="membership.type != 'Maybe Later'">{{membership.rate}} USD</p>
     </mat-button-toggle>
-    <mat-button-toggle [value]="'Maybe Later'" (click)="onMembershipSelect('Maybe Later')">
+    <mat-button-toggle [value]="'Maybe Later'">
         <h3 id="non-supporter" class="mat-h3">Maybe Later</h3>
     </mat-button-toggle>
 </mat-button-toggle-group>

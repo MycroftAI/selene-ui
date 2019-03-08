@@ -1,23 +1,15 @@
 import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
-import { Subscription } from 'rxjs';
+import { MatButtonToggleChange } from '@angular/material';
+
+import { Observable, Subscription } from 'rxjs';
 
 export interface MembershipType {
     type: string;
-    price: string;
-    period: string;
+    rate: string;
+    ratePeriod: string;
+    stripePlan: string;
 }
-
-const monthlySupporter: MembershipType = {
-    type: 'Monthly Membership',
-    price: '$1.99',
-    period: 'month'
-};
-const yearlySupporter: MembershipType = {
-    type: 'Yearly Membership',
-    price: '$19.99',
-    period: 'year'
-};
 
 @Component({
     selector: 'shared-membership-options',
@@ -27,9 +19,9 @@ const yearlySupporter: MembershipType = {
 export class MembershipOptionsComponent implements OnDestroy {
     @Input() accountMembership: string;
     public alignVertical: boolean;
-    public membershipTypes: MembershipType[];
+    @Input() membershipTypes: MembershipType[];
     public mediaWatcher: Subscription;
-    @Output() selectedMembership = new EventEmitter<string>();
+    @Output() membershipSelected = new EventEmitter<string>();
 
     constructor(public mediaObserver: MediaObserver) {
         this.mediaWatcher = mediaObserver.media$.subscribe(
@@ -37,11 +29,10 @@ export class MembershipOptionsComponent implements OnDestroy {
                 this.alignVertical = ['xs', 'sm'].includes(change.mqAlias);
             }
         );
-        this.membershipTypes = [yearlySupporter, monthlySupporter];
     }
 
-    onMembershipSelect(membershipType: string) {
-        this.selectedMembership.emit(membershipType);
+    onMembershipSelect(membershipType: MatButtonToggleChange) {
+        this.membershipSelected.emit(membershipType.value);
     }
 
     ngOnDestroy(): void {
