@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { MatButtonToggleChange } from '@angular/material';
 
-import { Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 export interface MembershipType {
     type: string;
