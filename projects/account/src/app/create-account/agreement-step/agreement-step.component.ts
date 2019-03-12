@@ -4,7 +4,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
-import { Agreement, CreateAccountService } from '../create-account.service';
+import { CreateAccountService } from '../create-account.service';
 
 
 @Component({

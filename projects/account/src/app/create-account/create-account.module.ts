@@ -17,6 +17,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AuthenticationStepComponent } from './authentication-step/authentication-step.component';
 import { AgreementStepComponent } from './agreement-step/agreement-step.component';
 import { CreateAccountComponent } from './create-account.component';
+import { CreateAccountRoutingModule } from './create-account-routing.module';
 import { CreateAccountService } from './create-account.service';
 import { UsernameStepComponent } from './username-step/username-step.component';
 import { SharedModule } from 'shared';
@@ -46,6 +47,7 @@ import { DoneStepComponent } from './done-step/done-step.component';
         MatStepperModule,
         ReactiveFormsModule,
         SharedModule,
+        CreateAccountRoutingModule
     ],
     providers: [
         CreateAccountService
