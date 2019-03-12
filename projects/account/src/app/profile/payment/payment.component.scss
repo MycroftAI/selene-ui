@@ -1,0 +1,39 @@
+@import "../../../../../../node_modules/@angular/material/theming";
+@import "mycroft-colors";
+@import "../../../../../../src/stylesheets/components/buttons";
+
+mat-card {
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 16px;
+    max-width: 500px;
+    padding: 32px;
+
+    mat-card-title {
+        color: mat-color($mycroft-primary, 700);
+        font-weight: bold;
+    }
+
+    mat-card-content {
+        p {
+            margin-top: 32px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 320px;
+        }
+
+        mat-card {
+            border-radius: 10px;
+            border-style: solid;
+            border-width: 1px;
+            border-color: mat-color($mycroft-accent, 200);
+            padding: 16px;
+            width: 320px;
+        }
+    }
+
+    #submit-button {
+        @include action-button-primary;
+        margin-top: 16px
+    }
+}
