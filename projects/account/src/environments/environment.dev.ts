@@ -9,5 +9,6 @@ export const environment = {
         mimic: 'https://mimic.mycroft.ai',
         translate: 'https://translate-test.mycroft.ai',
         wordPress: 'https://test.mycroft.ai'
-    }
+    },
+    stripeApiKey: 'pk_test_TqHz3ZzSHLFAjlmamQvLgQ5F'
 };

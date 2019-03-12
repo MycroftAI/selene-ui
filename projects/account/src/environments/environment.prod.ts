@@ -9,5 +9,6 @@ export const environment = {
         singleSignOn: 'https://sso.mycroft.ai',
         translate: 'https://translate.mycroft.ai',
         wordPress: 'https://mycroft.ai'
-    }
+    },
+    stripeApiKey: 'pk_live_5sXD1Bgfb9f8bSd37cQVUv64'
 };
