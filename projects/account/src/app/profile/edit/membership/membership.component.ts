@@ -1,8 +1,8 @@
 import { Component, Input, OnDestroy } from '@angular/core';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
-import { MatBottomSheet, MatBottomSheetConfig } from '@angular/material';
+import { MatBottomSheet } from '@angular/material';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 
 import { AccountMembership, MembershipType, ProfileService } from '../../profile.service';
 import { PaymentComponent } from '../../payment/payment.component';
