@@ -13,7 +13,6 @@ import {
 import { FacebookButtonComponent } from './facebook-button/facebook-button.component';
 import { GithubButtonComponent } from './github-button/github-button.component';
 import { GoogleButtonComponent } from './google-button/google-button.component';
-import { MembershipOptionsComponent } from './membership-options/membership-options.component';
 import { SharedComponent } from './shared.component';
 
 export function getAuthServiceConfigs() {
@@ -38,7 +37,6 @@ export function getAuthServiceConfigs() {
         FacebookButtonComponent,
         GithubButtonComponent,
         GoogleButtonComponent,
-        MembershipOptionsComponent,
         SharedComponent
     ],
     imports: [
@@ -52,7 +50,6 @@ export function getAuthServiceConfigs() {
         FacebookButtonComponent,
         GithubButtonComponent,
         GoogleButtonComponent,
-        MembershipOptionsComponent,
         SharedComponent
     ],
     providers: [
