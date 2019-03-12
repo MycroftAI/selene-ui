@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
 
 import {
     faBars,
