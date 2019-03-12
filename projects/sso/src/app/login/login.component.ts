@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
     public createAccountUrl: string;
 
     constructor() {
-        this.createAccountUrl = environment.mycroftUrls.account + '/create-account';
+        this.createAccountUrl = environment.mycroftUrls.account + '/new';
     }
 
     ngOnInit() {
