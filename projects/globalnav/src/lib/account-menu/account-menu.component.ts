@@ -30,7 +30,7 @@ export class AccountMenuComponent implements OnInit {
   }
 
     navigateToDevices() {
-        window.location.href =  this.mycroftUrls.account + '/device';
+        window.location.href =  this.mycroftUrls.account + '/devices';
     }
 
     navigateToLogin() {
@@ -50,6 +50,6 @@ export class AccountMenuComponent implements OnInit {
     }
 
     navigateToSkills() {
-        window.location.href =  this.mycroftUrls.account + '/skill';
+        window.location.href =  this.mycroftUrls.account + '/skills';
     }
 }
