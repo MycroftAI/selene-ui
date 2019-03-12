@@ -1,5 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { MatBottomSheet } from '@angular/material';
+
+import { MembershipType, ProfileService } from '../../profile.service';
+import { PaymentComponent } from '../../payment/payment.component';
 
 @Component({
     selector: 'account-support-step',
@@ -7,11 +11,12 @@ import { FormGroup } from '@angular/forms';
     styleUrls: ['./support-step.component.scss']
 })
 export class SupportStepComponent implements OnInit {
+    @Input() membershipTypes: MembershipType[];
     @Input() newAcctForm: FormGroup;
     public openDatasetDescription: string[];
     public membershipDescription: string[];
 
-    constructor() { }
+    constructor(public bottomSheet: MatBottomSheet, private profileService: ProfileService) { }
 
     ngOnInit() {
         this.openDatasetDescription = [
@@ -50,7 +55,47 @@ export class SupportStepComponent implements OnInit {
         this.newAcctForm.patchValue({support: {openDataset: false}});
     }
 
-    onMembershipSelection(selectedMembership: string) {
-        this.newAcctForm.patchValue({support: {membership: selectedMembership}});
+    onMembershipSelection(membershipType: string) {
+        const selectedMembership = this.membershipTypes.find(
+            (membership) => membership.type === membershipType
+        );
+        if (selectedMembership) {
+            this.openBottomSheet(selectedMembership.type);
+        } else {
+            this.newAcctForm.patchValue({support: {membership: null}});
+        }
     }
+
+    openBottomSheet(selectedMembership: string) {
+        const bottomSheetConfig = {
+            data: {newAccount: true},
+            disableClose: true,
+            restoreFocus: true
+        };
+        const bottomSheetRef = this.bottomSheet.open(PaymentComponent, bottomSheetConfig);
+        bottomSheetRef.afterDismissed().subscribe(
+            (dismissValue) => {
+                if (dismissValue === 'cancel') {
+                    this.profileService.selectedMembershipType.next('Maybe Later');
+                } else {
+                    this.updateNewAccountForm(selectedMembership, dismissValue);
+                }
+            }
+        );
+    }
+
+    updateNewAccountForm(selectedMembership: string, stripeToken: string) {
+        console.log(stripeToken);
+        this.newAcctForm.patchValue(
+            {
+                support: {
+                    membership: selectedMembership,
+                    paymentMethod: 'Stripe',
+                    paymentToken: stripeToken
+                }
+            }
+        );
+        console.log(this.newAcctForm);
+    }
+
 }

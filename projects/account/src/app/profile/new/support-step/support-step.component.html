@@ -3,7 +3,12 @@
     <p *ngFor="let paragraph of membershipDescription" class="mat-body">
         {{paragraph}}
     </p>
-    <shared-membership-options (selectedMembership)="onMembershipSelection($event)"></shared-membership-options>
+    <account-membership-options
+            [accountMembership]="accountMembership"
+            [membershipTypes]="membershipTypes"
+            (membershipChange)="onMembershipSelection($event)"
+    >
+    </account-membership-options>
 </mat-card>
 
 <mat-card class="mat-elevation-z0">

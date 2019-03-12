@@ -53,7 +53,12 @@ export class PaymentComponent implements OnInit {
         this.stripeService.createToken(this.card.getCard(), {}).subscribe(
             result => {
                 if (result.token) {
-                    this.updateAccount(result.token.id);
+                    const configData = this.bottomSheetRef.containerInstance.bottomSheetConfig.data;
+                    if (configData.newAccount) {
+                        this.showStripeSuccess(result.token.id);
+                    } else {
+                        this.updateAccount(result.token.id);
+                    }
                 } else if (result.error) {
                     this.showStripeError(result.error.message);
                 }
@@ -77,11 +82,11 @@ export class PaymentComponent implements OnInit {
             }
         };
         this.profileService.updateAccount(newMembership).subscribe(
-            () => { this.showStripeSuccess(); }
+            () => { this.showStripeSuccess(stripeToken); }
         );
     }
 
-    showStripeSuccess() {
+    showStripeSuccess(stripeToken: string) {
         this.dialogRef.close();
         const paymentSnackbarRef = this.paymentSnackbar.open(
             'Card verification successful',
@@ -89,7 +94,7 @@ export class PaymentComponent implements OnInit {
             {panelClass: 'mycroft-no-action-snackbar', duration: twoSeconds}
         );
         paymentSnackbarRef.afterDismissed().subscribe(
-            () => { this.bottomSheetRef.dismiss(); }
+            () => { this.bottomSheetRef.dismiss(stripeToken); }
         );
     }
 

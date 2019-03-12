@@ -4,7 +4,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
-import { CreateAccountService } from '../create-account.service';
+import { ProfileService } from '../../profile.service';
 
 
 @Component({
@@ -19,11 +19,11 @@ export class AgreementStepComponent implements OnInit {
     @Input() newAcctForm: FormGroup;
     @Input() step: string;
 
-    constructor(private newAcctService: CreateAccountService, private sanitizer: DomSanitizer) {
+    constructor(private profileService: ProfileService, private sanitizer: DomSanitizer) {
     }
 
     ngOnInit() {
-        this.newAcctService.getAgreement(this.step).subscribe(
+        this.profileService.getAgreement(this.step).subscribe(
             (response) => { this.agreementContent = this.sanitizer.bypassSecurityTrustHtml(response.content); }
         );
     }

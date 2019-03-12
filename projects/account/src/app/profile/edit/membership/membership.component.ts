@@ -53,13 +53,14 @@ export class MembershipComponent implements OnDestroy {
 
     openBottomSheet() {
         const bottomSheetConfig = {
+            data: {newAccount: false},
             disableClose: true,
             restoreFocus: true
         };
         const bottomSheetRef = this.bottomSheet.open(PaymentComponent, bottomSheetConfig);
         bottomSheetRef.afterDismissed().subscribe(
             (dismissValue) => {
-                if (dismissValue) {
+                if (dismissValue === 'cancel') {
                     this.profileService.setSelectedMembershipType(
                         this.accountMembership,
                         this.membershipTypes

@@ -50,7 +50,7 @@
         </mat-step>
 
         <mat-step label="Support Mycroft" [stepControl]="supportControl">
-            <account-support-step [newAcctForm]="newAcctForm"></account-support-step>
+            <account-support-step [membershipTypes]="membershipTypes" [newAcctForm]="newAcctForm"></account-support-step>
             <div fxLayout="row" fxLayoutAlign="end">
                 <button mat-button matStepperNext  type="button" [disabled]="!supportControl.valid">
                     Next
@@ -112,7 +112,7 @@
         </mat-step>
 
         <mat-step label="Support Mycroft" [stepControl]="supportControl">
-            <account-support-step [newAcctForm]="newAcctForm"></account-support-step>
+            <account-support-step [membershipTypes]="membershipTypes" [newAcctForm]="newAcctForm"></account-support-step>
             <div fxLayout="row" fxLayoutAlign="end">
                 <button mat-button matStepperNext  type="button" [disabled]="!supportControl.valid">
                     Next
