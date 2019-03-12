@@ -21,6 +21,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AttributeComponent } from './attribute/attribute.component';
 import { DeviceComponent } from './device.component';
 import { DeviceListComponent } from './device-list/device-list.component';
+import { DeviceRoutingModule } from './device-routing.module';
 import { DeviceService } from './device.service';
 import { GeographyComponent } from './attribute/geography/geography.component';
 import { GroupComponent } from './attribute/group/group.component';
@@ -61,7 +62,8 @@ import { WakeWordComponent } from './attribute/wake-word/wake-word.component';
         MatInputModule,
         MatRadioModule,
         MatTabsModule,
-        MatToolbarModule
+        MatToolbarModule,
+        DeviceRoutingModule
     ],
     providers: [
         DeviceService
