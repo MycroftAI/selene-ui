@@ -17,6 +17,7 @@ import { SkillComponent } from './skill.component';
 import { SettingFieldComponent } from './setting-field/setting-field.component';
 import { SettingSectionComponent } from './setting-section/setting-section.component';
 import { SkillPanelComponent } from './skill-panel/skill-panel.component';
+import { SkillRoutingModule } from './skill-routing.module';
 
 @NgModule({
     declarations: [
@@ -35,7 +36,8 @@ import { SkillPanelComponent } from './skill-panel/skill-panel.component';
         MatExpansionModule,
         MatInputModule,
         MatSelectModule,
-        MatTabsModule
+        MatTabsModule,
+        SkillRoutingModule
     ]
 })
 export class SkillModule { }
