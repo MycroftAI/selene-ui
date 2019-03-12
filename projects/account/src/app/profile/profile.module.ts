@@ -16,14 +16,14 @@ import {
 
 import { NgxStripeModule } from 'ngx-stripe';
 
-import { AgreementsComponent } from './agreements/agreements.component';
-import { DeleteComponent } from './delete/delete.component';
+import { AgreementsComponent } from './edit/agreements/agreements.component';
+import { DeleteComponent } from './edit/delete/delete.component';
+import { EditComponent } from './edit/edit.component';
 import { environment} from '../../environments/environment';
-import { LoginComponent } from './login/login.component';
-import { MembershipComponent } from './membership/membership.component';
+import { LoginComponent } from './edit/login/login.component';
+import { MembershipComponent } from './edit/membership/membership.component';
 import { MembershipOptionsComponent } from './membership-options/membership-options.component';
 import { PaymentComponent } from './payment/payment.component';
-import { ProfileComponent } from './profile.component';
 import { ProfileService } from './profile.service';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { VerifyCardDialogComponent } from './payment/verify-card-dialog.component';
@@ -32,15 +32,15 @@ import { VerifyCardDialogComponent } from './payment/verify-card-dialog.componen
     declarations: [
         AgreementsComponent,
         DeleteComponent,
+        EditComponent,
         LoginComponent,
         MembershipComponent,
         MembershipOptionsComponent,
         PaymentComponent,
-        ProfileComponent,
         VerifyCardDialogComponent
     ],
     entryComponents: [
-        LoginComponent,
+        EditComponent,
         PaymentComponent,
         VerifyCardDialogComponent
     ],

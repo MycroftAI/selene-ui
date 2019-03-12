@@ -1,8 +1,4 @@
-@import "~@angular/material/theming";
-@import "mycroft-colors";
-@import "~src/stylesheets/components/buttons";
-@import "~src/stylesheets/components/cards";
-
+@import "../../../../../../../src/stylesheets/components/cards";
 
 mat-card {
     @include section-card;
@@ -22,12 +18,9 @@ mat-card {
             min-width: 200px;
         }
 
-        button {
-            @include action-button-primary;
-            margin: 8px;
-        }
+    //    button {
+    //        @include action-button-primary;
+    //        margin: 8px;
+    //    }
     }
 }
-
-
-

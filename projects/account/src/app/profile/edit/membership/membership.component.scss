@@ -1,5 +1,5 @@
-@import "~src/stylesheets/components/buttons";
-@import "~src/stylesheets/components/cards";
+@import "../../../../../../../src/stylesheets/components/buttons";
+@import "../../../../../../../src/stylesheets/components/cards";
 
 mat-card {
     @include section-card;

@@ -3,12 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AccountResolverService } from './account-resolver.service';
 import { MembershipResolverService } from './membership-resolver.service';
-import { ProfileComponent } from './profile.component';
+import { EditComponent } from './edit/edit.component';
 
 const profileRoutes: Routes = [
     {
         path: 'profile',
-        component: ProfileComponent,
+        component: EditComponent,
         resolve: {
             account: AccountResolverService,
             membershipTypes: MembershipResolverService

@@ -4,11 +4,11 @@ import { MatBottomSheet, MatBottomSheetConfig } from '@angular/material';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Subscription } from 'rxjs';
 
-import { AccountMembership, MembershipType, ProfileService } from '../profile.service';
-import { PaymentComponent } from '../payment/payment.component';
+import { AccountMembership, MembershipType, ProfileService } from '../../profile.service';
+import { PaymentComponent } from '../../payment/payment.component';
 
 @Component({
-    selector: 'account-membership',
+    selector: 'account-membership-edit',
     templateUrl: './membership.component.html',
     styleUrls: ['./membership.component.scss']
 })

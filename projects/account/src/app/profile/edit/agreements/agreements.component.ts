@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { Account } from '../profile.service';
+import { Account } from '../../profile.service';
 
 @Component({
-    selector: 'account-agreements',
+    selector: 'account-agreements-edit',
     templateUrl: './agreements.component.html',
     styleUrls: ['./agreements.component.scss']
 })

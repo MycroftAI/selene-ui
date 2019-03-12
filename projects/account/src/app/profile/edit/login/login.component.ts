@@ -2,10 +2,10 @@ import { Component, Input } from '@angular/core';
 
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 
-import { Account } from '../profile.service';
+import { Account } from '../../profile.service';
 
 @Component({
-    selector: 'account-login',
+    selector: 'account-login-edit',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss']
 })
