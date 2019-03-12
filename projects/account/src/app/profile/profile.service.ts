@@ -1,31 +1,30 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Observable, throwError } from 'rxjs';
-
-import { environment } from '../../environments/environment';
+import { Observable, Subject, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 const accountUrl = '/api/account';
+import { environment } from '../../environments/environment';
 const membershipTypesUrl = '/api/memberships';
 
-export interface Agreement {
+export interface AccountAgreement {
     type: string;
     acceptDate: string;
 }
 
-export interface Membership {
+export interface AccountMembership {
     type: string;
-    duration: string;
-    paymentAccountId: string;
+    duration?: string;
+    paymentAccountId?: string;
 }
 
 export interface Account {
     id: string;
     emailAddress: string;
     username: string;
-    membership: Membership;
-    agreements: Agreement[];
+    membership: AccountMembership;
+    agreements: AccountAgreement[];
 }
 
 export interface MembershipType {
@@ -37,6 +36,8 @@ export interface MembershipType {
 
 @Injectable()
 export class ProfileService {
+    public selectedMembershipType = new Subject<string>();
+
     constructor(private http: HttpClient) {
     }
 
@@ -60,7 +61,6 @@ export class ProfileService {
         'Something bad happened; please try again later.');
     }
 
-
     /**
      * API call to retrieve account info to display.
      */
@@ -73,4 +73,23 @@ export class ProfileService {
     getMembershipTypes(): Observable<MembershipType[]> {
         return this.http.get<MembershipType[]>(membershipTypesUrl);
     }
+
+    updateAccount(accountChanges: any) {
+        return this.http.patch(accountUrl, {accountChanges}).pipe(
+            catchError(this.handleError)
+        );
+    }
+
+    setSelectedMembershipType(accountMembership: AccountMembership, membershipTypes: MembershipType[]) {
+        let selectedMembership: MembershipType;
+        if (accountMembership) {
+            selectedMembership = membershipTypes.find(
+            (membershipType) => membershipType.type === accountMembership.type
+            );
+            this.selectedMembershipType.next(selectedMembership.type);
+        } else {
+            this.selectedMembershipType.next('Maybe Later');
+        }
+    }
+
 }
