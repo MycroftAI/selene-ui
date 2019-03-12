@@ -1,7 +1,6 @@
 import { Component, Input, OnDestroy } from '@angular/core';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { MatBottomSheet } from '@angular/material';
-import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { AccountMembership, MembershipType, ProfileService } from '../../profile.service';
@@ -22,7 +21,6 @@ export class MembershipComponent implements OnDestroy {
         public bottomSheet: MatBottomSheet,
         public mediaObserver: MediaObserver,
         private profileService: ProfileService,
-        private router: Router
     ) {
         this.mediaWatcher = mediaObserver.media$.subscribe(
             (change: MediaChange) => {
