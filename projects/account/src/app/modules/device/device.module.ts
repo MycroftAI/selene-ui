@@ -20,7 +20,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AttributeComponent } from './attribute/attribute.component';
 import { DeviceComponent } from './device.component';
-import { DeviceListComponent } from './device-list/device-list.component';
 import { DeviceRoutingModule } from './device-routing.module';
 import { DeviceService } from '../../core/http/device.service';
 import { GeographyComponent } from './attribute/geography/geography.component';
@@ -32,6 +31,8 @@ import { VoiceComponent } from './attribute/voice/voice.component';
 import { WakeWordComponent } from './attribute/wake-word/wake-word.component';
 import { DeviceAddComponent } from './device-add/device-add.component';
 import { PairingComponent } from './device-add/pairing/pairing.component';
+import { DeviceListComponent } from './device-list/device-list.component';
+import { DeviceConfigComponent } from './device-list/device-config/device-config.component';
 import { DeviceLocationComponent } from './device-list/device-location/device-location.component';
 
 @NgModule({
@@ -48,6 +49,7 @@ import { DeviceLocationComponent } from './device-list/device-location/device-lo
         DeviceAddComponent,
         PairingComponent,
         DeviceLocationComponent,
+        DeviceConfigComponent,
     ],
     entryComponents: [
         DeviceAddComponent,

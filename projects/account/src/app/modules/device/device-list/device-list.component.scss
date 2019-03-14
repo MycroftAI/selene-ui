@@ -1,6 +1,6 @@
-@import '../../../../../../../node_modules/@angular/material/theming';
-@import '../../../../../../../src/stylesheets/mycroft-colors';
-@import '../../../../../../../src/stylesheets/components/buttons';
+@import "~@angular/material/theming";
+@import '~src/stylesheets/mycroft-colors';
+@import '~src/stylesheets/components/buttons';
 
 @mixin panel-defaults {
     border-radius: 12px;
@@ -43,10 +43,6 @@ mat-card {
         margin-right: 8px;
     }
 
-    mat-card-content {
-        margin-top: 32px;
-    }
-
     mat-card-title {
         color: mat-color($mycroft-primary, 700);
         font-weight: bold;
@@ -62,47 +58,8 @@ mat-card {
         width: 90%;
     }
 
-    mat-label {
-        color: mat-color($mycroft-primary);
+    mat-tab-group {
+        height: 280px;
     }
 
-}
-
-mat-expansion-panel {
-    @include panel-defaults;
-    margin-bottom: 16px;
-
-    button {
-        margin-left: 16px;
-    }
-
-    fa-icon {
-        padding-right: 10px
-    }
-
-    img {
-        height: 60px;
-    }
-
-    mat-form-field {
-        margin-bottom: 20px;
-        max-width: 320px;
-    }
-
-    .mat-body-primary {
-        color: mat-color($mycroft-primary);
-        margin-bottom: 0;
-    }
-
-    .mat-h2 {
-        margin-bottom: 0;
-    }
-
-    .mat-subheader {
-        padding: 0;
-    }
-
-    .static-data {
-        margin-top: 16px;
-    }
 }

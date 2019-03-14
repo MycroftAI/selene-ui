@@ -5,42 +5,24 @@
     </div>
 
     <div fxLayout="row wrap" fxLayoutGap.gt-xs="16px">
-        <mat-card *ngFor="let device of devices$ | async">
+        <mat-card *ngFor="let device of devices">
             <mat-card-title fxLayout="row" fxLayoutAlign="start center">
                 <img [src]="getDeviceIcon(device)"/>
                 {{device.name}}
             </mat-card-title>
-            <mat-divider></mat-divider>
-            <mat-card-content fxLayout="row wrap" fxLayoutAlign="space-between" fxLayoutGap="16px">
-                <mat-form-field fxFlex="50">
-                    <mat-label>Location</mat-label>
-                    <input matInput readonly type="text" value="{{device.geography.name}}">
-                </mat-form-field>
-                <mat-form-field fxFlex="40">
-                    <mat-label>Platform</mat-label>
-                    <input matInput readonly type="text" value="{{getPlatform(device)}}">
-                </mat-form-field>
-                <mat-form-field fxFlex="50">
-                    <mat-label>Placement</mat-label>
-                    <input matInput readonly type="text" value="{{device.placement.name}}">
-                </mat-form-field>
-                <mat-form-field fxFlex="40">
-                    <mat-label>Core Version</mat-label>
-                    <input matInput readonly type="text" value="{{device.coreVersion}}">
-                </mat-form-field>
-                <mat-form-field fxFlex="50">
-                    <mat-label>Voice</mat-label>
-                    <input matInput readonly type="text" value="{{device.voice.name}}">
-                </mat-form-field>
-                <mat-form-field fxFlex="40">
-                    <mat-label>Enclosure Version</mat-label>
-                    <input matInput readonly type="text" value="{{device.enclosureVersion}}">
-                </mat-form-field>
-                <mat-form-field fxFlex="50">
-                    <mat-label>Wake Word</mat-label>
-                    <input matInput readonly type="text" value="{{device.wakeWord.name}}">
-                </mat-form-field>
-            </mat-card-content>
+            <mat-tab-group>
+                <mat-tab label="Configuration">
+                    <account-device-config [device]="device"></account-device-config>
+                </mat-tab>
+
+                <mat-tab label="Location">
+                    <account-device-location
+                            [geography]="device.geography"
+                            [placement]="device.placement.name"
+                    >
+                    </account-device-location>
+               </mat-tab>
+            </mat-tab-group>
             <mat-card-actions>
                 <button mat-flat-button color="warn" (click)="onRemovalClick(device)">
                     REMOVE
