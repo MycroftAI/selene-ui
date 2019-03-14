@@ -1,18 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatFormFieldModule, MatInputModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {
+    MatButtonToggleModule,
+    MatFormFieldModule,
+    MatInputModule
+} from '@angular/material';
 
 import { DisplayFieldComponent } from './components/display-field/display-field.component';
+import { OptionButtonsComponent } from './components/option-buttons/option-buttons.component';
 
 @NgModule({
     declarations: [
-        DisplayFieldComponent
+        DisplayFieldComponent,
+        OptionButtonsComponent
     ],
     exports: [
-        DisplayFieldComponent
+        DisplayFieldComponent,
+        OptionButtonsComponent
     ],
     imports: [
         CommonModule,
+        FlexLayoutModule,
+        MatButtonToggleModule,
         MatFormFieldModule,
         MatInputModule
     ]

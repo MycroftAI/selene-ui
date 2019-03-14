@@ -1,0 +1,11 @@
+@import "~src/stylesheets/components/buttons";
+
+.mat-subheading-2 {
+    margin-bottom: 8px;
+    margin-top: 16px;
+}
+
+mat-button-toggle-group {
+    @include options-button-group;
+}
+

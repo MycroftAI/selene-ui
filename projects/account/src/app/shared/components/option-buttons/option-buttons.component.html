@@ -1,0 +1,15 @@
+<div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="center">
+    <span [ngStyle]="{'width': config.labelWidth}" class="mat-subheading-2">
+        {{config.optionName}}
+    </span>
+    <mat-button-toggle-group
+            [value]="selectedOption"
+            (change)="changeOption($event)"
+    >
+        <ng-container *ngFor="let option of config.options">
+            <mat-button-toggle [ngStyle]="{'width': config.buttonWidth}" [value]="option">
+                {{option}}
+            </mat-button-toggle>
+        </ng-container>
+    </mat-button-toggle-group>
+</div>
