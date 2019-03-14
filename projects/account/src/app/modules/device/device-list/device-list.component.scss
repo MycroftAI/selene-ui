@@ -1,6 +1,6 @@
-@import '~@angular/material/theming';
-@import '~src/stylesheets/mycroft-colors';
-@import '~src/stylesheets/components/buttons';
+@import '../../../../../../../node_modules/@angular/material/theming';
+@import '../../../../../../../src/stylesheets/mycroft-colors';
+@import '../../../../../../../src/stylesheets/components/buttons';
 
 @mixin panel-defaults {
     border-radius: 12px;

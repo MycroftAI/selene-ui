@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { DeviceAttribute, DeviceService} from '../../device.service';
+import { DeviceAttribute, DeviceService} from '../../../../core/http/device.service';
 
 @Component({
     selector: 'account-device-group',

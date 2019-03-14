@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { faSave, faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 
-import { DeviceService, Device } from '../device.service';
+import { DeviceService, Device } from '../../../core/http/device.service';
 import { RemoveComponent } from '../remove/remove.component';
 
 @Component({

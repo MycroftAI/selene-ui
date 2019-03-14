@@ -1,6 +1,11 @@
-@import "~src/stylesheets/components/buttons";
-@import "~src/stylesheets/components/cards";
+@import "../../../../../../../node_modules/@angular/material/theming";
+@import "mycroft-colors";
+@import "../../../../../../../src/stylesheets/components/buttons";
+@import "../../../../../../../src/stylesheets/components/cards";
 
+.mat-h1 {
+    color: mat-color($mycroft-primary)
+}
 mat-card {
     @include section-card;
     max-width: 700px;

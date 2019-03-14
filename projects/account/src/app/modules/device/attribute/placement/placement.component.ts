@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { DeviceAttribute, DeviceService} from '../../device.service';
+import { DeviceAttribute, DeviceService} from '../../../../core/http/device.service';
 
 
 @Component({
@@ -11,7 +11,7 @@ import { DeviceAttribute, DeviceService} from '../../device.service';
 export class PlacementComponent implements OnInit {
     public devicePlacements: DeviceAttribute[];
     public dialogInstructions = 'You can optionally indicate where a device is ' +
-        'placed within a location.  Field is informational only.';
+        'placed within a geography.  Field is informational only.';
 
     constructor(private deviceService: DeviceService) {
     }

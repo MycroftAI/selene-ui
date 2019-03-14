@@ -1,6 +1,6 @@
-@import '~@angular/material/theming';
-@import '~src/stylesheets/mycroft-colors';
-@import '~src/stylesheets/components/buttons';
+@import '../../../../../../../node_modules/@angular/material/theming';
+@import '../../../../../../../src/stylesheets/mycroft-colors';
+@import '../../../../../../../src/stylesheets/components/buttons';
 
 mat-expansion-panel {
     margin-bottom: 16px;

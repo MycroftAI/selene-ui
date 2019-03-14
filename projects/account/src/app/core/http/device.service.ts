@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 const deviceUrl = '/api/devices';
 const geographyUrl = 'api/geographies';
@@ -13,11 +14,19 @@ export interface DeviceAttribute {
     userDefined: boolean;
 }
 
+export interface Geography {
+    latitude: number;
+    longitude: number;
+    country: string;
+    region: string;
+    city: string;
+    timezone: string;
+}
 export interface Device {
     coreVersion: string;
     enclosureVersion: string;
     id: string;
-    location: DeviceAttribute;
+    geography: DeviceAttribute;
     name: string;
     placement: DeviceAttribute;
     platform: string;
@@ -25,9 +34,9 @@ export interface Device {
     wakeWord: DeviceAttribute;
 }
 
-export interface AccountPrefrences {
+export interface AccountPreferences {
     dateFormat: string;
-    geography: DeviceAttribute;
+    geography: Geography;
     location: DeviceAttribute;
     measurementSystem: string;
     timeFormat: string;
@@ -44,7 +53,7 @@ export class DeviceService {
             coreVersion: '18.08',
             enclosureVersion: '1.2.3',
             id:  'abc-def-ghi',
-            location: {id: '1a2b-3c4d-5e6f', name: 'United States, 64101, CST', userDefined: false},
+            geography: {id: '1a2b-3c4d-5e6f', name: 'United States, 64101, CST', userDefined: false},
             name: 'Mark',
             placement: {id: 'bbb-bbb-bbb', name: 'Living Room', userDefined: false},
             platform: 'mark-one',
@@ -55,7 +64,7 @@ export class DeviceService {
             coreVersion: '18.08',
             enclosureVersion: '1.2.3',
             id:  'bcd-efg-hij',
-            location: {id: '1a2b-3c4d-5e6f', name: 'United States, 64101, CST', userDefined: false},
+            geography: {id: '1a2b-3c4d-5e6f', name: 'United States, 64101, CST', userDefined: false},
             name: 'Marky Mark',
             placement: {id: 'bbb-bbb-bbb', name: 'Kitchen', userDefined: true},
             platform: 'mark-two',
@@ -66,7 +75,7 @@ export class DeviceService {
             coreVersion: '18.08',
             enclosureVersion: '1.2.3',
             id:  'cde-fgh-ijk',
-            location: {id: '1a2b-3c4d-5e6f', name: 'United States, 64101, CST', userDefined: false},
+            geography: {id: '1a2b-3c4d-5e6f', name: 'United States, 64101, CST', userDefined: false},
             name: 'American Pie',
             placement: {id: 'ddd-ddd-ddd', name: 'Bedroom', userDefined: true},
             platform: 'picroft',
@@ -77,7 +86,7 @@ export class DeviceService {
             coreVersion: '18.08',
             enclosureVersion: '1.2.3',
             id:  'def-ghi-jkl',
-            location: {id: '1a2b-3c4d-5e6f', name: 'United States, 64101, CST', userDefined: false},
+            geography: {id: '1a2b-3c4d-5e6f', name: 'United States, 64101, CST', userDefined: false},
             name: 'Kappa Delta Epsilon',
             placement: {id: 'fff-fff-fff', name: 'Kitchen', userDefined: true},
             platform: 'kde',
@@ -93,18 +102,7 @@ export class DeviceService {
         { id: '2', name: 'Living Room', userDefined: false}
     ];
 
-    public deviceGeographies: DeviceAttribute[] = [
-        {id: '1a2b-3c4d-5e6f', name: 'United States, 64101, CST', userDefined: false},
-        {id: 'a1b2-c3d4-e5f6', name: 'United Kingdom, ABCDE, BST', userDefined: false}
-    ];
-
-    public deviceVoices: DeviceAttribute[] = [
-        {id: '1a2b-3c4d-5e6f', name: 'British Male', userDefined: true},
-        {id: 'a1b2-c3d4-e5f6', name: 'American Female', userDefined: true},
-        {id: 'abcd-efgh-ijkl', name: 'American Male', userDefined: true}
-    ];
-
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private formBuilder: FormBuilder) { }
 
     getDevices() {
         return this.http.get<Device[]>(deviceUrl);
@@ -115,18 +113,54 @@ export class DeviceService {
     }
 
     getAccountPreferences() {
-        return this.http.get<AccountPrefrences>(preferencesUrl);
+        return this.http.get<AccountPreferences>(preferencesUrl);
     }
 
     getGeographies() {
         return this.http.get<DeviceAttribute[]>(geographyUrl);
     }
+
     getVoices() {
         return this.http.get<DeviceAttribute[]>(voicesUrl);
     }
 
     getWakeWords() {
         return this.http.get<DeviceAttribute[]>(wakeWordUrl);
+    }
+
+    /**
+     * Building this form object here because it is used in device setup and preference editing
+     */
+    buildPreferencesForm(preferences: AccountPreferences): FormGroup {
+        const geographyGroup = this.formBuilder.group(
+            {
+                country: [preferences ? preferences.geography.country : null],
+                region: [preferences ? preferences.geography.region : null],
+                city: [preferences ? preferences.geography.city : null],
+                timezone: [preferences ? preferences.geography.timezone : null],
+                latitude: [preferences ? preferences.geography.latitude : null],
+                longitude: [preferences ? preferences.geography.longitude : null]
+            }
+        );
+        return this.formBuilder.group(
+            {
+                dateFormat: [
+                    preferences ? preferences.dateFormat : null,
+                    Validators.required
+                ],
+                measurementSystem: [
+                    preferences ? preferences.measurementSystem : null,
+                    Validators.required
+                ],
+                timeFormat: [
+                    preferences ? preferences.timeFormat : null,
+                    Validators.required
+                ],
+                geography: geographyGroup,
+                voice: [preferences ? preferences.voice : null],
+                wakeWord: [preferences ? preferences.wakeWord : null]
+            }
+        );
     }
 
 }
