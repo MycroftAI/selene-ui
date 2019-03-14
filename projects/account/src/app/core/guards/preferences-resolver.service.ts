@@ -6,7 +6,8 @@ import {
 } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { AccountPreferences, DeviceService } from '../http/device.service';
+import { AccountPreferences } from '../../shared/models/preferences.model';
+import { DeviceService } from '../http/device.service';
 
 @Injectable({
     providedIn: 'root',
