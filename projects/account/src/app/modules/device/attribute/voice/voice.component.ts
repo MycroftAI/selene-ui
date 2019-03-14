@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { DeviceAttribute, DeviceService} from '../../../../core/http/device.service';
+import { DeviceAttribute } from '../../../../shared/models/deviceAttribute.model';
+import { DeviceService } from '../../../../core/http/device.service';
 
 
 @Component({

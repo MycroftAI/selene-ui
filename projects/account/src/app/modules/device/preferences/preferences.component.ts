@@ -1,8 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { AbstractControl, Form, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { FormGroup } from '@angular/forms';
 
-import { AccountPreferences, DeviceService } from '../../../core/http/device.service';
+import { AccountPreferences } from '../../../shared/models/preferences.model';
 import { MatButtonToggleChange } from '@angular/material';
 
 @Component({
@@ -16,10 +15,7 @@ export class PreferencesComponent implements OnInit {
     @Input() preferences: AccountPreferences;
     @Input() preferencesForm: FormGroup;
 
-    constructor(
-            private deviceService: DeviceService,
-            private route: ActivatedRoute,
-    ) { }
+    constructor() { }
 
     ngOnInit() {
         this.buildAdvancedSettingsDesc();

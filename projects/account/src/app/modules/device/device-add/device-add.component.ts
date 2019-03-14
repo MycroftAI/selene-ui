@@ -11,7 +11,8 @@ import { ActivatedRoute } from '@angular/router';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
 
-import { AccountPreferences, DeviceService } from '../../../core/http/device.service';
+import { AccountPreferences } from '../../../shared/models/preferences.model';
+import { DeviceService } from '../../../core/http/device.service';
 
 @Component({
   selector: 'account-device-add',

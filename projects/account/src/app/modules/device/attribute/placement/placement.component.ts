@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { DeviceAttribute, DeviceService} from '../../../../core/http/device.service';
+import { DeviceAttribute } from '../../../../shared/models/deviceAttribute.model';
+import { DeviceService} from '../../../../core/http/device.service';
 
 
 @Component({

@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
-import { DeviceAttribute } from '../../../core/http/device.service';
+import { DeviceAttribute } from '../../../shared/models/deviceAttribute.model';
 
 
 @Component({

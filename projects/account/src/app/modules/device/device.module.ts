@@ -7,7 +7,6 @@ import {
     MatButtonToggleModule,
     MatCardModule,
     MatDialogModule,
-    MatDividerModule,
     MatExpansionModule,
     MatFormFieldModule,
     MatInputModule,
@@ -26,12 +25,14 @@ import { DeviceRoutingModule } from './device-routing.module';
 import { DeviceService } from '../../core/http/device.service';
 import { GeographyComponent } from './attribute/geography/geography.component';
 import { PlacementComponent } from './attribute/placement/placement.component';
-import { RemoveComponent } from './remove/remove.component';
-import { VoiceComponent } from './attribute/voice/voice.component';
 import { PreferencesComponent } from './preferences/preferences.component';
+import { RemoveComponent } from './remove/remove.component';
+import { SharedModule } from '../../shared/shared.module';
+import { VoiceComponent } from './attribute/voice/voice.component';
 import { WakeWordComponent } from './attribute/wake-word/wake-word.component';
 import { DeviceAddComponent } from './device-add/device-add.component';
 import { PairingComponent } from './device-add/pairing/pairing.component';
+import { DeviceLocationComponent } from './device-list/device-location/device-location.component';
 
 @NgModule({
     declarations: [
@@ -46,6 +47,7 @@ import { PairingComponent } from './device-add/pairing/pairing.component';
         WakeWordComponent,
         DeviceAddComponent,
         PairingComponent,
+        DeviceLocationComponent,
     ],
     entryComponents: [
         DeviceAddComponent,
@@ -61,7 +63,6 @@ import { PairingComponent } from './device-add/pairing/pairing.component';
         MatButtonToggleModule,
         MatCardModule,
         MatDialogModule,
-        MatDividerModule,
         MatExpansionModule,
         MatFormFieldModule,
         MatInputModule,
@@ -69,6 +70,7 @@ import { PairingComponent } from './device-add/pairing/pairing.component';
         MatStepperModule,
         MatTabsModule,
         MatToolbarModule,
+        SharedModule,
         DeviceRoutingModule
     ],
     providers: [
