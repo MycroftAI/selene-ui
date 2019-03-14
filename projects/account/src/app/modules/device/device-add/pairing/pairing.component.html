@@ -1,0 +1,10 @@
+<mat-card class="mat-elevation-z0">
+    <mat-card-title>Verify your pairing code</mat-card-title>
+    <mat-card-content>
+        <p>Enter the code spoken by your device:</p>
+        <mat-form-field [appearance]="'outline'">
+            <mat-label>Pairing Code</mat-label>
+            <input matInput required type="text" [formControl]="pairingCodeControl">
+        </mat-form-field>
+    </mat-card-content>
+</mat-card>

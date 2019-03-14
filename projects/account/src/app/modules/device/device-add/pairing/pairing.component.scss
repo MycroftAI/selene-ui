@@ -1,0 +1,8 @@
+@import "../../../../../../../../node_modules/@angular/material/theming";
+@import "mycroft-colors";
+
+mat-card {
+    mat-card-title {
+        color: mat-color($mycroft-primary)
+    }
+}
