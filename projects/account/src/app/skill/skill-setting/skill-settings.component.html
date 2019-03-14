@@ -23,7 +23,7 @@
         <mat-tab-group>
             <mat-tab
                     *ngFor="let settingsGroup of settings"
-                    label="Group {{getGroupNumber(settingsGroup, settings)}}"
+                    label="Version {{getGroupNumber(settingsGroup, settings)}}"
             >
                 <h2 class="mat-h2">Devices</h2>
                 <p class="mat-body">{{settingsGroup.devices.join(', ')}}</p>
