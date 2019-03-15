@@ -1,6 +1,6 @@
 
     <!-- Show a horizontal stepper on larger devices -->
-    <mat-horizontal-stepper *ngIf="!alignVertical" labelPosition="bottom" [linear]="true">
+    <mat-horizontal-stepper *ngIf="!alignVertical" labelPosition="bottom">
         <!-- Use font awesome icons in the stepper to indicate progress -->
         <ng-template matStepperIcon="done">
             <fa-icon [icon]="stepDoneIcon"></fa-icon>
@@ -31,6 +31,19 @@
             </form>
         </mat-step>
 
+        <mat-step *ngIf="!preferences" label="Defaults" [stepControl]="defaultsForm">
+            <form [formGroup]="defaultsForm" (ngSubmit)="onDefaultsSubmit()">
+                <account-device-defaults
+                        [defaultsForm]="defaultsForm"
+                        [deviceSetup]="true"
+                >
+                </account-device-defaults>
+                <button mat-button matStepperNext [disabled]="!defaultsForm.valid">
+                    Next
+                </button>
+            </form>
+        </mat-step>
+
         <!--<mat-step label="Device" [stepControl]="preferencesForm">-->
             <!--<form [formGroup]="preferencesForm" (ngSubmit)="onPreferencesSubmit()">-->
                 <!--<account-device-preferences-->
@@ -46,7 +59,7 @@
     </mat-horizontal-stepper>
 
     <!-- Show a vertical stepper on smaller devices -->
-    <mat-vertical-stepper *ngIf="alignVertical" [linear]="true">
+    <mat-vertical-stepper *ngIf="alignVertical">
         <!-- Use font awesome icons in the stepper to indicate progress -->
         <ng-template matStepperIcon="done">
             <fa-icon [icon]="stepDoneIcon"></fa-icon>
@@ -61,4 +74,31 @@
                 Next
             </button>
         </mat-step>
+
+        <mat-step *ngIf="!preferences" label="Preferences" [stepControl]="preferencesForm">
+            <form [formGroup]="preferencesForm" (ngSubmit)="onPreferencesSubmit()">
+                <account-device-preferences
+                        [preferencesForm]="preferencesForm"
+                        [deviceSetup]="true"
+                >
+                </account-device-preferences>
+                <button mat-button matStepperNext [disabled]="!preferencesForm.valid">
+                    Next
+                </button>
+            </form>
+        </mat-step>
+
+        <mat-step *ngIf="!preferences" label="Defaults" [stepControl]="defaultsForm">
+            <form [formGroup]="defaultsForm" (ngSubmit)="onDefaultsSubmit()">
+                <account-device-defaults
+                        [defaultsForm]="defaultsForm"
+                        [deviceSetup]="true"
+                >
+                </account-device-defaults>
+                <button mat-button matStepperNext [disabled]="!preferencesForm.valid">
+                    Next
+                </button>
+            </form>
+        </mat-step>
+
     </mat-vertical-stepper>

@@ -26,6 +26,7 @@ export class DeviceAddComponent implements OnInit {
     public pairingCodeControl: AbstractControl;
     public pairDeviceForm: FormGroup;
     public preferencesForm: FormGroup;
+    public defaultsForm: FormGroup;
     public preferences: AccountPreferences;
     public stepDoneIcon = faCheck;
 
@@ -49,18 +50,41 @@ export class DeviceAddComponent implements OnInit {
     }
 
     private buildForms() {
-        this.preferencesForm = this.deviceService.buildPreferencesForm(this.preferences);
         this.pairDeviceForm = this.formBuilder.group({
-            pairingCode: ['', Validators.required],
+            pairingCode: [
+                null,
+                [
+                    Validators.required,
+                    Validators.maxLength(6),
+                    Validators.minLength(6)
+                ]
+            ],
         });
+        this.preferencesForm = this.formBuilder.group(
+            {
+                dateFormat: [null, Validators.required],
+                measurementSystem: [null, Validators.required],
+                timeFormat: [null, Validators.required],
+            }
+        );
+        this.defaultsForm = this.formBuilder.group(
+            {
+                country: [null],
+                region: [null],
+                city: [null],
+                timezone: [null],
+                wakeWord: [null],
+                voice: [null]
+            }
+        );
         this.deviceForm = this.formBuilder.group(
             {
-                name: ['', Validators.required],
-                placement: [''],
-                country: ['', Validators.required],
-                region: ['', Validators.required],
-                city: ['', Validators.required],
-                timeZone: ['', Validators.required]
+                name: [null, Validators.required],
+                placement: [null],
+                country: [null, Validators.required],
+                region: [null, Validators.required],
+                city: [null, Validators.required],
+                timeZone: [null, Validators.required]
             }
         );
     }
@@ -82,6 +106,10 @@ export class DeviceAddComponent implements OnInit {
     }
 
     onPreferencesSubmit() {
-        console.log('attempting to pair device');
+        console.log('preferences set');
+    }
+
+    onDefaultsSubmit() {
+        console.log('defaults set');
     }
 }

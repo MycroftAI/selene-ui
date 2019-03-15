@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {
+    MatAutocompleteModule,
     MatButtonModule,
-    MatButtonToggleModule,
     MatCardModule,
     MatDialogModule,
     MatExpansionModule,
@@ -34,6 +34,7 @@ import { PairingComponent } from './device-add/pairing/pairing.component';
 import { DeviceListComponent } from './device-list/device-list.component';
 import { DeviceConfigComponent } from './device-list/device-config/device-config.component';
 import { DeviceLocationComponent } from './device-list/device-location/device-location.component';
+import { DefaultsComponent } from './defaults/defaults.component';
 
 @NgModule({
     declarations: [
@@ -50,6 +51,7 @@ import { DeviceLocationComponent } from './device-list/device-location/device-lo
         PairingComponent,
         DeviceLocationComponent,
         DeviceConfigComponent,
+        DefaultsComponent,
     ],
     entryComponents: [
         DeviceAddComponent,
@@ -61,8 +63,8 @@ import { DeviceLocationComponent } from './device-list/device-location/device-lo
         FontAwesomeModule,
         FormsModule,
         ReactiveFormsModule,
+        MatAutocompleteModule,
         MatButtonModule,
-        MatButtonToggleModule,
         MatCardModule,
         MatDialogModule,
         MatExpansionModule,

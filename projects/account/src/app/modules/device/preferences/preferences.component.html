@@ -1,84 +1,40 @@
-<h1 *ngIf="deviceSetup" class="mat-h1">
-    Looks like you haven't setup your device preferences yet...
-</h1>
-<p class="mat-body">Take a minute to fill out the form below to improve your Mycroft experience!</p>
-<form [formGroup]="preferencesForm">
-    <mat-card id="basic-settings-card">
-        <mat-toolbar>
-            <span class="section-card-title">Preferences</span>
-        </mat-toolbar>
-        <mat-card-content fxLayout="column">
-            <p class="mat-body">These settings will be applied to all your devices.</p>
-            <div fxLayout="row" fxLayout.xs="column">
-                <mat-label class="mat-subheading-2" fxFlex="25">Measurement System</mat-label>
-                <mat-button-toggle-group
-                        [value]="preferencesForm.controls['measurementSystem'].value"
-                        (change)="changeMeasurementSystem($event)"
-                >
-                    <mat-button-toggle [value]="'Imperial'">Imperial</mat-button-toggle>
-                    <mat-button-toggle [value]="'Metric'">Metric</mat-button-toggle>
-                </mat-button-toggle-group>
-            </div>
-            <div fxLayout="row" fxLayout.xs="column">
-                <mat-label class="mat-subheading-2" fxFlex="25">Time Format</mat-label>
-                <mat-button-toggle-group
-                        [value]="preferencesForm.controls['timeFormat'].value"
-                        (change)="changeTimeFormat($event)"
-                >
-                    <mat-button-toggle [value]="'12 Hour'">12 Hour</mat-button-toggle>
-                    <mat-button-toggle [value]="'24 Hour'">24 Hour</mat-button-toggle>
-                </mat-button-toggle-group>
-            </div>
-            <div fxLayout="row" fxLayout.xs="column">
-                <mat-label class="mat-subheading-2" fxFlex="25">Date Format</mat-label>
-                <mat-button-toggle-group
-                        [value]="preferencesForm.controls['dateFormat'].value"
-                        (change)="changeDateFormat($event)"
-                >
-                    <mat-button-toggle [value]="'DD/MM/YYYY'">DD/MM/YYYY</mat-button-toggle>
-                    <mat-button-toggle [value]="'MM/DD/YYYY'">MM/DD/YYYY</mat-button-toggle>
-                </mat-button-toggle-group>
-            </div>
-        </mat-card-content>
-    </mat-card>
+<mat-card class="mat-elevation-z0" id="required-settings-card">
+    <mat-card-title *ngIf="deviceSetup">Setup your device preferences</mat-card-title>
+    <mat-card-title *ngIf="!deviceSetup">Manage your device preferences</mat-card-title>
+    <mat-card-content fxLayout="column">
+        <p class="mat-body">
+            Preferences are applied to all your devices to present information
+            in a manner you are accustomed to.
+        </p>
+        <account-option-buttons
+                [config]="measurementOptionsConfig"
+                [selectedOption]="preferencesForm.controls['measurementSystem'].value"
+                (selectionChange)="changeMeasurementSystem($event)"
+        >
+        </account-option-buttons>
+        <account-option-buttons
+                [config]="timeFormatOptionsConfig"
+                [selectedOption]="preferencesForm.controls['timeFormat'].value"
+                (selectionChange)="changeTimeFormat($event)"
+        >
+        </account-option-buttons>
+        <account-option-buttons
+                [config]="dateFormatOptionsConfig"
+                [selectedOption]="preferencesForm.controls['dateFormat'].value"
+                (selectionChange)="changeDateFormat($event)"
+        >
+        </account-option-buttons>
+    </mat-card-content>
+</mat-card>
 
-    <mat-card id="default-settings-card">
-        <mat-toolbar>
-            <span>Defaults</span>
-        </mat-toolbar>
-        <p class="mat-body">Optional values used as defaults during device setup.</p>
-        <ng-container formGroupName="geography">
-            <mat-form-field>
-                <mat-label>Country</mat-label>
-                <input matInput readonly type="text" formControlName="country">
-            </mat-form-field>
-             <mat-form-field>
-                <mat-label>Region</mat-label>
-                <input matInput readonly type="text" formControlName="region">
-            </mat-form-field>
-             <mat-form-field>
-                <mat-label>City</mat-label>
-                <input matInput readonly type="text" formControlName="city">
-            </mat-form-field>
-             <mat-form-field>
-                <mat-label>Time Zone</mat-label>
-                <input matInput readonly type="text" formControlName="timezone">
-            </mat-form-field>
-        </ng-container>
-
-        <account-device-wake-word [currentValue]="preferencesForm.controls['wakeWord']"></account-device-wake-word>
-        <account-device-voice [currentValue]="preferencesForm.controls['voice']"></account-device-voice>
-    </mat-card>
-
-    <mat-card *ngIf="!deviceSetup" id="advanced-settings-card">
-        <mat-toolbar>
-            <span class="section-card-title">Advanced Settings</span>
-        </mat-toolbar>
-        <div fxLayout="column" class="section-content">
-            <div class="mat-body" *ngFor="let paragraph of advancedSettingsDesc">
-                <p>{{paragraph}}</p>
-            </div>
-            <button mat-flat-button>VIEW DOCUMENTATION</button>
+<mat-card *ngIf="!deviceSetup" id="advanced-settings-card">
+    <mat-toolbar>
+        <span class="section-card-title">Advanced Settings</span>
+    </mat-toolbar>
+    <div fxLayout="column" class="section-content">
+        <div class="mat-body" *ngFor="let paragraph of advancedSettingsDesc">
+            <p>{{paragraph}}</p>
         </div>
-    </mat-card>
-</form>
+        <button mat-flat-button>VIEW DOCUMENTATION</button>
+    </div>
+</mat-card>

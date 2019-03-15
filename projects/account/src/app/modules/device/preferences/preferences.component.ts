@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { MatButtonToggleChange } from '@angular/material';
 
 import { AccountPreferences } from '../../../shared/models/preferences.model';
-import { MatButtonToggleChange } from '@angular/material';
+import { OptionButtonsConfig } from '../../../shared/models/option-buttons-config.model';
 
 @Component({
     selector: 'account-device-preferences',
@@ -14,8 +15,30 @@ export class PreferencesComponent implements OnInit {
     @Input() deviceSetup: boolean;
     @Input() preferences: AccountPreferences;
     @Input() preferencesForm: FormGroup;
+    public measurementOptionsConfig: OptionButtonsConfig;
+    public timeFormatOptionsConfig: OptionButtonsConfig;
+    public dateFormatOptionsConfig: OptionButtonsConfig;
 
-    constructor() { }
+    constructor() {
+        this.dateFormatOptionsConfig = {
+            label: 'Date Format',
+            options: ['DD/MM/YYYY', 'MM/DD/YYYY'],
+            buttonWidth: '130px',
+            labelWidth: '180px'
+        };
+        this.measurementOptionsConfig = {
+            label: 'Measurement System',
+            options: ['Imperial', 'Metric'],
+            buttonWidth: '130px',
+            labelWidth: '180px'
+        };
+        this.timeFormatOptionsConfig = {
+            label: 'Time Format',
+            options: ['12 Hour', '24 Hour'],
+            buttonWidth: '130px',
+            labelWidth: '180px'
+        };
+    }
 
     ngOnInit() {
         this.buildAdvancedSettingsDesc();
@@ -35,15 +58,15 @@ export class PreferencesComponent implements OnInit {
         ];
     }
 
-    changeDateFormat(newValue: MatButtonToggleChange) {
-        this.preferencesForm.patchValue({dateFormat: newValue.value});
+    changeDateFormat(newValue: string) {
+        this.preferencesForm.patchValue({dateFormat: newValue});
     }
 
-    changeMeasurementSystem(newValue: MatButtonToggleChange) {
-        this.preferencesForm.patchValue({measurementSystem: newValue.value});
+    changeMeasurementSystem(newValue: string) {
+        this.preferencesForm.patchValue({measurementSystem: newValue});
     }
 
-    changeTimeFormat(newValue: MatButtonToggleChange) {
-        this.preferencesForm.patchValue({timeFormat: newValue.value});
+    changeTimeFormat(newValue: string) {
+        this.preferencesForm.patchValue({timeFormat: newValue});
     }
 }
