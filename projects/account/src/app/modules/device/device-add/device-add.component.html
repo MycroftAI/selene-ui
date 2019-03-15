@@ -12,9 +12,11 @@
         <mat-step label="Pairing" [stepControl]="pairDeviceForm">
             <form [formGroup]="pairDeviceForm" (ngSubmit)="onPairingSubmit()">
                 <account-device-pairing [pairingCodeControl]="pairingCodeControl"></account-device-pairing>
-                <button mat-button matStepperNext [disabled]="!pairDeviceForm.valid">
-                    Next
-                </button>
+                <div fxLayout="row" fxLayoutAlign="end">
+                    <button mat-button matStepperNext [disabled]="!pairDeviceForm.valid">
+                        Next
+                    </button>
+                </div>
             </form>
         </mat-step>
 
@@ -25,9 +27,11 @@
                         [deviceSetup]="true"
                 >
                 </account-device-preferences>
-                <button mat-button matStepperNext [disabled]="!preferencesForm.valid">
-                    Next
-                </button>
+                <div fxLayout="row" fxLayoutAlign="end">
+                    <button mat-button matStepperNext [disabled]="!preferencesForm.valid">
+                        Next
+                    </button>
+                </div>
             </form>
         </mat-step>
 
@@ -38,9 +42,11 @@
                         [deviceSetup]="true"
                 >
                 </account-device-defaults>
-                <button mat-button matStepperNext [disabled]="!defaultsForm.valid">
-                    Next
-                </button>
+                <div fxLayout="row" fxLayoutAlign="end">
+                    <button mat-button matStepperNext [disabled]="!defaultsForm.valid">
+                        Next
+                    </button>
+                </div>
             </form>
         </mat-step>
 

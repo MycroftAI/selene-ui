@@ -1,3 +1,15 @@
+@import "~@angular/material/theming";
+@import "mycroft-colors";
+@import "components/buttons";
+
+button {
+    @include action-button-primary;
+
+    &:disabled {
+        background-color: mat-color($mycroft-accent, 200);
+    }
+}
+
 mat-horizontal-stepper {
     margin-left: auto;
     margin-right: auto;
