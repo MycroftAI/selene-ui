@@ -13,9 +13,7 @@ const wakeWordUrl = '/api/wake-words';
 
 
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({providedIn: 'root'})
 export class DeviceService {
     public devicePlacements: DeviceAttribute[] = [
         {id: '1', name: 'None', userDefined: true},
