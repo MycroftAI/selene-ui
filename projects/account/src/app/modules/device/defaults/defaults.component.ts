@@ -155,14 +155,14 @@ export class DefaultsComponent implements OnInit {
 
             this.defaultsForm.controls['timezone'].setValue(foundCity.timezone);
         }
-
+        this.getTimezones();
     }
 
     getTimezones() {
         const country = this.countries.find(
             (cntry) => cntry.name === this.defaultsForm.controls['country'].value
         );
-        if (!this.cities) {
+        if (!this.timezones) {
             this.geoService.getTimezonesByCountry(country).subscribe(
                 (cities) => {
                     this.timezones = cities;
