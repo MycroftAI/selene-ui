@@ -5,66 +5,68 @@
         <p class="mat-body">Optional values used as defaults during device setup.</p>
 
         <h2 class="mat-h2">Geographical Location</h2>
-        <mat-form-field [appearance]="'outline'">
-            <mat-label>Country</mat-label>
-            <input
-                    matInput
-                    type="text"
-                    formControlName="country"
-                    [matAutocomplete]="countryComplete"
-                    (focus)="getCountries()"
-            >
-            <mat-autocomplete #countryComplete="matAutocomplete">
-                <mat-option *ngFor="let country of filteredCountries$ | async" [value]="country.name">
-                    {{country.name}}
-                </mat-option>
-            </mat-autocomplete>
-        </mat-form-field>
-        <mat-form-field [appearance]="'outline'">
-            <mat-label>Region</mat-label>
-            <input
-                    matInput
-                    type="text"
-                    formControlName="region"
-                    [matAutocomplete]="regionComplete"
-                    (focus)="getRegions()"
-            >
-            <mat-autocomplete #regionComplete="matAutocomplete">
-                <mat-option *ngFor="let region of filteredRegions$ | async" [value]="region.name">
-                    {{region.name}}
-                </mat-option>
-            </mat-autocomplete>
-        </mat-form-field>
-         <mat-form-field [appearance]="'outline'">
-            <mat-label>City</mat-label>
-            <input
-                    matInput
-                    type="text"
-                    formControlName="city"
-                    [matAutocomplete]="cityComplete"
-                    (focus)="getCities()"
-            >
-            <mat-autocomplete #cityComplete="matAutocomplete">
-                <mat-option *ngFor="let city of filteredCities$ | async" [value]="city.name">
-                    {{city.name}}
-                </mat-option>
-            </mat-autocomplete>
-        </mat-form-field>
-         <mat-form-field [appearance]="'outline'">
-            <mat-label>Time Zone</mat-label>
-            <input
-                    matInput
-                    type="text"
-                    formControlName="timezone"
-                    [matAutocomplete]="timezoneComplete"
-                    (focus)="getTimezones()"
-            >
-            <mat-autocomplete #timezoneComplete="matAutocomplete">
-                <mat-option *ngFor="let timezone of filteredTimezones$ | async" [value]="timezone.name">
-                    {{timezone.name}}
-                </mat-option>
-            </mat-autocomplete>
-        </mat-form-field>
+        <div fxLayout="row wrap" fxLayoutAlign="space-around" fxLayout.xs="column">
+            <mat-form-field fxFlex.gt-xs="40" [appearance]="'outline'">
+                <mat-label>Country</mat-label>
+                <input
+                        matInput
+                        type="text"
+                        formControlName="country"
+                        [matAutocomplete]="countryComplete"
+                        (focus)="getCountries()"
+                >
+                <mat-autocomplete #countryComplete="matAutocomplete">
+                    <mat-option *ngFor="let country of filteredCountries$ | async" [value]="country.name">
+                        {{country.name}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+            <mat-form-field fxFlex.gt-xs="40" [appearance]="'outline'">
+                <mat-label>Region</mat-label>
+                <input
+                        matInput
+                        type="text"
+                        formControlName="region"
+                        [matAutocomplete]="regionComplete"
+                        (focus)="getRegions()"
+                >
+                <mat-autocomplete #regionComplete="matAutocomplete">
+                    <mat-option *ngFor="let region of filteredRegions$ | async" [value]="region.name">
+                        {{region.name}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+             <mat-form-field fxFlex.gt-xs="40" [appearance]="'outline'">
+                <mat-label>City</mat-label>
+                <input
+                        matInput
+                        type="text"
+                        formControlName="city"
+                        [matAutocomplete]="cityComplete"
+                        (focus)="getCities()"
+                >
+                <mat-autocomplete #cityComplete="matAutocomplete">
+                    <mat-option *ngFor="let city of filteredCities$ | async" [value]="city.name">
+                        {{city.name}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+             <mat-form-field fxFlex.gt-xs="40" [appearance]="'outline'">
+                <mat-label>Time Zone</mat-label>
+                <input
+                        matInput
+                        type="text"
+                        formControlName="timezone"
+                        [matAutocomplete]="timezoneComplete"
+                        (focus)="getTimezones()"
+                >
+                <mat-autocomplete #timezoneComplete="matAutocomplete">
+                    <mat-option *ngFor="let timezone of filteredTimezones$ | async" [value]="timezone.name">
+                        {{timezone.name}}
+                    </mat-option>
+                </mat-autocomplete>
+            </mat-form-field>
+        </div>
 
         <h2 class="mat-h2">Voice</h2>
         <account-option-buttons

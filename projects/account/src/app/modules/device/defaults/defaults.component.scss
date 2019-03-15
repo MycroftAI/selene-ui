@@ -15,4 +15,8 @@ mat-card {
         color: mat-color($mycroft-accent, A700);
         margin-top: 32px;
     }
+
+    mat-form-field {
+        max-width: 280px;
+    }
 }
