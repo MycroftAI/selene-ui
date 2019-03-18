@@ -1,0 +1,17 @@
+<ng-container [formGroup]="deviceForm">
+    <mat-form-field fxFlex [appearance]="'outline'">
+        <mat-label>City</mat-label>
+        <input
+                matInput
+                type="text"
+                formControlName="city"
+                [matAutocomplete]="cityComplete"
+                (focus)="getCities()"
+        >
+        <mat-autocomplete #cityComplete="matAutocomplete">
+            <mat-option *ngFor="let city of filteredCities$ | async" [value]="city.name">
+                {{city.name}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</ng-container>
