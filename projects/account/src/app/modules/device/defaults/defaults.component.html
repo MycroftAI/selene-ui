@@ -12,51 +12,23 @@
                     (countrySelected)="onCountrySelect($event)"
             >
             </account-country-input>
-            <mat-form-field fxFlex.gt-xs="40" [appearance]="'outline'">
-                <mat-label>Region</mat-label>
-                <input
-                        matInput
-                        type="text"
-                        formControlName="region"
-                        [matAutocomplete]="regionComplete"
-                        (focus)="getRegions()"
-                >
-                <mat-autocomplete #regionComplete="matAutocomplete">
-                    <mat-option *ngFor="let region of filteredRegions$ | async" [value]="region.name">
-                        {{region.name}}
-                    </mat-option>
-                </mat-autocomplete>
-            </mat-form-field>
-             <mat-form-field fxFlex.gt-xs="40" [appearance]="'outline'">
-                <mat-label>City</mat-label>
-                <input
-                        matInput
-                        type="text"
-                        formControlName="city"
-                        [matAutocomplete]="cityComplete"
-                        (focus)="getCities()"
-                >
-                <mat-autocomplete #cityComplete="matAutocomplete">
-                    <mat-option *ngFor="let city of filteredCities$ | async" [value]="city.name">
-                        {{city.name}}
-                    </mat-option>
-                </mat-autocomplete>
-            </mat-form-field>
-             <mat-form-field fxFlex.gt-xs="40" [appearance]="'outline'">
-                <mat-label>Time Zone</mat-label>
-                <input
-                        matInput
-                        type="text"
-                        formControlName="timezone"
-                        [matAutocomplete]="timezoneComplete"
-                        (focus)="getTimezones()"
-                >
-                <mat-autocomplete #timezoneComplete="matAutocomplete">
-                    <mat-option *ngFor="let timezone of filteredTimezones$ | async" [value]="timezone.name">
-                        {{timezone.name}}
-                    </mat-option>
-                </mat-autocomplete>
-            </mat-form-field>
+            <account-region-input fxFlex.gt-xs="40"
+                    [regions$]="regions$"
+                    [deviceForm]="defaultsForm"
+                    (regionSelected)="onRegionSelect($event)"
+            >
+            </account-region-input>
+            <account-city-input fxFlex.gt-xs="40"
+                    [cities$]="cities$"
+                    [deviceForm]="defaultsForm"
+                    (citySelected)="onCitySelect($event)"
+            >
+            </account-city-input>
+            <account-timezone-input fxFlex.gt-xs="40"
+                    [timezones$]="timezones$"
+                    [deviceForm]="defaultsForm"
+            >
+            </account-timezone-input>
         </div>
 
         <h2 class="mat-h2">Voice</h2>
