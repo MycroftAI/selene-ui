@@ -4,7 +4,14 @@
         <p>Enter the code spoken by your device:</p>
         <mat-form-field [appearance]="'outline'">
             <mat-label>Pairing Code</mat-label>
-            <input matInput required type="text" [formControl]="pairingCodeControl">
+            <input
+                    matInput
+                    required
+                    type="text"
+                    onInput="this.value = this.value.toUpperCase()"
+                    [formControl]="pairingCodeControl"
+            >
+            <mat-hint>Six alphanumeric characters</mat-hint>
         </mat-form-field>
     </mat-card-content>
 </mat-card>
