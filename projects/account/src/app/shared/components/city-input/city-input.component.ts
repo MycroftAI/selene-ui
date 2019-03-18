@@ -43,18 +43,20 @@ export class CityInputComponent implements OnInit {
     }
 
     private filterCities(value: string): City[] {
-        const filterValue = value.toLowerCase();
-        let filteredCities: City[];
+        if (value) {
+            const filterValue = value.toLowerCase();
+            let filteredCities: City[];
 
-        if (this.cities) {
-            filteredCities = this.cities.filter(
-                (cty) => cty.name.toLowerCase().includes(filterValue)
-            );
-        } else {
-            filteredCities = [];
+            if (this.cities) {
+                filteredCities = this.cities.filter(
+                    (cty) => cty.name.toLowerCase().includes(filterValue)
+                );
+            } else {
+                filteredCities = [];
+            }
+
+            return filteredCities;
         }
-
-        return filteredCities;
     }
 
     cityValidator(): ValidatorFn {
@@ -68,14 +70,23 @@ export class CityInputComponent implements OnInit {
                     valid = false;
                 }
             }
-            return valid ? null : {regionNotFound: true};
+            return valid ? null : {cityNotFound: true};
 
         };
     }
 
     checkForValidCity() {
         if (this.cityControl.valid) {
-            this.citySelected.emit(this.cityControl.value);
+            if (this.cityControl.value) {
+                const foundCity = this.cities.find(
+                    (city) => city.name === this.cityControl.value
+                );
+                this.citySelected.emit(foundCity);
+            } else {
+                this.citySelected.emit(null);
+            }
+        } else {
+            this.citySelected.emit(null);
         }
     }
 

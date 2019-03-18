@@ -32,9 +32,7 @@ export class RegionInputComponent implements OnInit {
                     this.filteredRegions$ = this.regionControl.valueChanges.pipe(
                         startWith(''),
                         map((value) => this.filterRegions(value)),
-                        tap(() => {
-                            this.checkForValidRegion();
-                        })
+                        tap(() => {this.checkForValidRegion(); })
                     );
                 }
             );
@@ -42,18 +40,20 @@ export class RegionInputComponent implements OnInit {
     }
 
     private filterRegions(value: string): Region[] {
-        const filterValue = value.toLowerCase();
-        let filteredRegions: Region[];
+        if (value) {
+            const filterValue = value.toLowerCase();
+            let filteredRegions: Region[];
 
-        if (this.regions) {
-            filteredRegions = this.regions.filter(
-                (region) => region.name.toLowerCase().includes(filterValue)
-            );
-        } else {
-            filteredRegions = [];
+            if (this.regions) {
+                filteredRegions = this.regions.filter(
+                    (region) => region.name.toLowerCase().includes(filterValue)
+                );
+            } else {
+                filteredRegions = [];
+            }
+
+            return filteredRegions;
         }
-
-        return filteredRegions;
     }
 
     regionValidator(): ValidatorFn {
