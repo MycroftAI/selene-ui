@@ -14,20 +14,22 @@ export class RegionInputComponent implements OnInit {
     @Input() filteredRegions$: Observable<Region[]>;
     @Input() regions$: Observable<Region[]>;
     private regions: Region[];
+    private regionControl: AbstractControl;
     @Output() regionSelected = new EventEmitter<Region>();
 
     constructor() { }
 
     ngOnInit() {
-  }
+        this.regionControl = this.deviceForm.controls['region'];
+    }
 
     getRegions() {
-        if (!this.deviceForm.controls['region'].value) {
+        if (!this.regionControl.value) {
             this.regions$.subscribe(
                 (regions) => {
                     this.regions = regions;
-                    this.deviceForm.controls['region'].validator = this.regionValidator();
-                    this.filteredRegions$ = this.deviceForm.controls['region'].valueChanges.pipe(
+                    this.regionControl.validator = this.regionValidator();
+                    this.filteredRegions$ = this.regionControl.valueChanges.pipe(
                         startWith(''),
                         map((value) => this.filterRegions(value)),
                         tap(() => {
@@ -71,8 +73,17 @@ export class RegionInputComponent implements OnInit {
     }
 
     checkForValidRegion() {
-        if (this.deviceForm.controls['region'].valid) {
-            this.regionSelected.emit(this.deviceForm.controls['region'].value);
+        if (this.regionControl.valid) {
+            if (this.regionControl.value) {
+                const foundRegion = this.regions.find(
+                    (region) => region.name === this.regionControl.value
+                );
+                this.regionSelected.emit(foundRegion);
+            } else {
+                this.regionSelected.emit(null);
+            }
+        } else {
+            this.regionSelected.emit(null);
         }
     }
 

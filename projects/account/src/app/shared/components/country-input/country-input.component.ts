@@ -13,13 +13,15 @@ import { AbstractControl, FormGroup, ValidatorFn } from '@angular/forms';
 export class CountryInputComponent implements OnInit {
     @Input() countries$: Observable<Country[]>;
     private countries: Country[];
+    private countryControl: AbstractControl;
+    @Output() countrySelected = new EventEmitter<Country>();
     @Input() deviceForm: FormGroup;
     public filteredCountries$: Observable<Country[]>;
-    @Output() countrySelected = new EventEmitter<Country>();
 
     constructor() { }
 
     ngOnInit() {
+        this.countryControl = this.deviceForm.controls['country'];
     }
 
     getCountries() {
@@ -27,8 +29,8 @@ export class CountryInputComponent implements OnInit {
             this.countries$.subscribe(
                 (countries) => {
                     this.countries = countries;
-                    this.deviceForm.controls['country'].validator = this.countryValidator();
-                    this.filteredCountries$ = this.deviceForm.controls['country'].valueChanges.pipe(
+                    this.countryControl.validator = this.countryValidator();
+                    this.filteredCountries$ = this.countryControl.valueChanges.pipe(
                         startWith(''),
                         map((value) => this.filterCountries(value)),
                         tap(() => { this.checkForValidCountry(); })
@@ -70,10 +72,10 @@ export class CountryInputComponent implements OnInit {
     }
 
     checkForValidCountry() {
-        if (this.deviceForm.controls['country'].valid) {
-            if (this.deviceForm.controls['country'].value) {
+        if (this.countryControl.valid) {
+            if (this.countryControl.value) {
                 const foundCountry = this.countries.find(
-                    (country) => country.name === this.deviceForm.controls['country'].value
+                    (country) => country.name === this.countryControl.value
                 );
                 this.countrySelected.emit(foundCountry);
             } else {
