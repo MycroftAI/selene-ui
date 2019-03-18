@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { map, startWith, tap } from 'rxjs/operators';
 
-import { Country } from '../../models/country.model';
+import { Country } from '../../../../shared/models/country.model';
 import { Observable } from 'rxjs';
 import { AbstractControl, FormGroup, ValidatorFn } from '@angular/forms';
 
@@ -17,6 +17,7 @@ export class CountryInputComponent implements OnInit {
     @Output() countrySelected = new EventEmitter<Country>();
     @Input() deviceForm: FormGroup;
     public filteredCountries$: Observable<Country[]>;
+    @Input() required: boolean;
 
     constructor() { }
 

@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { startWith, map, tap} from 'rxjs/operators';
 
-import { City } from '../../models/city.model';
+import { City } from '../../../../shared/models/city.model';
 import { AbstractControl, FormGroup, ValidatorFn } from '@angular/forms';
 
 @Component({
@@ -17,6 +17,7 @@ export class CityInputComponent implements OnInit {
     public filteredCities$ = new Observable<City[]>();
     @Output() citySelected = new EventEmitter<City>();
     private cityControl: AbstractControl;
+    @Input() required: boolean;
 
     constructor() {
     }
@@ -43,20 +44,18 @@ export class CityInputComponent implements OnInit {
     }
 
     private filterCities(value: string): City[] {
-        if (value) {
-            const filterValue = value.toLowerCase();
-            let filteredCities: City[];
+        const filterValue = value.toLowerCase();
+        let filteredCities: City[];
 
-            if (this.cities) {
-                filteredCities = this.cities.filter(
-                    (cty) => cty.name.toLowerCase().includes(filterValue)
-                );
-            } else {
-                filteredCities = [];
-            }
-
-            return filteredCities;
+        if (this.cities) {
+            filteredCities = this.cities.filter(
+                (cty) => cty.name.toLowerCase().includes(filterValue)
+            );
+        } else {
+            filteredCities = [];
         }
+
+        return filteredCities;
     }
 
     cityValidator(): ValidatorFn {

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { map, startWith, tap } from 'rxjs/operators';
-import { Region } from '../../models/region.model';
+import { Region } from '../../../../shared/models/region.model';
 import { Observable } from 'rxjs';
 import { AbstractControl, FormGroup, ValidatorFn } from '@angular/forms';
 
@@ -16,6 +16,7 @@ export class RegionInputComponent implements OnInit {
     private regions: Region[];
     private regionControl: AbstractControl;
     @Output() regionSelected = new EventEmitter<Region>();
+    @Input() required: boolean;
 
     constructor() { }
 
@@ -40,20 +41,18 @@ export class RegionInputComponent implements OnInit {
     }
 
     private filterRegions(value: string): Region[] {
-        if (value) {
-            const filterValue = value.toLowerCase();
-            let filteredRegions: Region[];
+        const filterValue = value.toLowerCase();
+        let filteredRegions: Region[];
 
-            if (this.regions) {
-                filteredRegions = this.regions.filter(
-                    (region) => region.name.toLowerCase().includes(filterValue)
-                );
-            } else {
-                filteredRegions = [];
-            }
-
-            return filteredRegions;
+        if (this.regions) {
+            filteredRegions = this.regions.filter(
+                (region) => region.name.toLowerCase().includes(filterValue)
+            );
+        } else {
+            filteredRegions = [];
         }
+
+        return filteredRegions;
     }
 
     regionValidator(): ValidatorFn {

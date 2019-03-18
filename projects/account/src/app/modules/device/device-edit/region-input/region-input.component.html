@@ -6,6 +6,7 @@
                 type="text"
                 formControlName="region"
                 [matAutocomplete]="regionComplete"
+                [required]="required"
                 (focus)="getRegions()"
         >
         <mat-autocomplete #regionComplete="matAutocomplete">

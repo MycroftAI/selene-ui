@@ -3,7 +3,7 @@ import { AbstractControl, FormGroup, ValidatorFn } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { startWith, map, tap } from 'rxjs/operators';
 
-import { Timezone } from '../../models/timezone.model';
+import { Timezone } from '../../../../shared/models/timezone.model';
 
 @Component({
     selector: 'account-timezone-input',
@@ -13,6 +13,7 @@ import { Timezone } from '../../models/timezone.model';
 export class TimezoneInputComponent implements OnInit {
     @Input() deviceForm: FormGroup;
     public filteredTimezones$ = new Observable<Timezone[]>();
+    @Input() required: boolean;
     @Input() timezones$: Observable<Timezone[]>;
     private timezones: Timezone[];
     private timezoneControl: AbstractControl;
@@ -32,7 +33,6 @@ export class TimezoneInputComponent implements OnInit {
                     this.filteredTimezones$ = this.timezoneControl.valueChanges.pipe(
                         startWith(''),
                         map((value) => this.filterTimezones(value)),
-                        // tap(() => { this.populateTimezone(); })
 
                     );
                 }
@@ -41,20 +41,18 @@ export class TimezoneInputComponent implements OnInit {
     }
 
     private filterTimezones(value: string): Timezone[] {
-        if (value) {
-            const filterValue = value.toLowerCase();
-            let filteredTimezones: Timezone[];
+        const filterValue = value.toLowerCase();
+        let filteredTimezones: Timezone[];
 
-            if (this.timezones) {
-                filteredTimezones = this.timezones.filter(
-                    (tz) => tz.name.toLowerCase().includes(filterValue)
-                );
-            } else {
-                filteredTimezones = [];
-            }
-
-            return filteredTimezones;
+        if (this.timezones) {
+            filteredTimezones = this.timezones.filter(
+                (tz) => tz.name.toLowerCase().includes(filterValue)
+            );
+        } else {
+            filteredTimezones = [];
         }
+
+        return filteredTimezones;
     }
 
     timezoneValidator(): ValidatorFn {

@@ -6,6 +6,7 @@
                 type="text"
                 formControlName="timezone"
                 [matAutocomplete]="timezoneComplete"
+                [required]="required"
                 (focus)="getTimezones()"
         >
         <mat-autocomplete #timezoneComplete="matAutocomplete">

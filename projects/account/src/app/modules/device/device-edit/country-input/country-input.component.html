@@ -3,6 +3,7 @@
         <mat-label>Country</mat-label>
         <input
                 matInput
+                [required]="required"
                 type="text"
                 formControlName="country"
                 [matAutocomplete]="countryComplete"

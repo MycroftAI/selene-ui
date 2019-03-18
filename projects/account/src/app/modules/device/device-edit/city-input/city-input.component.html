@@ -6,6 +6,7 @@
                 type="text"
                 formControlName="city"
                 [matAutocomplete]="cityComplete"
+                [required]="required"
                 (focus)="getCities()"
         >
         <mat-autocomplete #cityComplete="matAutocomplete">
