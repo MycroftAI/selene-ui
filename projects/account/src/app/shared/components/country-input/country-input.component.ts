@@ -27,7 +27,7 @@ export class CountryInputComponent implements OnInit {
             this.countries$.subscribe(
                 (countries) => {
                     this.countries = countries;
-                    this.deviceForm.controls['country'].validator = this.geographyValidator(this.countries);
+                    this.deviceForm.controls['country'].validator = this.countryValidator();
                     this.filteredCountries$ = this.deviceForm.controls['country'].valueChanges.pipe(
                         startWith(''),
                         map((value) => this.filterCountries(value)),
@@ -54,18 +54,18 @@ export class CountryInputComponent implements OnInit {
         return filteredCountries;
     }
 
-    geographyValidator(geographies: any[]): ValidatorFn {
-        return (geographyControl: AbstractControl) => {
+    countryValidator(): ValidatorFn {
+        return (countryControl: AbstractControl) => {
             let valid = true;
-            if (geographyControl.value) {
-                const foundGeography = geographies.find(
-                    (geography) => geography.name === geographyControl.value
+            if (countryControl.value) {
+                const foundCountry = this.countries.find(
+                    (country) => country.name === countryControl.value
                 );
-                if (!foundGeography) {
+                if (!foundCountry) {
                     valid = false;
                 }
             }
-            return valid ? null : {geographyNotFound: true};
+            return valid ? null : {countryNotFound: true};
 
         };
     }
