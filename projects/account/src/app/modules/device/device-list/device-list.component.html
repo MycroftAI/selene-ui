@@ -1,35 +1,35 @@
-    <div id="add-device-button" fxLayout="row" fxLayoutAlign="start center">
-        <img src="../assets/generic-device-icon-blue.svg">
-        <span fxFlex class="mat-h2">ADD DEVICE</span>
-        <fa-icon class="mat-h2" [icon]="addIcon"></fa-icon>
-    </div>
+<div id="add-device-button" fxLayout="row" fxLayoutAlign="start center" routerLink="/devices/add">
+    <img src="../assets/generic-device-icon-blue.svg">
+    <span fxFlex class="mat-h2">ADD DEVICE</span>
+    <fa-icon class="mat-h2" [icon]="addIcon"></fa-icon>
+</div>
 
-    <div fxLayout="row wrap" fxLayoutGap.gt-xs="16px">
-        <mat-card *ngFor="let device of devices">
-            <mat-card-title fxLayout="row" fxLayoutAlign="start center">
-                <img [src]="getDeviceIcon(device)"/>
-                {{device.name}}
-            </mat-card-title>
-            <mat-tab-group>
-                <mat-tab label="Configuration">
-                    <account-device-config [device]="device"></account-device-config>
-                </mat-tab>
+<div fxLayout="row wrap" fxLayoutGap.gt-xs="16px">
+    <mat-card *ngFor="let device of devices">
+        <mat-card-title fxLayout="row" fxLayoutAlign="start center">
+            <img [src]="getDeviceIcon(device)"/>
+            {{device.name}}
+        </mat-card-title>
+        <mat-tab-group>
+            <mat-tab label="Configuration">
+                <account-device-config [device]="device"></account-device-config>
+            </mat-tab>
 
-                <mat-tab label="Location">
-                    <account-device-location
-                            [geography]="device.geography"
-                            [placement]="device.placement.name"
-                    >
-                    </account-device-location>
-               </mat-tab>
-            </mat-tab-group>
-            <mat-card-actions>
-                <button mat-flat-button color="warn" (click)="onRemovalClick(device)">
-                    REMOVE
-                </button>
-                <button mat-flat-button color="primary">
-                    EDIT
-                </button>
-            </mat-card-actions>
-        </mat-card>
-    </div>
+            <mat-tab label="Location">
+                <account-device-location
+                        [geography]="device.geography"
+                        [placement]="device.placement.name"
+                >
+                </account-device-location>
+           </mat-tab>
+        </mat-tab-group>
+        <mat-card-actions>
+            <button mat-flat-button color="warn" (click)="onRemovalClick(device)">
+                REMOVE
+            </button>
+            <button mat-flat-button color="primary">
+                EDIT
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>
