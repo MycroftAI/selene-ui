@@ -31,7 +31,7 @@ export class CountryInputComponent implements OnInit {
                     this.filteredCountries$ = this.deviceForm.controls['country'].valueChanges.pipe(
                         startWith(''),
                         map((value) => this.filterCountries(value)),
-                        tap(() => { this.checkForCountryValidity(); })
+                        tap(() => { this.checkForValidCountry(); })
                     );
                 }
             );
@@ -39,7 +39,6 @@ export class CountryInputComponent implements OnInit {
     }
 
     private filterCountries(value: string): Country[] {
-        console.log(value);
         const filterValue = value.toLowerCase();
         let filteredCountries: Country[];
 
@@ -70,9 +69,18 @@ export class CountryInputComponent implements OnInit {
         };
     }
 
-    checkForCountryValidity() {
+    checkForValidCountry() {
         if (this.deviceForm.controls['country'].valid) {
-            this.countrySelected.emit(this.deviceForm.controls['country'].value);
+            if (this.deviceForm.controls['country'].value) {
+                const foundCountry = this.countries.find(
+                    (country) => country.name === this.deviceForm.controls['country'].value
+                );
+                this.countrySelected.emit(foundCountry);
+            } else {
+                this.countrySelected.emit(null);
+            }
+        } else {
+            this.countrySelected.emit(null);
         }
     }
 
