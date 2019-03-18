@@ -69,6 +69,8 @@ export class DeviceAddComponent implements OnInit {
         );
         this.defaultsForm = this.formBuilder.group(
             {
+                name: [null],
+                placement: [null],
                 country: [null],
                 region: [null],
                 city: [null],
@@ -79,12 +81,14 @@ export class DeviceAddComponent implements OnInit {
         );
         this.deviceForm = this.formBuilder.group(
             {
-                name: [null, Validators.required],
+                name: [null],
                 placement: [null],
                 country: [null, Validators.required],
                 region: [null, Validators.required],
                 city: [null, Validators.required],
-                timeZone: [null, Validators.required]
+                timezone: [null, Validators.required],
+                wakeWord: [null, Validators.required],
+                voice: [null, Validators.required]
             }
         );
     }
@@ -105,11 +109,15 @@ export class DeviceAddComponent implements OnInit {
         console.log('attempting to pair device');
     }
 
+    onDeviceSubmit() {
+        console.log('device added');
+    }
+
     onPreferencesSubmit() {
         console.log('preferences set');
     }
 
     onDefaultsSubmit() {
-        console.log('defaults set');
+        console.log('device-config set');
     }
 }

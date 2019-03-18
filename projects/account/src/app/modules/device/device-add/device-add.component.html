@@ -14,13 +14,13 @@
                 <account-device-pairing [pairingCodeControl]="pairingCodeControl"></account-device-pairing>
                 <div fxLayout="row" fxLayoutAlign="end">
                     <button mat-button matStepperNext [disabled]="!pairDeviceForm.valid">
-                        Next
+                        NEXT
                     </button>
                 </div>
             </form>
         </mat-step>
 
-        <mat-step *ngIf="!preferences" label="Preferences" [stepControl]="preferencesForm">
+        <mat-step label="Preferences" *ngIf="!preferences" [stepControl]="preferencesForm">
             <form [formGroup]="preferencesForm" (ngSubmit)="onPreferencesSubmit()">
                 <account-device-preferences
                         [preferencesForm]="preferencesForm"
@@ -29,39 +29,50 @@
                 </account-device-preferences>
                 <div fxLayout="row" fxLayoutAlign="end">
                     <button mat-button matStepperNext [disabled]="!preferencesForm.valid">
-                        Next
+                        NEXT
                     </button>
                 </div>
             </form>
         </mat-step>
 
-        <mat-step *ngIf="!preferences" label="Defaults" [stepControl]="defaultsForm">
+        <mat-step label="Defaults" *ngIf="!preferences" [stepControl]="defaultsForm">
             <form [formGroup]="defaultsForm" (ngSubmit)="onDefaultsSubmit()">
-                <account-device-defaults
-                        [defaultsForm]="defaultsForm"
-                        [deviceSetup]="true"
+                <account-device-edit
+                        [deviceForm]="defaultsForm"
+                        [action]="'default setup'"
                 >
-                </account-device-defaults>
+                </account-device-edit>
                 <div fxLayout="row" fxLayoutAlign="end">
                     <button mat-button matStepperNext [disabled]="!defaultsForm.valid">
-                        Next
+                        NEXT
                     </button>
                 </div>
             </form>
         </mat-step>
 
-        <!--<mat-step label="Device" [stepControl]="preferencesForm">-->
-            <!--<form [formGroup]="preferencesForm" (ngSubmit)="onPreferencesSubmit()">-->
-                <!--<account-device-preferences-->
-                        <!--[preferencesForm]="preferencesForm"-->
-                        <!--[deviceSetup]="true"-->
-                <!--&gt;-->
-                <!--</account-device-preferences>-->
-                <!--<button mat-button matStepperNext [disabled]="!preferencesForm.valid">-->
-                    <!--Next-->
-                <!--</button>-->
-            <!--</form>-->
-        <!--</mat-step>-->
+        <mat-step label="Device" [stepControl]="deviceForm">
+            <form [formGroup]="deviceForm" (ngSubmit)="onDeviceSubmit()">
+                <account-device-edit
+                        [deviceForm]="deviceForm"
+                        [action]="'device setup'"
+                        [preferences]="preferences"
+                >
+                </account-device-edit>
+                <div fxLayout="row" fxLayoutAlign="end">
+                    <button mat-button matStepperNext [disabled]="!deviceForm.valid">
+                        NEXT
+                    </button>
+                </div>
+            </form>
+        </mat-step>
+
+        <mat-step label="Done!">
+            <account-device-add-complete [wakeWord]="deviceForm.controls['wakeWord'].value">
+            </account-device-add-complete>
+            <div fxLayout="row" fxLayoutAlign="end">
+                <button mat-button>FINISHED</button>
+            </div>
+        </mat-step>
     </mat-horizontal-stepper>
 
     <!-- Show a vertical stepper on smaller devices -->
@@ -75,36 +86,68 @@
         </ng-template>
 
         <mat-step label="Pairing" [stepControl]="pairDeviceForm">
-            <account-device-pairing></account-device-pairing>
-            <button mat-button matStepperNext type="button" [disabled]="!pairDeviceForm.valid">
-                Next
-            </button>
+            <form [formGroup]="pairDeviceForm" (ngSubmit)="onPairingSubmit()">
+                <account-device-pairing [pairingCodeControl]="pairingCodeControl"></account-device-pairing>
+                <div fxLayout="row" fxLayoutAlign="end">
+                    <button mat-button matStepperNext [disabled]="!pairDeviceForm.valid">
+                        NEXT
+                    </button>
+                </div>
+            </form>
         </mat-step>
 
-        <mat-step *ngIf="!preferences" label="Preferences" [stepControl]="preferencesForm">
+        <mat-step label="Preferences" *ngIf="!preferences" [stepControl]="preferencesForm">
             <form [formGroup]="preferencesForm" (ngSubmit)="onPreferencesSubmit()">
                 <account-device-preferences
                         [preferencesForm]="preferencesForm"
                         [deviceSetup]="true"
                 >
                 </account-device-preferences>
-                <button mat-button matStepperNext [disabled]="!preferencesForm.valid">
-                    Next
-                </button>
+                <div fxLayout="row" fxLayoutAlign="end">
+                    <button mat-button matStepperNext [disabled]="!preferencesForm.valid">
+                        NEXT
+                    </button>
+                </div>
             </form>
         </mat-step>
 
-        <mat-step *ngIf="!preferences" label="Defaults" [stepControl]="defaultsForm">
+        <mat-step label="Defaults" *ngIf="!preferences" [stepControl]="defaultsForm">
             <form [formGroup]="defaultsForm" (ngSubmit)="onDefaultsSubmit()">
-                <account-device-defaults
-                        [defaultsForm]="defaultsForm"
-                        [deviceSetup]="true"
+                <account-device-edit
+                        [deviceForm]="defaultsForm"
+                        [action]="'default setup'"
                 >
-                </account-device-defaults>
-                <button mat-button matStepperNext [disabled]="!preferencesForm.valid">
-                    Next
-                </button>
+                </account-device-edit>
+                <div fxLayout="row" fxLayoutAlign="end">
+                    <button mat-button matStepperNext [disabled]="!defaultsForm.valid">
+                        NEXT
+                    </button>
+                </div>
             </form>
+        </mat-step>
+
+        <mat-step label="Device" [stepControl]="deviceForm">
+            <form [formGroup]="deviceForm" (ngSubmit)="onDeviceSubmit()">
+                <account-device-edit
+                        [deviceForm]="deviceForm"
+                        [action]="'device setup'"
+                        [preferences]="preferences"
+                >
+                </account-device-edit>
+                <div fxLayout="row" fxLayoutAlign="end">
+                    <button mat-button matStepperNext [disabled]="!deviceForm.valid">
+                        NEXT
+                    </button>
+                </div>
+            </form>
+        </mat-step>
+
+        <mat-step label="Done!">
+            <account-device-add-complete [wakeWord]="deviceForm.controls['wakeWord'].value">
+            </account-device-add-complete>
+            <div fxLayout="row" fxLayoutAlign="end">
+                <button mat-button>FINISHED</button>
+            </div>
         </mat-step>
 
     </mat-vertical-stepper>
