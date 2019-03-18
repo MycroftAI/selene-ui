@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AbstractControl, FormControl, FormGroup, ValidatorFn } from '@angular/forms';
+import { AbstractControl, FormGroup, ValidatorFn } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith, tap } from 'rxjs/operators';
 
@@ -22,10 +22,11 @@ export class DefaultsComponent implements OnInit {
     public wakeWordOptionsConfig: OptionButtonsConfig;
     public cities: City[];
     public countries: Country[];
+    public countries$ = new Observable<Country[]>();
     public regions: Region[];
     public timezones: Timezone[];
     public filteredCities$: Observable<City[]>;
-    public filteredCountries$: Observable<Country[]>;
+    public selectedCountry: Country;
     public filteredRegions$: Observable<Region[]>;
     public filteredTimezones$: Observable<Timezone[]>;
 
@@ -44,39 +45,9 @@ export class DefaultsComponent implements OnInit {
         this.defaultsForm.controls['region'].disable();
         this.defaultsForm.controls['city'].disable();
         this.defaultsForm.controls['timezone'].disable();
+        this.countries$ = this.geoService.getCountries();
     }
 
-
-    getCountries() {
-        if (!this.countries) {
-            this.geoService.getCountries().subscribe(
-                (countries) => {
-                    this.countries = countries;
-                    this.defaultsForm.controls['country'].validator = this.geographyValidator(this.countries);
-                    this.filteredCountries$ = this.defaultsForm.controls['country'].valueChanges.pipe(
-                        startWith(''),
-                        map((value) => this.filterCountries(value)),
-                        tap(() => { this.toggleCountryDependentControls(); })
-                    );
-                }
-            );
-        }
-    }
-
-    private filterCountries(value: string): Country[] {
-        const filterValue = value.toLowerCase();
-        let filteredCountries: Country[];
-
-        if (this.countries) {
-            filteredCountries = this.countries.filter(
-                (country) => country.name.toLowerCase().includes(filterValue)
-            );
-        } else {
-            filteredCountries = [];
-        }
-
-        return filteredCountries;
-    }
 
     getRegions() {
         const country = this.countries.find(
@@ -209,7 +180,8 @@ export class DefaultsComponent implements OnInit {
         };
     }
 
-    toggleCountryDependentControls() {
+    onCountrySelect(selectedCountry: Country) {
+        this.selectedCountry = selectedCountry;
         if (this.defaultsForm.controls['country'].value && this.defaultsForm.controls['country'].valid) {
             this.defaultsForm.controls['region'].enable();
             this.defaultsForm.controls['timezone'].enable();
