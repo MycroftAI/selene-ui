@@ -30,7 +30,8 @@ import { TimezoneInputComponent } from './components/timezone-input/timezone-inp
         CountryInputComponent,
         DisplayFieldComponent,
         OptionButtonsComponent,
-        RegionInputComponent
+        RegionInputComponent,
+        TimezoneInputComponent
     ],
     imports: [
         CommonModule,
