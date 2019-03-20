@@ -21,6 +21,11 @@ const internalAuthUrl = '/api/internal-login';
 const federatedAuthUrl = '/api/validate-federated';
 const logoutUrl = '/api/logout';
 
+export interface FederatedLoginToken {
+    platform: string;
+    token: string;
+}
+
 export function storeRedirect() {
     localStorage.setItem(
         'redirect',
@@ -59,8 +64,8 @@ export class AppService {
         return this.http.get<AuthResponse>(internalAuthUrl, {headers: httpHeaders});
     }
 
-    validateFederatedLogin(email: string) {
-        return this.http.post<AuthResponse>(federatedAuthUrl, {email: email});
+    validateFederatedLogin(loginToken: FederatedLoginToken) {
+        return this.http.post<AuthResponse>(federatedAuthUrl, loginToken);
     }
 
     logout(): Observable<any> {

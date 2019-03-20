@@ -3,7 +3,7 @@ import { MatSnackBar } from '@angular/material';
 
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 
-import { AppService } from '../../app.service';
+import { AppService, FederatedLoginToken } from '../../app.service';
 
 const noDelay = 0;
 const tenSeconds = 10000;
@@ -23,8 +23,8 @@ export class FederatedLoginComponent implements OnInit {
 
     ngOnInit() { }
 
-    private validateFederatedLogin(email: string) {
-        this.ssoService.validateFederatedLogin(email).subscribe(
+    private validateFederatedLogin(loginToken: FederatedLoginToken) {
+        this.ssoService.validateFederatedLogin(loginToken).subscribe(
             (response) => { this.ssoService.navigateToRedirectURI(noDelay); },
             (response) => { this.onAuthFailure(response); }
         );

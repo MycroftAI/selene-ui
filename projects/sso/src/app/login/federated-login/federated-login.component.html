@@ -1,6 +1,6 @@
 <div id="external-login" fxLayout="column" fxLayoutAlign="center center">
-    <shared-google-button (googleEmail)="validateFederatedLogin($event)"></shared-google-button>
-    <shared-facebook-button (facebookEmail)="validateFederatedLogin($event)"></shared-facebook-button>
+    <shared-google-button (googleToken)="validateFederatedLogin($event)"></shared-google-button>
+    <shared-facebook-button (facebookToken)="validateFederatedLogin($event)"></shared-facebook-button>
     <button mat-button id="github-button">
         <fa-icon [icon]="githubIcon"></fa-icon>
         Log in with GitHub
