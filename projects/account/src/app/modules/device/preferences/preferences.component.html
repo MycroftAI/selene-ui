@@ -1,4 +1,4 @@
-<mat-card class="mat-elevation-z0" id="required-settings-card">
+<mat-card class="mat-elevation-z0" id="required-settings-card" [formGroup]="preferencesForm">
     <mat-card-title *ngIf="deviceSetup">Setup your device preferences</mat-card-title>
     <mat-card-title *ngIf="!deviceSetup">Manage your device preferences</mat-card-title>
     <mat-card-content fxLayout="column">
@@ -26,7 +26,7 @@
         </account-option-buttons>
     </mat-card-content>
     <mat-card-actions align="right" *ngIf="!deviceSetup">
-        <button mat-button type="submit">SAVE</button>
+        <button mat-button (click)="onSave()" [disabled]="!preferencesForm.valid">SAVE</button>
     </mat-card-actions>
 </mat-card>
 

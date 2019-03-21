@@ -71,6 +71,14 @@ export class PreferencesComponent implements OnInit {
     }
 
     onSave() {
-        this.deviceService.updateAccountPreferences(this.preferencesForm);
+        if (this.preferences) {
+            this.deviceService.updateAccountPreferences(this.preferencesForm).subscribe(
+                () => { this.preferences = this.preferencesForm.value; }
+            );
+        } else {
+            this.deviceService.addAccountPreferences(this.preferencesForm).subscribe(
+                () => { this.preferences = this.preferencesForm.value; }
+            );
+        }
     }
 }

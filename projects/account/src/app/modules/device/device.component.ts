@@ -41,9 +41,18 @@ export class DeviceComponent implements OnInit {
         );
         this.preferencesForm = this.formBuilder.group(
             {
-                dateFormat: [null, Validators.required],
-                measurementSystem: [null, Validators.required],
-                timeFormat: [null, Validators.required],
+                dateFormat: [
+                    this.preferences ? this.preferences.dateFormat : null,
+                    Validators.required
+                ],
+                measurementSystem: [
+                    this.preferences ? this.preferences.measurementSystem : null,
+                    Validators.required
+                ],
+                timeFormat: [
+                    this.preferences ? this.preferences.timeFormat : null,
+                    Validators.required
+                ],
             }
         );
 

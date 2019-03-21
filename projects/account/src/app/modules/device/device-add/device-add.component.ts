@@ -108,7 +108,7 @@ export class DeviceAddComponent implements OnInit {
     }
 
     onPreferencesSubmit() {
-        this.deviceService.addAccountPreferences(this.preferencesForm);
+        this.deviceService.addAccountPreferences(this.preferencesForm).subscribe();
     }
 
     onDefaultsSubmit() {
