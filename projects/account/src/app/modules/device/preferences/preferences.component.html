@@ -25,6 +25,9 @@
         >
         </account-option-buttons>
     </mat-card-content>
+    <mat-card-actions align="right" *ngIf="!deviceSetup">
+        <button mat-button type="submit">SAVE</button>
+    </mat-card-actions>
 </mat-card>
 
 <mat-card *ngIf="!deviceSetup" id="advanced-settings-card">

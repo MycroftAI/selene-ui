@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
 import { AccountPreferences } from '../../../shared/models/preferences.model';
+import { DeviceService } from '../../../core/http/device.service';
 import { OptionButtonsConfig } from '../../../shared/models/option-buttons-config.model';
 
 @Component({
@@ -18,7 +19,7 @@ export class PreferencesComponent implements OnInit {
     public timeFormatOptionsConfig: OptionButtonsConfig;
     public dateFormatOptionsConfig: OptionButtonsConfig;
 
-    constructor() {
+    constructor(private deviceService: DeviceService)   {
         this.dateFormatOptionsConfig = {
             label: 'Date Format',
             options: ['DD/MM/YYYY', 'MM/DD/YYYY'],
@@ -67,5 +68,9 @@ export class PreferencesComponent implements OnInit {
 
     changeTimeFormat(newValue: string) {
         this.preferencesForm.patchValue({timeFormat: newValue});
+    }
+
+    onSave() {
+        this.deviceService.updateAccountPreferences(this.preferencesForm);
     }
 }

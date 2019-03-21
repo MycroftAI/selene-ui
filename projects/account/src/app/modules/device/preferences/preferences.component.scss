@@ -14,6 +14,16 @@ mat-card {
 
 #required-settings-card {
     margin-top: 16px;
+
+    button {
+        @include action-button-primary;
+        margin: 16px;
+
+        &:disabled {
+            background-color: mat-color($mycroft-accent, 200);
+        }
+    }
+
 }
 
 #advanced-settings-card {
