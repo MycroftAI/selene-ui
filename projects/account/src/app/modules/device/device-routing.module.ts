@@ -12,7 +12,9 @@ const deviceRoutes: Routes = [
         path: 'devices',
         component: DeviceComponent,
         resolve: {
-            devices: DeviceResolverService
+            defaults: DefaultsResolverService,
+            devices: DeviceResolverService,
+            preferences: PreferencesResolverService
         }
     },
     {
