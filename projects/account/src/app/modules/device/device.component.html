@@ -1,12 +1,27 @@
 <router-outlet></router-outlet>
 <div fxLayout="column" fxLayoutAlign="center center">
-    <mat-tab-group mat-stretch-tabs>
+    <mat-tab-group>
         <mat-tab [label]="'Devices'">
             <account-device-list></account-device-list>
         </mat-tab>
         <mat-tab [label]="'Preferences'">
             <ng-template matTabContent>
-                <account-device-preferences></account-device-preferences>
+                <account-device-preferences
+                    [deviceSetup]="false"
+                    [preferencesForm]="preferencesForm"
+                    [preferences]="preferences"
+                >
+                </account-device-preferences>
+            </ng-template>
+        </mat-tab>
+        <mat-tab [label]="'Defaults'">
+            <ng-template matTabContent>
+                <account-device-edit
+                    [action]="'default edit'"
+                    [deviceForm]="defaultsForm"
+                    [defaults]="defaults"
+                >
+                </account-device-edit>
             </ng-template>
         </mat-tab>
     </mat-tab-group>
