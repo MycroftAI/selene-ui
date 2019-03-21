@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AbstractControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 import { City } from '../../../shared/models/city.model';
@@ -8,7 +8,7 @@ import { GeographyService } from '../../../core/http/geography_service';
 import { OptionButtonsConfig } from '../../../shared/models/option-buttons-config.model';
 import { Region } from '../../../shared/models/region.model';
 import { Timezone } from '../../../shared/models/timezone.model';
-import { AccountPreferences } from '../../../shared/models/preferences.model';
+import { AccountDefaults } from '../../../shared/models/defaults.model';
 
 @Component({
     selector: 'account-device-edit',
@@ -20,7 +20,7 @@ export class DeviceEditComponent implements OnInit {
     public cities$ = new Observable<City[]>();
     public countries$ = new Observable<Country[]>();
     @Input() deviceForm: FormGroup;
-    @Input() preferences: AccountPreferences;
+    @Input() defaults: AccountDefaults;
     public regions$ = new Observable<Region[]>();
     public timezones$ = new Observable<Timezone[]>();
     public voiceOptionsConfig: OptionButtonsConfig;
@@ -43,30 +43,40 @@ export class DeviceEditComponent implements OnInit {
         this.deviceForm.controls['city'].disable();
         this.deviceForm.controls['timezone'].disable();
         this.countries$ = this.geoService.getCountries();
-        if (this.action === 'device setup' && this.preferences) {
+        if (this.action === 'device setup' && this.defaults) {
             this.applyDefaultValues();
         }
     }
 
     applyDefaultValues() {
-        if (this.preferences.geography.country) {
+        if (this.defaults.country) {
             this.deviceForm.controls['country'].setValue(
-                this.preferences.geography.country
+                this.defaults.country.name
             );
         }
-        if (this.preferences.geography.region) {
+        if (this.defaults.region) {
             this.deviceForm.controls['region'].setValue(
-                this.preferences.geography.region
+                this.defaults.region.name
             );
         }
-        if (this.preferences.geography.city) {
+        if (this.defaults.city) {
             this.deviceForm.controls['city'].setValue(
-                this.preferences.geography.city
+                this.defaults.city.name
             );
         }
-        if (this.preferences.geography.timezone) {
+        if (this.defaults.timezone) {
             this.deviceForm.controls['timezone'].setValue(
-                this.preferences.geography.timezone
+                this.defaults.timezone.name
+            );
+        }
+        if (this.defaults.voice) {
+            this.deviceForm.controls['voice'].setValue(
+                this.defaults.voice.displayName
+            );
+        }
+        if (this.defaults.wakeWord) {
+            this.deviceForm.controls['wakeWord'].setValue(
+                this.defaults.wakeWord.wakeWord
             );
         }
     }

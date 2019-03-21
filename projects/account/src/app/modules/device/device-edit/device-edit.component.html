@@ -1,3 +1,11 @@
+<!--
+    Editable device attribute fields
+
+    There are a bunch of conditional fields in this form because it is re-used for four
+    different purposes.  Not all of the use cases need all the fields.  However, the forms are
+    similar enough that it made sense to include all four use cases in a single component to avoid
+    a bunch of duplicate code.
+-->
 <mat-card class="mat-elevation-z0" id="default-settings-card" [formGroup]="deviceForm">
     <ng-container [ngSwitch]="action">
         <mat-card-title *ngSwitchCase="'default setup'">Setup your device defaults</mat-card-title>
@@ -9,13 +17,25 @@
     <!-- Device name and placement -->
     <mat-card-content
             *ngIf="action.startsWith('device')"
-            fxLayout="row wrap"
+            fxLayout="column"
             fxLayoutAlign="space-around"
             fxLayout.xs="column"
     >
+        <mat-form-field *ngIf="action === 'device setup'" [appearance]="'outline'">
+            <mat-label>Pairing Code</mat-label>
+            <input
+                    matInput
+                    required
+                    type="text"
+                    onInput="this.value = this.value.toUpperCase()"
+                    formControlName="pairingCode"
+            >
+            <mat-hint>Code spoken by device</mat-hint>
+        </mat-form-field>
         <mat-form-field fxFlex.gt-xs="40" [appearance]="'outline'">
             <mat-label>Name</mat-label>
             <input matInput required type="text" formControlName="name">
+            <mat-hint>Must be unique</mat-hint>
         </mat-form-field>
         <mat-form-field fxFlex.gt-xs="40" [appearance]="'outline'">
             <mat-label>Placement</mat-label>
