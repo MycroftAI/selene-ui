@@ -7,6 +7,7 @@ import { DeviceAttribute } from '../../shared/models/deviceAttribute.model';
 import { FormGroup } from '@angular/forms';
 import { AccountDefaults } from '../../shared/models/defaults.model';
 import { subscribeOn } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 const defaultsUrl = '/api/defaults';
 const deviceUrl = '/api/devices';
@@ -42,15 +43,15 @@ export class DeviceService {
     }
 
     addAccountPreferences(preferencesForm: FormGroup) {
-        this.http.post<any>(preferencesUrl, preferencesForm.value).subscribe();
+        return this.http.post<any>(preferencesUrl, preferencesForm.value);
     }
 
     getAccountPreferences() {
         return this.http.get<AccountPreferences>(preferencesUrl);
     }
 
-    updateAccountPreferences(preferencesForm: FormGroup): void {
-        this.http.patch<any>(preferencesUrl, preferencesForm.value);
+    updateAccountPreferences(preferencesForm: FormGroup): Observable<any> {
+        return this.http.patch<any>(preferencesUrl, preferencesForm.value);
     }
 
     addAccountDefaults(defaultsForm: FormGroup) {
