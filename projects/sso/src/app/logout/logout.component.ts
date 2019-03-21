@@ -27,7 +27,6 @@ export class LogoutComponent implements OnInit {
     }
 
     onLogoutSuccess(): void {
-        this.appService.expireTokenCookies();
         this.appService.navigateToRedirectURI(oneSecond);
     }
 }
