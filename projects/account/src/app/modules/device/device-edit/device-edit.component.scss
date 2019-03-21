@@ -1,5 +1,6 @@
 @import "~@angular/material/theming";
 @import "mycroft-colors";
+@import "components/buttons";
 @import "components/cards";
 
 mat-card {
@@ -15,11 +16,16 @@ mat-card {
         margin-top: 32px;
     }
 
-    //account-country-input {
-    //    max-width: 280px;
-    //}
-
     mat-form-field {
         max-width: 280px;
+    }
+
+    button {
+        @include action-button-primary;
+        margin: 16px;
+
+        &:disabled {
+            background-color: mat-color($mycroft-accent, 200);
+        }
     }
 }
