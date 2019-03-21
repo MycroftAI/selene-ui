@@ -35,7 +35,6 @@ export function storeRedirect() {
 
 @Injectable()
 export class AppService {
-    private cookieDomain: string = document.domain.replace('sso.', '');
 
     constructor(private http: HttpClient) { }
 
@@ -70,22 +69,6 @@ export class AppService {
 
     logout(): Observable<any> {
         return this.http.get(logoutUrl);
-    }
-
-    expireTokenCookies(): void {
-        const expiration = new Date();
-        document.cookie = 'seleneAccess=""' +
-            '; expires=' + expiration.toUTCString() +
-            '; domain=' + this.cookieDomain;
-        document.cookie = 'seleneRefresh=""' +
-            '; expires=' + expiration.toUTCString() +
-            '; domain=' + this.cookieDomain;
-
-    }
-
-    gitHubLogin() {
-        return this.http.get<string>('https://github.com/login/oauth/authorize' +
-            '?scope=user:email&client_id=752bb0864dd667c902f4');
     }
 
 }
