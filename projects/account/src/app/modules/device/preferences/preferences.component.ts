@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { MatButtonToggleChange } from '@angular/material';
 
 import { AccountPreferences } from '../../../shared/models/preferences.model';
 import { OptionButtonsConfig } from '../../../shared/models/option-buttons-config.model';
