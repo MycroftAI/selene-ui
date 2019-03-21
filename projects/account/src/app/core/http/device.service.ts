@@ -4,7 +4,11 @@ import { Injectable } from '@angular/core';
 import { AccountPreferences } from '../../shared/models/preferences.model';
 import { Device } from '../../shared/models/device.model';
 import { DeviceAttribute } from '../../shared/models/deviceAttribute.model';
+import { FormGroup } from '@angular/forms';
+import { AccountDefaults } from '../../shared/models/defaults.model';
+import { subscribeOn } from 'rxjs/operators';
 
+const defaultsUrl = '/api/defaults';
 const deviceUrl = '/api/devices';
 const geographyUrl = 'api/geographies';
 const preferencesUrl = '/api/preferences';
@@ -29,12 +33,28 @@ export class DeviceService {
         return this.http.get<Device[]>(deviceUrl);
     }
 
+    addDevice(deviceForm: FormGroup) {
+        this.http.post<any>(deviceUrl, deviceForm.value).subscribe();
+    }
+
     deleteDevice(device: Device): void {
         console.log('deleting device... ');
     }
 
+    addAccountPreferences(preferencesForm: FormGroup) {
+        this.http.post<any>(preferencesUrl, preferencesForm.value).subscribe();
+    }
+
     getAccountPreferences() {
         return this.http.get<AccountPreferences>(preferencesUrl);
+    }
+
+    addAccountDefaults(defaultsForm: FormGroup) {
+        this.http.post<any>(defaultsUrl, defaultsForm.value).subscribe();
+    }
+
+    getAccountDefaults() {
+        return this.http.get<AccountDefaults>(defaultsUrl);
     }
 
     getGeographies() {
