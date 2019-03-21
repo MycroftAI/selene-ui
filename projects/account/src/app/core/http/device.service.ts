@@ -49,6 +49,10 @@ export class DeviceService {
         return this.http.get<AccountPreferences>(preferencesUrl);
     }
 
+    updateAccountPreferences(preferencesForm: FormGroup): void {
+        this.http.patch<any>(preferencesUrl, preferencesForm.value);
+    }
+
     addAccountDefaults(defaultsForm: FormGroup) {
         this.http.post<any>(defaultsUrl, defaultsForm.value).subscribe();
     }
