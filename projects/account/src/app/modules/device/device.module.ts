@@ -34,7 +34,12 @@ import { PairingComponent } from './device-add/pairing/pairing.component';
 import { DeviceListComponent } from './device-list/device-list.component';
 import { DeviceConfigComponent } from './device-list/device-config/device-config.component';
 import { DeviceLocationComponent } from './device-list/device-location/device-location.component';
-import { DefaultsComponent } from './defaults/defaults.component';
+import { DeviceEditComponent } from './device-edit/device-edit.component';
+import { CityInputComponent } from './device-edit/city-input/city-input.component';
+import { CountryInputComponent } from './device-edit/country-input/country-input.component';
+import { RegionInputComponent } from './device-edit/region-input/region-input.component';
+import { TimezoneInputComponent } from './device-edit/timezone-input/timezone-input.component';
+import { AddCompleteComponent } from './device-add/add-complete/add-complete.component';
 
 @NgModule({
     declarations: [
@@ -48,10 +53,14 @@ import { DefaultsComponent } from './defaults/defaults.component';
         PreferencesComponent,
         WakeWordComponent,
         DeviceAddComponent,
-        PairingComponent,
         DeviceLocationComponent,
+        DeviceEditComponent,
         DeviceConfigComponent,
-        DefaultsComponent,
+        CityInputComponent,
+        CountryInputComponent,
+        RegionInputComponent,
+        TimezoneInputComponent,
+        AddCompleteComponent
     ],
     entryComponents: [
         DeviceAddComponent,
