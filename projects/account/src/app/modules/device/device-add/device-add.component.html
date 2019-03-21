@@ -9,17 +9,6 @@
             <fa-icon [icon]="stepDoneIcon"></fa-icon>
         </ng-template>
 
-        <mat-step label="Pairing" [stepControl]="pairDeviceForm">
-            <form [formGroup]="pairDeviceForm" (ngSubmit)="onPairingSubmit()">
-                <account-device-pairing [pairingCodeControl]="pairingCodeControl"></account-device-pairing>
-                <div fxLayout="row" fxLayoutAlign="end">
-                    <button mat-button matStepperNext [disabled]="!pairDeviceForm.valid">
-                        NEXT
-                    </button>
-                </div>
-            </form>
-        </mat-step>
-
         <mat-step label="Preferences" *ngIf="!preferences" [stepControl]="preferencesForm">
             <form [formGroup]="preferencesForm" (ngSubmit)="onPreferencesSubmit()">
                 <account-device-preferences
@@ -55,7 +44,7 @@
                 <account-device-edit
                         [deviceForm]="deviceForm"
                         [action]="'device setup'"
-                        [preferences]="preferences"
+                        [defaults]="defaults"
                 >
                 </account-device-edit>
                 <div fxLayout="row" fxLayoutAlign="end">
@@ -85,17 +74,6 @@
             <fa-icon [icon]="stepDoneIcon"></fa-icon>
         </ng-template>
 
-        <mat-step label="Pairing" [stepControl]="pairDeviceForm">
-            <form [formGroup]="pairDeviceForm" (ngSubmit)="onPairingSubmit()">
-                <account-device-pairing [pairingCodeControl]="pairingCodeControl"></account-device-pairing>
-                <div fxLayout="row" fxLayoutAlign="end">
-                    <button mat-button matStepperNext [disabled]="!pairDeviceForm.valid">
-                        NEXT
-                    </button>
-                </div>
-            </form>
-        </mat-step>
-
         <mat-step label="Preferences" *ngIf="!preferences" [stepControl]="preferencesForm">
             <form [formGroup]="preferencesForm" (ngSubmit)="onPreferencesSubmit()">
                 <account-device-preferences
@@ -131,7 +109,7 @@
                 <account-device-edit
                         [deviceForm]="deviceForm"
                         [action]="'device setup'"
-                        [preferences]="preferences"
+                        [defaults]="defaults"
                 >
                 </account-device-edit>
                 <div fxLayout="row" fxLayoutAlign="end">
@@ -149,5 +127,4 @@
                 <button mat-button>FINISHED</button>
             </div>
         </mat-step>
-
     </mat-vertical-stepper>

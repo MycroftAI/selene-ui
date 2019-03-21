@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import {
-    AbstractControl,
     FormBuilder,
     FormGroup,
     Validators
@@ -13,6 +12,7 @@ import { Subscription } from 'rxjs';
 
 import { AccountPreferences } from '../../../shared/models/preferences.model';
 import { DeviceService } from '../../../core/http/device.service';
+import { AccountDefaults } from '../../../shared/models/defaults.model';
 
 @Component({
   selector: 'account-device-add',
@@ -21,12 +21,11 @@ import { DeviceService } from '../../../core/http/device.service';
 })
 export class DeviceAddComponent implements OnInit {
     public alignVertical: boolean;
+    public defaults: AccountDefaults;
+    public defaultsForm: FormGroup;
     public deviceForm: FormGroup;
     private mediaWatcher: Subscription;
-    public pairingCodeControl: AbstractControl;
-    public pairDeviceForm: FormGroup;
     public preferencesForm: FormGroup;
-    public defaultsForm: FormGroup;
     public preferences: AccountPreferences;
     public stepDoneIcon = faCheck;
 
@@ -44,22 +43,11 @@ export class DeviceAddComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.getAccountPreferences();
+        this.getResolverData();
         this.buildForms();
-        this.setControlFormAliases();
     }
 
     private buildForms() {
-        this.pairDeviceForm = this.formBuilder.group({
-            pairingCode: [
-                null,
-                [
-                    Validators.required,
-                    Validators.maxLength(6),
-                    Validators.minLength(6)
-                ]
-            ],
-        });
         this.preferencesForm = this.formBuilder.group(
             {
                 dateFormat: [null, Validators.required],
@@ -67,13 +55,18 @@ export class DeviceAddComponent implements OnInit {
                 timeFormat: [null, Validators.required],
             }
         );
+
+        // The defaults and device forms must have the same fields because they
+        // both use the same component.  The name, pairing code and placement
+        // controls are only placeholders in this context to facilitate form re-use.
         this.defaultsForm = this.formBuilder.group(
             {
-                name: [null],
-                placement: [null],
-                country: [null],
-                region: [null],
                 city: [null],
+                country: [null],
+                name: [null],
+                pairingCode: [null],
+                placement: [null],
+                region: [null],
                 timezone: [null],
                 wakeWord: [null],
                 voice: [null]
@@ -81,11 +74,19 @@ export class DeviceAddComponent implements OnInit {
         );
         this.deviceForm = this.formBuilder.group(
             {
-                name: [null],
-                placement: [null],
-                country: [null, Validators.required],
-                region: [null, Validators.required],
                 city: [null, Validators.required],
+                name: [null, Validators.required],
+                country: [null, Validators.required],
+                pairingCode: [
+                    null,
+                    [
+                        Validators.required,
+                        Validators.maxLength(6),
+                        Validators.minLength(6)
+                    ]
+                ],
+                placement: [null],
+                region: [null, Validators.required],
                 timezone: [null, Validators.required],
                 wakeWord: [null, Validators.required],
                 voice: [null, Validators.required]
@@ -93,31 +94,24 @@ export class DeviceAddComponent implements OnInit {
         );
     }
 
-    getAccountPreferences() {
+    getResolverData() {
         this.route.data.subscribe(
-            (data: {preferences: AccountPreferences}) => {
+            (data: {defaults: AccountDefaults, preferences: AccountPreferences}) => {
                 this.preferences = data.preferences;
+                this.defaults = data.defaults;
             }
         );
     }
 
-    private setControlFormAliases() {
-        this.pairingCodeControl = this.pairDeviceForm.controls['pairingCode'];
-    }
-
-    onPairingSubmit() {
-        console.log('attempting to pair device');
-    }
-
     onDeviceSubmit() {
-        console.log('device added');
+        this.deviceService.addDevice(this.deviceForm);
     }
 
     onPreferencesSubmit() {
-        console.log('preferences set');
+        this.deviceService.addAccountPreferences(this.preferencesForm);
     }
 
     onDefaultsSubmit() {
-        console.log('device-config set');
+        this.deviceService.addAccountDefaults(this.defaultsForm);
     }
 }
