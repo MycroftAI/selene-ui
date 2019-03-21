@@ -22,7 +22,7 @@ export class LogoutComponent implements OnInit {
         }
 
         this.appService.logout().subscribe(
-          (response) => { this.onLogoutSuccess(); },
+          () => { this.onLogoutSuccess(); },
         );
     }
 
