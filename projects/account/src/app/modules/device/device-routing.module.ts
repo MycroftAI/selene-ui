@@ -5,6 +5,7 @@ import { DeviceAddComponent } from './device-add/device-add.component';
 import { DeviceComponent} from './device.component';
 import { PreferencesResolverService } from '../../core/guards/preferences-resolver.service';
 import { DeviceResolverService } from '../../core/guards/device-resolver.service';
+import { DefaultsResolverService } from '../../core/guards/defaults-resolver.service';
 
 const deviceRoutes: Routes = [
     {
@@ -18,6 +19,7 @@ const deviceRoutes: Routes = [
         path: 'devices/add',
         component: DeviceAddComponent,
         resolve: {
+            defaults: DefaultsResolverService,
             preferences: PreferencesResolverService
         }
 }
