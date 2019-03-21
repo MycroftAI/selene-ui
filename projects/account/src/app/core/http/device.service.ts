@@ -55,7 +55,11 @@ export class DeviceService {
     }
 
     addAccountDefaults(defaultsForm: FormGroup) {
-        this.http.post<any>(defaultsUrl, defaultsForm.value).subscribe();
+        return this.http.post<any>(defaultsUrl, defaultsForm.value);
+    }
+
+    updateAccountDefaults(defaultsForm: FormGroup) {
+        return this.http.patch<any>(defaultsUrl, defaultsForm.value);
     }
 
     getAccountDefaults() {

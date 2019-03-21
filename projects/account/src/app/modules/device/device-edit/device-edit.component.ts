@@ -2,13 +2,14 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 
+import { AccountDefaults } from '../../../shared/models/defaults.model';
 import { City } from '../../../shared/models/city.model';
 import { Country } from '../../../shared/models/country.model';
+import { DeviceService } from '../../../core/http/device.service';
 import { GeographyService } from '../../../core/http/geography_service';
 import { OptionButtonsConfig } from '../../../shared/models/option-buttons-config.model';
 import { Region } from '../../../shared/models/region.model';
 import { Timezone } from '../../../shared/models/timezone.model';
-import { AccountDefaults } from '../../../shared/models/defaults.model';
 
 @Component({
     selector: 'account-device-edit',
@@ -26,7 +27,7 @@ export class DeviceEditComponent implements OnInit {
     public voiceOptionsConfig: OptionButtonsConfig;
     public wakeWordOptionsConfig: OptionButtonsConfig;
 
-    constructor(private geoService: GeographyService) {
+    constructor(private deviceService: DeviceService, private geoService: GeographyService) {
         this.voiceOptionsConfig = {
             options: ['British Male', 'American Female', 'American Male', 'Google Voice'],
             buttonWidth: '140px'
@@ -117,5 +118,18 @@ export class DeviceEditComponent implements OnInit {
 
     changeWakeWord(newValue: string) {
         this.deviceForm.patchValue({wakeWord: newValue});
+    }
+
+    onSave() {
+        if (this.defaults) {
+            this.deviceService.updateAccountDefaults(this.deviceForm).subscribe(
+                () => { this.defaults = this.deviceForm.value; }
+            );
+        } else {
+            this.deviceService.addAccountDefaults(this.deviceForm).subscribe(
+                () => { this.defaults = this.deviceForm.value; }
+
+            );
+        }
     }
 }

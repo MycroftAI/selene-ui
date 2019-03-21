@@ -6,26 +6,35 @@
 mat-card {
     @include section-card;
     max-width: 700px;
+    margin-bottom: 16px;
+    margin-top: 32px;
 
     mat-card-title {
         color: mat-color($mycroft-primary)
     }
 
-    .mat-h2 {
-        color: mat-color($mycroft-accent, A700);
-        margin-top: 32px;
-    }
-
-    mat-form-field {
-        max-width: 280px;
-    }
-
-    button {
-        @include action-button-primary;
+    mat-card-content {
         margin: 16px;
 
-        &:disabled {
-            background-color: mat-color($mycroft-accent, 200);
+        .mat-h2 {
+            color: mat-color($mycroft-accent, A700);
+            margin-top: 32px;
+        }
+
+        mat-form-field {
+            max-width: 280px;
+        }
+    }
+
+    mat-card-actions {
+        button {
+            @include action-button-primary;
+            margin-bottom: 16px;
+            margin-right: 16px;
+
+            &:disabled {
+                background-color: mat-color($mycroft-accent, 200);
+            }
         }
     }
 }

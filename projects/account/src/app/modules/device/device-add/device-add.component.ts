@@ -112,6 +112,6 @@ export class DeviceAddComponent implements OnInit {
     }
 
     onDefaultsSubmit() {
-        this.deviceService.addAccountDefaults(this.defaultsForm);
+        this.deviceService.addAccountDefaults(this.defaultsForm).subscribe();
     }
 }
