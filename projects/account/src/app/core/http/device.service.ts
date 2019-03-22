@@ -1,12 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { AccountPreferences } from '../../shared/models/preferences.model';
-import { Device } from '../../shared/models/device.model';
-import { DeviceAttribute } from '../../shared/models/deviceAttribute.model';
+import { AccountPreferences } from '@account/models/preferences.model';
+import { Device } from '@account/models/device.model';
+import { DeviceAttribute } from '@account/models/deviceAttribute.model';
 import { FormGroup } from '@angular/forms';
-import { AccountDefaults } from '../../shared/models/defaults.model';
-import { subscribeOn } from 'rxjs/operators';
+import { AccountDefaults } from '@account/models/defaults.model';
 import { Observable } from 'rxjs';
 
 const defaultsUrl = '/api/defaults';
@@ -20,13 +19,6 @@ const wakeWordUrl = '/api/wake-words';
 
 @Injectable({providedIn: 'root'})
 export class DeviceService {
-    public devicePlacements: DeviceAttribute[] = [
-        {id: '1', name: 'None', userDefined: true},
-        {id: null, name: 'Bedroom', userDefined: true},
-        {id: null, name: 'Kitchen', userDefined: true},
-        {id: '2', name: 'Living Room', userDefined: false}
-    ];
-
     constructor(private http: HttpClient) {
     }
 
