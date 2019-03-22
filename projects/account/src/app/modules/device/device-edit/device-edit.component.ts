@@ -48,7 +48,6 @@ export class DeviceEditComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log(this.deviceService.selectedDevice);
         // if (!this.deviceForm) {
         //     this.deviceForm = this.formBuilder.group(
         //         {
