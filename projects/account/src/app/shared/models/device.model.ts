@@ -7,7 +7,7 @@ export interface Device {
     id: string;
     geography: Geography;
     name: string;
-    placement: DeviceAttribute;
+    placement: string;
     platform: string;
     voice: DeviceAttribute;
     wakeWord: DeviceAttribute;
