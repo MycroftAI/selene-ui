@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { GlobalnavModule } from 'globalnav';
 import { PageNotFoundModule } from 'page-not-found';
 import { DeviceModule } from './modules/device/device.module';
-import { ProfileModule } from './profile/profile.module';
+import { ProfileModule } from './modules/profile/profile.module';
 import { SharedModule } from 'shared';
 import { SkillModule } from './skill/skill.module';
 
