@@ -31,7 +31,7 @@ import { MembershipComponent } from './edit/membership/membership.component';
 import { MembershipOptionsComponent } from './membership-options/membership-options.component';
 import { NewComponent } from './new/new.component';
 import { PaymentComponent } from './payment/payment.component';
-import { ProfileService } from './profile.service';
+import { ProfileService } from '../core/http/profile.service';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { SharedModule } from 'shared';
 import { SupportStepComponent } from './new/support-step/support-step.component';

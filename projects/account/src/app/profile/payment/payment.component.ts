@@ -8,7 +8,7 @@ import {
 
 import { ElementOptions, StripeCardComponent, StripeService } from 'ngx-stripe';
 
-import { ProfileService } from '../profile.service';
+import { ProfileService } from '../../core/http/profile.service';
 import { VerifyCardDialogComponent } from './verify-card-dialog.component';
 
 const twoSeconds = 2000;

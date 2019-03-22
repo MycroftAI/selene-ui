@@ -17,7 +17,7 @@ import {
     navigateToLogin,
     ProfileService,
     storeRedirect
-} from '../profile.service';
+} from '../../core/http/profile.service';
 
 const noDelay = 0;
 

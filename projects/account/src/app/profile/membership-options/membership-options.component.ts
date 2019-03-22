@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs';
 
 import { AccountMembership } from '@account/models/account-membership.model';
 import { MembershipType } from '@account/models/membership.model';
-import { ProfileService } from '../profile.service';
+import { ProfileService } from '../../core/http/profile.service';
 
 
 @Component({

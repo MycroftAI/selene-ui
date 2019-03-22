@@ -4,7 +4,7 @@ import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
-import { ProfileService } from '../../profile.service';
+import { ProfileService } from '../../../core/http/profile.service';
 
 
 @Component({

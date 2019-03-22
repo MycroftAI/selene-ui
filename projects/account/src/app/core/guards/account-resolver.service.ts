@@ -7,7 +7,7 @@ import {
 import { Observable } from 'rxjs';
 
 import { Account } from '@account/models/account.model';
-import { ProfileService } from './profile.service';
+import { ProfileService } from '../http/profile.service';
 
 @Injectable({
     providedIn: 'root',

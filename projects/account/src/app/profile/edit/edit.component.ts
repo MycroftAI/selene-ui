@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 
 import { Account } from '@account/models/account.model';
 import { MembershipType } from '@account/models/membership.model';
-import { ProfileService } from '../profile.service';
+import { ProfileService } from '../../core/http/profile.service';
 
 @Component({
     selector: 'account-profile-edit',

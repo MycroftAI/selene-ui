@@ -6,11 +6,11 @@ import { MatSnackBar } from '@angular/material';
 import { Observable, Subject, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { environment } from '../../environments/environment';
-import { Account } from '@account/models/account.model';
-import { AccountMembership } from '@account/models/account-membership.model';
-import { Agreement } from '@account/models/agreement.model';
-import { MembershipType } from '@account/models/membership.model';
+import { environment } from '../../../environments/environment';
+import { Account } from '../../shared/models/account.model';
+import { AccountMembership } from '../../shared/models/account-membership.model';
+import { Agreement } from '../../shared/models/agreement.model';
+import { MembershipType } from '../../shared/models/membership.model';
 
 
 // URLs for the http requests

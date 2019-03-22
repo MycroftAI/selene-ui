@@ -3,7 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { MatBottomSheet } from '@angular/material';
 
 import { MembershipType } from '@account/models/membership.model';
-import { ProfileService } from '../../profile.service';
+import { ProfileService } from '../../../core/http/profile.service';
 import { PaymentComponent } from '../../payment/payment.component';
 
 @Component({

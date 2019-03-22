@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AccountResolverService } from './account-resolver.service';
-import { MembershipResolverService } from './membership-resolver.service';
+import { AccountResolverService } from '../core/guards/account-resolver.service';
+import { MembershipResolverService } from '../core/guards/membership-resolver.service';
 import { EditComponent } from './edit/edit.component';
 import { NewComponent } from './new/new.component';
 
