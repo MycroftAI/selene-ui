@@ -10,9 +10,9 @@ import { ActivatedRoute } from '@angular/router';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
 
-import { AccountPreferences } from '../../../shared/models/preferences.model';
-import { DeviceService } from '../../../core/http/device.service';
-import { AccountDefaults } from '../../../shared/models/defaults.model';
+import { AccountPreferences } from '../../../../shared/models/preferences.model';
+import { DeviceService } from '../../../../core/http/device.service';
+import { AccountDefaults } from '../../../../shared/models/defaults.model';
 
 @Component({
   selector: 'account-device-add',

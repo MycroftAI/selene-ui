@@ -28,15 +28,15 @@ export class DevicesComponent implements OnInit {
 
         this.defaultsForm = this.formBuilder.group(
             {
-                city: [this.defaults ? this.defaults.city : null],
-                country: [this.defaults ? this.defaults.country : null],
+                city: [this.defaults ? this.defaults.city.name : null],
+                country: [this.defaults ? this.defaults.country.name : null],
                 name: [null],
                 pairingCode: [null],
                 placement: [null],
-                region: [this.defaults ? this.defaults.region : null],
-                timezone: [this.defaults ? this.defaults.timezone : null],
-                wakeWord: [this.defaults ? this.defaults.wakeWord : null],
-                voice: [this.defaults ? this.defaults.voice : null]
+                region: [this.defaults ? this.defaults.region.name : null],
+                timezone: [this.defaults ? this.defaults.timezone.name : null],
+                wakeWord: [this.defaults ? this.defaults.wakeWord.displayName : null],
+                voice: [this.defaults ? this.defaults.voice.displayName : null]
             }
         );
         this.preferencesForm = this.formBuilder.group(
