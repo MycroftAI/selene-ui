@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 
 import { AccountDefaults } from '../../../shared/models/defaults.model';
@@ -27,7 +27,11 @@ export class DeviceEditComponent implements OnInit {
     public voiceOptionsConfig: OptionButtonsConfig;
     public wakeWordOptionsConfig: OptionButtonsConfig;
 
-    constructor(private deviceService: DeviceService, private geoService: GeographyService) {
+    constructor(
+            private deviceService: DeviceService,
+            private formBuilder: FormBuilder,
+            private geoService: GeographyService
+    ) {
         this.voiceOptionsConfig = {
             options: ['British Male', 'American Female', 'American Male', 'Google Voice'],
             buttonWidth: '140px'
@@ -36,9 +40,22 @@ export class DeviceEditComponent implements OnInit {
             options: ['Hey Mycroft', 'Christopher', 'Hey Ezra', 'Hey Jarvis'],
             buttonWidth: '130px'
         };
+        this.deviceForm = this.formBuilder.group(
+            {
+                name: [null]
+            }
+        );
     }
 
     ngOnInit() {
+        console.log(this.deviceService.selectedDevice);
+        // if (!this.deviceForm) {
+        //     this.deviceForm = this.formBuilder.group(
+        //         {
+        //             name: [this.deviceService.selectedDevice.name]
+        //         }
+        //     );
+        // }
         // Disable the controls that depend on other control values to be pre-populated.
         this.deviceForm.controls['region'].disable();
         this.deviceForm.controls['city'].disable();

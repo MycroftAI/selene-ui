@@ -60,6 +60,11 @@ mat-card {
 
     mat-tab-group {
         height: 280px;
+
+        mat-card-content {
+            margin-top: 32px;
+        }
+
     }
 
 }

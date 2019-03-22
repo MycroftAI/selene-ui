@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { AbstractControl, FormGroup, ValidatorFn } from '@angular/forms';
 import { map, startWith, tap } from 'rxjs/operators';
 
-import { Country } from '../../../../shared/models/country.model';
+import { Country } from '@account/models/country.model';
 import { Observable } from 'rxjs';
-import { AbstractControl, FormGroup, ValidatorFn } from '@angular/forms';
 
 @Component({
     selector: 'account-country-input',

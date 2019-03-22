@@ -1,9 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
-import { AccountPreferences } from '../../../shared/models/preferences.model';
-import { DeviceService } from '../../../core/http/device.service';
-import { OptionButtonsConfig } from '../../../shared/models/option-buttons-config.model';
+import { AccountPreferences } from '@account/models/preferences.model';
+import { DeviceService } from '../../../../../core/http/device.service';
+import { OptionButtonsConfig } from '@account/models/option-buttons-config.model';
 
 @Component({
     selector: 'account-device-preferences',

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { map, startWith, tap } from 'rxjs/operators';
-import { Region } from '../../../../shared/models/region.model';
+import { Region } from '../../../../../shared/models/region.model';
 import { Observable } from 'rxjs';
 import { AbstractControl, FormGroup, ValidatorFn } from '@angular/forms';
 
@@ -22,6 +22,7 @@ export class RegionInputComponent implements OnInit {
 
     ngOnInit() {
         this.regionControl = this.deviceForm.controls['region'];
+        this.regionControl.disable();
     }
 
     getRegions() {

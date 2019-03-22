@@ -10,24 +10,12 @@
             <img [src]="getDeviceIcon(device)"/>
             {{device.name}}
         </mat-card-title>
-        <mat-tab-group>
-            <mat-tab label="Configuration">
-                <account-device-config [device]="device"></account-device-config>
-            </mat-tab>
-
-            <mat-tab label="Location">
-                <account-device-location
-                        [geography]="device.geography"
-                        [placement]="device.placement.name"
-                >
-                </account-device-location>
-           </mat-tab>
-        </mat-tab-group>
+        <account-device-info [device]="device"></account-device-info>
         <mat-card-actions>
             <button mat-flat-button color="warn" (click)="onRemovalClick(device)">
                 REMOVE
             </button>
-            <button mat-flat-button color="primary">
+            <button mat-flat-button color="primary" (click)="onDeviceEdit(device)">
                 EDIT
             </button>
         </mat-card-actions>

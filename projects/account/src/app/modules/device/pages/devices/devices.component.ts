@@ -1,15 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { AccountDefaults } from '../../shared/models/defaults.model';
-import { AccountPreferences } from '../../shared/models/preferences.model';
+import { AccountDefaults } from '@account/models/defaults.model';
+import { AccountPreferences } from '@account/models/preferences.model';
 
 @Component({
-    selector: 'account-device',
-    templateUrl: './device.component.html',
-    styleUrls: ['./device.component.scss']
+    selector: 'account-devices',
+    templateUrl: './devices.component.html',
+    styleUrls: ['./devices.component.scss']
 })
-export class DeviceComponent implements OnInit {
+export class DevicesComponent implements OnInit {
     defaults: AccountDefaults;
     defaultsForm: FormGroup;
     preferences: AccountPreferences;

@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { startWith, map, tap} from 'rxjs/operators';
 
-import { City } from '../../../../shared/models/city.model';
+import { City } from '../../../../../shared/models/city.model';
 import { AbstractControl, FormGroup, ValidatorFn } from '@angular/forms';
 
 @Component({
@@ -24,6 +24,7 @@ export class CityInputComponent implements OnInit {
 
     ngOnInit() {
         this.cityControl = this.deviceForm.controls['city'];
+        this.cityControl.disable();
     }
 
     getCities() {

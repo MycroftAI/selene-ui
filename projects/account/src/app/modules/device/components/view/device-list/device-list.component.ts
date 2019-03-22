@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
-import { DeviceService } from '../../../core/http/device.service';
-import { Device} from '../../../shared/models/device.model';
-import { RemoveComponent } from '../remove/remove.component';
+import { DeviceService } from '../../../../../core/http/device.service';
+import { Device } from '@account/models/device.model';
+import { RemoveComponent } from '../../../remove/remove.component';
 
 @Component({
     selector: 'account-device-list',
@@ -27,7 +27,8 @@ export class DeviceListComponent implements OnInit {
     constructor(
         public dialog: MatDialog,
         private deviceService: DeviceService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private router: Router
     ) { }
 
     ngOnInit() {
@@ -36,7 +37,7 @@ export class DeviceListComponent implements OnInit {
         );
     }
 
-    onRemovalClick (device: Device) {
+    onRemovalClick(device: Device) {
         const removalDialogRef = this.dialog.open(RemoveComponent, {data: false});
         this.selectedDevice = device;
         removalDialogRef.afterClosed().subscribe(
@@ -44,6 +45,11 @@ export class DeviceListComponent implements OnInit {
                 if (result) { this.deviceService.deleteDevice(device); }
             }
         );
+    }
+
+    onDeviceEdit(device: Device) {
+        this.deviceService.selectedDevice = device;
+        this.router.navigate(['/devices', device.id]);
     }
 
     getPlatform(device: Device) {
