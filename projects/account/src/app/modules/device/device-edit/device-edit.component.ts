@@ -93,7 +93,7 @@ export class DeviceEditComponent implements OnInit {
         }
         if (this.defaults.wakeWord) {
             this.deviceForm.controls['wakeWord'].setValue(
-                this.defaults.wakeWord.wakeWord
+                this.defaults.wakeWord.displayName
             );
         }
     }

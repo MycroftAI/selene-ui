@@ -1,4 +1,5 @@
 export interface WakeWord {
     id: string;
-    wakeWord: string;
+    displayName: string;
+    settingName: string;
 }
