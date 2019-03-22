@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
-import { Account } from '../../profile.service';
+import { Account } from '@account/models/account.model';
 
 @Component({
     selector: 'account-agreements-edit',
@@ -9,7 +9,6 @@ import { Account } from '../../profile.service';
 })
 export class AgreementsComponent implements OnInit {
     @Input() account: Account;
-    // public termsOfUseAccepted: string;
 
     constructor() { }
 

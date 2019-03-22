@@ -1,12 +1,16 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 
 import { Observable, Subject, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { environment } from '../../environments/environment';
-import { FormGroup } from '@angular/forms';
+import { Account } from '@account/models/account.model';
+import { AccountMembership } from '@account/models/account-membership.model';
+import { Agreement } from '@account/models/agreement.model';
+import { MembershipType } from '@account/models/membership.model';
 
 
 // URLs for the http requests
@@ -15,40 +19,6 @@ const agreementUrl = '/api/agreement/';
 const membershipTypesUrl = '/api/memberships';
 
 const fiveSeconds = 5000;
-
-
-// Define the various data structures that will be used in this module.
-export interface Agreement {
-    type: string;
-    version: string;
-    content: string;
-}
-
-export interface AccountAgreement {
-    type: string;
-    acceptDate: string;
-}
-
-export interface AccountMembership {
-    type: string;
-    duration?: string;
-    paymentAccountId?: string;
-}
-
-export interface Account {
-    id: string;
-    emailAddress: string;
-    username: string;
-    membership: AccountMembership;
-    agreements: AccountAgreement[];
-}
-
-export interface MembershipType {
-    type: string;
-    rate: string;
-    ratePeriod: string;
-    stripePlan: string;
-}
 
 
 export function storeRedirect() {

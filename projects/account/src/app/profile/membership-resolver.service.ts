@@ -6,7 +6,8 @@ import {
 } from '@angular/router';
 import { Observable } from 'rxjs';
 
-import { MembershipType, ProfileService } from './profile.service';
+import { MembershipType } from '@account/models/membership.model';
+import { ProfileService } from './profile.service';
 
 @Injectable({
     providedIn: 'root',

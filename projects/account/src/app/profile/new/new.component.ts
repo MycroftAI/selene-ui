@@ -12,8 +12,8 @@ import { ActivatedRoute } from '@angular/router';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
 
+import { MembershipType } from '@account/models/membership.model';
 import {
-    MembershipType,
     navigateToLogin,
     ProfileService,
     storeRedirect

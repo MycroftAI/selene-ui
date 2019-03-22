@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Account, MembershipType, ProfileService } from '../profile.service';
+import { Account } from '@account/models/account.model';
+import { MembershipType } from '@account/models/membership.model';
+import { ProfileService } from '../profile.service';
 
 @Component({
     selector: 'account-profile-edit',

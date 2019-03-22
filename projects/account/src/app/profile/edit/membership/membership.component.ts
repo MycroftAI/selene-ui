@@ -3,7 +3,9 @@ import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { MatBottomSheet } from '@angular/material';
 import { Subscription } from 'rxjs';
 
-import { AccountMembership, MembershipType, ProfileService } from '../../profile.service';
+import { AccountMembership } from '@account/models/account-membership.model';
+import { MembershipType } from '@account/models/membership.model';
+import { ProfileService } from '../../profile.service';
 import { PaymentComponent } from '../../payment/payment.component';
 
 @Component({

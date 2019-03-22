@@ -2,7 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatBottomSheet } from '@angular/material';
 
-import { MembershipType, ProfileService } from '../../profile.service';
+import { MembershipType } from '@account/models/membership.model';
+import { ProfileService } from '../../profile.service';
 import { PaymentComponent } from '../../payment/payment.component';
 
 @Component({

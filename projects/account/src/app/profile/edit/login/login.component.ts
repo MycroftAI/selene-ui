@@ -1,8 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
-
-import { Account } from '../../profile.service';
+import { Account } from '@account/models/account.model';
 
 @Component({
     selector: 'account-login-edit',
@@ -11,7 +9,6 @@ import { Account } from '../../profile.service';
 })
 export class LoginComponent {
     @Input() account: Account;
-    public editIcon = faEdit;
 
     constructor() { }
 }
