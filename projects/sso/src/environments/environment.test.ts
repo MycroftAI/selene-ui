@@ -8,6 +8,6 @@ export const environment = {
         mimic: 'http://mimic.mycroft.ai',
         singleSignOn: 'https://sso.mycroft-test.net',
         translate: 'https://translate-test.mycroft.ai',
-        wordpress: 'https://test.mycroft.ai'
+        wordPress: 'https://test.mycroft.ai'
     }
 };

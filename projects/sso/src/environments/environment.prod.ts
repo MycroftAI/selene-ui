@@ -8,7 +8,7 @@ export const environment = {
         mimic: 'https://mimic.mycroft.ai',
         singleSignOn: 'https://sso.mycroft.ai',
         translate: 'https://translate.mycroft.ai',
-        wordpress: 'https://mycroft.ai'
+        wordPress: 'https://mycroft.ai'
     }
 };
 
