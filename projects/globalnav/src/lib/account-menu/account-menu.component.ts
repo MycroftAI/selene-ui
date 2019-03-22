@@ -52,4 +52,8 @@ export class AccountMenuComponent implements OnInit {
     navigateToSkills() {
         window.location.href =  this.mycroftUrls.account + '/skills';
     }
+
+    navigateToAddDevice() {
+        window.location.href =  this.mycroftUrls.account + '/devices/add';
+    }
 }

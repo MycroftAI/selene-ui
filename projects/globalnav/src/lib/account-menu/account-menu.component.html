@@ -32,7 +32,7 @@
         <span class="menu-item-text">Profile</span>
     </button>
     <mat-divider *ngIf="isAuthenticated" class="menu-divider"></mat-divider>
-    <button *ngIf="isAuthenticated" mat-menu-item>
+    <button *ngIf="isAuthenticated" mat-menu-item (click)="navigateToAddDevice()">
         <fa-icon [icon]="addDeviceIcon" class="menu-item-icon"></fa-icon>
         <span class="menu-item-text">Add Device</span>
     </button>
