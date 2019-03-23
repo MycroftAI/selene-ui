@@ -1,18 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
-import {
-    FormBuilder,
-    FormGroup,
-    Validators
-} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
 
-import { AccountPreferences } from '../../../../shared/models/preferences.model';
-import { DeviceService } from '../../../../core/http/device.service';
-import { AccountDefaults } from '../../../../shared/models/defaults.model';
+import { AccountDefaults } from '@account/models/defaults.model';
+import { AccountPreferences } from '@account/models/preferences.model';
+import { DeviceService } from '@account/http/device.service';
 
 @Component({
   selector: 'account-device-add',
@@ -113,5 +109,9 @@ export class DeviceAddComponent implements OnInit {
 
     onDefaultsSubmit() {
         this.deviceService.addAccountDefaults(this.defaultsForm).subscribe();
+    }
+
+    onFinished() {
+        window.history.back();
     }
 }
