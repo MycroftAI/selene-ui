@@ -23,7 +23,7 @@ export class FederatedLoginComponent implements OnInit {
 
     ngOnInit() { }
 
-    private validateFederatedLogin(loginToken: FederatedLoginToken) {
+    validateFederatedLogin(loginToken: FederatedLoginToken) {
         this.ssoService.validateFederatedLogin(loginToken).subscribe(
             (response) => { this.ssoService.navigateToRedirectURI(noDelay); },
             (response) => { this.onAuthFailure(response); }
@@ -40,9 +40,9 @@ export class FederatedLoginComponent implements OnInit {
         }
     }
 
-    private gitHubLogin() {
-        const githubLoginUrl = 'https://github.com/login/oauth/authorize' +
-            '?scope=user:email&client_id=752bb0864dd667c902f4';
-        window.location.assign(githubLoginUrl);
-    }
+    // private gitHubLogin() {
+    //     const githubLoginUrl = 'https://github.com/login/oauth/authorize' +
+    //         '?scope=user:email&client_id=752bb0864dd667c902f4';
+    //     window.location.assign(githubLoginUrl);
+    // }
 }
