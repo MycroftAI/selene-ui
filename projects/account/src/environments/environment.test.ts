@@ -1,5 +1,5 @@
 export const environment = {
-    production: false,
+    production: true,
     mycroftUrls: {
         account: 'https://account.mycroft-test.net',
         chat: 'https://chat.mycroft.ai',
