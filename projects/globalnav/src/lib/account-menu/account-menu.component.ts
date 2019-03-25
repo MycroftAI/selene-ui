@@ -27,7 +27,7 @@ export class AccountMenuComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
-  }
+    }
 
     navigateToDevices() {
         window.location.href =  this.mycroftUrls.account + '/devices';
