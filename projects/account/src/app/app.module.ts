@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { GlobalnavModule } from 'globalnav';
 import { PageNotFoundModule } from 'page-not-found';
 import { DeviceModule } from './modules/device/device.module';
@@ -18,6 +19,7 @@ import { SkillModule } from './skill/skill.module';
         imports: [
             BrowserModule,
             BrowserAnimationsModule,
+            DashboardModule,
             GlobalnavModule,
             HttpClientModule,
             DeviceModule,
