@@ -9,9 +9,9 @@ const noDelay = 0;
 const tenSeconds = 10000;
 
 @Component({
-  selector: 'sso-federated-login',
-  templateUrl: './federated-login.component.html',
-  styleUrls: ['./federated-login.component.scss']
+    selector: 'sso-federated-login',
+    templateUrl: './federated-login.component.html',
+    styleUrls: ['./federated-login.component.scss']
 })
 export class FederatedLoginComponent implements OnInit {
     public githubIcon = faGithub;
@@ -19,13 +19,15 @@ export class FederatedLoginComponent implements OnInit {
     constructor(
         private errorSnackBar: MatSnackBar,
         private ssoService: AppService
-    ) { }
+    ) {
+    }
 
-    ngOnInit() { }
+    ngOnInit() {
+    }
 
     validateFederatedLogin(loginToken: FederatedLoginToken) {
         this.ssoService.validateFederatedLogin(loginToken).subscribe(
-            (response) => { this.ssoService.navigateToRedirectURI(noDelay); },
+            () => { this.ssoService.navigateToRedirectURI(noDelay); },
             (response) => { this.onAuthFailure(response); }
         );
     }
