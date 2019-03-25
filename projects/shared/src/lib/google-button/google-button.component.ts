@@ -20,7 +20,7 @@ export class GoogleButtonComponent {
         const platformProvider = GoogleLoginProvider.PROVIDER_ID;
         this.authService.signIn(platformProvider).then(
             (userData) => {
-                this.googleToken.emit({platform: 'Google', token: userData.token});
+                this.googleToken.emit({platform: 'Google', token: userData.idToken});
             }
     );
 }
