@@ -15,7 +15,7 @@ mat-toolbar {
     // Use inline css to display the logo at top of sidebar because Angular
     // libraries do not support static assets yet.
    .mycroft-logo {
-       background: url("toolbar-logo.png") no-repeat;
+       background: url("toolbar-logo.svg") no-repeat;
        height: 25px;
        width: 125px;
     }
