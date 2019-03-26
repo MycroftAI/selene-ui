@@ -1,0 +1,11 @@
+@import "~@angular/material/theming";
+@import "mycroft-colors";
+@import "components/buttons";
+
+.mat-h2 {
+    color: mat-color($mycroft-warn);
+}
+
+#confirm-button {
+    @include action-button-warn;
+}

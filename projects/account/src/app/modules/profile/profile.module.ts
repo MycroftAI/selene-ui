@@ -37,6 +37,7 @@ import { SharedModule } from 'shared';
 import { SupportStepComponent } from './components/views/support-step/support-step.component';
 import { UsernameStepComponent } from './components/views/username-step/username-step.component';
 import { VerifyCardDialogComponent } from './components/views/payment/verify-card-dialog.component';
+import { DeleteConfirmComponent } from './components/modals/delete-confirm/delete-confirm.component';
 
 @NgModule({
     declarations: [
@@ -58,9 +59,11 @@ import { VerifyCardDialogComponent } from './components/views/payment/verify-car
         // Stuff used in both edit and add components
         MembershipOptionsComponent,
         PaymentComponent,
-        VerifyCardDialogComponent
+        VerifyCardDialogComponent,
+        DeleteConfirmComponent
     ],
     entryComponents: [
+        DeleteConfirmComponent,
         NewComponent,
         EditComponent,
         PaymentComponent,

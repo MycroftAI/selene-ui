@@ -4,19 +4,19 @@ import { FormGroup } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 
 import { Observable, Subject, throwError } from 'rxjs';
-import { catchError } from 'rxjs/operators';
+import { catchError, tap } from 'rxjs/operators';
 
+import { Account } from '@account/models/account.model';
+import { AccountMembership } from '@account/models/account-membership.model';
+import { Agreement } from '@account/models/agreement.model';
 import { environment } from '../../../environments/environment';
-import { Account } from '../../shared/models/account.model';
-import { AccountMembership } from '../../shared/models/account-membership.model';
-import { Agreement } from '../../shared/models/agreement.model';
-import { MembershipType } from '../../shared/models/membership.model';
+import { MembershipType } from '@account/models/membership.model';
 
 
 // URLs for the http requests
-const accountUrl = '/api/account';
-const agreementUrl = '/api/agreement/';
-const membershipTypesUrl = '/api/memberships';
+const ACCOUNT_URL = '/api/account';
+const AGREEMENT_URL = '/api/agreement/';
+const MEMBERSHIP_URL = '/api/memberships';
 
 const fiveSeconds = 5000;
 
@@ -87,8 +87,8 @@ export class ProfileService {
         'Something bad happened; please try again later.');
     }
 
-    addAccount(newAcctForm: FormGroup) {
-        return this.http.post<any>(accountUrl, newAcctForm.value).pipe(
+    addAccount(newAcctForm: FormGroup)  {
+        return this.http.post<any>(ACCOUNT_URL, newAcctForm.value).pipe(
             catchError(this.handle400Error)
         );
     }
@@ -97,7 +97,7 @@ export class ProfileService {
      * API call to retrieve account info to display.
      */
     getAccount(): Observable<Account> {
-        return this.http.get<Account>(accountUrl).pipe(
+        return this.http.get<Account>(ACCOUNT_URL).pipe(
             catchError(this.handleError)
         );
     }
@@ -109,17 +109,21 @@ export class ProfileService {
         } else {
             url_suffix = 'privacy-policy';
         }
-        return this.http.get<Agreement>(agreementUrl + url_suffix);
+        return this.http.get<Agreement>(AGREEMENT_URL + url_suffix);
     }
 
     getMembershipTypes(): Observable<MembershipType[]> {
-        return this.http.get<MembershipType[]>(membershipTypesUrl);
+        return this.http.get<MembershipType[]>(MEMBERSHIP_URL);
     }
 
     updateAccount(accountChanges: any) {
-        return this.http.patch(accountUrl, {accountChanges}).pipe(
+        return this.http.patch(ACCOUNT_URL, {accountChanges}).pipe(
             catchError(this.handleError)
         );
+    }
+
+    deleteAccount() {
+        return this.http.delete(ACCOUNT_URL);
     }
 
     setSelectedMembershipType(accountMembership: AccountMembership, membershipTypes: MembershipType[]) {

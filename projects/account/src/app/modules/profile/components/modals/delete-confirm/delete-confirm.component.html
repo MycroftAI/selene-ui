@@ -1,0 +1,21 @@
+<mat-dialog-content>
+    <h2 class="mat-h2">Are you sure?</h2>
+    <p class="mat-body">
+        You know how this goes.  You click a button, we make sure you meant to do it.
+        Deleting your account is nasty business with no "undo" button.
+    </p>
+    <p class="mat-body">
+        We'd hate to lose you so we hope you are seeing this as a result of an unintended mouse
+        click (those buttons can be touchy!). If so, click the "cancel" button below to continue
+        enjoying your Mycroft experience.
+    </p>
+    <p class="mat-body">
+        If you really do want to delete your account, that's a bummer.  We hope to see you back some
+        time.  Click the "confirm" button below and all data related to your account will
+        be sent to the great bit bucket in the sky.
+    </p>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button id="cancel-button" mat-button (click)="onCancel()">CANCEL</button>
+    <button id="confirm-button" mat-button (click)="onConfirm()">CONFIRM</button>
+</mat-dialog-actions>
