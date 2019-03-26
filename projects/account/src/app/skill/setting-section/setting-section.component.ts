@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
-import { SettingChange, SettingSection } from '../../core/http/skill.service';
+import { SettingChange } from '@account/models/setting-change.model';
+import { SettingSection } from '@account/models/setting-section.model';
 
 @Component({
     selector: 'account-skill-setting-section',

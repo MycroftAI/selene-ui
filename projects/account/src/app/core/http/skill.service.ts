@@ -2,45 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
+import { Skill } from '@account/models/skill.model';
+import { SkillSettings } from '@account/models/skill-settings.model';
+
 const accountSkillUrl = '/api/skills';
 const accountDeviceCountUrl = '/api/device-count';
 
-export interface SelectOptions {
-    display: string;
-    value: string;
-}
-export interface Skill {
-    id: string;
-    name: string;
-    hasSettings: boolean;
-}
-
-export interface SettingField {
-    name: string;
-    type: string;
-    label: string;
-    options?: SelectOptions[];
-    value?: string;
-}
-
-export interface SettingSection {
-    name: string;
-    fields: SettingField[];
-}
-
-export interface SettingsDisplay {
-    sections: SettingSection[];
-}
-export interface SkillSettings {
-    settingsDisplay: SettingsDisplay;
-    settingsValues: any;
-    devices: string[];
-}
-
-export interface SettingChange {
-    name: string;
-    value: string;
-}
 
 @Injectable({
     providedIn: 'root'

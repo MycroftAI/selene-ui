@@ -1,13 +1,11 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-
-import {
-    SettingChange,
-    Skill,
-    SkillSettings,
-    SkillService,
-} from '../../core/http/skill.service';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
+
+import { SettingChange } from '@account/models/setting-change.model';
+import { Skill } from '@account/models/skill.model';
+import { SkillSettings } from '@account/models/skill-settings.model';
+import { SkillService } from '@account/http/skill.service';
 
 @Component({
     selector: 'account-skill-settings',
