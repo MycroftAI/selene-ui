@@ -4,7 +4,7 @@ import { environment } from '../../environments/environment';
 import {
     Skill,
     SkillService,
-} from './skill.service';
+} from '../core/http/skill.service';
 import { Observable } from 'rxjs';
 
 export interface WebApps {

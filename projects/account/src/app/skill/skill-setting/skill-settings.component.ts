@@ -5,7 +5,7 @@ import {
     Skill,
     SkillSettings,
     SkillService,
-} from '../skill.service';
+} from '../../core/http/skill.service';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 

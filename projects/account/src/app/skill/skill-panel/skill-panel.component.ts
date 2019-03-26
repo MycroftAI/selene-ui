@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 
-import { Skill } from '../skill.service';
+import { Skill } from '../../core/http/skill.service';
 
 @Component({
     selector: 'account-skill-panel',

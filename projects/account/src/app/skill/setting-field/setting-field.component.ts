@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatCheckboxChange } from '@angular/material';
 
-import { SettingField, SettingChange } from '../skill.service';
+import { SettingField, SettingChange } from '../../core/http/skill.service';
 
 @Component({
     selector: 'account-skill-setting-field',
