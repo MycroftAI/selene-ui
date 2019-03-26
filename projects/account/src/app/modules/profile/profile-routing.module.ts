@@ -3,8 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AccountResolverService } from '../../core/guards/account-resolver.service';
 import { MembershipResolverService } from '../../core/guards/membership-resolver.service';
-import { EditComponent } from './edit/edit.component';
-import { NewComponent } from './new/new.component';
+import { EditComponent } from './pages/edit/edit.component';
+import { NewComponent } from './pages/new/new.component';
 
 const profileRoutes: Routes = [
     {

@@ -19,24 +19,24 @@ import {
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgxStripeModule } from 'ngx-stripe';
 
-import { AgreementsComponent } from './edit/agreements/agreements.component';
-import { AgreementStepComponent } from './new/agreement-step/agreement-step.component';
-import { AuthenticationStepComponent } from './new/authentication-step/authentication-step.component';
-import { DeleteComponent } from './edit/delete/delete.component';
-import { DoneStepComponent } from './new/done-step/done-step.component';
-import { EditComponent } from './edit/edit.component';
+import { AgreementsComponent } from './components/cards/agreements/agreements.component';
+import { AgreementStepComponent } from './components/views/agreement-step/agreement-step.component';
+import { AuthenticationStepComponent } from './components/views/authentication-step/authentication-step.component';
+import { DeleteComponent } from './components/cards/delete/delete.component';
+import { DoneStepComponent } from './components/views/done-step/done-step.component';
+import { EditComponent } from './pages/edit/edit.component';
 import { environment} from '../../../environments/environment';
-import { LoginComponent } from './edit/login/login.component';
-import { MembershipComponent } from './edit/membership/membership.component';
-import { MembershipOptionsComponent } from './membership-options/membership-options.component';
-import { NewComponent } from './new/new.component';
-import { PaymentComponent } from './payment/payment.component';
-import { ProfileService } from '../../core/http/profile.service';
+import { LoginComponent } from './components/cards/login/login.component';
+import { MembershipComponent } from './components/cards/membership/membership.component';
+import { MembershipOptionsComponent } from './components/controls/membership-options/membership-options.component';
+import { NewComponent } from './pages/new/new.component';
+import { PaymentComponent } from './components/views/payment/payment.component';
+import { ProfileService } from '@account/http/profile.service';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { SharedModule } from 'shared';
-import { SupportStepComponent } from './new/support-step/support-step.component';
-import { UsernameStepComponent } from './new/username-step/username-step.component';
-import { VerifyCardDialogComponent } from './payment/verify-card-dialog.component';
+import { SupportStepComponent } from './components/views/support-step/support-step.component';
+import { UsernameStepComponent } from './components/views/username-step/username-step.component';
+import { VerifyCardDialogComponent } from './components/views/payment/verify-card-dialog.component';
 
 @NgModule({
     declarations: [
