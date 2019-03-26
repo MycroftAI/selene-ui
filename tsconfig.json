@@ -36,6 +36,9 @@
             "shared/*": [
                 "dist/shared/*"
             ],
+            "@account/*": [
+                "projects/account/src/*"
+            ],
             "@account/http/*": [
                 "projects/account/src/app/core/http/*"
             ],
