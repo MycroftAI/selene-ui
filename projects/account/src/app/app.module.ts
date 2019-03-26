@@ -11,7 +11,7 @@ import { PageNotFoundModule } from 'page-not-found';
 import { DeviceModule } from './modules/device/device.module';
 import { ProfileModule } from './modules/profile/profile.module';
 import { SharedModule } from 'shared';
-import { SkillModule } from './skill/skill.module';
+import { SkillModule } from './modules/skill/skill.module';
 
 @NgModule(
     {
