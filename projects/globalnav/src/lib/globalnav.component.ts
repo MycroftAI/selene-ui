@@ -53,7 +53,7 @@ export class GlobalnavComponent implements OnInit {
 
         this.footerItems = [
             {text: 'Contact Us', url: this.mycroftUrls.wordPress + '/contact'},
-            {text: 'Media Kit', url: this.mycroftUrls.wordPress + '/mediaObserver'},
+            {text: 'Media Kit', url: this.mycroftUrls.wordPress + '/media'},
             {text: 'Privacy Policy', url: this.mycroftUrls.account + '/#/privacy-policy'},
             {text: 'Terms of Use', url: this.mycroftUrls.account + '/#/agreement-step'}
         ];
