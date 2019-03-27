@@ -7,6 +7,6 @@
         <div id="delete-warning">
             <div *ngFor="let paragraph of deleteWarning" class="mat-body-2">{{paragraph}}</div>
         </div>
-        <button mat-raised-button color="warn">DELETE ACCOUNT</button>
+        <button mat-raised-button color="warn" (click)="confirmDelete()">DELETE ACCOUNT</button>
     </div>
 </mat-card>
