@@ -8,7 +8,7 @@ import {
 
 import { ElementOptions, StripeCardComponent, StripeService } from 'ngx-stripe';
 
-import { ProfileService } from '../../../../../core/http/profile.service';
+import { ProfileService } from '@account/http/profile.service';
 import { VerifyCardDialogComponent } from './verify-card-dialog.component';
 
 const twoSeconds = 2000;
@@ -32,7 +32,6 @@ export class PaymentComponent implements OnInit {
             }
         }
     };
-    private membershipType: string;
     private dialogRef: MatDialogRef<VerifyCardDialogComponent>;
 
     constructor(
@@ -57,7 +56,7 @@ export class PaymentComponent implements OnInit {
                     if (configData.newAccount) {
                         this.showStripeSuccess(result.token.id);
                     } else {
-                        this.updateAccount(result.token.id);
+                        this.updateAccount(configData.membershipType, result.token.id);
                     }
                 } else if (result.error) {
                     this.showStripeError(result.error.message);
@@ -73,10 +72,11 @@ export class PaymentComponent implements OnInit {
         );
     }
 
-    updateAccount(stripeToken: string) {
+    updateAccount(membershipType: string, stripeToken: string) {
         const newMembership = {
-            support: {
-                membership: this.membershipType,
+            membership: {
+                newMembership: true,
+                membershipType: membershipType,
                 paymentMethod: 'Stripe',
                 paymentToken: stripeToken
             }

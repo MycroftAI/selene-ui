@@ -117,7 +117,7 @@ export class ProfileService {
     }
 
     updateAccount(accountChanges: any) {
-        return this.http.patch(ACCOUNT_URL, {accountChanges}).pipe(
+        return this.http.patch(ACCOUNT_URL, accountChanges).pipe(
             catchError(this.handleError)
         );
     }

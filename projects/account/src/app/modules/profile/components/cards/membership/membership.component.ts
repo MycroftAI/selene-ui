@@ -3,9 +3,9 @@ import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { MatBottomSheet } from '@angular/material';
 import { Subscription } from 'rxjs';
 
-import { AccountMembership } from '../../../../../shared/models/account-membership.model';
-import { MembershipType } from '../../../../../shared/models/membership.model';
-import { ProfileService } from '../../../../../core/http/profile.service';
+import { AccountMembership } from '@account/models/account-membership.model';
+import { MembershipType } from '@account/models/membership.model';
+import { ProfileService } from '@account/http/profile.service';
 import { PaymentComponent } from '../../views/payment/payment.component';
 
 @Component({
@@ -42,20 +42,24 @@ export class MembershipComponent implements OnDestroy {
         if (selectedMembership) {
             if (this.accountMembership) {
                 // We have the user's credit card info but they decide to change plans
-                this.profileService.updateAccount({support: {membership: membershipType}});
+                this.profileService.updateAccount(
+                    {membership: {paymentMethod: 'Stripe', newMembership: false, membershipType: membershipType}}
+                    );
             } else {
                 // No credit card info.  Go to payment screen to collect
-                this.openBottomSheet();
+                this.openBottomSheet(membershipType);
             }
         } else {
             // Membership termination
-            this.profileService.updateAccount({support: {membership: null}});
+            this.profileService.updateAccount(
+                {membership: {paymentMethod: 'Stripe', newMembership: false, membershipType: null}}
+                );
         }
     }
 
-    openBottomSheet() {
+    openBottomSheet(membershipType: string) {
         const bottomSheetConfig = {
-            data: {newAccount: false},
+            data: {newAccount: false, membershipType: membershipType},
             disableClose: true,
             restoreFocus: true
         };
