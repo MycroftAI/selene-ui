@@ -30,9 +30,9 @@ export function storeRedirect() {
 
 export function navigateToLogin(delay: number): void {
     let redirectURI = localStorage.getItem('redirect');
+    localStorage.removeItem('redirect');
     if (!redirectURI) {
         redirectURI = environment.mycroftUrls.account;
-        localStorage.removeItem('redirect');
     }
     const singleSignOnURI = environment.mycroftUrls.singleSignOn +
         '/login?redirect=' +
