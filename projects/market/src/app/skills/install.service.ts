@@ -19,8 +19,8 @@ export interface Installations {
 }
 
 const inProgressStatuses = ['installing', 'uninstalling', 'failed'];
-const installStatusUrl = '/api/skill/installations';
-const installerSettingsUrl = '/api/skill/install';
+const installStatusUrl = '/api/skills/status';
+const installerSettingsUrl = '/api/skills/install';
 
 @Injectable({
     providedIn: 'root'
@@ -38,10 +38,12 @@ export class InstallService {
     getSkillInstallations() {
         this.http.get<Installations>(installStatusUrl).subscribe(
             (installations) => {
-                this.newInstallStatuses = installations.installStatuses;
-                this.failureReasons = installations.failureReasons;
-                this.applyInstallStatusChanges();
-                this.checkInstallationsInProgress();
+                if (installations) {
+                    this.newInstallStatuses = installations.installStatuses;
+                    this.failureReasons = installations.failureReasons;
+                    this.applyInstallStatusChanges();
+                    this.checkInstallationsInProgress();
+                }
             }
         );
     }
@@ -50,7 +52,7 @@ export class InstallService {
     applyInstallStatusChanges() {
         if (this.prevInstallStatuses) {
             Object.keys(this.prevInstallStatuses).forEach(
-                (skillName) => { this.compareStatuses(skillName); }
+                (skillId) => { this.compareStatuses(skillId); }
             );
         }
         this.prevInstallStatuses = this.newInstallStatuses;
@@ -72,38 +74,38 @@ export class InstallService {
      * To combat this, we check that skill status changes follow a predefined
      * progression before reflecting the status change on the UI.
      */
-    compareStatuses(skillName: string) {
-        const prevSkillStatus = this.prevInstallStatuses[skillName];
-        const  newSkillStatus = this.newInstallStatuses[skillName];
+    compareStatuses(skillId: string) {
+        const prevSkillStatus = this.prevInstallStatuses[skillId];
+        const  newSkillStatus = this.newInstallStatuses[skillId];
 
         switch (prevSkillStatus) {
             case ('installing'): {
                 if (newSkillStatus === 'installed') {
-                    this.statusNotifications.next([skillName, newSkillStatus]);
+                    this.statusNotifications.next([skillId, newSkillStatus]);
                 } else if (newSkillStatus === 'failed') {
-                    this.statusNotifications.next([skillName, 'install failed']);
+                    this.statusNotifications.next([skillId, 'install failed']);
                 } else {
-                    this.newInstallStatuses[skillName] = prevSkillStatus;
+                    this.newInstallStatuses[skillId] = prevSkillStatus;
                 }
                 break;
             }
             case ('uninstalling'): {
                 if (!newSkillStatus) {
-                    this.statusNotifications.next([skillName, 'uninstalled']);
+                    this.statusNotifications.next([skillId, 'uninstalled']);
                 } else if (newSkillStatus === 'failed') {
-                    this.statusNotifications.next([skillName, 'uninstall failed']);
+                    this.statusNotifications.next([skillId, 'uninstall failed']);
                 } else {
-                    this.newInstallStatuses[skillName] = prevSkillStatus;
+                    this.newInstallStatuses[skillId] = prevSkillStatus;
                 }
                 break;
             }
             case ('failed'): {
                 if (!newSkillStatus) {
-                    this.statusNotifications.next([skillName, 'uninstalled']);
+                    this.statusNotifications.next([skillId, 'uninstalled']);
                 } else if (newSkillStatus !== 'installed') {
-                    this.statusNotifications.next([skillName, newSkillStatus]);
+                    this.statusNotifications.next([skillId, newSkillStatus]);
                 } else {
-                    this.newInstallStatuses[skillName] = prevSkillStatus;
+                    this.newInstallStatuses[skillId] = prevSkillStatus;
                 }
                 break;
             }

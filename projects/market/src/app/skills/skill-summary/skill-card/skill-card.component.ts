@@ -37,8 +37,8 @@ export class SkillCardComponent implements OnInit {
 
     showStatusNotifications(statusChange: string[]) {
         let notificationMessage: string;
-        const [skillName, notificationStatus] = statusChange;
-        if (this.skill.name === skillName) {
+        const [skillId, notificationStatus] = statusChange;
+        if (this.skill.id === skillId) {
             switch (notificationStatus) {
                 case ('installed'): {
                     notificationMessage = 'The ' + this.skill.title + ' skill has ' +

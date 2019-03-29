@@ -26,7 +26,7 @@ export class SkillCardHeaderComponent implements OnInit {
         this.installService.installStatuses.subscribe(
             (installStatuses) => {
                 const installStatus = this.installService.getSkillInstallStatus(
-                    this.skill.name,
+                    this.skill.id,
                     this.skill.isSystemSkill,
                     installStatuses
                 );

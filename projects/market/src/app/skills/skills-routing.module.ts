@@ -6,7 +6,7 @@ import { SkillDetailComponent } from './skill-detail/skill-detail.component';
 
 const routes: Routes = [
     { path: 'skills', component: SkillSummaryComponent },
-    { path: 'skill/:skillName', component: SkillDetailComponent}
+    { path: 'skills/:skillId', component: SkillDetailComponent}
 ];
 
 @NgModule({

@@ -26,14 +26,14 @@ export class SkillDetailComponent implements OnInit {
 
 
     ngOnInit() {
-        this.installService.getSkillInstallations();
         this.skill$ = this.route.paramMap.pipe(
             switchMap(
-                (params: ParamMap) => this.skillsService.getSkillById(params.get('skillName'))
+                (params: ParamMap) => this.skillsService.getSkillById(params.get('skillId'))
             ),
             tap(
                 () => { this.installService.getSkillInstallations(); }
             )
         );
+        this.installService.getSkillInstallations();
     }
 }

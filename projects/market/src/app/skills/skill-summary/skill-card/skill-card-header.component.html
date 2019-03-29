@@ -14,7 +14,7 @@
     <!-- Show the icon corresponding to the skill on the card -->
     <div id="skill-icon">
         <fa
-            *ngIf="!skill.iconImage"
+            *ngIf="!skill.iconImage && skill.icon"
             [ngStyle]="{'color': skill.icon.color}"
             name={{skill.icon.icon}} size="2x"
         >

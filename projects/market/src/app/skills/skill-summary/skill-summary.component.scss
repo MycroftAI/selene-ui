@@ -2,12 +2,10 @@
 @import 'mycroft-colors';
 
 #skill-category {
-    //background-color: $market-background;
-
     mat-toolbar {
-        //background-color: $market-background;
         color: mat-color($mycroft-accent, A700);
         font-size: xx-large;
+        font-weight: bold;
         margin-top: 20px;
         padding-left: 10px;
 

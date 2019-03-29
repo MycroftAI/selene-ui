@@ -34,7 +34,7 @@ export class InstallButtonComponent implements OnInit {
         this.installService.installStatuses.subscribe(
             (installStatuses) => {
                 this.installStatus = this.installService.getSkillInstallStatus(
-                    this.skill.name,
+                    this.skill.id,
                     this.skill.isSystemSkill,
                     installStatuses
                 );
@@ -50,7 +50,7 @@ export class InstallButtonComponent implements OnInit {
      */
     applyInstallButtonStyle() {
         if (this.component === 'skillDetail') {
-            this.installButtonStyle = {'width': '140px'};
+            this.installButtonStyle = {'width': '150px'};
         } else if (this.component === 'skillSummary') {
             this.installButtonStyle = {'width': '320px', 'margin-bottom': '8px'};
         }
@@ -60,7 +60,7 @@ export class InstallButtonComponent implements OnInit {
      * Install a skill onto one or many devices
      */
     install_skill(): void {
-        this.installService.addToInstallQueue(this.skill.name).subscribe(
+        this.installService.addToInstallQueue(this.skill.id).subscribe(
             (response) => {
                 this.onInstallSuccess(response);
             },
@@ -80,7 +80,7 @@ export class InstallButtonComponent implements OnInit {
      * @param response: response object from the install endpoint
      */
     onInstallSuccess(response): void {
-        this.installService.newInstallStatuses[this.skill.name] = 'installing';
+        this.installService.newInstallStatuses[this.skill.id] = 'installing';
         this.installService.applyInstallStatusChanges();
         this.installService.checkInstallationsInProgress();
         this.installSnackbar.open(
@@ -114,7 +114,7 @@ export class InstallButtonComponent implements OnInit {
      * Remove a skill from one or many devices
      */
     uninstallSkill(): void {
-        this.installService.addToUninstallQueue(this.skill.name).subscribe(
+        this.installService.addToUninstallQueue(this.skill.id).subscribe(
             (response) => {
                 this.onUninstallSuccess(response);
             },
@@ -131,7 +131,7 @@ export class InstallButtonComponent implements OnInit {
      * @param response - object representing the response from the API call
      */
     onUninstallSuccess(response): void {
-        this.installService.newInstallStatuses[this.skill.name] = 'uninstalling';
+        this.installService.newInstallStatuses[this.skill.id] = 'uninstalling';
         this.installService.applyInstallStatusChanges();
         this.installService.checkInstallationsInProgress();
         this.installSnackbar.open(
