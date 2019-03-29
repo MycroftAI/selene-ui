@@ -12,12 +12,12 @@ import { ActivatedRoute } from '@angular/router';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
 
-import { MembershipType } from '../../../../shared/models/membership.model';
+import { MembershipType } from '@account/models/membership.model';
 import {
     navigateToLogin,
     ProfileService,
     storeRedirect
-} from '../../../../core/http/profile.service';
+} from '@account/http/profile.service';
 
 const noDelay = 0;
 
