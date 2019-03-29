@@ -230,7 +230,15 @@
                                     "with": "projects/market/src/environments/environment.test.ts"
                                 }
                             ],
-                            "outputHashing": "all"
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true
                         },
                         "development": {
                             "fileReplacements": [
