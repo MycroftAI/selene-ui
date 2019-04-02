@@ -4,7 +4,7 @@
     <div [routerLink]="['/skills', skill.id]">
         <market-skill-card-header [skill]="skill"></market-skill-card-header>
         <mat-card-title align="center">
-            {{skill.title ? skill.title : '&nbsp;'}}
+            {{skill.displayName ? skill.displayName : '&nbsp;'}}
         </mat-card-title>
         <mat-card-subtitle fxLayoutAlign="center">
             <div id="skill-trigger">
