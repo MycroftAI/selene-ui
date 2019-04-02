@@ -84,7 +84,7 @@ export class InstallButtonComponent implements OnInit {
         this.installService.applyInstallStatusChanges();
         this.installService.checkInstallationsInProgress();
         this.installSnackbar.open(
-            'The ' + this.skill.title + ' skill is being added ' +
+            'The ' + this.skill.displayName + ' skill is being added ' +
             'to your devices.  Please allow up to two minutes for ' +
             'installation to complete before using the skill.',
             null,
@@ -135,7 +135,7 @@ export class InstallButtonComponent implements OnInit {
         this.installService.applyInstallStatusChanges();
         this.installService.checkInstallationsInProgress();
         this.installSnackbar.open(
-            'The ' + this.skill.title + ' skill is ' +
+            'The ' + this.skill.displayName + ' skill is ' +
             'uninstalling.  Please allow up to a minute for the skill to be ' +
             'removed from devices.',
             null,

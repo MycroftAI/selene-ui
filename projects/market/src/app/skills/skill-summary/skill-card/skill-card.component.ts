@@ -41,26 +41,26 @@ export class SkillCardComponent implements OnInit {
         if (this.skill.id === skillId) {
             switch (notificationStatus) {
                 case ('installed'): {
-                    notificationMessage = 'The ' + this.skill.title + ' skill has ' +
+                    notificationMessage = 'The ' + this.skill.displayName + ' skill has ' +
                         'been added to all your devices.';
                     this.showInstallStatusNotification(notificationMessage);
                     break;
                 }
                 case ('uninstalled'): {
-                    notificationMessage = 'The ' + this.skill.title + ' skill has ' +
+                    notificationMessage = 'The ' + this.skill.displayName + ' skill has ' +
                         'been removed from all your devices.';
                     this.showInstallStatusNotification(notificationMessage);
                     break;
                 }
                 case ('install failed'): {
-                    notificationMessage = 'The ' + this.skill.title + ' failed to ' +
+                    notificationMessage = 'The ' + this.skill.displayName + ' failed to ' +
                         'install to one or more of your devices.  Install will be ' +
                         'retried until successful';
                     this.showInstallStatusNotification(notificationMessage);
                     break;
                 }
                 case ('uninstall failed'): {
-                    notificationMessage = 'The ' + this.skill.title + ' failed to ' +
+                    notificationMessage = 'The ' + this.skill.displayName + ' failed to ' +
                         'uninstall from one or more of your devices.  Uninstall ' +
                         'will be retried until successful';
                     this.showInstallStatusNotification(notificationMessage);
