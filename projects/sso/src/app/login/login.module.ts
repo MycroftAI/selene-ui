@@ -7,6 +7,7 @@ import {
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,
+    MatDialogModule,
     MatDividerModule,
     MatFormFieldModule,
     MatInputModule,
@@ -20,15 +21,22 @@ import { FederatedLoginComponent } from './federated-login/federated-login.compo
 import { InternalLoginComponent } from './internal-login/internal-login.component';
 import { LoginComponent } from './login.component';
 import { SharedModule } from 'shared';
+import { PasswordResetComponent } from './internal-login/password-reset/password-reset.component';
 
 @NgModule({
     declarations: [
         FederatedLoginComponent,
         InternalLoginComponent,
+        LoginComponent,
+        PasswordResetComponent
+    ],
+    entryComponents: [
+        LoginComponent,
+        PasswordResetComponent
+    ],
+    exports: [
         LoginComponent
     ],
-    entryComponents: [ LoginComponent ],
-    exports: [ LoginComponent ],
     imports: [
         CommonModule,
         FlexLayoutModule,
@@ -38,6 +46,7 @@ import { SharedModule } from 'shared';
         MatButtonModule,
         MatCardModule,
         MatCheckboxModule,
+        MatDialogModule,
         MatDividerModule,
         MatFormFieldModule,
         MatInputModule,

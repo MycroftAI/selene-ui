@@ -12,17 +12,13 @@ form {
 
     button {
         @include action-button-primary;
-        margin-bottom: 8px;
         margin-top: 8px;
         text-align: center;
     }
 
-    a {
-        color: mat-color($mycroft-primary);
-        margin-left: auto;
-        margin-right: auto;
-        margin-bottom: 0px;
-        text-decoration: none;
-    }
+}
 
+button {
+    color: mat-color($mycroft-primary);
+    margin-bottom: 0;
 }

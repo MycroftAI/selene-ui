@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatSnackBar } from '@angular/material';
+import { MatDialog, MatSnackBar, MatSnackBarConfig } from '@angular/material';
 
 import { AppService } from '../../app.service';
+import { PasswordResetComponent } from './password-reset/password-reset.component';
 
 const noDelay = 0;
-const tenSeconds = 10000;
+const fiveSeconds = 5000;
 
 @Component({
   selector: 'sso-internal-login',
@@ -19,8 +20,9 @@ export class InternalLoginComponent implements OnInit {
 
     constructor(
         private authService: AppService,
-        private errorSnackbar: MatSnackBar,
-        private formBuilder: FormBuilder
+        private snackBar: MatSnackBar,
+        private formBuilder: FormBuilder,
+        public dialog: MatDialog
     ) { }
 
     ngOnInit() {
@@ -45,11 +47,33 @@ export class InternalLoginComponent implements OnInit {
 
     onAuthFailure(authorizeUserResponse): void {
         if (authorizeUserResponse.status === 401) {
-            this.errorSnackbar.open(
+            this.snackBar.open(
                 'Authentication error, please try again',
                 null,
-                {panelClass: 'mycroft-no-action-snackbar', duration: tenSeconds}
+                {panelClass: 'mycroft-no-action-snackbar', duration: fiveSeconds}
             );
         }
+    }
+
+    onPasswordReset() {
+        const dialogRef = this.dialog.open(
+            PasswordResetComponent,
+            {width: '320px', data: this.loginForm.controls['email']}
+        );
+        dialogRef.afterClosed().subscribe(
+            () => { this.resetPassword(); }
+        );
+    }
+
+    resetPassword() {
+        const successMessage = 'Password reset instructions sent';
+        const errorMessage = 'An error occurred sending the instructions email';
+        const snackbarConfig = new MatSnackBarConfig();
+        snackbarConfig.duration = fiveSeconds;
+        snackbarConfig.panelClass = 'mycroft-no-action-snackbar';
+        this.authService.resetPassword(this.loginForm.controls['email']).subscribe(
+            () => { this.snackBar.open(successMessage, null, snackbarConfig); },
+            () => { this.snackBar.open(errorMessage, null, snackbarConfig); }
+        );
     }
 }

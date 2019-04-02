@@ -1,0 +1,24 @@
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { FormControl } from '@angular/forms';
+
+@Component({
+  selector: 'sso-password-reset',
+  templateUrl: './password-reset.component.html',
+  styleUrls: ['./password-reset.component.scss']
+})
+export class PasswordResetComponent implements OnInit {
+
+  constructor(
+      public dialogRef: MatDialogRef<PasswordResetComponent>,
+      @Inject(MAT_DIALOG_DATA) public dialogData: FormControl
+  ) { }
+
+  ngOnInit() {
+  }
+
+  onSubmit() {
+      this.dialogRef.close();
+  }
+
+}

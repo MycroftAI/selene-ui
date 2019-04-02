@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { BackgroundModule } from './background/background.module';
+import { ChangePasswordModule } from './change-password/change-password.module';
 import { GlobalnavModule } from 'globalnav';
 import { LoginModule } from './login/login.module';
 import { LogoutModule } from './logout/logout.module';
@@ -15,8 +15,8 @@ import { PageNotFoundModule } from 'page-not-found';
     declarations: [ AppComponent ],
     imports: [
         BrowserModule,
-        BackgroundModule,
         BrowserAnimationsModule,
+        ChangePasswordModule,
         FlexLayoutModule,
         GlobalnavModule,
         LoginModule,
