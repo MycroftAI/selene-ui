@@ -6,6 +6,7 @@ import { Subject } from 'rxjs/internal/Subject';
 import { tap } from 'rxjs/operators';
 
 export interface AvailableSkill {
+    displayName: string;
     icon: Object;
     iconImage: string;
     isMycroftMade: boolean;
@@ -13,7 +14,6 @@ export interface AvailableSkill {
     marketCategory: string;
     id: string;
     summary: string;
-    title: string;
     trigger: string;
 }
 
@@ -28,6 +28,7 @@ export interface Icon {
 }
 
 export interface SkillDetail {
+    displayName: string;
     categories: string[];
     credits: SkillCredits[];
     description: string;
@@ -37,7 +38,6 @@ export interface SkillDetail {
     id: string;
     repositoryUrl: string;
     summary: string;
-    title: string;
     triggers: string;
     worksOnKDE: boolean;
     worksOnMarkOne: boolean;
