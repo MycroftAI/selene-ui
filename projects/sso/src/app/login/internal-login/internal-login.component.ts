@@ -61,7 +61,12 @@ export class InternalLoginComponent implements OnInit {
             {width: '320px', data: this.loginForm.controls['email']}
         );
         dialogRef.afterClosed().subscribe(
-            () => { this.resetPassword(); }
+            (result) => {
+                if (result) {
+                    this.loginForm.controls['email'].setValue(result);
+                    this.resetPassword();
+                }
+            }
         );
     }
 

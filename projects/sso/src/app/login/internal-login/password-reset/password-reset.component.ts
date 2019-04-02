@@ -17,7 +17,7 @@ export class PasswordResetComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSubmit() {
+  onCancelClick() {
       this.dialogRef.close();
   }
 
