@@ -37,7 +37,7 @@ export class PrimaryNavItemComponent implements OnInit {
         if (this.primaryNavItem.children && this.primaryNavItem.children.length) {
             this.expanded = !this.expanded;
         } else {
-            window.location.assign(this.primaryNavItem.url);
+            window.open(this.primaryNavItem.url);
         }
     }
 }
