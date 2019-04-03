@@ -11,7 +11,7 @@
         <fa-icon [icon]="logInIcon" class="menu-item-icon" ></fa-icon>
         <span class="menu-item-text">Log In</span>
     </button>
-    <button *ngIf="!isAuthenticated" mat-menu-item (click)="navigate_to_create_account()">
+    <button *ngIf="!isAuthenticated" mat-menu-item (click)="navigateToCreateAccount()">
         <fa-icon [icon]="accountIcon" class="menu-item-icon"></fa-icon>
         <span class="menu-item-text">Create Account</span>
     </button>
@@ -19,24 +19,24 @@
         If the user is authenticated, the menu will present them with
         account management options
     -->
-    <button *ngIf="isAuthenticated" mat-menu-item>
+    <button *ngIf="isAuthenticated" mat-menu-item (click)="navigateToSkills()">
         <fa-icon [icon]="skillsIcon" class="menu-item-icon"></fa-icon>
         <span class="menu-item-text">Skills</span>
     </button>
-    <button *ngIf="isAuthenticated" mat-menu-item>
+    <button *ngIf="isAuthenticated" mat-menu-item (click)="navigateToDevices()">
         <fa-icon [icon]="devicesIcon" class="menu-item-icon"></fa-icon>
         <span class="menu-item-text">Devices</span>
     </button>
-    <button *ngIf="isAuthenticated" mat-menu-item>
+    <button *ngIf="isAuthenticated" mat-menu-item (click)="navigateToProfile()">
         <fa-icon [icon]="accountIcon" class="menu-item-icon"></fa-icon>
         <span class="menu-item-text">Profile</span>
     </button>
     <mat-divider *ngIf="isAuthenticated" class="menu-divider"></mat-divider>
-    <button *ngIf="isAuthenticated" mat-menu-item>
+    <button *ngIf="isAuthenticated" mat-menu-item (click)="navigateToAddDevice()">
         <fa-icon [icon]="addDeviceIcon" class="menu-item-icon"></fa-icon>
         <span class="menu-item-text">Add Device</span>
     </button>
-    <button *ngIf="isAuthenticated" mat-menu-item (click)="navigate_to_log_out()">
+    <button *ngIf="isAuthenticated" mat-menu-item (click)="navigateToLogOut()">
         <fa-icon [icon]="logOutIcon" class="menu-item-icon"></fa-icon>
         <span class="menu-item-text">Logout</span>
     </button>

@@ -14,6 +14,7 @@ export interface WebApps {
 export interface NavItem {
   text: string;
   url: string;
+  target: string;
 }
 
 export interface PrimaryNavItem {

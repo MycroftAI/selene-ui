@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 
 import { Observable } from 'rxjs';
-import { FormGroup } from '@angular/forms';
+import { AbstractControl, FormGroup } from '@angular/forms';
+import { environment } from '../environments/environment';
 
 export interface AuthResponse {
     expiration: number;
@@ -20,6 +21,20 @@ export interface SocialLoginData {
 const internalAuthUrl = '/api/internal-login';
 const federatedAuthUrl = '/api/validate-federated';
 const logoutUrl = '/api/logout';
+const changePasswordUrl = '/api/password-change';
+const resetPasswordUrl = '/api/password-reset';
+const validateTokenUrl = '/api/validate-token';
+
+export interface FederatedLoginToken {
+    platform: string;
+    token: string;
+}
+
+export interface PasswordChangeAccount {
+    accountId: string;
+    tokenExpired: boolean;
+    tokenInvalid: boolean;
+}
 
 export function storeRedirect() {
     localStorage.setItem(
@@ -30,13 +45,15 @@ export function storeRedirect() {
 
 @Injectable()
 export class AppService {
-    private cookieDomain: string = document.domain.replace('sso.', '');
 
     constructor(private http: HttpClient) { }
 
     navigateToRedirectURI(delay: number): void {
-        const redirectURI = localStorage.getItem('redirect');
+        let redirectURI = localStorage.getItem('redirect');
         localStorage.removeItem('redirect');
+        if (!redirectURI) {
+            redirectURI = environment.mycroftUrls.account;
+        }
         setTimeout(() => { window.location.assign(redirectURI); }, delay);
     }
 
@@ -59,31 +76,24 @@ export class AppService {
         return this.http.get<AuthResponse>(internalAuthUrl, {headers: httpHeaders});
     }
 
-    validateFederatedLogin(socialLoginData: any) {
-        return this.http.post<AuthResponse>(
-            federatedAuthUrl,
-            socialLoginData
-        );
+    validateFederatedLogin(loginToken: FederatedLoginToken) {
+        return this.http.post<AuthResponse>(federatedAuthUrl, loginToken);
     }
 
     logout(): Observable<any> {
         return this.http.get(logoutUrl);
     }
 
-    expireTokenCookies(): void {
-        const expiration = new Date();
-        document.cookie = 'seleneAccess=""' +
-            '; expires=' + expiration.toUTCString() +
-            '; domain=' + this.cookieDomain;
-        document.cookie = 'seleneRefresh=""' +
-            '; expires=' + expiration.toUTCString() +
-            '; domain=' + this.cookieDomain;
-
+    resetPassword(emailAddress: AbstractControl): Observable<any> {
+        return this.http.post(resetPasswordUrl, {emailAddress: emailAddress.value});
     }
 
-    gitHubLogin() {
-        return this.http.get<string>('https://github.com/login/oauth/authorize' +
-            '?scope=user:email&client_id=752bb0864dd667c902f4');
+    validateResetToken(token) {
+        return this.http.post<PasswordChangeAccount>(validateTokenUrl, {token: token});
     }
 
+    changePassword(accountId: string, passwordControl: AbstractControl) {
+        const codedPassword = btoa(passwordControl.value);
+        return this.http.put(changePasswordUrl, {accountId: accountId, password: codedPassword});
+    }
 }

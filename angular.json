@@ -87,7 +87,6 @@
                         "main": "src/test.ts",
                         "polyfills": "src/polyfills.ts",
                         "tsConfig": "src/tsconfig.spec.json",
-                        "karmaConfig": "src/karma.conf.js",
                         "styles": [
                             "src/styles.scss",
                             "src/theme.scss"
@@ -231,7 +230,15 @@
                                     "with": "projects/market/src/environments/environment.test.ts"
                                 }
                             ],
-                            "outputHashing": "all"
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": false,
+                            "buildOptimizer": true
                         },
                         "development": {
                             "fileReplacements": [
@@ -393,7 +400,8 @@
                             "namedChunks": false,
                             "aot": true,
                             "extractLicenses": true,
-                            "vendorChunk": false,
+                            "vendorChunk": true,
+                            "commonChunk": true,
                             "buildOptimizer": true,
                             "budgets": [
                                 {
@@ -410,7 +418,16 @@
                                     "with": "projects/sso/src/environments/environment.test.ts"
                                 }
                             ],
-                            "outputHashing": "all"
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": false,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": true,
+                            "commonChunk": true,
+                            "buildOptimizer": true
                         },
                         "development": {
                             "fileReplacements": [
@@ -608,6 +625,7 @@
                             "aot": true,
                             "extractLicenses": true,
                             "vendorChunk": false,
+                            "commonChunk": true,
                             "buildOptimizer": true,
                             "budgets": [
                                 {
@@ -623,8 +641,7 @@
                                     "replace": "projects/account/src/environments/environment.ts",
                                     "with": "projects/account/src/environments/environment.dev.ts"
                                 }
-                            ],
-                            "outputHashing": "all"
+                            ]
                         },
                         "test": {
                             "fileReplacements": [
@@ -633,7 +650,16 @@
                                     "with": "projects/account/src/environments/environment.test.ts"
                                 }
                             ],
-                            "outputHashing": "all"
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": true,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": true,
+                            "commonChunk": true,
+                            "buildOptimizer": true
                         }
                     }
                 },

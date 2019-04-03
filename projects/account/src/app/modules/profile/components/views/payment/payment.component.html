@@ -1,0 +1,14 @@
+<mat-card class="mat-elevation-z0">
+    <mat-card-title>Thank you for supporting Mycroft!</mat-card-title>
+    <mat-card-content>
+        Your membership directly helps to improve Mycroft technology and user experience.
+        <p class="mat-body">Please enter your payment information below</p>
+        <mat-card class="mat-elevation-z0">
+            <ngx-stripe-card [options]="cardOptions"></ngx-stripe-card>
+        </mat-card>
+    </mat-card-content>
+    <mat-card-actions align="right">
+        <button mat-button id="cancel-button" (click)="onCancel()">CANCEL</button>
+        <button mat-button id="submit-button" (click)="submitPayment()">SUBMIT</button>
+    </mat-card-actions>
+</mat-card>

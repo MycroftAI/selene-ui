@@ -23,6 +23,7 @@ export class NavItemComponent implements OnInit {
             this.navItemStyle = {'color': '#22a7f0'};
         }
     }
+
     navigateToUrl() {
       window.location.assign(this.item.url);
     }

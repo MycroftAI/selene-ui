@@ -1,0 +1,13 @@
+@import "components/buttons";
+
+mat-checkbox {
+    margin-top: 8px
+}
+
+mat-form-field {
+    margin-top: 8px;
+}
+
+button {
+    @include action-button-primary
+}

@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { MediaMatcher } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
 
 import {
     faBars,
@@ -53,18 +52,18 @@ export class GlobalnavComponent implements OnInit {
         ];
 
         this.footerItems = [
-            {text: 'Contact Us', url: this.mycroftUrls.wordPress + '/contact'},
-            {text: 'Media Kit', url: this.mycroftUrls.wordPress + '/mediaObserver'},
-            {text: 'Privacy Policy', url: this.mycroftUrls.account + '/#/privacy-policy'},
-            {text: 'Terms of Use', url: this.mycroftUrls.account + '/#/agreement-step'}
+            {text: 'Contact Us', url: this.mycroftUrls.wordPress + '/contact', target: '_blank'},
+            {text: 'Media Kit', url: this.mycroftUrls.wordPress + '/media', target: '_blank'},
+            {text: 'Privacy Policy', url: this.mycroftUrls.wordPress + '/embed-privacy-policy', target: '_blank'},
+            {text: 'Terms of Use', url: this.mycroftUrls.wordPress + '/embed-terms-of-use', target: '_blank'}
         ];
     }
 
     private defineAboutNav(): PrimaryNavItem {
         return {
             children: [
-                {text: 'Team', url: this.mycroftUrls.wordPress + '/team'},
-                {text: 'Careers', url: this.mycroftUrls.wordPress + '/careers'}
+                {text: 'Team', url: this.mycroftUrls.wordPress + '/team', target: '_blank'},
+                {text: 'Careers', url: this.mycroftUrls.wordPress + '/careers', target: '_blank'}
             ],
             icon: faRobot,
             text: 'About Mycroft'
@@ -82,8 +81,8 @@ export class GlobalnavComponent implements OnInit {
     private defineForumNav(): PrimaryNavItem {
         return {
             children: [
-                {text: 'Chat', url: this.mycroftUrls.chat},
-                {text: 'Forum', url: this.mycroftUrls.forum}
+                {text: 'Chat', url: this.mycroftUrls.chat, target: '_blank'},
+                {text: 'Forum', url: this.mycroftUrls.forum, target: '_blank'}
             ],
             icon: faUsers,
             text: 'Community'
@@ -93,11 +92,12 @@ export class GlobalnavComponent implements OnInit {
     private defineContributeNav(): PrimaryNavItem {
         return {
             children: [
-                {text: 'Source Code', url: 'https://github.com/MycroftAI'},
-                {text: 'Translate', url: this.mycroftUrls.translate},
-                {text: 'Wake Word', url: this.mycroftUrls.account + '/#/precise'},
-                {text: 'Speech to Text', url: this.mycroftUrls.account + '/#/deepspeech'},
-                {text: 'Text to Speech', url: this.mycroftUrls.mimic}
+                {text: 'Source Code', url: 'https://github.com/MycroftAI', target: '_blank'},
+                {text: 'Translate', url: this.mycroftUrls.translate, target: '_blank'},
+                // TODO: uncomment these lines of code when the tools are converted to angular
+                // {text: 'Wake Word', url: this.mycroftUrls.account + '/#/precise', target: '_blank'},
+                // {text: 'Speech to Text', url: this.mycroftUrls.account + '/#/deepspeech', target: '_blank'},
+                {text: 'Text to Speech', url: this.mycroftUrls.mimic, target: '_blank'}
             ],
             icon: faLightbulb,
             text: 'Contribute'
@@ -107,8 +107,8 @@ export class GlobalnavComponent implements OnInit {
     private defineGetStartedNav(): PrimaryNavItem {
         return {
             children: [
-                {text: 'Get Mycroft', url: this.mycroftUrls.wordPress + '/download'},
-                {text: 'Documentation', url: this.mycroftUrls.wordPress + '/documentation'}
+                {text: 'Get Mycroft', url: this.mycroftUrls.wordPress + '/download', target: '_blank'},
+                {text: 'Documentation', url: this.mycroftUrls.wordPress + '/documentation', target: '_blank'}
             ],
             icon: faRocket,
             text: 'Get Started'
@@ -118,8 +118,8 @@ export class GlobalnavComponent implements OnInit {
     private defineMarketNav(): PrimaryNavItem {
         return {
             children: [
-                {text: 'Skills', url: this.mycroftUrls.marketplace + '/skills'},
-                {text: 'Hardware', url: this.mycroftUrls.wordPress + '/shop'}
+                {text: 'Skills', url: this.mycroftUrls.marketplace + '/skills', target: '_self'},
+                {text: 'Hardware', url: this.mycroftUrls.wordPress + '/shop', target: '_blank'}
             ],
             icon: faStore,
             text: 'Marketplace'

@@ -10,6 +10,9 @@
     @include skill-detail-size;
     color: mat-color($mycroft-accent, A700);
     padding-bottom: 10px;
+    button {
+        width: 160px;
+    }
 }
 
 #skill-detail {

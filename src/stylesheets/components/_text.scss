@@ -8,7 +8,7 @@
 }
 
 @mixin skill-trigger {
-    background-color: mat-color($mycroft-accent, A700);
+    background-color: mat-color($mycroft-primary, 50);
     border-radius: 4px;
     color: mat-color($mycroft-accent);
     font-weight: normal;

@@ -1,0 +1,46 @@
+<ng-container *ngIf="skillSettings$ | async as settings">
+    <!-- If we only have one set of settings, we don't need the tabs -->
+    <ng-container *ngIf="settings.length === 1">
+        <h2 class="mat-h2">Devices</h2>
+        <p *ngIf="settings[0].devices.length === deviceCount" class="mat-body">
+            This skill is installed on all devices
+        </p>
+        <p *ngIf="settings[0].devices.length < deviceCount" class="mat-body">
+            {{settings[0].devices.join(', ')}}
+        </p>
+        <account-skill-setting-section
+            class="mat-elevation-z0"
+            *ngFor="let section of settings[0].settingsDisplay.sections"
+            [sectionDefinition]="section"
+            [settingsValues]="settings[0].settingsValues"
+            (newValue)="onValueChange(settings[0], $event)"
+        >
+        </account-skill-setting-section>
+    </ng-container>
+
+    <!-- If we have more than one set of settings, use tabs to delineate that -->
+    <ng-container *ngIf="settings.length > 1">
+        <mat-tab-group>
+            <mat-tab
+                    *ngFor="let settingsGroup of settings"
+                    label="Version {{getGroupNumber(settingsGroup, settings)}}"
+            >
+                <h2 class="mat-h2">Devices</h2>
+                <p class="mat-body">{{settingsGroup.devices.join(', ')}}</p>
+                <account-skill-setting-section
+                        *ngFor="let section of settingsGroup.settingsDisplay.sections"
+                        [sectionDefinition]="section"
+                        [settingsValues]="settingsGroup.settingsValues"
+                        (newValue)="onValueChange(settingsGroup, $event)"
+                >
+                </account-skill-setting-section>
+            </mat-tab>
+        </mat-tab-group>
+    </ng-container>
+</ng-container>
+<mat-action-row *ngIf="skill.hasSettings">
+    <button mat-button (click)="onCancelClick()">CANCEL</button>
+    <button mat-button id="save-button" [disabled]="disableSave" (click)="saveSettings()">
+        SAVE
+    </button>
+</mat-action-row>

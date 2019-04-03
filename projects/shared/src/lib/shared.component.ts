@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lib-shared',
+  selector: 'shared-base',
   template: `
     <p>
       shared works!

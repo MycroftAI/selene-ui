@@ -4,6 +4,7 @@ mat-toolbar {
     z-index: 2;  // Put this on top of the sidenav container
 
     .menu-button {
+        margin-right: 8px;
         width: 38px;
         fa-icon {
             color: #2c3e50;
@@ -14,10 +15,9 @@ mat-toolbar {
     // Use inline css to display the logo at top of sidebar because Angular
     // libraries do not support static assets yet.
    .mycroft-logo {
-        background: url("toolbar-logo.svg") no-repeat;
-        height: 25px;
-        margin-top: -5px;
-        width: 168px;
+       background: url("toolbar-logo.svg") no-repeat;
+       height: 40px;
+       width: 180px;
     }
 }
 

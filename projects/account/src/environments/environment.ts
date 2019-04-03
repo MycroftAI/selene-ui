@@ -9,11 +9,12 @@ export const environment = {
         chat: 'https://chat.mycroft.ai',
         forum: 'https://community.mycroft.ai',
         marketplace: 'http://localhost:4202',
-        mimic: 'http://mimic.mycroft,ai',
+        mimic: 'http://mimic.mycroft.ai',
         singleSignOn: 'https://sso.mycroft.test',
         translate: 'https://translate-test.mycroft.ai',
         wordPress: 'https://test.mycroft.ai'
-    }
+    },
+    stripeApiKey: 'pk_test_TqHz3ZzSHLFAjlmamQvLgQ5F'
 };
 
 /*

@@ -7,6 +7,7 @@ import {
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,
+    MatDialogModule,
     MatDividerModule,
     MatFormFieldModule,
     MatInputModule,
@@ -14,41 +15,28 @@ import {
 } from '@angular/material';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {
-    AuthServiceConfig,
-    FacebookLoginProvider,
-    GoogleLoginProvider,
-    SocialLoginModule
-} from 'angular-6-social-login';
 
+import { AppService } from '../app.service';
 import { FederatedLoginComponent } from './federated-login/federated-login.component';
 import { InternalLoginComponent } from './internal-login/internal-login.component';
 import { LoginComponent } from './login.component';
-import { AppService } from '../app.service';
-
-export function getAuthServiceConfigs() {
-    return new AuthServiceConfig(
-        [
-            {
-                id: FacebookLoginProvider.PROVIDER_ID,
-                provider: new FacebookLoginProvider('2266714353557295')
-            },
-            // {
-            //     id: GoogleLoginProvider.PROVIDER_ID,
-            //     provider: new GoogleLoginProvider("Your-Google-Client-Id")
-            // }
-        ]
-    );
-}
+import { SharedModule } from 'shared';
+import { PasswordResetComponent } from './internal-login/password-reset/password-reset.component';
 
 @NgModule({
     declarations: [
         FederatedLoginComponent,
         InternalLoginComponent,
+        LoginComponent,
+        PasswordResetComponent
+    ],
+    entryComponents: [
+        LoginComponent,
+        PasswordResetComponent
+    ],
+    exports: [
         LoginComponent
     ],
-    entryComponents: [ LoginComponent ],
-    exports: [ LoginComponent ],
     imports: [
         CommonModule,
         FlexLayoutModule,
@@ -58,16 +46,16 @@ export function getAuthServiceConfigs() {
         MatButtonModule,
         MatCardModule,
         MatCheckboxModule,
+        MatDialogModule,
         MatDividerModule,
         MatFormFieldModule,
         MatInputModule,
         MatSnackBarModule,
         ReactiveFormsModule,
-        SocialLoginModule
+        SharedModule
     ],
     providers: [
-        AppService,
-        { provide: AuthServiceConfig, useFactory: getAuthServiceConfigs }
+        AppService
     ]
 })
 export class LoginModule { }

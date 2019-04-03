@@ -2,7 +2,7 @@
 @import 'mycroft-colors';
 @import "components/text";
 
-#skill-detail-body {
+.skill-detail-body {
     background-color: mat-contrast($mycroft-primary, 500);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -14,6 +14,7 @@
 
     .mat-subheading-1 {
         color: mat-color($mycroft-accent, A700);
+        //font-size: 20px;
         font-variant: small-caps;
         font-weight: 500;
         margin-bottom: 5px;
@@ -28,14 +29,14 @@
         width: 40px;
     }
 
-    #skill-detail-section {
+    .skill-detail-section {
         margin-bottom: 30px;
     }
 
-    #skill-detail-body-left {
+    .skill-detail-body-left {
         min-width: 340px;
         margin-right: 50px;
-        #skill-trigger {
+        .skill-trigger {
             @include skill-trigger;
             @include ellipsis-overflow;
             margin-right: 10px;
@@ -44,7 +45,7 @@
         }
     }
 
-    #skill-detail-body-right {
+    .skill-detail-body-right {
         margin-right: 20px;
         white-space: nowrap;
         img {

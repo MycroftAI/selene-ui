@@ -8,6 +8,9 @@ button {
     text-align: left;
     width: 280px;
 
+    &:disabled {
+        background-color: #c0c5cb;
+    }
     fa-icon {
             margin-right: 16px;
             font-size: 24px;

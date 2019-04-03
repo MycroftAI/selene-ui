@@ -1,0 +1,9 @@
+<router-outlet></router-outlet>
+<account-login-edit [account]="account"></account-login-edit>
+<account-membership-edit
+        [accountMembership]="account.membership"
+        [membershipTypes]="membershipTypes"
+>
+</account-membership-edit>
+<account-agreements-edit [account]="account"></account-agreements-edit>
+<account-delete></account-delete>

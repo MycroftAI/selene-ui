@@ -27,17 +27,33 @@ export class AccountMenuComponent implements OnInit {
     constructor() { }
 
     ngOnInit() {
-  }
+    }
+
+    navigateToDevices() {
+        window.location.href =  this.mycroftUrls.account + '/devices';
+    }
 
     navigateToLogin() {
         window.location.href = this.mycroftUrls.singleSignOn + '/login?redirect=' + window.location.href;
     }
 
-    navigate_to_create_account() {
-        window.location.href =  this.mycroftUrls.account + '/create-account?redirect=' + window.location.href;
+    navigateToCreateAccount() {
+        window.location.href =  this.mycroftUrls.account + '/new?redirect=' + window.location.href;
     }
 
-    navigate_to_log_out() {
+    navigateToLogOut() {
         window.location.href = this.mycroftUrls.singleSignOn + '/logout?redirect=' + window.location.href;
+    }
+
+    navigateToProfile() {
+        window.location.href =  this.mycroftUrls.account + '/profile';
+    }
+
+    navigateToSkills() {
+        window.location.href =  this.mycroftUrls.account + '/skills';
+    }
+
+    navigateToAddDevice() {
+        window.location.href =  this.mycroftUrls.account + '/devices/add';
     }
 }

@@ -5,14 +5,14 @@
 export const environment = {
     production: false,
     mycroftUrls: {
+        account: 'https://account.mycroft.ai',
         chat: 'https://chat.mycroft.ai',
         forum: 'https://community.mycroft.ai',
-        singleSignOn: 'http://localhost:4201',
-        account: 'https://home-test.mycroft.ai',
         marketplace: 'http://localhost:4202',
         mimic: 'http://mimic.mycroft,ai',
+        singleSignOn: 'http://localhost:4201',
         translate: 'https://translate-test.mycroft.ai',
-        wordpress: 'https://test.mycroft.ai'
+        wordPress: 'https://test.mycroft.ai'
     }
 };
 

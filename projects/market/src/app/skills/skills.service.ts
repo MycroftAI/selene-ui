@@ -6,14 +6,14 @@ import { Subject } from 'rxjs/internal/Subject';
 import { tap } from 'rxjs/operators';
 
 export interface AvailableSkill {
+    displayName: string;
     icon: Object;
     iconImage: string;
     isMycroftMade: boolean;
     isSystemSkill: boolean;
     marketCategory: string;
-    name: string;
+    id: string;
     summary: string;
-    title: string;
     trigger: string;
 }
 
@@ -22,17 +22,22 @@ export interface SkillCredits {
     github_id: string;
 }
 
+export interface Icon {
+    icon: string;
+    color: string;
+}
+
 export interface SkillDetail {
+    displayName: string;
     categories: string[];
     credits: SkillCredits[];
     description: string;
-    icon: Object;
+    icon: Icon;
     iconImage: string;
     isSystemSkill: boolean;
-    name: string;
+    id: string;
     repositoryUrl: string;
     summary: string;
-    title: string;
     triggers: string;
     worksOnKDE: boolean;
     worksOnMarkOne: boolean;
@@ -40,8 +45,8 @@ export interface SkillDetail {
     worksOnPicroft: boolean;
 }
 
-const availableSkillsUrl = '/api/skill/available';
-const skillUrl = '/api/skill/detail/';
+const availableSkillsUrl = '/api/skills/available';
+const skillUrl = '/api/skills/';
 const searchQuery = '?search=';
 
 @Injectable()
@@ -96,10 +101,10 @@ export class SkillsService {
     /**
      * API call to retrieve detailed information about a specified skill.
      *
-     * @param skillName: name of the skill to retrieve
+     * @param skillId: ID    of the skill to retrieve
      */
-    getSkillById(skillName: string): Observable<SkillDetail> {
-        return this.http.get<SkillDetail>(skillUrl + skillName);
+    getSkillById(skillId: string): Observable<SkillDetail> {
+        return this.http.get<SkillDetail>(skillUrl + skillId);
     }
 
     /**

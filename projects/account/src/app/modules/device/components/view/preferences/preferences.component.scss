@@ -1,0 +1,36 @@
+@import "~@angular/material/theming";
+@import "mycroft-colors";
+@import "components/buttons";
+@import "components/cards";
+
+mat-card {
+    @include section-card;
+    max-width: 700px;
+
+    mat-card-title {
+        color: mat-color($mycroft-primary)
+    }
+}
+
+#required-settings-card {
+    margin-top: 32px;
+
+    button {
+        @include action-button-primary;
+        margin: 16px;
+
+        &:disabled {
+            background-color: mat-color($mycroft-accent, 200);
+        }
+    }
+
+}
+
+#advanced-settings-card {
+    button {
+        @include action-button-primary;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 16px;
+    }
+}

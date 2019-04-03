@@ -5,13 +5,13 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { CreateAccountModule } from './create-account/create-account.module';
+import { DashboardModule } from './modules/dashboard/dashboard.module';
 import { GlobalnavModule } from 'globalnav';
 import { PageNotFoundModule } from 'page-not-found';
-import { DeviceModule } from './device/device.module';
-import { ProfileModule } from './profile/profile.module';
+import { DeviceModule } from './modules/device/device.module';
+import { ProfileModule } from './modules/profile/profile.module';
 import { SharedModule } from 'shared';
-import { SkillModule } from './skill/skill.module';
+import { SkillModule } from './modules/skill/skill.module';
 
 @NgModule(
     {
@@ -19,7 +19,7 @@ import { SkillModule } from './skill/skill.module';
         imports: [
             BrowserModule,
             BrowserAnimationsModule,
-            CreateAccountModule,
+            DashboardModule,
             GlobalnavModule,
             HttpClientModule,
             DeviceModule,

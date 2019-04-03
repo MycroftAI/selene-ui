@@ -1,0 +1,18 @@
+<ng-container [formGroup]="deviceForm">
+    <mat-form-field fxFlex [appearance]="'outline'">
+        <mat-label>Country</mat-label>
+        <input
+                matInput
+                [required]="required"
+                type="text"
+                formControlName="country"
+                [matAutocomplete]="countryComplete"
+                (focus)="getCountries()"
+        >
+        <mat-autocomplete #countryComplete="matAutocomplete">
+            <mat-option *ngFor="let country of filteredCountries$ | async" [value]="country.name">
+                {{country.name}}
+            </mat-option>
+        </mat-autocomplete>
+    </mat-form-field>
+</ng-container>
