@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { Account } from '../../shared/models/account.model';
+import { faAward, faDownload } from '@fortawesome/free-solid-svg-icons';
+
+import { Account } from '@account/models/account.model';
+import { environment } from '@account/environments/environment';
 
 @Component({
     selector: 'account-dashboard',
@@ -10,6 +13,12 @@ import { Account } from '../../shared/models/account.model';
 })
 export class DashboardComponent implements OnInit {
     public account: Account;
+    public awardIcon = faAward;
+    public downloadIcon = faDownload;
+    public marketplaceUrl = environment.mycroftUrls.marketplace;
+    public settingsUrl = environment.mycroftUrls.account + '/skills';
+    public voicesUrl = environment.mycroftUrls.mimic;
+    public accountUrl = environment.mycroftUrls.account + '/profile';
 
     constructor(private route: ActivatedRoute) {
     }

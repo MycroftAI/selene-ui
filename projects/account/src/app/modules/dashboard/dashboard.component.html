@@ -1,12 +1,67 @@
-<iframe
-        *ngIf="account.membership"
-        src="https://mycroft.ai/tartarus-splash-member/"
-        frameBorder="0"
->
-</iframe>
-<iframe
-        *ngIf="!account.membership"
-        src="https://mycroft.ai/tartarus-splash-non-member/"
-        frameBorder="0"
->
-</iframe>
+<div id="dashboard" fxLayout="row" fxLayoutAlign="center" fxLayout.xs="column" fxLayoutGap="16px">
+    <mat-card *ngIf="account.membership" fxFlex="40">
+        <mat-card-header>
+            <fa-icon [icon]="awardIcon"></fa-icon>
+        </mat-card-header>
+        <mat-card-title>Mycroft likes you</mat-card-title>
+        <mat-card-content>
+            <p class="mat-body">
+                Your support makes a big difference.  Thanks to you and other Mycroft supporters,
+                 we can continue building upon the Mycroft experience.  It is also motivating
+                knowing there is a community of people who believe in the same things we do.
+            </p>
+            <p class="mat-body">
+                We keep brainstorming and working on benefits to offer you as a supporter.
+                For now, you can change your Mycroft’s voice to a higher quality one.
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <a mat-button [href]="voicesUrl">CHECK OUT PREMIUM VOICES</a>
+        </mat-card-actions>
+    </mat-card>
+
+    <mat-card *ngIf="!account.membership" fxFlex="40">
+        <mat-card-header>
+            <fa-icon [icon]="downloadIcon"></fa-icon>
+        </mat-card-header>
+        <mat-card-title>Become a Member</mat-card-title>
+        <mat-card-content>
+            <p class="mat-body">
+                For less than one cup of coffee a month, you can help support our server costs,
+                hosting, and ongoing development. All of which all improve Mycroft's performance
+                and user experience.
+            </p>
+            <p class="mat-body">
+                Your membership also gets you exclusive access to premium voices,
+                along with new features that are being prepared for the second half of 2019.
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <a mat-button [href]="accountUrl">MONTHLY MEMBERSHIP $1.99</a>
+            <a mat-button [href]="accountUrl">YEARLY MEMBERSHIP $19.99</a>
+        </mat-card-actions>
+    </mat-card>
+
+    <mat-card fxFlex="40">
+        <mat-card-header>
+            <fa-icon [icon]="downloadIcon"></fa-icon>
+        </mat-card-header>
+        <mat-card-title>Install New Skills</mat-card-title>
+        <mat-card-content>
+            <p class="mat-body">
+                Your device comes with a set of pre-installed skills like Timers and Wikipedia.
+                To change the settings of your skills, for instance the sound of your alarm,
+                go to Skill Settings.
+            </p>
+            <p class="mat-body">
+                Our open source community extends the functionality of Mycroft. Their efforts have
+                produced skills like Fairytalez or ISS Tracker. To install new skills,
+                visit the Marketplace.
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <a mat-button [href]="marketplaceUrl">SKILL MARKETPLACE</a>
+            <a mat-button [href]="settingsUrl">SKILL SETTINGS</a>
+        </mat-card-actions>
+    </mat-card>
+</div>
