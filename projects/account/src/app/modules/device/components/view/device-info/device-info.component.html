@@ -2,33 +2,28 @@
     <mat-tab label="Configuration">
         <mat-card-content fxLayout="row wrap">
             <account-display-field
-                    fxFlex="50"
                     [label]="'Voice'"
                     [value]="device.voice.name"
             >
             </account-display-field>
             <account-display-field
-                    fxFlex="50"
                     [label]="'Wake Word'"
                     [value]="device.wakeWord.name"
             >
             </account-display-field>
             <account-display-field
-                    fxFlex="33"
                     [label]="'Platform'"
                     [value]="device.platform"
             >
             </account-display-field>
             <account-display-field
-                    fxFlex="33"
-                    [label]="'Core Version'"
-                    [value]="device.coreVersion"
+                    [label]="'Enclosure Version'"
+                    [value]="device.enclosureVersion"
             >
             </account-display-field>
             <account-display-field
-                    fxFlex="33"
-                    [label]="'Enclosure Version'"
-                    [value]="device.enclosureVersion"
+                    [label]="'Core Version'"
+                    [value]="device.coreVersion"
             >
             </account-display-field>
         </mat-card-content>
@@ -37,25 +32,21 @@
     <mat-tab label="Location">
         <mat-card-content fxLayout="row wrap">
             <account-display-field
-                    fxFlex="50"
                     [label]="'Country'"
                     [value]="device.geography.country"
             >
             </account-display-field>
             <account-display-field
-                    fxFlex="50"
                     [label]="'Time Zone'"
                     [value]="device.geography.timezone"
             >
             </account-display-field>
             <account-display-field
-                    fxFlex="50"
                     [label]="'Region'"
                     [value]="device.geography.region"
             >
             </account-display-field>
             <account-display-field
-                    fxFlex="50"
                     [label]="'City'"
                     [value]="device.geography.city"
             >
