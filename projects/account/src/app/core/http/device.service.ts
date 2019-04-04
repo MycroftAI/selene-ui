@@ -30,8 +30,8 @@ export class DeviceService {
         this.http.post<any>(deviceUrl, deviceForm.value).subscribe();
     }
 
-    deleteDevice(device: Device): void {
-        console.log('deleting device... ');
+    deleteDevice(device: Device): Observable<any> {
+        return this.http.delete(deviceUrl + '/' + device.id);
     }
 
     addAccountPreferences(preferencesForm: FormGroup) {
