@@ -1,5 +1,5 @@
 <!-- Show a horizontal stepper on larger devices -->
-<mat-horizontal-stepper *ngIf="!alignVertical" labelPosition="bottom">
+<mat-horizontal-stepper *ngIf="!alignVertical" labelPosition="bottom" [linear]="true">
     <!-- Use font awesome icons in the stepper to indicate progress -->
     <ng-template matStepperIcon="done">
         <fa-icon [icon]="stepDoneIcon"></fa-icon>
@@ -64,7 +64,7 @@
 </mat-horizontal-stepper>
 
 <!-- Show a vertical stepper on smaller devices -->
-<mat-vertical-stepper *ngIf="alignVertical">
+<mat-vertical-stepper *ngIf="alignVertical" [linear]="true">
     <!-- Use font awesome icons in the stepper to indicate progress -->
     <ng-template matStepperIcon="done">
         <fa-icon [icon]="stepDoneIcon"></fa-icon>
