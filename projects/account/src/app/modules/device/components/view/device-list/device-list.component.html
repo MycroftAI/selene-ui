@@ -5,19 +5,19 @@
 </div>
 
 <div fxLayout="row wrap" fxLayoutAlign="center">
-    <mat-card *ngFor="let device of devices">
+    <mat-card *ngFor="let device of devices; let i = index">
         <mat-card-title fxLayout="row" fxLayoutAlign="start center">
             <img [src]="getDeviceIcon(device)"/>
             {{device.name}}
         </mat-card-title>
         <account-device-info [device]="device"></account-device-info>
-        <!--<mat-card-actions>-->
-            <!--<button mat-flat-button color="warn" (click)="onRemovalClick(device)">-->
-                <!--REMOVE-->
-            <!--</button>-->
-            <!--<button mat-flat-button color="primary" (click)="onDeviceEdit(device)">-->
+        <mat-card-actions>
+            <button mat-flat-button color="warn" (click)="onRemove(device, i)">
+                REMOVE
+            </button>
+            <!--<button mat-flat-button color="primary" (click)="onEdit(device)">-->
                 <!--EDIT-->
             <!--</button>-->
-        <!--</mat-card-actions>-->
+        </mat-card-actions>
     </mat-card>
 </div>
