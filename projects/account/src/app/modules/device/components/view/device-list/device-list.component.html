@@ -4,7 +4,7 @@
     <fa-icon class="mat-h2" [icon]="addIcon"></fa-icon>
 </div>
 
-<div fxLayout="row wrap" fxLayoutGap.gt-xs="16px">
+<div fxLayout="row wrap" fxLayoutAlign="center">
     <mat-card *ngFor="let device of devices">
         <mat-card-title fxLayout="row" fxLayoutAlign="start center">
             <img [src]="getDeviceIcon(device)"/>
