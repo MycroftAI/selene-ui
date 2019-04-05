@@ -29,11 +29,9 @@ export class SkillService {
     }
 
     updateSkillSettings(skillId: string, skillSettings: SkillSettings[]) {
-        this.http.put(
+        return this.http.put(
             `/api/skills/${skillId}/settings`,
             {skillSettings: skillSettings}
-        ).subscribe(
-            (response) => { console.log(response); }
         );
     }
 

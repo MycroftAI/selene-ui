@@ -11,7 +11,7 @@ import { SettingChange } from '@account/models/setting-change.model';
 })
 export class SettingFieldComponent implements OnInit {
     @Input() fieldDefinition: SettingField;
-    @Input() settingsValues: object;
+    @Input() settingsValues: any;
     @Output() newValue = new EventEmitter<SettingChange>();
     public fieldValue: string;
 
