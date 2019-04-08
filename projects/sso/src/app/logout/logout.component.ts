@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AppService } from '../app.service';
+import { environment} from '../../environments/environment';
 
-const oneSecond = 1000;
+const halfSecond = 500;
 
 @Component({
     selector: 'sso-logout',
@@ -13,13 +14,7 @@ export class LogoutComponent implements OnInit {
     constructor(private appService: AppService) { }
 
     ngOnInit() {
-        const uriQuery = decodeURIComponent(window.location.search);
-        if (uriQuery.startsWith('?redirect')) {
-            localStorage.setItem(
-                'redirect',
-                decodeURIComponent(window.location.search).slice(10)
-            );
-        }
+        localStorage.setItem('redirect', environment.mycroftUrls.wordPress);
 
         this.appService.logout().subscribe(
           () => { this.onLogoutSuccess(); },
@@ -27,6 +22,6 @@ export class LogoutComponent implements OnInit {
     }
 
     onLogoutSuccess(): void {
-        this.appService.navigateToRedirectURI(oneSecond);
+        this.appService.navigateToRedirectURI(halfSecond);
     }
 }
