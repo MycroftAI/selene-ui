@@ -6,7 +6,8 @@ button {
     margin-bottom: 8px;
     padding-left: 8px;
     text-align: left;
-    width: 280px;
+    max-width: 280px;
+    min-width: 240px;
 
     &:disabled {
         background-color: #c0c5cb;

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule, MatButtonToggleModule } from '@angular/material';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -41,6 +42,7 @@ export function getAuthServiceConfigs() {
     ],
     imports: [
         CommonModule,
+        FlexLayoutModule,
         FontAwesomeModule,
         MatButtonModule,
         MatButtonToggleModule,

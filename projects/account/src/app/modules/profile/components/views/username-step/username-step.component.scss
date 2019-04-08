@@ -1,6 +1,6 @@
-@import "../../../../../../../../../node_modules/@angular/material/theming";
+@import "~@angular/material/theming";
 @import "mycroft-colors";
-@import "../../../../../../../../../src/stylesheets/components/buttons";
+@import "components/buttons";
 
 .mat-h2 {
     color: mat-color($mycroft-primary);
@@ -16,7 +16,7 @@ mat-card {
 
 mat-form-field {
     max-width: 400px;
-    min-width: 280px;
+    min-width: 240px;
 }
 
 mat-button-toggle-group {
