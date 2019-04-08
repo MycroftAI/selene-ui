@@ -22,11 +22,10 @@ export class RegionInputComponent implements OnInit {
 
     ngOnInit() {
         this.regionControl = this.deviceForm.controls['region'];
-        this.regionControl.disable();
     }
 
     getRegions() {
-        if (!this.regionControl.value) {
+        if (!this.regions) {
             this.regions$.subscribe(
                 (regions) => {
                     this.regions = regions;

@@ -2,14 +2,17 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
 
-import { AccountDefaults } from '../../../shared/models/defaults.model';
-import { City } from '../../../shared/models/city.model';
-import { Country } from '../../../shared/models/country.model';
-import { DeviceService } from '../../../core/http/device.service';
-import { GeographyService } from '../../../core/http/geography_service';
-import { OptionButtonsConfig } from '../../../shared/models/option-buttons-config.model';
-import { Region } from '../../../shared/models/region.model';
-import { Timezone } from '../../../shared/models/timezone.model';
+import { AccountDefaults } from '@account/models/defaults.model';
+import { City } from '@account/models/city.model';
+import { Country } from '@account/models/country.model';
+import { DeviceService } from '@account/http/device.service';
+import { GeographyService } from '@account/http/geography_service';
+import { OptionButtonsConfig } from '@account/models/option-buttons-config.model';
+import { Region } from '@account/models/region.model';
+import { Timezone } from '@account/models/timezone.model';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
+
+const fiveSeconds = 5000;
 
 @Component({
     selector: 'account-device-edit',
@@ -23,6 +26,7 @@ export class DeviceEditComponent implements OnInit {
     @Input() deviceForm: FormGroup;
     @Input() defaults: AccountDefaults;
     public regions$ = new Observable<Region[]>();
+    private snackbarConfig = new MatSnackBarConfig();
     public timezones$ = new Observable<Timezone[]>();
     public voiceOptionsConfig: OptionButtonsConfig;
     public wakeWordOptionsConfig: OptionButtonsConfig;
@@ -30,7 +34,8 @@ export class DeviceEditComponent implements OnInit {
     constructor(
             private deviceService: DeviceService,
             private formBuilder: FormBuilder,
-            private geoService: GeographyService
+            private geoService: GeographyService,
+            private snackbar: MatSnackBar
     ) {
         this.voiceOptionsConfig = {
             options: ['British Male', 'American Female', 'American Male', 'Google Voice'],
@@ -45,6 +50,8 @@ export class DeviceEditComponent implements OnInit {
                 name: [null]
             }
         );
+        this.snackbarConfig.panelClass = 'mycroft-no-action-snackbar';
+        this.snackbarConfig.duration = fiveSeconds;
     }
 
     ngOnInit() {
@@ -60,28 +67,31 @@ export class DeviceEditComponent implements OnInit {
         this.deviceForm.controls['city'].disable();
         this.deviceForm.controls['timezone'].disable();
         this.countries$ = this.geoService.getCountries();
-        if (this.action === 'device setup' && this.defaults) {
+        if (this.defaults) {
             this.applyDefaultValues();
         }
     }
 
     applyDefaultValues() {
-        if (this.defaults.country) {
+        if (this.defaults.country.id) {
+            this.onCountrySelect(this.defaults.country);
             this.deviceForm.controls['country'].setValue(
                 this.defaults.country.name
             );
         }
-        if (this.defaults.region) {
+        if (this.defaults.region.id) {
+            this.onRegionSelect(this.defaults.region);
             this.deviceForm.controls['region'].setValue(
                 this.defaults.region.name
             );
         }
-        if (this.defaults.city) {
+        if (this.defaults.city.id) {
+            this.onCitySelect(this.defaults.city);
             this.deviceForm.controls['city'].setValue(
                 this.defaults.city.name
             );
         }
-        if (this.defaults.timezone) {
+        if (this.defaults.timezone.id) {
             this.deviceForm.controls['timezone'].setValue(
                 this.defaults.timezone.name
             );
@@ -139,12 +149,25 @@ export class DeviceEditComponent implements OnInit {
     onSave() {
         if (this.defaults) {
             this.deviceService.updateAccountDefaults(this.deviceForm).subscribe(
-                () => { this.defaults = this.deviceForm.value; }
+                () => {
+                    this.defaults = this.deviceForm.value;
+                    this.snackbar.open(
+                        'Default values saved',
+                        null,
+                        this.snackbarConfig
+                    );
+                }
             );
         } else {
             this.deviceService.addAccountDefaults(this.deviceForm).subscribe(
-                () => { this.defaults = this.deviceForm.value; }
-
+                () => {
+                    this.defaults = this.deviceForm.value;
+                    this.snackbar.open(
+                        'Default values saved',
+                        null,
+                        this.snackbarConfig
+                    );
+                }
             );
         }
     }

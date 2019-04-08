@@ -1,9 +1,9 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AbstractControl, FormGroup, ValidatorFn } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { startWith, map, tap } from 'rxjs/operators';
+import { startWith, map } from 'rxjs/operators';
 
-import { Timezone } from '../../../../../shared/models/timezone.model';
+import { Timezone } from '@account/models/timezone.model';
 
 @Component({
     selector: 'account-timezone-input',
@@ -22,11 +22,10 @@ export class TimezoneInputComponent implements OnInit {
 
     ngOnInit(): void {
         this.timezoneControl = this.deviceForm.controls['timezone'];
-        this.timezoneControl.disable();
     }
 
     getTimezones() {
-        if (!this.timezoneControl.value) {
+        if (!this.timezones) {
             this.timezones$.subscribe(
                 (timezones) => {
                     this.timezones = timezones;

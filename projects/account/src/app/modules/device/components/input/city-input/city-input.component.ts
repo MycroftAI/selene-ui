@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { startWith, map, tap} from 'rxjs/operators';
 
-import { City } from '../../../../../shared/models/city.model';
+import { City } from '@account/models/city.model';
 import { AbstractControl, FormGroup, ValidatorFn } from '@angular/forms';
 
 @Component({
@@ -11,12 +11,12 @@ import { AbstractControl, FormGroup, ValidatorFn } from '@angular/forms';
     styleUrls: ['./city-input.component.scss']
 })
 export class CityInputComponent implements OnInit {
+    private cityControl: AbstractControl;
     @Input() cities$: Observable<City[]>;
     private cities: City[];
+    @Output() citySelected = new EventEmitter<City>();
     @Input() deviceForm: FormGroup;
     public filteredCities$ = new Observable<City[]>();
-    @Output() citySelected = new EventEmitter<City>();
-    private cityControl: AbstractControl;
     @Input() required: boolean;
 
     constructor() {
@@ -24,7 +24,7 @@ export class CityInputComponent implements OnInit {
 
     ngOnInit() {
         this.cityControl = this.deviceForm.controls['city'];
-        this.cityControl.disable();
+        // this.cityControl.disable();
     }
 
     getCities() {
