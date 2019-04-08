@@ -4,8 +4,10 @@
         <h2 class="mat-h2">Log In Using...</h2>
         <p>{{federatedLoginText}}</p>
         <div id="federated-buttons" fxLayout="column" fxLayoutAlign="center center">
-            <shared-google-button></shared-google-button>
-            <shared-facebook-button (facebookEmail)="onFacebookLogin($event)"></shared-facebook-button>
+            <shared-google-button (googleToken)="onFederatedLogin($event)">
+            </shared-google-button>
+            <shared-facebook-button (facebookToken)="onFederatedLogin($event)">
+            </shared-facebook-button>
             <shared-github-button></shared-github-button>
         </div>
     </mat-card>

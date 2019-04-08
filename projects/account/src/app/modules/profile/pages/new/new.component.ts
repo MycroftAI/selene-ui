@@ -24,11 +24,11 @@ const noDelay = 0;
 export function loginValidator(): ValidatorFn {
     return (loginGroup: FormGroup) => {
         let valid = true;
-        const federatedEmail = loginGroup.controls['federatedEmail'];
+        const federatedToken = loginGroup.controls['federatedToken'];
         const userEnteredEmail  = loginGroup.controls['userEnteredEmail'];
         const password = loginGroup.controls['password'];
 
-        if (federatedEmail.value) {
+        if (federatedToken.value) {
             if (userEnteredEmail.value || password.value) {
                 valid = false;
             }
@@ -101,7 +101,8 @@ export class NewComponent implements OnInit {
     private buildForm() {
         const loginGroup = this.formBuilder.group(
             {
-                federatedEmail: [null],
+                federatedPlatform: [null],
+                federatedToken: [null],
                 userEnteredEmail: [null, Validators.email],
                 password: [null]
             },

@@ -1,6 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 
+export interface FederatedLoginToken {
+    platform: string;
+    token: string;
+}
+
 @Component({
     selector: 'account-authentication-step',
     templateUrl: './authentication-step.component.html',
@@ -21,8 +26,10 @@ export class AuthenticationStepComponent implements OnInit {
             'servers are encrypted for your privacy and protection.';
     }
 
-    onFacebookLogin(email: string) {
-        this.newAcctForm.patchValue({login: {federatedEmail: email}});
+    onFederatedLogin(token: FederatedLoginToken) {
+        this.newAcctForm.patchValue(
+            {login: {federatedPlatform: token.platform, federatedToken: token.token}}
+            );
         this.disableInternal = true;
     }
 }
