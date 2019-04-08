@@ -21,7 +21,6 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AddCompleteComponent } from './components/view/add-complete/add-complete.component';
 import { CityInputComponent } from './components/input/city-input/city-input.component';
 import { CountryInputComponent } from './components/input/country-input/country-input.component';
-import { DefaultsComponent } from './components/view/defaults/defaults.component';
 import { DeviceAddComponent } from './pages/device-add/device-add.component';
 import { DeviceEditComponent } from './device-edit/device-edit.component';
 import { DeviceInfoComponent } from './components/view/device-info/device-info.component';
@@ -40,7 +39,6 @@ import { TimezoneInputComponent } from './components/input/timezone-input/timezo
         AddCompleteComponent,
         CityInputComponent,
         CountryInputComponent,
-        DefaultsComponent,
         DeviceAddComponent,
         DeviceEditComponent,
         DeviceInfoComponent,
