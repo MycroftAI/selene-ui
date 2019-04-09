@@ -39,5 +39,5 @@
         <input matInput type="password" value="{{fieldValue}}" (change)="onInputChange($event)">
     </mat-form-field>
 
-    <button *ngSwitchCase="'oauth'" mat-button>Connect</button>
+    <button *ngSwitchCase="'oauth'" mat-button (click)="onSkillOauth()">Connect</button>
 </ng-container>

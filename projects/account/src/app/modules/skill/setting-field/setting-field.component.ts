@@ -13,14 +13,17 @@ export class SettingFieldComponent implements OnInit {
     @Input() fieldDefinition: SettingField;
     @Input() settingsValues: any;
     @Output() newValue = new EventEmitter<SettingChange>();
+    @Output() skillAuthentication = new EventEmitter<string>();
     public fieldValue: string;
 
     constructor() { }
 
     ngOnInit() {
-        this.fieldValue = this.settingsValues[this.fieldDefinition.name];
-        if (!this.fieldValue) {
-            this.fieldValue = this.fieldDefinition.value;
+        if (this.settingsValues) {
+            this.fieldValue = this.settingsValues[this.fieldDefinition.name];
+            if (!this.fieldValue) {
+                this.fieldValue = this.fieldDefinition.value;
+            }
         }
     }
 
@@ -39,5 +42,12 @@ export class SettingFieldComponent implements OnInit {
 
     onSelectChange(newValue: string) {
         this.newValue.emit({name: this.fieldDefinition.name, value: newValue});
+    }
+
+    /**
+     * An oauth button must have an ID in its value to pass to the oauth service.
+     */
+    onSkillOauth() {
+        this.skillAuthentication.emit(this.fieldDefinition.value);
     }
 }

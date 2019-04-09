@@ -14,6 +14,7 @@
             [sectionDefinition]="section"
             [settingsValues]="settings[0].settingsValues"
             (newValue)="onValueChange(settings[0], $event)"
+            (skillOauth)="onSkillOauth($event)"
         >
         </account-skill-setting-section>
     </ng-container>
@@ -32,6 +33,7 @@
                         [sectionDefinition]="section"
                         [settingsValues]="settingsGroup.settingsValues"
                         (newValue)="onValueChange(settingsGroup, $event)"
+                        (skillOauth)="onSkillOauth($event)"
                 >
                 </account-skill-setting-section>
             </mat-tab>
