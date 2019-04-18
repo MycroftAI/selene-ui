@@ -11,15 +11,18 @@ import {
 
 import { DisplayFieldComponent } from './components/display-field/display-field.component';
 import { OptionButtonsComponent } from './components/option-buttons/option-buttons.component';
+import { OptionBtnComponent } from './components/option-btn/option-btn.component';
 
 @NgModule({
     declarations: [
         DisplayFieldComponent,
         OptionButtonsComponent,
+        OptionBtnComponent,
     ],
     exports: [
         DisplayFieldComponent,
         OptionButtonsComponent,
+        OptionBtnComponent
     ],
     imports: [
         CommonModule,
