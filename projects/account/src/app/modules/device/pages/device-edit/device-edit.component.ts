@@ -16,6 +16,7 @@ const fiveSeconds = 5000;
     styleUrls: ['./device-edit.component.scss']
 })
 export class DeviceEditComponent implements OnInit {
+    public advancedSettingsDesc: string[];
     public deviceForm: FormGroup;
     private deviceId: string;
     public device$ = new Observable<Device>();
@@ -33,6 +34,7 @@ export class DeviceEditComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.buildAdvancedSettingsDesc();
         this.device$ = this.route.paramMap.pipe(
             switchMap((params: ParamMap) => this.deviceService.getDevice(params.get('deviceId'))),
             tap((device) => {
@@ -57,6 +59,20 @@ export class DeviceEditComponent implements OnInit {
         );
     }
 
+    buildAdvancedSettingsDesc() {
+        this.advancedSettingsDesc = [
+            'Mycroft Core can be further configured ' +
+            'for development and experimentation purposes. Example configurations ' +
+            'include text-to-speech technologies, speech-to-text technologies and ' +
+            'wake word listeners.',
+            'These advanced options can be managed by editing a configuration file ' +
+            'on the device.  Proceed with caution; a bad configuration file could ' +
+            'render your device unusable.',
+            'Follow the link below for documentation on the options available ' +
+            'and how to edit them.'
+        ];
+    }
+
     onExit(save: boolean) {
         if (save) {
             this.deviceService.updateDevice(this.deviceId, this.deviceForm).subscribe(
@@ -79,5 +95,9 @@ export class DeviceEditComponent implements OnInit {
         } else {
             this.router.navigate(['/devices']);
         }
+    }
+
+    navigateToDocs() {
+        window.location.assign('https://mycroft.ai/documentation/mycroft-conf/');
     }
 }

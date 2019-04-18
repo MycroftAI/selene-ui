@@ -12,7 +12,6 @@ import { ActivatedRoute } from '@angular/router';
     styleUrls: ['./preferences.component.scss']
 })
 export class PreferencesComponent implements OnInit {
-    public advancedSettingsDesc: string[];
     @Input() deviceSetup: boolean;
     public preferences: AccountPreferences;
     public preferencesForm: FormGroup;
@@ -46,7 +45,6 @@ export class PreferencesComponent implements OnInit {
             (data: {preferences: AccountPreferences}) => { this.preferences = data.preferences; }
         );
         this.buildForm();
-        this.buildAdvancedSettingsDesc();
     }
 
     buildForm() {
@@ -66,20 +64,6 @@ export class PreferencesComponent implements OnInit {
                 ],
             }
         );
-    }
-
-    buildAdvancedSettingsDesc() {
-        this.advancedSettingsDesc = [
-            'Mycroft Core can be further configured ' +
-            'for development and experimentation purposes. Example configurations ' +
-            'include text-to-speech technologies, speech-to-text technologies and ' +
-            'wake word listeners.',
-            'These advanced options can be managed by editing a configuration file ' +
-            'on the device.  Proceed with caution; a bad configuration file could ' +
-            'render your device unusable.',
-            'Follow the link below for documentation on the options available ' +
-            'and how to edit them.'
-        ];
     }
 
     onSave() {
