@@ -1,0 +1,7 @@
+<account-device-edit-card
+        *ngIf="device$ | async"
+        [deviceForm]="deviceForm"
+        [addDevice]="false"
+        (saveChanges)="onExit($event)"
+>
+</account-device-edit-card>

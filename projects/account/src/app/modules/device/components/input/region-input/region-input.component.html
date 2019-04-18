@@ -1,18 +1,15 @@
-<ng-container [formGroup]="deviceForm">
-    <mat-form-field fxFlex [appearance]="'outline'">
-        <mat-label>Region</mat-label>
-        <input
-                matInput
-                type="text"
-                formControlName="region"
-                [matAutocomplete]="regionComplete"
-                [required]="required"
-                (focus)="getRegions()"
-        >
-        <mat-autocomplete #regionComplete="matAutocomplete">
-            <mat-option *ngFor="let region of filteredRegions$ | async" [value]="region.name">
-                {{region.name}}
-            </mat-option>
-        </mat-autocomplete>
-    </mat-form-field>
-</ng-container>
+<mat-form-field fxFlex [appearance]="'outline'">
+    <mat-label>Region</mat-label>
+    <input
+            matInput
+            type="text"
+            [formControl]="regionControl"
+            [matAutocomplete]="regionComplete"
+            [required]="required"
+    >
+    <mat-autocomplete #regionComplete="matAutocomplete">
+        <mat-option *ngFor="let region of filteredRegions$ | async" [value]="region.name">
+            {{region.name}}
+        </mat-option>
+    </mat-autocomplete>
+</mat-form-field>

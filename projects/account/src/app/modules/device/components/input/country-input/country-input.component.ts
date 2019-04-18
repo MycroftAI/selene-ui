@@ -3,6 +3,7 @@ import { AbstractControl, FormGroup, ValidatorFn } from '@angular/forms';
 import { map, startWith, tap } from 'rxjs/operators';
 
 import { Country } from '@account/models/country.model';
+import { GeographyService } from '@account/http/geography_service';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -11,35 +12,43 @@ import { Observable } from 'rxjs';
     styleUrls: ['./country-input.component.scss']
 })
 export class CountryInputComponent implements OnInit {
-    @Input() countries$: Observable<Country[]>;
     private countries: Country[];
-    private countryControl: AbstractControl;
+    @Input() countryControl: AbstractControl;
     @Output() countrySelected = new EventEmitter<Country>();
-    @Input() deviceForm: FormGroup;
     public filteredCountries$: Observable<Country[]>;
     @Input() required: boolean;
 
-    constructor() { }
+    constructor(private geoService: GeographyService) { }
 
     ngOnInit() {
-        this.countryControl = this.deviceForm.controls['country'];
+        this.geoService.getCountries().subscribe(
+            (countries) => {
+                this.countries = countries;
+                this.countryControl.validator = this.countryValidator();
+                this.filteredCountries$ = this.countryControl.valueChanges.pipe(
+                    startWith(''),
+                    map((value) => this.filterCountries(value)),
+                    tap(() => { this.emitSelectedCountry(); })
+                );
+            }
+        );
     }
 
-    getCountries() {
-        if (!this.countries) {
-            this.countries$.subscribe(
-                (countries) => {
-                    this.countries = countries;
-                    this.countryControl.validator = this.countryValidator();
-                    this.filteredCountries$ = this.countryControl.valueChanges.pipe(
-                        startWith(''),
-                        map((value) => this.filterCountries(value)),
-                        tap(() => { this.checkForValidCountry(); })
-                    );
-                }
-            );
-        }
-    }
+    // getCountries() {
+    //     if (!this.countries) {
+    //         this.geoService.getCountries().subscribe(
+    //             (countries) => {
+    //                 this.countries = countries;
+    //                 this.countryControl.validator = this.countryValidator();
+    //                 this.filteredCountries$ = this.countryControl.valueChanges.pipe(
+    //                     startWith(''),
+    //                     map((value) => this.filterCountries(value)),
+    //                     tap(() => { this.emitSelectedCountry(); })
+    //                 );
+    //             }
+    //         );
+    //     }
+    // }
 
     private filterCountries(value: string): Country[] {
         const filterValue = value.toLowerCase();
@@ -72,7 +81,7 @@ export class CountryInputComponent implements OnInit {
         };
     }
 
-    checkForValidCountry() {
+    emitSelectedCountry() {
         if (this.countryControl.valid) {
             if (this.countryControl.value) {
                 const foundCountry = this.countries.find(

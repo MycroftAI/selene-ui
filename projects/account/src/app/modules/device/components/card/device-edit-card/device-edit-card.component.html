@@ -1,0 +1,45 @@
+<mat-card [ngClass]="{'mat-elevation-z0': addDevice}" [formGroup]="deviceForm">
+
+    <mat-card-title *ngIf="addDevice">Configure your new device</mat-card-title>
+    <mat-card-title *ngIf="!addDevice">Manage your device configuration</mat-card-title>
+
+    <mat-card-content fxLayout="column">
+
+        <mat-card id="id-card" class="mat-elevation-z0" fxLayout="column">
+            <mat-form-field *ngIf="addDevice" [appearance]="'outline'">
+                <mat-label>Pairing Code</mat-label>
+                <input
+                        matInput
+                        required
+                        type="text"
+                        onInput="this.value = this.value.toUpperCase()"
+                        formControlName="pairingCode"
+                >
+                <mat-hint>Code spoken by device</mat-hint>
+            </mat-form-field>
+            <div fxLayout="row wrap">
+                <mat-form-field [appearance]="'outline'">
+                    <mat-label>Name</mat-label>
+                    <input matInput required type="text" formControlName="name">
+                    <mat-hint>Must be unique</mat-hint>
+                </mat-form-field>
+                <mat-form-field [appearance]="'outline'">
+                    <mat-label>Placement</mat-label>
+                    <input matInput type="text" formControlName="placement">
+                    <mat-hint>e.g. Kitchen, Bedroom, Office</mat-hint>
+                </mat-form-field>
+            </div>
+        </mat-card>
+
+        <account-geography-card [geoForm]="deviceForm" [required]="true"></account-geography-card>
+        <account-voice-card [voiceControl]="deviceForm.controls['voice']"></account-voice-card>
+        <account-wake-word-card [wakeWordControl]="deviceForm.controls['wakeWord']">
+        </account-wake-word-card>
+    </mat-card-content>
+
+    <mat-card-actions *ngIf=!addDevice align="right">
+        <button mat-button id="cancel-button" (click)="onCancel()">CANCEL</button>
+        <button mat-button [disabled]="!deviceForm.valid" (click)="onSave()">SAVE</button>
+    </mat-card-actions>
+
+</mat-card>

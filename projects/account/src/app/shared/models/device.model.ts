@@ -1,14 +1,21 @@
-import { DeviceAttribute } from './deviceAttribute.model';
-import { Geography } from './geography.model';
+import { WakeWord } from '@account/models/wake-word.model';
+import { Voice } from '@account/models/voice.model';
+import { City } from '@account/models/city.model';
+import { Country } from '@account/models/country.model';
+import { Region } from '@account/models/region.model';
+import { Timezone } from '@account/models/timezone.model';
 
 export interface Device {
+    city: City;
     coreVersion: string;
+    country: Country;
     enclosureVersion: string;
     id: string;
-    geography: Geography;
     name: string;
     placement: string;
     platform: string;
-    voice: DeviceAttribute;
-    wakeWord: DeviceAttribute;
+    region: Region;
+    timezone: Timezone;
+    voice: Voice;
+    wakeWord: WakeWord;
 }

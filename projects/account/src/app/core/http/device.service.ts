@@ -22,8 +22,12 @@ export class DeviceService {
     constructor(private http: HttpClient) {
     }
 
-    getDevices() {
+    getDevices(): Observable<Device[]> {
         return this.http.get<Device[]>(deviceUrl);
+    }
+
+    getDevice(deviceId: string): Observable<Device> {
+        return this.http.get<Device>(deviceUrl + '/' + deviceId);
     }
 
     addDevice(deviceForm: FormGroup) {
@@ -32,6 +36,10 @@ export class DeviceService {
 
     deleteDevice(device: Device): Observable<any> {
         return this.http.delete(deviceUrl + '/' + device.id);
+    }
+
+    updateDevice(deviceId: string, deviceForm: FormGroup): Observable<any> {
+        return this.http.patch(deviceUrl + '/' + deviceId, deviceForm.value);
     }
 
     addAccountPreferences(preferencesForm: FormGroup) {

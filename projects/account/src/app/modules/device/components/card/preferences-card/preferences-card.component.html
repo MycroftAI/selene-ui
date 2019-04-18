@@ -1,0 +1,27 @@
+<mat-card [ngClass]="{'mat-elevation-z0': !elevate}" [formGroup]="preferencesForm" class="mat-elevation-z0">
+    <ng-content select="mat-card-title"></ng-content>
+    <mat-card-content fxLayout="column">
+        <p class="mat-body">
+            Preferences are applied to all your devices to present information
+            in a manner you are accustomed to.
+        </p>
+        <account-option-btn
+                [config]="measurementOptionsConfig"
+                formControlName="measurementSystem"
+        >
+        </account-option-btn>
+        <account-option-btn
+                [config]="timeFormatOptionsConfig"
+                formControlName="timeFormat"
+        >
+        </account-option-btn>
+        <account-option-btn
+                [config]="dateFormatOptionsConfig"
+                formControlName="dateFormat"
+        >
+        </account-option-btn>
+    </mat-card-content>
+    <mat-card-actions align="right">
+        <ng-content select="button"></ng-content>
+    </mat-card-actions>
+</mat-card>

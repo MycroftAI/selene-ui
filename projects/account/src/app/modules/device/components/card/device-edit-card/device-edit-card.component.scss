@@ -1,0 +1,50 @@
+@import "~@angular/material/theming";
+@import "mycroft-colors";
+@import "components/buttons";
+@import "components/cards";
+
+
+#id-card {
+    margin: 0;
+    max-width: 700px;
+    padding: 16px;
+
+    mat-form-field {
+        margin-left: 16px;
+        min-width: 250px;
+    }
+}
+
+mat-card {
+    @include section-card;
+    max-width: 700px;
+    margin-bottom: 16px;
+
+    mat-card-content {
+        .mat-h2 {
+            color: mat-color($mycroft-accent, A700);
+            margin-top: 32px;
+        }
+
+        mat-form-field {
+            max-width: 280px;
+        }
+    }
+
+    mat-card-actions {
+        button {
+            @include action-button-primary;
+            margin-bottom: 16px;
+            margin-right: 16px;
+
+            &:disabled {
+                background-color: mat-color($mycroft-accent, 200);
+            }
+        }
+
+        #cancel-button {
+            background-color: white;
+            color: mat-color($mycroft-accent);
+        }
+    }
+}
