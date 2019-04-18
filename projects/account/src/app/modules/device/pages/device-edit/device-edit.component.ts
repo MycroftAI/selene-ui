@@ -18,7 +18,7 @@ const fiveSeconds = 5000;
 export class DeviceEditComponent implements OnInit {
     public deviceForm: FormGroup;
     private deviceId: string;
-    private device$ = new Observable<Device>();
+    public device$ = new Observable<Device>();
     private snackbarConfig = new MatSnackBarConfig();
 
     constructor(

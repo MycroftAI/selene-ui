@@ -21,6 +21,7 @@ export class OptionBtnComponent implements ControlValueAccessor {
     @ViewChild(MatButtonToggleGroup) options: MatButtonToggleGroup;
     public onChange;
     public onTouched;
+
     constructor() {
     }
 
