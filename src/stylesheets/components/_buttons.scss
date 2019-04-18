@@ -18,6 +18,10 @@ $button-border-radius: 4px;
         background-color: mat-color($mycroft-accent, A100);
         color: mat-color($mycroft-accent);
     }
+
+    &:disabled {
+        background-color: mat-color($mycroft-accent, 200);
+    }
 }
 
 @mixin action-button-warn {
