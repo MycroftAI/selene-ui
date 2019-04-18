@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AbstractControl } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { OptionButtonsConfig } from '@account/models/option-buttons-config.model';
 
 @Component({
@@ -8,7 +8,7 @@ import { OptionButtonsConfig } from '@account/models/option-buttons-config.model
     styleUrls: ['./wake-word-card.component.scss']
 })
 export class WakeWordCardComponent implements OnInit {
-    @Input() wakeWordControl: AbstractControl;
+    @Input() wakeWordForm: FormGroup;
     public wakeWordOptionsConfig: OptionButtonsConfig;
 
 

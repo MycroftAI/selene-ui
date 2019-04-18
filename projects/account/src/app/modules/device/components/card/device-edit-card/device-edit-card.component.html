@@ -32,8 +32,8 @@
         </mat-card>
 
         <account-geography-card [geoForm]="deviceForm" [required]="true"></account-geography-card>
-        <account-voice-card [voiceControl]="deviceForm.controls['voice']"></account-voice-card>
-        <account-wake-word-card [wakeWordControl]="deviceForm.controls['wakeWord']">
+        <account-voice-card [voiceForm]="deviceForm"></account-voice-card>
+        <account-wake-word-card [wakeWordForm]="deviceForm">
         </account-wake-word-card>
     </mat-card-content>
 

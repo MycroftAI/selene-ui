@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { OptionButtonsConfig } from '@account/models/option-buttons-config.model';
-import { AbstractControl } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'account-voice-card',
@@ -8,7 +8,7 @@ import { AbstractControl } from '@angular/forms';
     styleUrls: ['./voice-card.component.scss']
 })
 export class VoiceCardComponent implements OnInit {
-    @Input() voiceControl: AbstractControl;
+    @Input() voiceForm: FormGroup;
     public voiceOptionsConfig: OptionButtonsConfig;
 
     constructor() {
