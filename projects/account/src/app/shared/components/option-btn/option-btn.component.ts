@@ -1,21 +1,27 @@
-import { Component, Input, Self, ViewChild } from '@angular/core';
+import { Component, Input, forwardRef, ViewChild } from '@angular/core';
 import { OptionButtonsConfig } from '@account/models/option-buttons-config.model';
 import { MatButtonToggleGroup } from '@angular/material';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({
     selector: 'account-option-btn',
     templateUrl: './option-btn.component.html',
     styleUrls: ['./option-btn.component.scss'],
-    providers: [{provide: NG_VALUE_ACCESSOR, multi: true, useExisting: OptionBtnComponent}]
+     providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => OptionBtnComponent),
+      multi: true
+    }
+  ]
 })
 export class OptionBtnComponent implements ControlValueAccessor {
     @Input() config: OptionButtonsConfig;
+    @Input() disabled = false;
     @ViewChild(MatButtonToggleGroup) options: MatButtonToggleGroup;
     public onChange;
     public onTouched;
-    constructor(@Self() public controlDirective: NgControl) {
-        controlDirective.valueAccessor = this;
+    constructor() {
     }
 
     writeValue(value: any) {
@@ -29,4 +35,8 @@ export class OptionBtnComponent implements ControlValueAccessor {
     registerOnTouched(fn: () => void) {
         this.onTouched = fn;
     }
+
+    setDisabledState(isDisabled: boolean): void {
+        this.disabled = isDisabled;
+      }
 }
