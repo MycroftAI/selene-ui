@@ -7,7 +7,7 @@
         <account-membership-options
                 [accountMembership]="accountMembership"
                 [membershipTypes]="membershipTypes"
-                (membershipChange)="onMembershipChange($event)"
+                (membershipChange)="updateAccount($event)"
         >
         </account-membership-options>
         <span *ngIf="accountMembership && accountMembership.duration" id="subscription-date" class="mat-body">

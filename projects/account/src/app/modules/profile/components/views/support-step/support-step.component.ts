@@ -2,8 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { MatBottomSheet } from '@angular/material';
 
-import { MembershipType } from '../../../../../shared/models/membership.model';
-import { ProfileService } from '../../../../../core/http/profile.service';
+import { MembershipType } from '@account/models/membership.model';
+import { MembershipUpdate } from '@account/models/membership-update.model';
+import { ProfileService } from '@account/http/profile.service';
 import { PaymentComponent } from '../payment/payment.component';
 
 @Component({
@@ -17,9 +18,9 @@ export class SupportStepComponent implements OnInit {
     public openDatasetDescription: string[];
     public membershipDescription: string[];
 
-    constructor(public bottomSheet: MatBottomSheet, private profileService: ProfileService) { }
+    constructor() { }
 
-    ngOnInit() {
+    ngOnInit(): void {
         this.openDatasetDescription = [
             'Mycroft\'s voices and services can only improve with your help.  ' +
             'By joining our open dataset, you agree to allow Mycroft AI to collect data related ' +
@@ -48,51 +49,21 @@ export class SupportStepComponent implements OnInit {
         ];
     }
 
-    onOptIn() {
+    onOptIn(): void {
         this.newAcctForm.patchValue({support: {openDataset: true}});
     }
 
-    onOptOut() {
+    onOptOut(): void {
         this.newAcctForm.patchValue({support: {openDataset: false}});
     }
 
-    onMembershipSelection(membershipType: string) {
-        const selectedMembership = this.membershipTypes.find(
-            (membership) => membership.type === membershipType
-        );
-        if (selectedMembership) {
-            this.openBottomSheet(selectedMembership.type);
-        } else {
-            this.newAcctForm.patchValue({support: {membership: null}});
-        }
-    }
-
-    openBottomSheet(selectedMembership: string) {
-        const bottomSheetConfig = {
-            data: {newAccount: true},
-            disableClose: true,
-            restoreFocus: true
-        };
-        const bottomSheetRef = this.bottomSheet.open(PaymentComponent, bottomSheetConfig);
-        bottomSheetRef.afterDismissed().subscribe(
-            (dismissValue) => {
-                if (dismissValue === 'cancel') {
-                    this.profileService.selectedMembershipType.next('Maybe Later');
-                } else {
-                    this.updateNewAccountForm(selectedMembership, dismissValue);
-                }
-            }
-        );
-    }
-
-    updateNewAccountForm(selectedMembership: string, stripeToken: string) {
-        console.log(stripeToken);
+    updateNewAccountForm(membershipUpdate: MembershipUpdate): void {
         this.newAcctForm.patchValue(
             {
                 support: {
-                    membership: selectedMembership,
-                    paymentMethod: 'Stripe',
-                    paymentToken: stripeToken
+                    membership: membershipUpdate.membershipType,
+                    paymentMethod: membershipUpdate.paymentMethod,
+                    paymentToken: membershipUpdate.paymentToken
                 }
             }
         );

@@ -1,12 +1,14 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
-import { MatButtonToggleChange } from '@angular/material';
+import { MatButtonToggleChange, MatDialog, MatDialogConfig, MatSnackBar } from '@angular/material';
 
 import { Subscription } from 'rxjs';
 
-import { AccountMembership } from '../../../../../shared/models/account-membership.model';
-import { MembershipType } from '../../../../../shared/models/membership.model';
-import { ProfileService } from '../../../../../core/http/profile.service';
+import { AccountMembership } from '@account/models/account-membership.model';
+import { MembershipType } from '@account/models/membership.model';
+import { ProfileService } from '@account/http/profile.service';
+import { PaymentComponent } from '@account/app/modules/profile/components/views/payment/payment.component';
+import { MembershipUpdate } from '@account/models/membership-update.model';
 
 
 @Component({
@@ -16,13 +18,18 @@ import { ProfileService } from '../../../../../core/http/profile.service';
 })
 export class MembershipOptionsComponent implements OnInit, OnDestroy {
     @Input() accountMembership: AccountMembership;
-    public alignVertical: boolean;
     @Input() membershipTypes: MembershipType[];
+    @Output() membershipChange = new EventEmitter<MembershipUpdate>();
+    public alignVertical: boolean;
     public mediaWatcher: Subscription;
-    @Output() membershipChange = new EventEmitter<string>();
     public selectedMembershipType: string;
 
-    constructor(public mediaObserver: MediaObserver, private profileService: ProfileService) {
+    constructor(
+            public mediaObserver: MediaObserver,
+            private profileService: ProfileService,
+            public paymentDialog: MatDialog,
+            private snackbar: MatSnackBar
+    ) {
         this.mediaWatcher = mediaObserver.media$.subscribe(
             (change: MediaChange) => {
                 this.alignVertical = ['xs', 'sm'].includes(change.mqAlias);
@@ -45,9 +52,49 @@ export class MembershipOptionsComponent implements OnInit, OnDestroy {
       this.mediaWatcher.unsubscribe();
     }
 
-    onMembershipSelect(newMembershipType: MatButtonToggleChange) {
-        this.profileService.selectedMembershipType.next(newMembershipType.value);
-        this.membershipChange.emit(newMembershipType.value);
+    onMembershipSelect(membershipType: MatButtonToggleChange) {
+        const selectedMembership = this.membershipTypes.find(
+            (membership) => membership.type === membershipType.value
+        );
+        let membershipUpdate;
+        if (selectedMembership) {
+            if (this.accountMembership) {
+                // We have the user's credit card info but they decide to change plans
+                membershipUpdate = {
+                    paymentMethod: 'Stripe',
+                    newMembership: false,
+                    membershipType: membershipType
+                };
+                this.membershipChange.emit(membershipUpdate);
+            } else {
+                // No credit card info.  Go to payment dialog to collect
+                this.openPaymentDialog(membershipType.value);
+            }
+        } else {
+            // Membership termination
+            membershipUpdate = {newMembership: false, membershipType: null};
+            this.membershipChange.emit(membershipUpdate);
+        }
     }
 
+    openPaymentDialog(membershipType: string) {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.data = {newAccount: false, membershipType: membershipType};
+        dialogConfig.disableClose = true;
+        dialogConfig.restoreFocus = true;
+        const dialogRef = this.paymentDialog.open(PaymentComponent, dialogConfig);
+        dialogRef.afterClosed().subscribe(
+            (stripeToken) => {
+                if (stripeToken) {
+                    const membershipUpdate: MembershipUpdate = {
+                        newMembership: true,
+                        membershipType: membershipType,
+                        paymentMethod: 'Stripe',
+                        paymentToken: stripeToken
+                    };
+                    this.membershipChange.emit(membershipUpdate);
+                }
+            }
+        );
+    }
 }

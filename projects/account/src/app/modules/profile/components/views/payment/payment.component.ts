@@ -1,7 +1,6 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import {
-    MatBottomSheetRef,
-    MatDialog,
+    MAT_DIALOG_DATA,
     MatDialogRef,
     MatSnackBar
 } from '@angular/material';
@@ -9,7 +8,6 @@ import {
 import { ElementOptions, StripeCardComponent, StripeService } from 'ngx-stripe';
 
 import { ProfileService } from '@account/http/profile.service';
-import { VerifyCardDialogComponent } from './verify-card-dialog.component';
 
 const twoSeconds = 2000;
 
@@ -32,14 +30,13 @@ export class PaymentComponent implements OnInit {
             }
         }
     };
-    private dialogRef: MatDialogRef<VerifyCardDialogComponent>;
 
     constructor(
-        private bottomSheetRef: MatBottomSheetRef<PaymentComponent>,
-        private paymentSnackbar: MatSnackBar,
+        public dialogRef: MatDialogRef<PaymentComponent>,
+        private snackbar: MatSnackBar,
         private profileService: ProfileService,
         private stripeService: StripeService,
-        public verifyCardDialog: MatDialog
+        @Inject(MAT_DIALOG_DATA) public dialogData: any
 
     ) {
     }
@@ -47,60 +44,23 @@ export class PaymentComponent implements OnInit {
     ngOnInit() {
     }
 
-    submitPayment() {
-        this.openDialog();
+    submitPaymentInfo() {
         this.stripeService.createToken(this.card.getCard(), {}).subscribe(
             result => {
                 if (result.token) {
-                    const configData = this.bottomSheetRef.containerInstance.bottomSheetConfig.data;
-                    if (configData.newAccount) {
-                        this.showStripeSuccess(result.token.id);
-                    } else {
-                        this.updateAccount(configData.membershipType, result.token.id);
-                    }
+                    this.dialogRef.close(result.token.id);
                 } else if (result.error) {
                     this.showStripeError(result.error.message);
                 }
-            }
+            },
+            (result) => { this.showStripeError(result.toString()); }
         );
-    }
 
-    openDialog(): void {
-        this.dialogRef = this.verifyCardDialog.open(
-            VerifyCardDialogComponent,
-            {width: '250px'}
-        );
-    }
-
-    updateAccount(membershipType: string, stripeToken: string) {
-        const newMembership = {
-            membership: {
-                newMembership: true,
-                membershipType: membershipType,
-                paymentMethod: 'Stripe',
-                paymentToken: stripeToken
-            }
-        };
-        this.profileService.updateAccount(newMembership).subscribe(
-            () => { this.showStripeSuccess(stripeToken); }
-        );
-    }
-
-    showStripeSuccess(stripeToken: string) {
-        this.dialogRef.close();
-        const paymentSnackbarRef = this.paymentSnackbar.open(
-            'Card verification successful',
-            null,
-            {panelClass: 'mycroft-no-action-snackbar', duration: twoSeconds}
-        );
-        paymentSnackbarRef.afterDismissed().subscribe(
-            () => { this.bottomSheetRef.dismiss(stripeToken); }
-        );
     }
 
     showStripeError(errorMessage: string) {
         this.dialogRef.close();
-        this.paymentSnackbar.open(
+        this.snackbar.open(
             errorMessage,
             null,
             {panelClass: 'mycroft-no-action-snackbar', duration: twoSeconds}
@@ -108,6 +68,6 @@ export class PaymentComponent implements OnInit {
     }
 
     onCancel() {
-        this.bottomSheetRef.dismiss('cancel');
+        this.dialogRef.close();
     }
 }
