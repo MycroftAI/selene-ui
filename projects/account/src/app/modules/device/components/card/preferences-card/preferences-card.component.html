@@ -1,5 +1,8 @@
-<mat-card [ngClass]="{'mat-elevation-z0': !elevate}" [formGroup]="preferencesForm" class="mat-elevation-z0">
-    <ng-content select="mat-card-title"></ng-content>
+<mat-card [ngClass]="{'mat-elevation-z0': addingDevice}" [formGroup]="preferencesForm" class="mat-elevation-z0">
+    <mat-toolbar>
+        <span *ngIf="addingDevice">Setup Device Preferences</span>
+        <span *ngIf="!addingDevice">Manage Device Preferences</span>
+    </mat-toolbar>
     <mat-card-content fxLayout="column">
         <p class="mat-body">
             Preferences are applied to all your devices to present information

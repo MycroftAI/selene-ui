@@ -10,8 +10,7 @@
 
     <mat-step label="Preferences" *ngIf="!preferences" [stepControl]="preferencesForm">
         <form [formGroup]="preferencesForm" (ngSubmit)="onPreferencesSubmit()">
-            <account-preferences-card [preferencesForm]="preferencesForm">
-                <mat-card-title>Setup your device preferences</mat-card-title>
+            <account-preferences-card [addingDevice]="true" [preferencesForm]="preferencesForm">
             </account-preferences-card>
             <div fxLayout="row" fxLayoutAlign="end">
                 <button mat-button matStepperNext [disabled]="!preferencesForm.valid">

@@ -11,7 +11,8 @@ import {
     MatFormFieldModule,
     MatInputModule,
     MatStepperModule,
-    MatTabsModule
+    MatTabsModule,
+    MatToolbarModule
 } from '@angular/material';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -80,6 +81,7 @@ import { WakeWordCardComponent } from './components/card/wake-word-card/wake-wor
         MatInputModule,
         MatStepperModule,
         MatTabsModule,
+        MatToolbarModule,
         SharedModule,
         DeviceRoutingModule
     ],

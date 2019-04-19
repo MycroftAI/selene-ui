@@ -8,7 +8,7 @@ import { FormGroup } from '@angular/forms';
     styleUrls: ['./preferences-card.component.scss']
 })
 export class PreferencesCardComponent implements OnInit {
-    @Input() elevate = false;
+    @Input() addingDevice = false;
     @Input() preferencesForm: FormGroup;
     public measurementOptionsConfig: OptionButtonsConfig;
     public timeFormatOptionsConfig: OptionButtonsConfig;

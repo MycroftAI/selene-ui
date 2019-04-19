@@ -1,6 +1,8 @@
 <mat-card [ngClass]="{'mat-elevation-z0': addingDevice}" [formGroup]="defaultsForm">
-    <mat-card-title *ngIf="addingDevice">Setup your device defaults</mat-card-title>
-    <mat-card-title *ngIf="!addingDevice">Manage your device defaults</mat-card-title>
+    <mat-toolbar>
+        <span *ngIf="addingDevice">Setup Device Defaults</span>
+        <span *ngIf="!addingDevice">Manage Device Defaults</span>
+    </mat-toolbar>
     <mat-card-content>
         <account-geography-card
                 [geoForm]="defaultsForm"
