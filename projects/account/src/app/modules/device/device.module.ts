@@ -26,7 +26,7 @@ import { DefaultsComponent } from './pages/defaults/defaults.component';
 import { DeviceComponent } from '@account/app/modules/device/device.component';
 import { DeviceEditCardComponent } from './components/card/device-edit-card/device-edit-card.component';
 import { DeviceEditComponent } from './pages/device-edit/device-edit.component';
-import { DeviceDisplayComponent } from './components/view/device-display/device-display.component';
+import { DeviceDisplayComponent } from './components/card/device-display/device-display.component';
 import { DeviceListComponent } from './pages/device-list/device-list.component';
 import { DeviceRoutingModule } from './device-routing.module';
 import { DeviceService } from '@account/http/device.service';
