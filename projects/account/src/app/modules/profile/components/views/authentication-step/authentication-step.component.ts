@@ -21,7 +21,7 @@ export class AuthenticationStepComponent implements OnInit {
 
     ngOnInit() {
         this.federatedLoginText = 'To use this option, you must allow the ' +
-            'provider to share your email address with Mycroft';
+            'provider to share your email address with Mycroft.';
         this.internalLoginText = 'Login credentials stored on Mycroft ' +
             'servers are encrypted for your privacy and protection.';
     }
