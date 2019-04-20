@@ -17,7 +17,7 @@ import {
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import { AddCompleteComponent } from './components/view/add-complete/add-complete.component';
+import { AddCompleteComponent } from './components/card/add-complete/add-complete.component';
 import { AddComponent } from './pages/add/add.component';
 import { CityInputComponent } from './components/input/city-input/city-input.component';
 import { CountryInputComponent } from './components/input/country-input/country-input.component';
@@ -33,7 +33,7 @@ import { DeviceService } from '@account/http/device.service';
 import { GeographyCardComponent } from './components/card/geography-card/geography-card.component';
 import { PreferencesComponent } from './pages/preferences/preferences.component';
 import { RegionInputComponent } from './components/input/region-input/region-input.component';
-import { RemoveComponent } from './remove/remove.component';
+import { RemoveDeviceDialogComponent } from './components/modal/remove-device-dialog/remove-device-dialog.component';
 import { SharedModule } from '../../shared/shared.module';
 import { TimezoneInputComponent } from './components/input/timezone-input/timezone-input.component';
 import { PreferencesCardComponent } from './components/card/preferences-card/preferences-card.component';
@@ -57,14 +57,14 @@ import { WakeWordCardComponent } from './components/card/wake-word-card/wake-wor
         PreferencesCardComponent,
         PreferencesComponent,
         RegionInputComponent,
-        RemoveComponent,
+        RemoveDeviceDialogComponent,
         TimezoneInputComponent,
         VoiceCardComponent,
         WakeWordCardComponent,
     ],
     entryComponents: [
         DeviceComponent,
-        RemoveComponent
+        RemoveDeviceDialogComponent
     ],
     imports: [
         CommonModule,

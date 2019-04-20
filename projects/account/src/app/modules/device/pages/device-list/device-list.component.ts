@@ -6,7 +6,7 @@ import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 import { DeviceService } from '@account/http/device.service';
 import { Device } from '@account/models/device.model';
-import { RemoveComponent } from '../../remove/remove.component';
+import { RemoveDeviceDialogComponent } from '../../components/modal/remove-device-dialog/remove-device-dialog.component';
 
 const fiveSeconds = 5000;
 
@@ -45,7 +45,7 @@ export class DeviceListComponent implements OnInit {
     }
 
     onRemove(device: Device, index: number) {
-        const removalDialogRef = this.dialog.open(RemoveComponent, {data: false});
+        const removalDialogRef = this.dialog.open(RemoveDeviceDialogComponent, {data: false});
         this.selectedDevice = device;
         removalDialogRef.afterClosed().subscribe(
             (result) => {
