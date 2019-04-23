@@ -68,7 +68,7 @@ export class AppService {
      */
     authorizeInternal (loginForm: FormGroup): Observable<AuthResponse> {
         const loginFormValues = loginForm.value;
-        const rawCredentials = `${loginFormValues.email}:${loginFormValues.password}`;
+        const rawCredentials = `${loginFormValues.email}:||:${loginFormValues.password}`;
         const codedCredentials = btoa(rawCredentials);
         const httpHeaders = new HttpHeaders(
             {'Authorization': 'Basic ' + codedCredentials}
