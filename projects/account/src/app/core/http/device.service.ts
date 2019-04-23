@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 const defaultsUrl = '/api/defaults';
 const deviceUrl = '/api/devices';
 const geographyUrl = 'api/geographies';
+const pairingCodeUrl = '/api/pairing-code';
 const preferencesUrl = '/api/preferences';
 const voicesUrl = '/api/voices';
 const wakeWordUrl = '/api/wake-words';
@@ -64,6 +65,10 @@ export class DeviceService {
 
     getAccountDefaults() {
         return this.http.get<AccountDefaults>(defaultsUrl);
+    }
+
+    validatePairingCode(pairingCode: string): Observable<any> {
+        return this.http.get<Observable<any>>(pairingCodeUrl + '/' + pairingCode);
     }
 
     getGeographies() {

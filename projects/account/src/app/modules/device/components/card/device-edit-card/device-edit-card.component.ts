@@ -11,16 +11,31 @@ export class DeviceEditCardComponent implements OnInit {
     @Input() addDevice = false;
     @Output() saveChanges = new EventEmitter<boolean>();
 
-  constructor() { }
+    constructor() { }
 
-  ngOnInit() {
-  }
+    ngOnInit() {
+    }
 
-  onSave() {
-      this.saveChanges.emit(true);
-  }
+    onSave() {
+        this.saveChanges.emit(true);
+    }
 
-  onCancel() {
-      this.saveChanges.emit(false);
-  }
+    onCancel() {
+        this.saveChanges.emit(false);
+    }
+
+    getPairingCodeError(): string {
+        let errorMessage = '';
+        const pairingCodeControl = this.deviceForm.controls['pairingCode'];
+        if (pairingCodeControl.hasError('required')) {
+            errorMessage = 'This value is required';
+        } else if (pairingCodeControl.hasError('minlength')) {
+            errorMessage = 'Pairing code must be six characters';
+        } else if (pairingCodeControl.hasError('maxlength')) {
+            errorMessage = 'Pairing code must be six characters';
+        } else if (pairingCodeControl.hasError('unknownPairingCode')) {
+            errorMessage = 'Unknown pairing code';
+        }
+        return errorMessage;
+    }
 }

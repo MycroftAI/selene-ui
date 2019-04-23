@@ -1,19 +1,36 @@
 import { Component, OnInit } from '@angular/core';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+    AbstractControl,
+    AsyncValidatorFn,
+    FormBuilder,
+    FormGroup,
+    ValidationErrors,
+    Validators
+} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import { Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 
 import { AccountDefaults } from '@account/models/defaults.model';
 import { AccountPreferences } from '@account/models/preferences.model';
 import { DeviceService } from '@account/http/device.service';
 
+
+export function pairingCodeValidator(deviceService: DeviceService): AsyncValidatorFn {
+    return (control: AbstractControl): Observable<ValidationErrors | null> => {
+        return deviceService.validatePairingCode(control.value).pipe(
+            map((response) => response.isValid ? null : { unknownPairingCode: true }),
+            catchError(() =>  null),
+        );
+    };
+}
 @Component({
-  selector: 'account-device-add',
-  templateUrl: './add.component.html',
-  styleUrls: ['./add.component.scss']
+    selector: 'account-device-add',
+    templateUrl: './add.component.html',
+    styleUrls: ['./add.component.scss']
 })
 export class AddComponent implements OnInit {
     public alignVertical: boolean;
@@ -73,7 +90,8 @@ export class AddComponent implements OnInit {
                         Validators.required,
                         Validators.maxLength(6),
                         Validators.minLength(6)
-                    ]
+                    ],
+                    [ pairingCodeValidator(this.deviceService) ],
                 ],
                 placement: [null],
                 region: [this.defaults ? this.defaults.region.name : null, Validators.required],

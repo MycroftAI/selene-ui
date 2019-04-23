@@ -15,6 +15,9 @@
                         onInput="this.value = this.value.toUpperCase()"
                         formControlName="pairingCode"
                 >
+                <mat-error *ngIf="deviceForm.controls['pairingCode'].invalid">
+                    {{getPairingCodeError()}}
+                </mat-error>
                 <mat-hint>Code spoken by device</mat-hint>
             </mat-form-field>
             <div fxLayout="row wrap">
