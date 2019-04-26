@@ -23,16 +23,17 @@ import { LoginComponent } from './login.component';
 import { SharedModule } from 'shared';
 import { PasswordResetComponent } from './internal-login/password-reset/password-reset.component';
 
+
 @NgModule({
     declarations: [
         FederatedLoginComponent,
         InternalLoginComponent,
         LoginComponent,
-        PasswordResetComponent
+        PasswordResetComponent,
     ],
     entryComponents: [
         LoginComponent,
-        PasswordResetComponent
+        PasswordResetComponent,
     ],
     exports: [
         LoginComponent

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatButtonModule, MatButtonToggleModule } from '@angular/material';
+import { MatButtonModule, MatButtonToggleModule, MatSnackBarModule } from '@angular/material';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
@@ -15,6 +15,7 @@ import { FacebookButtonComponent } from './facebook-button/facebook-button.compo
 import { GithubButtonComponent } from './github-button/github-button.component';
 import { GoogleButtonComponent } from './google-button/google-button.component';
 import { SharedComponent } from './shared.component';
+import { SnackbarComponent } from './snackbar/snackbar.component';
 
 export function getAuthServiceConfigs() {
     return new AuthServiceConfig(
@@ -38,7 +39,11 @@ export function getAuthServiceConfigs() {
         FacebookButtonComponent,
         GithubButtonComponent,
         GoogleButtonComponent,
-        SharedComponent
+        SharedComponent,
+        SnackbarComponent
+    ],
+    entryComponents: [
+        SnackbarComponent
     ],
     imports: [
         CommonModule,
@@ -46,13 +51,15 @@ export function getAuthServiceConfigs() {
         FontAwesomeModule,
         MatButtonModule,
         MatButtonToggleModule,
+        MatSnackBarModule,
         SocialLoginModule
     ],
     exports: [
         FacebookButtonComponent,
         GithubButtonComponent,
         GoogleButtonComponent,
-        SharedComponent
+        SharedComponent,
+        SnackbarComponent
     ],
     providers: [
         { provide: AuthServiceConfig, useFactory: getAuthServiceConfigs }

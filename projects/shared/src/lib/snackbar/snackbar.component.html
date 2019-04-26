@@ -1,0 +1,10 @@
+<div fxLayout="row" fxLayoutAlign="space-between center">
+    <div class="mat-simple-snackbar" fxLayout="center center">
+        <fa-icon [ngClass]="type" [icon]="icons[type]" class="error"></fa-icon>
+        {{message}}
+    </div>
+    <div class="mat-simple-snackbar-action">
+        <button mat-button [ngClass]="type" *ngIf="action" (click)="snackbarRef.dismissWithAction()">{{action}}</button>
+        <button mat-button [ngClass]="type" *ngIf="!action" (click)="snackbarRef.dismiss()">OK</button>
+    </div>
+</div>

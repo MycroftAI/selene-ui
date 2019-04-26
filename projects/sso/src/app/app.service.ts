@@ -20,6 +20,7 @@ export interface SocialLoginData {
 
 const internalAuthUrl = '/api/internal-login';
 const federatedAuthUrl = '/api/validate-federated';
+const githubTokenUrl = '/api/github-token';
 const logoutUrl = '/api/logout';
 const changePasswordUrl = '/api/password-change';
 const resetPasswordUrl = '/api/password-reset';
@@ -36,12 +37,10 @@ export interface PasswordChangeAccount {
     tokenInvalid: boolean;
 }
 
-export function storeRedirect() {
-    localStorage.setItem(
-        'redirect',
-        decodeURIComponent(window.location.search).slice(10)
-    );
+export interface GithubToken {
+    token: string;
 }
+
 
 @Injectable()
 export class AppService {
@@ -95,5 +94,9 @@ export class AppService {
     changePassword(accountId: string, passwordControl: AbstractControl) {
         const codedPassword = btoa(passwordControl.value);
         return this.http.put(changePasswordUrl, {accountId: accountId, password: codedPassword});
+    }
+
+    getGithubToken(access_code: string, state: string): Observable<GithubToken> {
+        return this.http.get<GithubToken>(githubTokenUrl, {params: {code: access_code, state: state}});
     }
 }
