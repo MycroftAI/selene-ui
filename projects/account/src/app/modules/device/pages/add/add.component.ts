@@ -27,6 +27,8 @@ export function pairingCodeValidator(deviceService: DeviceService): AsyncValidat
         );
     };
 }
+
+
 @Component({
     selector: 'account-device-add',
     templateUrl: './add.component.html',
