@@ -20,7 +20,8 @@ $button-border-radius: 4px;
     }
 
     &:disabled {
-        background-color: mat-color($mycroft-accent, 200);
+        background-color: mat-color($mycroft-accent, 50);
+        color: mat-color($mycroft-accent, 200);
     }
 }
 

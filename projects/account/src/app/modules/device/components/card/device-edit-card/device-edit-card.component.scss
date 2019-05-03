@@ -37,10 +37,6 @@ mat-card {
             @include action-button-primary;
             margin-bottom: 16px;
             margin-right: 16px;
-
-            &:disabled {
-                background-color: mat-color($mycroft-accent, 200);
-            }
         }
 
         #cancel-button {

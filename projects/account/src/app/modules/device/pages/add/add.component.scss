@@ -7,12 +7,8 @@ mat-card-title {
 }
 
     button {
-    @include action-button-primary;
-
-    &:disabled {
-        background-color: mat-color($mycroft-accent, 200);
+        @include action-button-primary;
     }
-}
 
 mat-horizontal-stepper {
     margin-left: auto;

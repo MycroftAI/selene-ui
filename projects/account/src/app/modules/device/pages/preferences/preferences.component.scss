@@ -10,17 +10,4 @@ mat-card-title {
 button {
     @include action-button-primary;
     margin: 16px;
-
-    &:disabled {
-        background-color: mat-color($mycroft-accent, 200);
-    }
 }
-
-//#advanced-settings-card {
-//    button {
-//        @include action-button-primary;
-//        margin-left: auto;
-//        margin-right: auto;
-//        margin-top: 16px;
-//    }
-//}
