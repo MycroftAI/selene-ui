@@ -105,16 +105,6 @@ export class ProfileService {
         );
     }
 
-    getAgreement(agreementType: string) {
-        let url_suffix: string;
-        if (agreementType === 'Terms of Use') {
-            url_suffix = 'terms-of-use';
-        } else {
-            url_suffix = 'privacy-policy';
-        }
-        return this.http.get<Agreement>(AGREEMENT_URL + url_suffix);
-    }
-
     getMembershipTypes(): Observable<MembershipType[]> {
         return this.http.get<MembershipType[]>(MEMBERSHIP_URL);
     }

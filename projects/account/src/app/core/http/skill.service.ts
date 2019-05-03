@@ -7,6 +7,7 @@ import { SkillSettings } from '@account/models/skill-settings.model';
 
 const accountSkillUrl = '/api/skills';
 const accountDeviceCountUrl = '/api/device-count';
+const skillOauthUrl = 'api/skills/oauth';
 
 
 @Injectable({
@@ -35,4 +36,7 @@ export class SkillService {
         );
     }
 
+    authenticateSkill(oauthId: number) {
+        return this.http.get(skillOauthUrl + '/' + oauthId.toString(), );
+    }
 }

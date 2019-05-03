@@ -1,0 +1,10 @@
+<router-outlet></router-outlet>
+<div fxLayout="column" fxLayoutAlign="start center">
+    <h1 class="mat-h1">Log into Mycroft</h1>
+    <p class="mat-subheading-2">Need to <a [routerLink]="'/new-account'" [href]="createAccountUrl">create an account</a> first?</p>
+    <mat-card>
+        <sso-federated-login></sso-federated-login>
+        <div class="mat-subheading-2">OR</div>
+        <sso-internal-login></sso-internal-login>
+    </mat-card>
+</div>

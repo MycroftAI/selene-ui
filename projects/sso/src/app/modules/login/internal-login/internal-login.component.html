@@ -1,0 +1,8 @@
+<form fxLayout="column" [formGroup]="loginForm" (ngSubmit)="authorizeUser()">
+    <sso-email-input [formGroup]="loginForm" [required]="true"></sso-email-input>
+    <sso-password-input [formGroup]="loginForm" [required]="true"></sso-password-input>
+    <button mat-button type="submit" [disabled]="loginForm.invalid">LOG IN</button>
+</form>
+<div fxLayout="row" fxLayoutAlign="center">
+    <button mat-button (click)="onPasswordReset()">Forgot password?</button>
+</div>

@@ -11,55 +11,31 @@
             <fa-icon [icon]="stepDoneIcon"></fa-icon>
         </ng-template>
 
-        <mat-step label="Terms Of Use" [stepControl]="termsOfUseControl">
-            <account-agreement-step [newAcctForm]="newAcctForm" [step]="'Terms of Use'">
-            </account-agreement-step>
-            <div fxLayout="row" fxLayoutAlign="end">
-                <button mat-button matStepperNext type="button" [disabled]="!termsOfUseControl.valid">
-                    Next
-                </button>
-            </div>
-        </mat-step>
-
-        <mat-step label="Privacy Policy" [stepControl]="privacyPolicyControl">
-            <account-agreement-step [newAcctForm]="newAcctForm" [step]="'Privacy Policy'">
-            </account-agreement-step>
-            <div fxLayout="row" fxLayoutAlign="end">
-                <button mat-button matStepperNext type="button" [disabled]="!privacyPolicyControl.valid">
-                    Next
-                </button>
-            </div>
-        </mat-step>
-
-        <mat-step label="Login" [stepControl]="loginControl">
-            <account-authentication-step [newAcctForm]="newAcctForm"></account-authentication-step>
-            <div fxLayout="row" fxLayoutAlign="end">
-                <button mat-button matStepperNext type="button" [disabled]="!loginControl.valid">
-                    Next
-                </button>
-            </div>
-        </mat-step>
-
         <mat-step label="Username" [stepControl]="usernameControl">
             <account-username-step [newAcctForm]="newAcctForm"></account-username-step>
             <div fxLayout="row" fxLayoutAlign="end">
                 <button mat-button matStepperNext type="button" [disabled]="!usernameControl.valid">
-                    Next
+                    NEXT
                 </button>
             </div>
         </mat-step>
 
-        <mat-step label="Support Mycroft" [stepControl]="supportControl">
-            <account-support-step [membershipTypes]="membershipTypes" [newAcctForm]="newAcctForm"></account-support-step>
+        <mat-step label="Membership" [stepControl]="membershipControl">
+            <account-membership-step [membershipTypes]="membershipTypes" [newAcctForm]="newAcctForm"></account-membership-step>
             <div fxLayout="row" fxLayoutAlign="end">
-                <button mat-button matStepperNext  type="button" [disabled]="!supportControl.valid">
-                    Next
+                <button mat-button matStepperNext  type="button" [disabled]="!membershipControl.valid">
+                    NEXT
                 </button>
             </div>
         </mat-step>
 
-        <mat-step label="Done!">
-            <account-done-step [newAcctForm]="newAcctForm"></account-done-step>
+        <mat-step label="Open Dataset" [stepControl]="openDatasetControl">
+            <account-open-dataset-step [newAcctForm]="newAcctForm"></account-open-dataset-step>
+            <div fxLayout="row" fxLayoutAlign="end">
+                <button mat-button type="submit" [disabled]="!openDatasetControl.valid">
+                    FINISHED
+                </button>
+            </div>
         </mat-step>
     </mat-horizontal-stepper>
 
@@ -73,55 +49,31 @@
             <fa-icon [icon]="stepDoneIcon"></fa-icon>
         </ng-template>
 
-        <mat-step label="Terms Of Use" [stepControl]="termsOfUseControl">
-            <account-agreement-step [newAcctForm]="newAcctForm" [step]="'Terms of Use'">
-            </account-agreement-step>
-            <div fxLayout="row" fxLayoutAlign="end">
-                <button mat-button matStepperNext type="button" [disabled]="!termsOfUseControl.valid">
-                    Next
-                </button>
-            </div>
-        </mat-step>
-
-        <mat-step label="Privacy Policy" [stepControl]="privacyPolicyControl">
-            <account-agreement-step [newAcctForm]="newAcctForm" [step]="'Privacy Policy'">
-            </account-agreement-step>
-            <div fxLayout="row" fxLayoutAlign="end">
-                <button mat-button matStepperNext type="button" [disabled]="!privacyPolicyControl.valid">
-                    Next
-                </button>
-            </div>
-        </mat-step>
-
-        <mat-step label="Log In Method" [stepControl]="loginControl">
-            <account-authentication-step [newAcctForm]="newAcctForm"></account-authentication-step>
-            <div fxLayout="row" fxLayoutAlign="end">
-                <button mat-button matStepperNext type="button" [disabled]="!loginControl.valid">
-                    Next
-                </button>
-            </div>
-        </mat-step>
-
         <mat-step label="Display Name" [stepControl]="usernameControl">
             <account-username-step [newAcctForm]="newAcctForm"></account-username-step>
             <div fxLayout="row" fxLayoutAlign="end">
                 <button mat-button matStepperNext type="button" [disabled]="!usernameControl.valid">
-                    Next
+                    NEXT
                 </button>
             </div>
         </mat-step>
 
-        <mat-step label="Support Mycroft" [stepControl]="supportControl">
-            <account-support-step [membershipTypes]="membershipTypes" [newAcctForm]="newAcctForm"></account-support-step>
+        <mat-step label="Membership" [stepControl]="membershipControl">
+            <account-membership-step [membershipTypes]="membershipTypes" [newAcctForm]="newAcctForm"></account-membership-step>
             <div fxLayout="row" fxLayoutAlign="end">
-                <button mat-button matStepperNext  type="button" [disabled]="!supportControl.valid">
-                    Next
+                <button mat-button matStepperNext  type="button" [disabled]="!membershipControl.valid">
+                    NEXT
                 </button>
             </div>
         </mat-step>
 
-        <mat-step label="Done!">
-            <account-done-step [newAcctForm]="newAcctForm"></account-done-step>
+        <mat-step label="Open Dataset" [stepControl]="openDatasetControl">
+            <account-open-dataset-step [newAcctForm]="newAcctForm"></account-open-dataset-step>
+            <div fxLayout="row" fxLayoutAlign="end">
+                <button mat-button type="submit" [disabled]="!openDatasetControl.valid">
+                    FINISHED
+                </button>
+            </div>
         </mat-step>
     </mat-vertical-stepper>
 </form>

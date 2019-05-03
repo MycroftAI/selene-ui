@@ -1,0 +1,13 @@
+<mat-form-field [appearance]="'outline'" [formGroup]="formGroup">
+    <mat-label>Email</mat-label>
+    <input
+            matInput
+            type="email"
+            formControlName="email"
+            [required]="required"
+            [readonly]="readOnly"
+    >
+    <mat-error *ngIf="formGroup.controls['email'].invalid">
+        {{getEmailError()}}
+    </mat-error>
+</mat-form-field>

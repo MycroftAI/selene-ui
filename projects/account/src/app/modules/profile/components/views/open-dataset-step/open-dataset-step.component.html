@@ -1,0 +1,12 @@
+<mat-card class="mat-elevation-z0">
+    <mat-card-title>Join Mycroft's Open Dataset</mat-card-title>
+    <mat-card-content>
+        <p *ngFor="let paragraph of openDatasetDescription" class="mat-body">
+            {{paragraph}}
+        </p>
+        <mat-button-toggle-group>
+            <mat-button-toggle (click)="onOptIn()">OPT IN</mat-button-toggle>
+            <mat-button-toggle (click)="onOptOut()">MAYBE LATER</mat-button-toggle>
+        </mat-button-toggle-group>
+    </mat-card-content>
+</mat-card>

@@ -1,0 +1,24 @@
+@import "../../../../../../../node_modules/@angular/material/theming";
+@import 'mycroft-colors';
+@import "../../../../../../../src/stylesheets/components/buttons";
+
+form {
+    border-radius: 10px;
+    padding: 16px;
+
+    mat-form-field {
+        width: 100%;
+    }
+
+    button {
+        @include action-button-primary;
+        margin-top: 8px;
+        text-align: center;
+    }
+
+}
+
+button {
+    color: mat-color($mycroft-primary);
+    margin-bottom: 0;
+}

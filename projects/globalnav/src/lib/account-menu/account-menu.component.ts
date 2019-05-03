@@ -38,7 +38,7 @@ export class AccountMenuComponent implements OnInit {
     }
 
     navigateToCreateAccount() {
-        window.location.href =  this.mycroftUrls.account + '/new?redirect=' + window.location.href;
+        window.location.href =  this.mycroftUrls.singleSignOn + '/new-account';
     }
 
     navigateToLogOut() {

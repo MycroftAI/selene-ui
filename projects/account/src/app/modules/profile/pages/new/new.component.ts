@@ -7,7 +7,7 @@ import {
     ValidatorFn,
     Validators
 } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { Subscription } from 'rxjs';
@@ -44,7 +44,7 @@ export function loginValidator(): ValidatorFn {
 export function membershipValidator(): ValidatorFn {
     return (supportGroup: FormGroup) => {
         let valid = true;
-        const membershipType = supportGroup.controls['membership'];
+        const membershipType = supportGroup.controls['membershipType'];
         const paymentToken  = supportGroup.controls['paymentToken'];
 
         if (membershipType.value) {
@@ -64,21 +64,20 @@ export function membershipValidator(): ValidatorFn {
 })
 export class NewComponent implements OnInit {
     public alignVertical: boolean;
-    public usernameControl: AbstractControl;
-    public loginControl: AbstractControl;
     private mediaWatcher: Subscription;
+    public membershipControl: AbstractControl;
     public membershipTypes: MembershipType[];
     public newAcctForm: FormGroup;
-    public privacyPolicyControl: AbstractControl;
+    public openDatasetControl: AbstractControl;
     public stepDoneIcon = faCheck;
-    public supportControl: AbstractControl;
-    public termsOfUseControl: AbstractControl;
+    public usernameControl: AbstractControl;
 
     constructor(
         private formBuilder: FormBuilder,
         public mediaObserver: MediaObserver,
         private profileService: ProfileService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private router: Router
     ) {
         this.mediaWatcher = mediaObserver.media$.subscribe(
             (change: MediaChange) => {
@@ -99,47 +98,37 @@ export class NewComponent implements OnInit {
     }
 
     private buildForm() {
-        const loginGroup = this.formBuilder.group(
+        const membershipGroup = this.formBuilder.group(
             {
-                federatedPlatform: [null],
-                federatedToken: [null],
-                userEnteredEmail: [null, Validators.email],
-                password: [null]
-            },
-            {validator: loginValidator()}
-        );
-        const supportGroup = this.formBuilder.group(
-            {
-            openDataset: [null, Validators.required],
-            membership: [null],
-            paymentMethod: [null],
-            paymentToken: [null]
-
+                newMembership: [null],
+                membershipType: [null],
+                paymentMethod: [null],
+                paymentToken: [null]
             },
             {validator: membershipValidator()}
         );
 
         this.newAcctForm = this.formBuilder.group({
             username: ['', Validators.required],
-            privacyPolicy: [false, Validators.requiredTrue],
-            termsOfUse: [false, Validators.requiredTrue],
-            login: loginGroup,
-            support: supportGroup
+            membership: membershipGroup,
+            openDataset: [null, Validators.required],
         });
     }
 
     private setControlFormAliases() {
         this.usernameControl = this.newAcctForm.controls['username'];
-        this.loginControl = this.newAcctForm.controls['login'];
-        this.privacyPolicyControl = this.newAcctForm.controls['privacyPolicy'];
-        this.supportControl = this.newAcctForm.controls['support'];
-        this.termsOfUseControl = this.newAcctForm.controls['termsOfUse'];
-
+        this.membershipControl = this.newAcctForm.controls['membership'];
+        this.openDatasetControl = this.newAcctForm.controls['openDataset'];
     }
 
     onFormSubmit() {
-        this.profileService.addAccount(this.newAcctForm).subscribe(
-            () => { navigateToLogin(noDelay); }
+        const newValues = this.newAcctForm.value;
+        if (!newValues.membership.newMembership) {
+            delete newValues.membership;
+        }
+        console.log(newValues);
+        this.profileService.updateAccount(newValues).subscribe(
+            () => { this.router.navigate(['/']); }
         );
     }
 }

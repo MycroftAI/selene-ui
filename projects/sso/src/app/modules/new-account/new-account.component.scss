@@ -1,0 +1,13 @@
+@import "~@angular/material/theming";
+@import "mycroft-colors";
+@import "components/buttons";
+
+button {
+    @include action-button-primary;
+}
+
+mat-horizontal-stepper {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1000px;
+}
