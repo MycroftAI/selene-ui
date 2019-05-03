@@ -1,12 +1,10 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
 
-import { Observable, Subject, throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { Account } from '@account/models/account.model';
-import { AccountMembership } from '@account/models/account-membership.model';
 import { environment } from '../../../environments/environment';
 import { MembershipType } from '@account/models/membership.model';
 
@@ -37,9 +35,8 @@ export function navigateToLogin(delay: number): void {
 
 @Injectable()
 export class ProfileService {
-    public selectedMembershipType = new Subject<string>();
 
-    constructor(private http: HttpClient, private snackBar: MatSnackBar) {
+    constructor(private http: HttpClient) {
     }
 
     handleError(error: HttpErrorResponse) {
@@ -84,17 +81,4 @@ export class ProfileService {
     deleteAccount() {
         return this.http.delete(ACCOUNT_URL);
     }
-
-    setSelectedMembershipType(accountMembership: AccountMembership, membershipTypes: MembershipType[]) {
-        let selectedMembership: MembershipType;
-        if (accountMembership) {
-            selectedMembership = membershipTypes.find(
-            (membershipType) => membershipType.type === accountMembership.type
-            );
-            this.selectedMembershipType.next(selectedMembership.type);
-        } else {
-            this.selectedMembershipType.next('Maybe Later');
-        }
-    }
-
 }

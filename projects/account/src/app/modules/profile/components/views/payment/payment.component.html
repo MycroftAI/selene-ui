@@ -7,7 +7,7 @@
             <ngx-stripe-card [options]="cardOptions"></ngx-stripe-card>
         </mat-card>
     </mat-card-content>
-    <mat-card-actions align="right">
+    <mat-card-actions [align]="'end'">
         <button mat-button (click)="onCancel()">CANCEL</button>
         <button mat-button (click)="submitPaymentInfo()" class="submit-button">SUBMIT</button>
     </mat-card-actions>

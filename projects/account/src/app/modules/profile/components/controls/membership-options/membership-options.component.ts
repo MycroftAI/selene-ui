@@ -26,9 +26,7 @@ export class MembershipOptionsComponent implements OnInit, OnDestroy {
 
     constructor(
             public mediaObserver: MediaObserver,
-            private profileService: ProfileService,
             public paymentDialog: MatDialog,
-            private snackbar: MatSnackBar
     ) {
         this.mediaWatcher = mediaObserver.media$.subscribe(
             (change: MediaChange) => {
@@ -38,18 +36,23 @@ export class MembershipOptionsComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-        this.profileService.selectedMembershipType.subscribe(
-            (membershipType) => { this.selectedMembershipType = membershipType; }
-        );
-        this.profileService.setSelectedMembershipType(
-            this.accountMembership,
-            this.membershipTypes
-        );
-
+        this.setSelectedMembershipType();
     }
 
     ngOnDestroy(): void {
       this.mediaWatcher.unsubscribe();
+    }
+
+    setSelectedMembershipType() {
+        let selectedMembership: MembershipType;
+        if (this.accountMembership) {
+            selectedMembership = this.membershipTypes.find(
+            (membershipType) => membershipType.type === this.accountMembership.type
+            );
+            this.selectedMembershipType = selectedMembership.type;
+        } else {
+            this.selectedMembershipType = 'Maybe Later';
+        }
     }
 
     onMembershipSelect(membershipType: MatButtonToggleChange) {
@@ -93,6 +96,8 @@ export class MembershipOptionsComponent implements OnInit, OnDestroy {
                         paymentToken: stripeToken
                     };
                     this.membershipChange.emit(membershipUpdate);
+                } else {
+                    this.setSelectedMembershipType();
                 }
             }
         );
