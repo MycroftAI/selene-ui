@@ -3,7 +3,7 @@ pipeline {
 
     stages {
 
-        // Run the build in the against the dev branch to check for compile errors
+        // Run the build in the against a PR targeting the "dev" branch
         stage('Build PR') {
             when {
                 changeRequest target: 'dev'
