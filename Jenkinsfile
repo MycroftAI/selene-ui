@@ -4,12 +4,12 @@ pipeline {
     stages {
 
         // Run the build in the against the dev branch to check for compile errors
-        stage('Build dev branch') {
+        stage('Build PR) {
             when {
-                branch 'dev'
+                changeRequest target: 'dev'
             }
             steps {
-                echo 'Building code in the "dev" branch...'
+                echo 'Building code in the pull request...'
                 sh 'npm install'
                 sh 'ng build --project shared'
                 sh 'ng build --project globalnav'
