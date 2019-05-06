@@ -7,7 +7,7 @@ pipeline {
         stages {
 
         // Run the build in the against a PR targeting the "dev" branch
-        stage('Build PR') {
+        stage('Dev PR') {
             when {
                 changeRequest target: 'dev'
             }
@@ -23,10 +23,10 @@ pipeline {
             }
         }
 
-        // Deploy to the Test environment
-        stage('Build for Test') {
+        // Run the build in the against a PR targeting the "test" branch
+        stage('Test PR') {
             when {
-                branch 'test'
+                changeRequest target: 'dev'
             }
             steps {
                 echo 'Building code in the "test" branch...'
@@ -40,7 +40,8 @@ pipeline {
             }
         }
 
-        stage('Deploy to Test') {
+        // Deploy to the Test environment
+        stage('Test Deploy') {
             when {
                 branch 'test'
             }
@@ -71,8 +72,8 @@ pipeline {
             }
         }
 
-        // Deploy to the Production environment
-        stage('Build for Production') {
+        // Run the build in the against a PR targeting the "prod" branch
+        stage('Prod Build') {
             when {
                 branch 'master'
             }
@@ -87,7 +88,8 @@ pipeline {
             }
         }
 
-        stage('Deploy to Production') {
+        // Deploy to the Production environment
+        stage('Prod Deploy') {
             when {
                 branch 'master'
             }
