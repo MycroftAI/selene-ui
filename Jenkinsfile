@@ -26,7 +26,7 @@ pipeline {
         // Run the build in the against a PR targeting the "test" branch
         stage('Test PR') {
             when {
-                changeRequest target: 'dev'
+                changeRequest target: 'test'
             }
             steps {
                 echo 'Building code in the "test" branch...'
@@ -75,7 +75,7 @@ pipeline {
         // Run the build in the against a PR targeting the "prod" branch
         stage('Prod Build') {
             when {
-                branch 'master'
+                changeRequest target: 'master'
             }
             steps {
                 echo 'Building code in the "master" branch...'
