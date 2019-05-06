@@ -72,7 +72,7 @@ pipeline {
             }
         }
 
-        // Run the build in the against a PR targeting the "prod" branch
+        // Run the build in the against a PR targeting the "master" branch
         stage('Prod Build') {
             when {
                 changeRequest target: 'master'
