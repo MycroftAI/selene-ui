@@ -16,4 +16,6 @@ export class AppComponent implements OnInit {
 
     ngOnInit() {
     }
+
+    //this is a comment for CI testing: please remove
 }
