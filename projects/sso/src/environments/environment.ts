@@ -13,7 +13,8 @@ export const environment = {
         singleSignOn: 'https://sso.mycroft.test',
         translate: 'https://translate-test.mycroft.ai',
         wordPress: 'https://test.mycroft.ai'
-    }
+    },
+    githubClientId: '752bb0864dd667c902f4'
 };
 
 /*

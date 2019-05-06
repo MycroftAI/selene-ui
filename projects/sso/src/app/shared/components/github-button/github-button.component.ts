@@ -20,7 +20,7 @@ export class GithubButtonComponent {
     gitHubLogin() {
         this.generateStateParam();
         let githubLoginUrl = 'https://github.com/login/oauth/authorize' +
-            '?scope=user:email&client_id=752bb0864dd667c902f4&state=' + this.stateParam;
+            '?scope=user:email&client_id=' + environment.githubClientId + '&state=' + this.stateParam;
         if (this.newAccount) {
             githubLoginUrl += '&redirect_uri=' + environment.mycroftUrls.singleSignOn + '/new-account';
         }
