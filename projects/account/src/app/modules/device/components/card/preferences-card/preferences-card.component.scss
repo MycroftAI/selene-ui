@@ -1,0 +1,13 @@
+@import "~@angular/material/theming";
+@import "mycroft-colors";
+@import "components/buttons";
+@import "components/cards";
+
+mat-card {
+    @include section-card;
+    max-width: 700px;
+
+    mat-card-title {
+        color: mat-color($mycroft-primary)
+    }
+}

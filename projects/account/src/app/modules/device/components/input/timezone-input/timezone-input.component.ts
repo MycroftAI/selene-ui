@@ -1,44 +1,48 @@
-import { Component, Input, OnInit, Output } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormGroup, ValidatorFn } from '@angular/forms';
-import { Observable } from 'rxjs';
-import { startWith, map, tap } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { startWith, map } from 'rxjs/operators';
 
-import { Timezone } from '../../../../../shared/models/timezone.model';
+import { Timezone } from '@account/models/timezone.model';
+import { GeographyService } from '@account/http/geography_service';
+import { Country } from '@account/models/country.model';
 
 @Component({
     selector: 'account-timezone-input',
     templateUrl: './timezone-input.component.html',
     styleUrls: ['./timezone-input.component.scss']
 })
-export class TimezoneInputComponent implements OnInit {
-    @Input() deviceForm: FormGroup;
-    public filteredTimezones$ = new Observable<Timezone[]>();
+export class TimezoneInputComponent implements OnDestroy, OnInit {
+    @Input() country: Subject<Country>;
     @Input() required: boolean;
-    @Input() timezones$: Observable<Timezone[]>;
+    @Input() timezoneControl: AbstractControl;
+    public filteredTimezones$ = new Observable<Timezone[]>();
     private timezones: Timezone[];
-    private timezoneControl: AbstractControl;
 
-    constructor() { }
+    constructor(private geoService: GeographyService) { }
 
     ngOnInit(): void {
-        this.timezoneControl = this.deviceForm.controls['timezone'];
-        this.timezoneControl.disable();
+        this.country.subscribe(
+            (country) => { this.getTimezones(country); }
+        );
     }
 
-    getTimezones() {
-        if (!this.timezoneControl.value) {
-            this.timezones$.subscribe(
-                (timezones) => {
-                    this.timezones = timezones;
-                    this.timezoneControl.validator = this.timezoneValidator();
-                    this.filteredTimezones$ = this.timezoneControl.valueChanges.pipe(
-                        startWith(''),
-                        map((value) => this.filterTimezones(value)),
+    ngOnDestroy(): void {
+        this.country.unsubscribe();
+    }
 
-                    );
-                }
-            );
-        }
+    getTimezones(country: Country): void {
+        this.geoService.getTimezonesByCountry(country).subscribe(
+            (timezones) => {
+                this.timezones = timezones;
+                this.timezoneControl.validator = this.timezoneValidator();
+                this.filteredTimezones$ = this.timezoneControl.valueChanges.pipe(
+                    startWith(''),
+                    map((value) => this.filterTimezones(value)),
+
+                );
+            }
+        );
     }
 
     private filterTimezones(value: string): Timezone[] {

@@ -10,7 +10,6 @@ import {
     MatExpansionModule,
     MatFormFieldModule,
     MatInputModule,
-    MatRadioModule,
     MatStepperModule,
     MatTabsModule,
     MatToolbarModule
@@ -18,42 +17,54 @@ import {
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-import { AddCompleteComponent } from './components/view/add-complete/add-complete.component';
+import { AddCompleteComponent } from './components/card/add-complete/add-complete.component';
+import { AddComponent } from './pages/add/add.component';
 import { CityInputComponent } from './components/input/city-input/city-input.component';
 import { CountryInputComponent } from './components/input/country-input/country-input.component';
-import { DefaultsComponent } from './components/view/defaults/defaults.component';
-import { DeviceAddComponent } from './pages/device-add/device-add.component';
-import { DeviceEditComponent } from './device-edit/device-edit.component';
-import { DeviceInfoComponent } from './components/view/device-info/device-info.component';
-import { DeviceListComponent } from './components/view/device-list/device-list.component';
+import { DefaultsCardComponent } from './components/card/defaults-card/defaults-card.component';
+import { DefaultsComponent } from './pages/defaults/defaults.component';
+import { DeviceComponent } from '@account/app/modules/device/device.component';
+import { DeviceEditCardComponent } from './components/card/device-edit-card/device-edit-card.component';
+import { DeviceEditComponent } from './pages/device-edit/device-edit.component';
+import { DeviceDisplayComponent } from './components/card/device-display/device-display.component';
+import { DeviceListComponent } from './pages/device-list/device-list.component';
 import { DeviceRoutingModule } from './device-routing.module';
-import { DevicesComponent } from './pages/devices/devices.component';
 import { DeviceService } from '@account/http/device.service';
-import { PreferencesComponent } from './components/view/preferences/preferences.component';
+import { GeographyCardComponent } from './components/card/geography-card/geography-card.component';
+import { PreferencesComponent } from './pages/preferences/preferences.component';
 import { RegionInputComponent } from './components/input/region-input/region-input.component';
-import { RemoveComponent } from './remove/remove.component';
+import { RemoveDeviceDialogComponent } from './components/modal/remove-device-dialog/remove-device-dialog.component';
 import { SharedModule } from '../../shared/shared.module';
 import { TimezoneInputComponent } from './components/input/timezone-input/timezone-input.component';
+import { PreferencesCardComponent } from './components/card/preferences-card/preferences-card.component';
+import { VoiceCardComponent } from './components/card/voice-card/voice-card.component';
+import { WakeWordCardComponent } from './components/card/wake-word-card/wake-word-card.component';
 
 @NgModule({
     declarations: [
         AddCompleteComponent,
+        AddComponent,
         CityInputComponent,
         CountryInputComponent,
+        DefaultsCardComponent,
         DefaultsComponent,
-        DeviceAddComponent,
+        DeviceComponent,
+        DeviceEditCardComponent,
         DeviceEditComponent,
-        DeviceInfoComponent,
+        DeviceDisplayComponent,
         DeviceListComponent,
-        DevicesComponent,
+        GeographyCardComponent,
+        PreferencesCardComponent,
         PreferencesComponent,
         RegionInputComponent,
-        RemoveComponent,
+        RemoveDeviceDialogComponent,
         TimezoneInputComponent,
+        VoiceCardComponent,
+        WakeWordCardComponent,
     ],
     entryComponents: [
-        DeviceAddComponent,
-        RemoveComponent
+        DeviceComponent,
+        RemoveDeviceDialogComponent
     ],
     imports: [
         CommonModule,
@@ -68,7 +79,6 @@ import { TimezoneInputComponent } from './components/input/timezone-input/timezo
         MatExpansionModule,
         MatFormFieldModule,
         MatInputModule,
-        MatRadioModule,
         MatStepperModule,
         MatTabsModule,
         MatToolbarModule,

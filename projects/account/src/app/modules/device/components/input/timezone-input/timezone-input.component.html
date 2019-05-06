@@ -1,18 +1,15 @@
-<ng-container [formGroup]="deviceForm">
-     <mat-form-field fxFlex [appearance]="'outline'">
-        <mat-label>Time Zone</mat-label>
-        <input
-                matInput
-                type="text"
-                formControlName="timezone"
-                [matAutocomplete]="timezoneComplete"
-                [required]="required"
-                (focus)="getTimezones()"
-        >
-        <mat-autocomplete #timezoneComplete="matAutocomplete">
-            <mat-option *ngFor="let timezone of filteredTimezones$ | async" [value]="timezone.name">
-                {{timezone.name}}
-            </mat-option>
-        </mat-autocomplete>
-    </mat-form-field>
-</ng-container>
+<mat-form-field fxFlex [appearance]="'outline'">
+    <mat-label>Time Zone</mat-label>
+    <input
+            matInput
+            type="text"
+            [formControl]="timezoneControl"
+            [matAutocomplete]="timezoneComplete"
+            [required]="required"
+    >
+    <mat-autocomplete #timezoneComplete="matAutocomplete">
+        <mat-option *ngFor="let timezone of filteredTimezones$ | async" [value]="timezone.name">
+            {{timezone.name}}
+        </mat-option>
+    </mat-autocomplete>
+</mat-form-field>

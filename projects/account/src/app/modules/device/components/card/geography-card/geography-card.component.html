@@ -1,0 +1,33 @@
+<mat-card class="mat-elevation-z0">
+    <mat-card-content>
+        <h2 class="mat-h2">Geographical Location</h2>
+        <div fxLayout="row wrap" fxLayoutAlign='start' fxLayout.xs="column">
+            <account-country-input fxFlex.gt-xs="40"
+                    [countryControl]="countryControl"
+                    [required]="false"
+                    (countrySelected)="onCountrySelect($event)"
+            >
+            </account-country-input>
+            <account-region-input fxFlex.gt-xs="40"
+                    [country]="selectedCountry"
+                    [regionControl]="regionControl"
+                    [required]="false"
+                    (regionSelected)="onRegionSelect($event)"
+            >
+            </account-region-input>
+            <account-city-input fxFlex.gt-xs="40"
+                    [cityControl]="cityControl"
+                    (citySelected)="onCitySelect($event)"
+                    [region]="selectedRegion"
+                    [required]="false"
+            >
+            </account-city-input>
+            <account-timezone-input fxFlex.gt-xs="40"
+                    [country]="selectedCountry"
+                    [required]="false"
+                    [timezoneControl]="timezoneControl"
+            >
+            </account-timezone-input>
+        </div>
+    </mat-card-content>
+</mat-card>

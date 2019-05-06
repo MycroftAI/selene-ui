@@ -2,32 +2,53 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { DefaultsResolverService } from '../../core/guards/defaults-resolver.service';
-import { DeviceAddComponent } from './pages/device-add/device-add.component';
-import { DevicesComponent } from './pages/devices/devices.component';
-import { DeviceEditComponent } from './device-edit/device-edit.component';
+import { AddComponent } from './pages/add/add.component';
+import { DeviceComponent } from './device.component';
+import { DefaultsComponent } from '@account/app/modules/device/pages/defaults/defaults.component';
+import { DeviceEditComponent } from '@account/app/modules/device/pages/device-edit/device-edit.component';
+import { DeviceListComponent } from './pages/device-list/device-list.component';
 import { DeviceResolverService } from '../../core/guards/device-resolver.service';
+import { PreferencesComponent } from './pages/preferences/preferences.component';
 import { PreferencesResolverService } from '../../core/guards/preferences-resolver.service';
 
 const deviceRoutes: Routes = [
     {
         path: 'devices',
-        component: DevicesComponent,
-        resolve: {
-            defaults: DefaultsResolverService,
-            devices: DeviceResolverService,
-            preferences: PreferencesResolverService
-        }
+        component: DeviceComponent,
+        children: [
+            {
+                path: '',
+                component: DeviceListComponent,
+                resolve: {
+                    devices: DeviceResolverService,
+                }
+            },
+            {
+                path: 'preferences',
+                component: PreferencesComponent,
+                resolve: {
+                    preferences: PreferencesResolverService,
+                }
+            },
+            {
+                path: 'defaults',
+                component: DefaultsComponent,
+                resolve: {
+                    defaults: DefaultsResolverService
+                }
+            },
+        ]
     },
     {
         path: 'devices/add',
-        component: DeviceAddComponent,
+        component: AddComponent,
         resolve: {
             defaults: DefaultsResolverService,
             preferences: PreferencesResolverService
         }
     },
     {
-        path: 'devices/:device_id',
+        path: 'devices/:deviceId',
         component: DeviceEditComponent,
     }
 ];

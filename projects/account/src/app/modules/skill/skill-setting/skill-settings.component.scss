@@ -9,11 +9,6 @@
 
 #save-button {
     @include  action-button-primary;
-
-    &:disabled {
-        background-color: mat-color($mycroft-accent, 100);
-        color: mat-color($mycroft-accent);
-    }
 }
 
 .mat-h2 {

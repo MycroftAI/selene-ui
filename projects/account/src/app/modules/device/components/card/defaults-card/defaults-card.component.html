@@ -1,0 +1,18 @@
+<mat-card [ngClass]="{'mat-elevation-z0': addingDevice}" [formGroup]="defaultsForm">
+    <mat-toolbar>
+        <span *ngIf="addingDevice">Setup Device Defaults</span>
+        <span *ngIf="!addingDevice">Manage Device Defaults</span>
+    </mat-toolbar>
+    <mat-card-content>
+        <account-geography-card
+                [geoForm]="defaultsForm"
+                [required]="true"
+        >
+        </account-geography-card>
+        <account-voice-card [voiceForm]="defaultsForm"></account-voice-card>
+        <account-wake-word-card [wakeWordForm]="defaultsForm">x</account-wake-word-card>
+    </mat-card-content>
+    <mat-card-actions *ngIf="!addingDevice" align="right">
+        <button mat-button (click)="onSave()" [disabled]="!defaultsForm.valid">SAVE</button>
+    </mat-card-actions>
+</mat-card>

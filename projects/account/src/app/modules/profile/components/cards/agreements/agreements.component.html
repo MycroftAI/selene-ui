@@ -4,18 +4,33 @@
     </mat-toolbar>
     <mat-card-content fxLayout="column" fxLayoutAlign="start none">
         <ng-container *ngFor="let agreement of account.agreements">
-            <div *ngIf="agreement.type !== 'Open Dataset'" class="profile-text" fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="start center">
-                <span class="mat-subheading-2">{{agreement.type}}:</span>
-                <p class="mat-body">Accepted {{agreement.acceptDate}}</p>
+            <div
+                    *ngIf="agreement.type !== 'Open Dataset'"
+                    class="profile-text"
+                    fxLayout="row"
+                    fxLayout.lt-md="column"
+                    fxLayoutAlign="space-between center"
+            >
+                <span fxFlex.gt-sm="30" class="mat-subheading-2">{{agreement.type}}:</span>
+                <p fxFlex class="mat-body">Accepted {{agreement.acceptDate}}</p>
+                <a fxFlex.gt-sm="20" mat-button target="_blank" href="{{buildAgreementUrl(agreement.type)}}">
+                    <fa-icon [icon]="documentIcon"></fa-icon>
+                    View Document
+                </a>
             </div>
         </ng-container>
-        <!--<div fxLayout="row" fxLayoutAlign="start center">-->
-            <!--<span class="mat-subheading-2">Username:</span>-->
-            <!--<p class="mat-body">{{agreement.username}}</p>-->
-        <!--</div>-->
-        <!--<div fxLayout="column" fxLayoutAlign="center">-->
-            <!--<button mat-button>CHANGE USERNAME</button>-->
-            <!--<button mat-button>CHANGE PASSWORD</button>-->
-        <!--</div>-->
+        <div
+                class="profile-text"
+                fxLayout="row"
+                fxLayout.lt-md="column"
+                fxLayoutAlign="space-between center"
+        >
+            <span fxFlex.gt-sm="30" class="mat-subheading-2">Open Dataset:</span>
+            <p fxFlex class="mat-body">{{openDatasetOptInDate}}</p>
+            <button fxFlex.gt-sm="20" mat-button (click)="onOptInOrOut()">
+                <fa-icon [icon]="optInOutIcon"></fa-icon>
+                {{openDatasetButtonText}}
+            </button>
+        </div>
     </mat-card-content>
 </mat-card>

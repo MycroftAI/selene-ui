@@ -1,0 +1,110 @@
+<form [formGroup]="newAcctForm" (ngSubmit)="onFormSubmit()">
+
+    <!-- Show a horizontal stepper on larger devices -->
+    <mat-horizontal-stepper *ngIf="!alignVertical" labelPosition="bottom" [linear]="true">
+        <!-- Use font awesome icons in the stepper to indicate progress -->
+        <ng-template matStepperIcon="done">
+            <fa-icon [icon]="stepDoneIcon"></fa-icon>
+        </ng-template>
+        <ng-template matStepperIcon="edit">
+            <fa-icon [icon]="stepDoneIcon"></fa-icon>
+        </ng-template>
+
+        <mat-step label="Login" [stepControl]="newAcctForm.controls['login']">
+            <sso-authentication-step [loginForm]="loginForm"></sso-authentication-step>
+            <div fxLayout="row" fxLayoutAlign="end">
+                <button
+                        mat-button
+                        matStepperNext
+                        type="button"
+                        [disabled]="!newAcctForm.controls['login'].valid"
+                >
+                    NEXT
+                </button>
+            </div>
+        </mat-step>
+
+        <mat-step label="Terms Of Use" [stepControl]="newAcctForm.controls['termsOfUse']">
+            <sso-agreement-step [newAcctForm]="newAcctForm" [step]="'Terms of Use'">
+            </sso-agreement-step>
+            <div fxLayout="row" fxLayoutAlign="end">
+                <button
+                        mat-button
+                        matStepperNext
+                        type="button"
+                        [disabled]="!newAcctForm.controls['termsOfUse'].valid"
+                >
+                    NEXT
+                </button>
+            </div>
+        </mat-step>
+
+        <mat-step label="Privacy Policy" [stepControl]="newAcctForm.controls['privacyPolicy']">
+            <sso-agreement-step [newAcctForm]="newAcctForm" [step]="'Privacy Policy'">
+            </sso-agreement-step>
+            <div fxLayout="row" fxLayoutAlign="end">
+                <button
+                        mat-button
+                        type="submit"
+                        [disabled]="!newAcctForm.controls['privacyPolicy'].valid"
+                >
+                    CREATE ACCOUNT
+                </button>
+            </div>
+        </mat-step>
+    </mat-horizontal-stepper>
+
+    <!-- Show a vertical stepper on smaller devices -->
+    <mat-vertical-stepper *ngIf="alignVertical" [linear]="true">
+        <!-- Use font awesome icons in the stepper to indicate progress -->
+        <ng-template matStepperIcon="done">
+            <fa-icon [icon]="stepDoneIcon"></fa-icon>
+        </ng-template>
+        <ng-template matStepperIcon="edit">
+            <fa-icon [icon]="stepDoneIcon"></fa-icon>
+        </ng-template>
+
+        <mat-step label="Login" [stepControl]="newAcctForm.controls['login']">
+            <sso-authentication-step [loginForm]="loginForm"></sso-authentication-step>
+            <div fxLayout="row" fxLayoutAlign="end">
+                <button
+                        mat-button
+                        matStepperNext
+                        type="button"
+                        [disabled]="!newAcctForm.controls['login'].valid"
+                >
+                    NEXT
+                </button>
+            </div>
+        </mat-step>
+
+        <mat-step label="Terms Of Use" [stepControl]="newAcctForm.controls['termsOfUse']">
+            <sso-agreement-step [newAcctForm]="newAcctForm" [step]="'Terms of Use'">
+            </sso-agreement-step>
+            <div fxLayout="row" fxLayoutAlign="end">
+                <button
+                        mat-button
+                        matStepperNext
+                        type="button"
+                        [disabled]="!newAcctForm.controls['termsOfUse'].valid"
+                >
+                    NEXT
+                </button>
+            </div>
+        </mat-step>
+
+        <mat-step label="Privacy Policy" [stepControl]="newAcctForm.controls['privacyPolicy']">
+            <sso-agreement-step [newAcctForm]="newAcctForm" [step]="'Privacy Policy'">
+            </sso-agreement-step>
+            <div fxLayout="row" fxLayoutAlign="end">
+                <button
+                        mat-button
+                        type="submit"
+                        [disabled]="!newAcctForm.controls['privacyPolicy'].valid"
+                >
+                    CREATE ACCOUNT
+                </button>
+            </div>
+        </mat-step>
+    </mat-vertical-stepper>
+</form>

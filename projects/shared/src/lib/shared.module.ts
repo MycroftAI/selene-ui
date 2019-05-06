@@ -1,6 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatButtonModule, MatButtonToggleModule } from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import {
+    MatButtonModule,
+    MatButtonToggleModule,
+    MatSnackBarModule,
+    MatProgressSpinnerModule
+} from '@angular/material';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import {
@@ -10,10 +16,8 @@ import {
     SocialLoginModule
 } from 'angular-6-social-login';
 
-import { FacebookButtonComponent } from './facebook-button/facebook-button.component';
-import { GithubButtonComponent } from './github-button/github-button.component';
-import { GoogleButtonComponent } from './google-button/google-button.component';
 import { SharedComponent } from './shared.component';
+import { SnackbarComponent } from './snackbar/snackbar.component';
 
 export function getAuthServiceConfigs() {
     return new AuthServiceConfig(
@@ -34,23 +38,25 @@ export function getAuthServiceConfigs() {
 
 @NgModule({
     declarations: [
-        FacebookButtonComponent,
-        GithubButtonComponent,
-        GoogleButtonComponent,
-        SharedComponent
+        SharedComponent,
+        SnackbarComponent,
+    ],
+    entryComponents: [
+        SnackbarComponent
     ],
     imports: [
         CommonModule,
+        FlexLayoutModule,
         FontAwesomeModule,
         MatButtonModule,
         MatButtonToggleModule,
+        MatSnackBarModule,
+        MatProgressSpinnerModule,
         SocialLoginModule
     ],
     exports: [
-        FacebookButtonComponent,
-        GithubButtonComponent,
-        GoogleButtonComponent,
-        SharedComponent
+        SharedComponent,
+        SnackbarComponent
     ],
     providers: [
         { provide: AuthServiceConfig, useFactory: getAuthServiceConfigs }

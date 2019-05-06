@@ -3,4 +3,5 @@
  */
 
 export * from './lib/shared.component';
+export * from './lib/snackbar/snackbar.component';
 export * from './lib/shared.module';

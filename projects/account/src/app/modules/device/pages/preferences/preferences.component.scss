@@ -1,0 +1,13 @@
+@import "~@angular/material/theming";
+@import "mycroft-colors";
+@import "components/buttons";
+@import "components/cards";
+
+mat-card-title {
+    color: mat-color($mycroft-primary)
+}
+
+button {
+    @include action-button-primary;
+    margin: 16px;
+}

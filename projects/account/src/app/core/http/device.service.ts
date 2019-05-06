@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 const defaultsUrl = '/api/defaults';
 const deviceUrl = '/api/devices';
 const geographyUrl = 'api/geographies';
+const pairingCodeUrl = '/api/pairing-code';
 const preferencesUrl = '/api/preferences';
 const voicesUrl = '/api/voices';
 const wakeWordUrl = '/api/wake-words';
@@ -22,16 +23,24 @@ export class DeviceService {
     constructor(private http: HttpClient) {
     }
 
-    getDevices() {
+    getDevices(): Observable<Device[]> {
         return this.http.get<Device[]>(deviceUrl);
+    }
+
+    getDevice(deviceId: string): Observable<Device> {
+        return this.http.get<Device>(deviceUrl + '/' + deviceId);
     }
 
     addDevice(deviceForm: FormGroup) {
         this.http.post<any>(deviceUrl, deviceForm.value).subscribe();
     }
 
-    deleteDevice(device: Device): void {
-        console.log('deleting device... ');
+    deleteDevice(device: Device): Observable<any> {
+        return this.http.delete(deviceUrl + '/' + device.id);
+    }
+
+    updateDevice(deviceId: string, deviceForm: FormGroup): Observable<any> {
+        return this.http.patch(deviceUrl + '/' + deviceId, deviceForm.value);
     }
 
     addAccountPreferences(preferencesForm: FormGroup) {
@@ -56,6 +65,10 @@ export class DeviceService {
 
     getAccountDefaults() {
         return this.http.get<AccountDefaults>(defaultsUrl);
+    }
+
+    validatePairingCode(pairingCode: string): Observable<any> {
+        return this.http.get<Observable<any>>(pairingCodeUrl + '/' + pairingCode);
     }
 
     getGeographies() {

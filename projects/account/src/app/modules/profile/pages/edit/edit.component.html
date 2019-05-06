@@ -5,5 +5,9 @@
         [membershipTypes]="membershipTypes"
 >
 </account-membership-edit>
-<account-agreements-edit [account]="account"></account-agreements-edit>
+<account-agreements-edit
+        [account]="account"
+        (openDatasetOptIn)="updateOpenDataset($event)"
+>
+</account-agreements-edit>
 <account-delete></account-delete>

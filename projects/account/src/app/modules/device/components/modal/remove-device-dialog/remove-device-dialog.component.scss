@@ -1,0 +1,17 @@
+@import 'components/buttons';
+
+mat-card {
+    padding: 0;
+
+    mat-card-actions {
+        margin-top: 16px;
+    }
+}
+.mat-body{
+    margin-bottom: 16px;
+    width: 250px;
+}
+
+#device-remove-button {
+    @include action-button-warn;
+}

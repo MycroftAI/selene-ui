@@ -9,5 +9,6 @@ export const environment = {
         singleSignOn: 'https://sso.mycroft-test.net',
         translate: 'https://translate-test.mycroft.ai',
         wordPress: 'https://test.mycroft.ai'
-    }
+    },
+    githubClientId: 'c3420f2cd3fcfe0446ce'
 };

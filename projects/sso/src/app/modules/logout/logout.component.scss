@@ -1,0 +1,42 @@
+@import "../../../../../../node_modules/@angular/material/theming";
+@import "mycroft-colors";
+
+// The angular material spinner was limiting in color choices we built our own
+@mixin spinner-common {
+    animation: spin 1s ease-in-out infinite;
+    border: 2px solid rgba(255,255,255,.3);
+    border-radius: 50%;
+    display: inline-block;
+    height: 25px;
+    margin-right: 10px;
+    width: 25px;
+}
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.mat-h3 {
+    color: mat-color($mycroft-accent);
+    font-size: 40px;
+    margin-top: 50px;
+    text-align: center;
+}
+
+#logout-spinner {
+    @include spinner-common;
+    border-right-color: mat-color($mycroft-accent);
+    border-top-color: mat-color($mycroft-accent);
+}
+
+mat-spinner {
+    margin-right: 16px;
+}
+
+mat-card {
+    border-radius: 12px;
+    width: 300px;
+    margin-bottom: 8px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 160px;
+}

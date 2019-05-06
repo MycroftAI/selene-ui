@@ -1,0 +1,31 @@
+<div fxLayout="row" fxLayoutAlign="center">
+    <div
+            id="add-device-button"
+            fxFlex
+            fxLayout="row"
+            fxLayoutAlign="start center"
+            routerLink="/devices/add"
+    >
+        <img src="../assets/generic-device-icon-blue.svg">
+        <span fxFlex class="mat-h2">ADD DEVICE</span>
+        <fa-icon class="mat-h2" [icon]="addIcon"></fa-icon>
+    </div>
+</div>
+
+<div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap.gt-xs="16px">
+    <mat-card *ngFor="let device of devices; let i = index">
+        <mat-card-title fxLayout="row" fxLayoutAlign="start center">
+            <img [src]="getDeviceIcon(device)"/>
+            {{device.name}}
+        </mat-card-title>
+        <account-device-info [device]="device"></account-device-info>
+        <mat-card-actions>
+            <button mat-flat-button color="primary" [routerLink]="['./', device.id]">
+                EDIT
+            </button>
+            <button mat-flat-button color="warn" (click)="onRemove(device, i)">
+                REMOVE
+            </button>
+        </mat-card-actions>
+    </mat-card>
+</div>

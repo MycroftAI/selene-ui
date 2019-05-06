@@ -25,4 +25,7 @@ export class EditComponent implements OnInit {
         );
     }
 
+    updateOpenDataset(optIn: boolean) {
+        this.service.updateAccount({openDataset: optIn}).subscribe();
+    }
 }

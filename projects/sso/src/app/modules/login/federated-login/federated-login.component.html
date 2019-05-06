@@ -1,0 +1,5 @@
+<mat-card class="mat-elevation-z0" fxLayout="column" fxLayoutAlign="center">
+    <sso-google-button (googleToken)="validateFederatedLogin($event)"></sso-google-button>
+    <sso-facebook-button (facebookToken)="validateFederatedLogin($event)"></sso-facebook-button>
+    <sso-github-button></sso-github-button>
+</mat-card>

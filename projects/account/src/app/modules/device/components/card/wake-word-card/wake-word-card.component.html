@@ -1,0 +1,10 @@
+<mat-card class="mat-elevation-z0" [formGroup]="wakeWordForm">
+    <mat-card-content>
+        <h2 class="mat-h2">Wake Word</h2>
+        <account-option-btn
+                [config]="wakeWordOptionsConfig"
+                formControlName="wakeWord"
+        >
+        </account-option-btn>
+    </mat-card-content>
+</mat-card>

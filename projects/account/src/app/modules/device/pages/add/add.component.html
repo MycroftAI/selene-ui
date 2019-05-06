@@ -1,0 +1,124 @@
+<!-- Show a horizontal stepper on larger devices -->
+<mat-horizontal-stepper *ngIf="!alignVertical" labelPosition="bottom" [linear]="true">
+    <!-- Use font awesome icons in the stepper to indicate progress -->
+    <ng-template matStepperIcon="done">
+        <fa-icon [icon]="stepDoneIcon"></fa-icon>
+    </ng-template>
+    <ng-template matStepperIcon="edit">
+        <fa-icon [icon]="stepDoneIcon"></fa-icon>
+    </ng-template>
+
+    <mat-step label="Preferences" *ngIf="!preferences" [stepControl]="preferencesForm">
+        <form [formGroup]="preferencesForm" (ngSubmit)="onPreferencesSubmit()">
+            <account-preferences-card [addingDevice]="true" [preferencesForm]="preferencesForm">
+            </account-preferences-card>
+            <div fxLayout="row" fxLayoutAlign="end">
+                <button mat-button matStepperNext [disabled]="!preferencesForm.valid">
+                    NEXT
+                </button>
+            </div>
+        </form>
+    </mat-step>
+
+    <mat-step label="Defaults" *ngIf="!preferences" [stepControl]="defaultsForm">
+        <form [formGroup]="defaultsForm" (ngSubmit)="onDefaultsSubmit()">
+            <account-defaults-card
+                [addingDevice]="true"
+                [defaults]="defaults"
+                [defaultsForm]="defaultsForm"
+            >
+            </account-defaults-card>
+            <div fxLayout="row" fxLayoutAlign="end">
+                <button mat-button matStepperNext [disabled]="!defaultsForm.valid">
+                    NEXT
+                </button>
+            </div>
+        </form>
+    </mat-step>
+
+    <mat-step label="Device" [stepControl]="deviceForm">
+        <form [formGroup]="deviceForm" (ngSubmit)="onDeviceSubmit()">
+            <account-device-edit-card
+                    [deviceForm]="deviceForm"
+                    [addDevice]="true"
+            >
+            </account-device-edit-card>
+            <div fxLayout="row" fxLayoutAlign="end">
+                <button mat-button matStepperNext [disabled]="!deviceForm.valid">
+                    NEXT
+                </button>
+            </div>
+        </form>
+    </mat-step>
+
+    <mat-step label="Done!">
+        <account-device-add-complete [wakeWord]="deviceForm.controls['wakeWord'].value">
+        </account-device-add-complete>
+        <div fxLayout="row" fxLayoutAlign="end">
+            <button mat-button (click)="onFinished()">FINISHED</button>
+        </div>
+    </mat-step>
+</mat-horizontal-stepper>
+
+<!-- Show a vertical stepper on smaller devices -->
+<mat-vertical-stepper *ngIf="alignVertical" [linear]="true">
+    <!-- Use font awesome icons in the stepper to indicate progress -->
+    <ng-template matStepperIcon="done">
+        <fa-icon [icon]="stepDoneIcon"></fa-icon>
+    </ng-template>
+    <ng-template matStepperIcon="edit">
+        <fa-icon [icon]="stepDoneIcon"></fa-icon>
+    </ng-template>
+
+    <mat-step label="Preferences" *ngIf="!preferences" [stepControl]="preferencesForm">
+        <form [formGroup]="preferencesForm" (ngSubmit)="onPreferencesSubmit()">
+            <account-preferences-card [preferencesForm]="preferencesForm">
+                <mat-card-title>Setup your device preferences</mat-card-title>
+            </account-preferences-card>
+            <div fxLayout="row" fxLayoutAlign="end">
+                <button mat-button matStepperNext [disabled]="!preferencesForm.valid">
+                    NEXT
+                </button>
+            </div>
+        </form>
+    </mat-step>
+
+    <mat-step label="Defaults" *ngIf="!preferences" [stepControl]="defaultsForm">
+        <form [formGroup]="defaultsForm" (ngSubmit)="onDefaultsSubmit()">
+            <account-defaults-card
+                [addingDevice]="true"
+                [defaults]="defaults"
+                [defaultsForm]="defaultsForm"
+            >
+            </account-defaults-card>
+            <div fxLayout="row" fxLayoutAlign="end">
+                <button mat-button matStepperNext [disabled]="!defaultsForm.valid">
+                    NEXT
+                </button>
+            </div>
+        </form>
+    </mat-step>
+
+    <mat-step label="Device" [stepControl]="deviceForm">
+        <form [formGroup]="deviceForm" (ngSubmit)="onDeviceSubmit()">
+            <account-device-edit-card
+                    [deviceForm]="deviceForm"
+                    [addDevice]="true"
+            >
+            </account-device-edit-card>
+            <div fxLayout="row" fxLayoutAlign="end">
+                <button mat-button matStepperNext [disabled]="!deviceForm.valid">
+                    NEXT
+                </button>
+            </div>
+        </form>
+    </mat-step>
+
+    <mat-step label="Done!">
+        <account-device-add-complete [wakeWord]="deviceForm.controls['wakeWord'].value">
+        </account-device-add-complete>
+        <div fxLayout="row" fxLayoutAlign="end">
+            <button mat-button (click)="onFinished()">FINISHED</button>
+        </div>
+    </mat-step>
+</mat-vertical-stepper>

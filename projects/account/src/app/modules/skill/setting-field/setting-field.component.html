@@ -24,5 +24,20 @@
         <input matInput type="text" value="{{fieldValue}}" (change)="onInputChange($event)">
     </mat-form-field>
 
-    <button *ngSwitchCase="'oauth'" mat-button>Connect</button>
+    <mat-form-field *ngSwitchCase="'number'" [appearance]="'outline'">
+        <mat-label>{{fieldDefinition.label}}</mat-label>
+        <input matInput type="number" value="{{fieldValue}}" (change)="onInputChange($event)">
+    </mat-form-field>
+
+    <mat-form-field *ngSwitchCase="'email'" [appearance]="'outline'">
+        <mat-label>{{fieldDefinition.label}}</mat-label>
+        <input matInput type="email" value="{{fieldValue}}" (change)="onInputChange($event)">
+    </mat-form-field>
+
+    <mat-form-field *ngSwitchCase="'password'" [appearance]="'outline'">
+        <mat-label>{{fieldDefinition.label}}</mat-label>
+        <input matInput type="password" value="{{fieldValue}}" (change)="onInputChange($event)">
+    </mat-form-field>
+
+    <button *ngSwitchCase="'oauth'" mat-button (click)="onSkillOauth()">Connect</button>
 </ng-container>

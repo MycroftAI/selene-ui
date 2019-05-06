@@ -1,0 +1,5 @@
+<account-preferences-card [preferencesForm]="preferencesForm">
+    <mat-card-title>Manage your device preferences</mat-card-title>
+    <button mat-button (click)="onSave()" [disabled]="!preferencesForm.valid">SAVE</button>
+</account-preferences-card>
+

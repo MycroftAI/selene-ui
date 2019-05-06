@@ -1,0 +1,36 @@
+@import "../../../../../../../../node_modules/@angular/material/theming";
+@import "mycroft-colors";
+@import "../../../../../../../../src/stylesheets/components/buttons";
+@import "../../../../../../../../src/stylesheets/components/cards";
+
+mat-card {
+    @include section-card;
+    max-width: 700px;
+    margin-bottom: 16px;
+    margin-top: 32px;
+
+    mat-card-title {
+        color: mat-color($mycroft-primary)
+    }
+
+    mat-card-content {
+        margin: 16px;
+
+        .mat-h2 {
+            color: mat-color($mycroft-accent, A700);
+            margin-top: 32px;
+        }
+
+        mat-form-field {
+            max-width: 280px;
+        }
+    }
+
+    mat-card-actions {
+        button {
+            @include action-button-primary;
+            margin-bottom: 16px;
+            margin-right: 16px;
+        }
+    }
+}

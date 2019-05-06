@@ -1,0 +1,69 @@
+@import "~@angular/material/theming";
+@import 'mycroft-colors';
+@import 'components/buttons';
+
+@mixin panel-defaults {
+    border-radius: 12px;
+    width: 330px;
+    margin-bottom: 16px;
+}
+
+#add-device-button {
+    @include action-button-primary;
+    @include panel-defaults;
+    cursor: pointer;
+    height: 50px;
+    max-width: 362px;
+    min-width: 350px;
+
+    fa-icon {
+        color: mat-color($mycroft-accent, 'A200');
+        margin-right: 16px;
+    }
+
+    img {
+        height: 32px;
+        margin-left: 16px;
+        margin-right: 16px;
+    }
+
+    .mat-h2 {
+        margin-bottom: 0;
+    }
+
+}
+
+mat-card {
+    @include panel-defaults;
+
+    button {
+        margin-bottom: 8px;
+        margin-left: 8px;
+        margin-right: 8px;
+    }
+
+    mat-card-title {
+        color: mat-color($mycroft-primary);
+        font-weight: bold;
+
+        img {
+            height: 60px;
+            margin-right: 16px;
+        }
+    }
+
+    mat-divider {
+        margin-left: 16px;
+        width: 90%;
+    }
+
+    mat-tab-group {
+        height: 280px;
+
+        mat-card-content {
+            margin-top: 32px;
+        }
+
+    }
+
+}

@@ -1,13 +1,12 @@
-@import "../../../../../../../../../node_modules/@angular/material/theming";
+@import "~@angular/material/theming";
 @import "mycroft-colors";
-@import "../../../../../../../../../src/stylesheets/components/buttons";
+@import "components/buttons";
 
 mat-card {
     margin-right: auto;
     margin-left: auto;
-    margin-bottom: 16px;
     max-width: 500px;
-    padding: 32px;
+    padding: 0;
 
     mat-card-title {
         color: mat-color($mycroft-primary, 700);
@@ -28,12 +27,18 @@ mat-card {
             border-width: 1px;
             border-color: mat-color($mycroft-accent, 200);
             padding: 16px;
+            margin-bottom: 40px;
             width: 320px;
         }
     }
 
-    #submit-button {
-        @include action-button-primary;
-        margin-top: 16px
+    .mat-card-actions.mat-card-actions {
+        padding: 0;
+        margin: 0;
+
+        .submit-button {
+            @include action-button-primary;
+        }
     }
+
 }

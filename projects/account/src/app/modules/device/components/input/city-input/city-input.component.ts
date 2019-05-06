@@ -1,47 +1,51 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { AbstractControl, ValidatorFn } from '@angular/forms';
+import { Observable, Subject } from 'rxjs';
 import { startWith, map, tap} from 'rxjs/operators';
 
-import { City } from '../../../../../shared/models/city.model';
-import { AbstractControl, FormGroup, ValidatorFn } from '@angular/forms';
+import { City } from '@account/models/city.model';
+import { GeographyService } from '@account/http/geography_service';
+import { Region } from '@account/models/region.model';
 
 @Component({
     selector: 'account-city-input',
     templateUrl: './city-input.component.html',
     styleUrls: ['./city-input.component.scss']
 })
-export class CityInputComponent implements OnInit {
-    @Input() cities$: Observable<City[]>;
-    private cities: City[];
-    @Input() deviceForm: FormGroup;
-    public filteredCities$ = new Observable<City[]>();
-    @Output() citySelected = new EventEmitter<City>();
-    private cityControl: AbstractControl;
+export class CityInputComponent implements OnDestroy, OnInit {
+    @Input() cityControl: AbstractControl;
+    @Input() region: Subject<Region>;
     @Input() required: boolean;
+    @Output() citySelected = new EventEmitter<City>();
+    public cities: City[];
+    public filteredCities$ = new Observable<City[]>();
 
-    constructor() {
+    constructor(private geoService: GeographyService) {
     }
 
-    ngOnInit() {
-        this.cityControl = this.deviceForm.controls['city'];
-        this.cityControl.disable();
+    ngOnInit(): void {
+        this.region.subscribe(
+            (region) => { this.getCities(region); }
+        );
     }
 
-    getCities() {
-        if (!this.cities) {
-            this.cities$.subscribe(
-                (cities) => {
-                    this.cities = cities;
-                    this.cityControl.validator = this.cityValidator();
-                    this.filteredCities$ = this.cityControl.valueChanges.pipe(
-                        startWith(''),
-                        map((value) => this.filterCities(value)),
-                        tap(() => { this.checkForValidCity(); })
+    ngOnDestroy(): void {
+        this.region.unsubscribe();
+    }
 
-                    );
-                }
-            );
-        }
+    getCities(region: Region) {
+        this.geoService.getCitiesByRegion(region).subscribe(
+            (cities) => {
+                this.cities = cities;
+                this.cityControl.validator = this.cityValidator();
+                this.filteredCities$ = this.cityControl.valueChanges.pipe(
+                    startWith(''),
+                    map((value) => this.filterCities(value)),
+                    tap(() => { this.emitSelectedCity(); })
+
+                );
+            }
+        );
     }
 
     private filterCities(value: string): City[] {
@@ -75,7 +79,7 @@ export class CityInputComponent implements OnInit {
         };
     }
 
-    checkForValidCity() {
+    emitSelectedCity() {
         if (this.cityControl.valid) {
             if (this.cityControl.value) {
                 const foundCity = this.cities.find(

@@ -1,0 +1,14 @@
+<mat-card class="mat-elevation-z0">
+    <mat-card-title mat-dialog-title>Remove Device?</mat-card-title>
+
+    <mat-card-content mat-dialog-content>
+        <p class="mat-body">
+            Just double checking.  Device removal cannot be undone.
+        </p>
+    </mat-card-content>
+
+    <mat-card-actions mat-dialog-actions [align]="'end'">
+        <button id="device-remove-cancel-button" mat-button (click)="onCancelClick()">CANCEL</button>
+        <button id="device-remove-button" mat-button [mat-dialog-close]="true">REMOVE</button>
+    </mat-card-actions>
+</mat-card>

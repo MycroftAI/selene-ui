@@ -1,0 +1,32 @@
+@import "~@angular/material/theming";
+@import "mycroft-colors";
+
+mat-card {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
+
+    mat-card-title {
+        color: mat-color($mycroft-primary);
+    }
+
+    mat-card {
+        height: 300px;
+        max-width: 400px;
+
+        .mat-h2 {
+            color: mat-color($mycroft-accent, A700);
+            font-size: 20px;
+        }
+        #federated-error {
+            color: mat-color($mycroft-warn)
+        }
+    }
+
+    .mat-h1 {
+        color: mat-color($mycroft-primary);
+        padding: 32px;
+    }
+}
+
+
