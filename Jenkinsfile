@@ -1,7 +1,10 @@
 pipeline {
     agent any
 
-    stages {
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '20'))
+    }
+        stages {
 
         // Run the build in the against a PR targeting the "dev" branch
         stage('Build PR') {
