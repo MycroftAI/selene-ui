@@ -44,8 +44,7 @@ export class SkillSettingsComponent implements OnInit {
     }
 
     onSkillOauth(oauthId: number) {
-        console.log('uncomment the http call when the endpoint is ready on the server');
-        // this.skillService.authenticateSkill(oauthId).subscribe();
+        this.skillService.authenticateSkill(oauthId).subscribe();
     }
 
     getGroupNumber(settingsGroup, settings): number {
