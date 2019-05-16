@@ -48,6 +48,6 @@ export class SettingFieldComponent implements OnInit {
      * An oauth button must have an ID in its value to pass to the oauth service.
      */
     onSkillOauth() {
-        this.skillAuthentication.emit(this.fieldDefinition.value);
+        this.skillAuthentication.emit(this.settingsValues[this.fieldDefinition.name]);
     }
 }
