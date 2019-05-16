@@ -43,7 +43,7 @@ export class SkillSettingsComponent implements OnInit {
         settingsToChange.settingsValues[newValue.name] = newValue.value;
     }
 
-    onSkillOauth(oauthId: number) {
+    onSkillOauth(oauthId: string) {
         this.skillService.authenticateSkill(oauthId).subscribe();
     }
 
