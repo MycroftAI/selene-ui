@@ -9,6 +9,10 @@ const accountSkillUrl = '/api/skills';
 const accountDeviceCountUrl = '/api/device-count';
 const skillOauthUrl = 'api/skills/oauth';
 
+export interface OauthResponse {
+    hasToken: boolean;
+    url: string;
+}
 
 @Injectable({
     providedIn: 'root'
@@ -37,6 +41,6 @@ export class SkillService {
     }
 
     authenticateSkill(oauthId: string) {
-        return this.http.get(skillOauthUrl + '/' + oauthId );
+        return this.http.get<OauthResponse>(skillOauthUrl + '/' + oauthId );
     }
 }
