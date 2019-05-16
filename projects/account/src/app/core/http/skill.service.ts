@@ -36,7 +36,7 @@ export class SkillService {
         );
     }
 
-    authenticateSkill(oauthId: number) {
-        return this.http.get(skillOauthUrl + '/' + oauthId.toString(), );
+    authenticateSkill(oauthId: string) {
+        return this.http.get(skillOauthUrl + '/' + oauthId );
     }
 }
