@@ -12,7 +12,7 @@ export class SettingSectionComponent implements OnInit {
     @Input() sectionDefinition: SettingSection;
     @Input() settingsValues: object;
     @Output() newValue = new EventEmitter<SettingChange>();
-    @Output() skillOauth = new EventEmitter<number>();
+    @Output() skillOauth = new EventEmitter<string>();
 
     constructor() {
     }
@@ -24,7 +24,7 @@ export class SettingSectionComponent implements OnInit {
         this.newValue.emit(newValue);
     }
 
-    onSkillOauth(oauthId: number) {
+    onSkillOauth(oauthId: string) {
         this.skillOauth.emit(oauthId);
     }
 }

@@ -43,9 +43,10 @@ export class SkillSettingsComponent implements OnInit {
         settingsToChange.settingsValues[newValue.name] = newValue.value;
     }
 
-    onSkillOauth(oauthId: number) {
-        console.log('uncomment the http call when the endpoint is ready on the server');
-        // this.skillService.authenticateSkill(oauthId).subscribe();
+    onSkillOauth(oauthId: string) {
+        this.skillService.authenticateSkill(oauthId).subscribe(
+            (result) => { window.location.assign(result.url); }
+        );
     }
 
     getGroupNumber(settingsGroup, settings): number {
