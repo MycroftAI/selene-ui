@@ -80,6 +80,7 @@ pipeline {
                 sh 'ng build --project globalnav --prod'
                 sh 'ng build --project page-not-found'
                 sh 'ng build --project account --prod'
+                sh 'ng build --project market --prod'
                 sh 'ng build --project sso --prod'
             }
         }
@@ -93,24 +94,24 @@ pipeline {
                 withCredentials([sshUserPrivateKey(credentialsId: '6413826d-79f6-4d03-9902-ee1b73a96efd', keyFileVariable: 'JENKINS_SSH_KEY', passphraseVariable: '', usernameVariable: 'SERVER_USER')]) {
                     // Deploy account application and its associated libraries
                     echo 'Deploying account application...'
-                    sh 'scp -r dist/shared root@192.241.254.4:/var/www/'
-                    sh 'scp -r dist/globalnav root@192.241.254.4:/var/www/'
-                    sh 'scp -r dist/page-not-found root@192.241.254.4:/var/www/'
-                    sh 'scp -r dist/account root@192.241.254.4:/var/www/'
+                    sh 'scp -r dist/shared root@104.248.15.155:/var/www/'
+                    sh 'scp -r dist/globalnav root@104.248.15.155:/var/www/'
+                    sh 'scp -r dist/page-not-found root@104.248.15.155:/var/www/'
+                    sh 'scp -r dist/account root@104.248.15.155:/var/www/'
 
                     // Deploy single sign on application and its associated libraries
                     echo 'Deploying single sign on application...'
-                    sh 'scp -r dist/shared root@192.241.244.7:/var/www/'
-                    sh 'scp -r dist/globalnav root@192.241.244.7:/var/www/'
-                    sh 'scp -r dist/page-not-found root@192.241.244.7:/var/www/'
-                    sh 'scp -r dist/sso root@192.241.244.7:/var/www/'
+                    sh 'scp -r dist/shared root@134.209.165.129:/var/www/'
+                    sh 'scp -r dist/globalnav root@134.209.165.129:/var/www/'
+                    sh 'scp -r dist/page-not-found root@134.209.165.129:/var/www/'
+                    sh 'scp -r dist/sso root@134.209.165.129:/var/www/'
 
                     // Deploy marketplace application and its associated libraries
                     echo 'Deploying single sign on application...'
-                    sh 'scp -r dist/shared root@192.241.160.90:/var/www/'
-                    sh 'scp -r dist/globalnav root@192.241.160.90:/var/www/'
-                    sh 'scp -r dist/page-not-found root@192.241.160.90:/var/www/'
-                    sh 'scp -r dist/market root@192.241.160.90:/var/www/'
+                    sh 'scp -r dist/shared root@174.138.48.128:/var/www/'
+                    sh 'scp -r dist/globalnav root@174.138.48.128:/var/www/'
+                    sh 'scp -r dist/page-not-found root@174.138.48.128:/var/www/'
+                    sh 'scp -r dist/market root@174.138.48.128:/var/www/'
                 }
             }
         }
