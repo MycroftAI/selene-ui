@@ -13,7 +13,6 @@ pipeline {
                 sh 'npm install'
                 sh 'ng build --project shared'
                 sh 'ng build --project globalnav'
-                sh 'ng build --project page-not-found'
                 sh 'ng build --project account --configuration development'
                 sh 'ng build --project market --configuration development'
                 sh 'ng build --project sso --configuration development'
@@ -30,7 +29,6 @@ pipeline {
                 sh 'npm install'
                 sh 'ng build --project shared'
                 sh 'ng build --project globalnav'
-                sh 'ng build --project page-not-found'
                 sh 'ng build --project account --configuration test'
                 sh 'ng build --project market --configuration test'
                 sh 'ng build --project sso --configuration test'
@@ -48,21 +46,18 @@ pipeline {
                     echo 'Deploying account application...'
                     sh 'scp -r dist/shared root@192.241.152.213:/var/www/'
                     sh 'scp -r dist/globalnav root@192.241.152.213:/var/www/'
-                    sh 'scp -r dist/page-not-found root@192.241.152.213:/var/www/'
                     sh 'scp -r dist/account root@192.241.152.213:/var/www/'
 
                     // Deploy single sign on application and its associated libraries
                     echo 'Deploying single sign on application...'
                     sh 'scp -r dist/shared root@198.199.90.118:/var/www/'
                     sh 'scp -r dist/globalnav root@198.199.90.118:/var/www/'
-                    sh 'scp -r dist/page-not-found root@198.199.90.118:/var/www/'
                     sh 'scp -r dist/sso root@198.199.90.118:/var/www/'
 
                     // Deploy marketplace application and its associated libraries
                     echo 'Deploying single sign on application...'
                     sh 'scp -r dist/shared root@198.211.106.110:/var/www/'
                     sh 'scp -r dist/globalnav root@198.211.106.110:/var/www/'
-                    sh 'scp -r dist/page-not-found root@198.211.106.110:/var/www/'
                     sh 'scp -r dist/market root@198.211.106.110:/var/www/'
                 }
             }
@@ -76,9 +71,8 @@ pipeline {
             steps {
                 echo 'Building code in the "master" branch...'
                 sh 'npm install'
-                sh 'ng build --project shared --prod'
-                sh 'ng build --project globalnav --prod'
-                sh 'ng build --project page-not-found'
+                sh 'ng build --project shared'
+                sh 'ng build --project globalnav'
                 sh 'ng build --project account --prod'
                 sh 'ng build --project market --prod'
                 sh 'ng build --project sso --prod'
@@ -96,21 +90,18 @@ pipeline {
                     echo 'Deploying account application...'
                     sh 'scp -r dist/shared root@104.248.15.155:/var/www/'
                     sh 'scp -r dist/globalnav root@104.248.15.155:/var/www/'
-                    sh 'scp -r dist/page-not-found root@104.248.15.155:/var/www/'
                     sh 'scp -r dist/account root@104.248.15.155:/var/www/'
 
                     // Deploy single sign on application and its associated libraries
                     echo 'Deploying single sign on application...'
                     sh 'scp -r dist/shared root@134.209.165.129:/var/www/'
                     sh 'scp -r dist/globalnav root@134.209.165.129:/var/www/'
-                    sh 'scp -r dist/page-not-found root@134.209.165.129:/var/www/'
                     sh 'scp -r dist/sso root@134.209.165.129:/var/www/'
 
                     // Deploy marketplace application and its associated libraries
                     echo 'Deploying single sign on application...'
                     sh 'scp -r dist/shared root@174.138.48.128:/var/www/'
                     sh 'scp -r dist/globalnav root@174.138.48.128:/var/www/'
-                    sh 'scp -r dist/page-not-found root@174.138.48.128:/var/www/'
                     sh 'scp -r dist/market root@174.138.48.128:/var/www/'
                 }
             }

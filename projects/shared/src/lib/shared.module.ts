@@ -18,6 +18,8 @@ import {
 
 import { SharedComponent } from './shared.component';
 import { SnackbarComponent } from './snackbar/snackbar.component';
+import { MaintenancePageComponent } from './maintenance-page/maintenance-page.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 export function getAuthServiceConfigs() {
     return new AuthServiceConfig(
@@ -40,9 +42,13 @@ export function getAuthServiceConfigs() {
     declarations: [
         SharedComponent,
         SnackbarComponent,
+        MaintenancePageComponent,
+        PageNotFoundComponent,
     ],
     entryComponents: [
-        SnackbarComponent
+        SnackbarComponent,
+        MaintenancePageComponent,
+        PageNotFoundComponent,
     ],
     imports: [
         CommonModule,
@@ -56,7 +62,9 @@ export function getAuthServiceConfigs() {
     ],
     exports: [
         SharedComponent,
-        SnackbarComponent
+        SnackbarComponent,
+        MaintenancePageComponent,
+        PageNotFoundComponent,
     ],
     providers: [
         { provide: AuthServiceConfig, useFactory: getAuthServiceConfigs }

@@ -745,41 +745,6 @@
                 }
             }
         },
-        "page-not-found": {
-            "root": "projects/page-not-found",
-            "sourceRoot": "projects/page-not-found/src",
-            "projectType": "library",
-            "prefix": "lib",
-            "architect": {
-                "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
-                    "options": {
-                        "tsConfig": "projects/page-not-found/tsconfig.lib.json",
-                        "project": "projects/page-not-found/ng-package.json"
-                    }
-                },
-                "test": {
-                    "builder": "@angular-devkit/build-angular:karma",
-                    "options": {
-                        "main": "projects/page-not-found/src/test.ts",
-                        "tsConfig": "projects/page-not-found/tsconfig.spec.json",
-                        "karmaConfig": "projects/page-not-found/karma.conf.js"
-                    }
-                },
-                "lint": {
-                    "builder": "@angular-devkit/build-angular:tslint",
-                    "options": {
-                        "tsConfig": [
-                            "projects/page-not-found/tsconfig.lib.json",
-                            "projects/page-not-found/tsconfig.spec.json"
-                        ],
-                        "exclude": [
-                            "**/node_modules/**"
-                        ]
-                    }
-                }
-            }
-        },
         "shared": {
             "root": "projects/shared",
             "sourceRoot": "projects/shared/src",
