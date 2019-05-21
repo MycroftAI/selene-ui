@@ -7,8 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppService } from './app.service';
 import { GlobalnavModule } from 'globalnav';
-import { PageNotFoundModule } from 'page-not-found';
 import { MaterialModule } from './shared/material.module';
+import { SharedModule } from 'shared';
 import { SkillsModule } from './skills/skills.module';
 
 @NgModule(
@@ -20,7 +20,7 @@ import { SkillsModule } from './skills/skills.module';
             GlobalnavModule,
             HttpClientModule,
             MaterialModule,
-            PageNotFoundModule,
+            SharedModule,
             SkillsModule,
             AppRoutingModule
         ],

@@ -1,0 +1,20 @@
+
+.maintenance-fg {
+    height: 80vh;
+    width: 100%;
+    @media screen and (min-width: 800px) {
+        .maintenance-image {
+            background: url("mycroft-maintenance.svg") no-repeat;
+            height: 500px;
+            width: 500px;
+        }
+    }
+
+    @media screen and (max-width: 800px) {
+        .maintenance-image {
+            background: url("mycroft-maintenance.svg") no-repeat;
+            height: 300px;
+            width: 300px;
+        }
+    }
+}

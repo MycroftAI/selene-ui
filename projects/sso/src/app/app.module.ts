@@ -9,9 +9,8 @@ import { ChangePasswordModule } from './modules/change-password/change-password.
 import { GlobalnavModule } from 'globalnav';
 import { LoginModule } from './modules/login/login.module';
 import { LogoutModule } from './modules/logout/logout.module';
-// import { NewAccountModule } from './modules/new-account/new-account.module';
-import { PageNotFoundModule } from 'page-not-found';
-// import { SharedModule } from './shared/shared.module';
+import { SharedModule as SharedLibModule } from 'shared';
+import { SharedModule } from './shared/shared.module';
 
 @NgModule({
     declarations: [
@@ -23,11 +22,10 @@ import { PageNotFoundModule } from 'page-not-found';
         ChangePasswordModule,
         FlexLayoutModule,
         GlobalnavModule,
-        // SharedModule,
+        SharedLibModule,
+        SharedModule,
         LoginModule,
         LogoutModule,
-        // NewAccountModule,
-        PageNotFoundModule,
         AppRoutingModule
     ],
     providers: [ ],
