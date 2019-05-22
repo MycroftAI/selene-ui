@@ -155,14 +155,14 @@ export class InstallService {
     /**
      * Call the API to add a skill to the Installer skill's 'to_install' setting.
      *
-     * @param skillName: the skill being installed
+     * @param skillDisplayId: the UUID of the skill being installed
      */
-    addToInstallQueue(skillName: string): Observable<Object> {
+    addToInstallQueue(skillDisplayId: string): Observable<Object> {
         return this.http.put<Object>(
             installerSettingsUrl,
             {
                 section: 'to_install',
-                skill_name: skillName
+                skillDisplayId: skillDisplayId
             }
         );
     }
