@@ -10,5 +10,7 @@ export const environment = {
         translate: 'https://translate-test.mycroft.ai',
         wordPress: 'https://test.mycroft.ai'
     },
-    githubClientId: 'c3420f2cd3fcfe0446ce'
+    facebookClientId: '2266714353557295',
+    githubClientId: 'c3420f2cd3fcfe0446ce',
+    googleClientId: '17489788035-6jpef494tdpiidg80vvfldh2biueiqfi.apps.googleusercontent.com'
 };

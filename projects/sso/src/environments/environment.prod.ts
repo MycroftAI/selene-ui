@@ -10,7 +10,9 @@ export const environment = {
         translate: 'https://translate.mycroft.ai',
         wordPress: 'https://mycroft.ai'
     },
-    githubClientId: '096babe444e7da546977'
+    facebookClientId: '1143261735743485',
+    githubClientId: '096babe444e7da546977',
+    googleClientId: '1009582741969-0lbv68ahlqq4bblpna0rhu0fuq33df90.apps.googleusercontent.com'
 };
 
 document.write(

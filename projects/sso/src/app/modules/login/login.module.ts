@@ -22,6 +22,7 @@ import {
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { ApiService } from '../../core/http/api.service';
+import { environment } from '../../../environments/environment';
 import { FederatedLoginComponent } from './federated-login/federated-login.component';
 import { InternalLoginComponent } from './internal-login/internal-login.component';
 import { LoginComponent } from './login.component';
@@ -34,13 +35,11 @@ export function getAuthServiceConfigs() {
         [
             {
                 id: FacebookLoginProvider.PROVIDER_ID,
-                provider: new FacebookLoginProvider('2266714353557295')
+                provider: new FacebookLoginProvider(environment.facebookClientId)
             },
             {
                 id: GoogleLoginProvider.PROVIDER_ID,
-                provider: new GoogleLoginProvider(
-                    '17489788035-6jpef494tdpiidg80vvfldh2biueiqfi.apps.googleusercontent.com'
-                )
+                provider: new GoogleLoginProvider(environment.googleClientId)
             }
         ]
     );
