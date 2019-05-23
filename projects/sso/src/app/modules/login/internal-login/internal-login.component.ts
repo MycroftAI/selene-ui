@@ -17,6 +17,7 @@ export class InternalLoginComponent implements OnInit {
     public emailControl: AbstractControl;
     public loginForm: FormGroup;
     public passwordControl: AbstractControl;
+    public passwordResetForm: FormGroup;
 
     constructor(
         private authService: ApiService,
@@ -36,6 +37,9 @@ export class InternalLoginComponent implements OnInit {
         });
         this.emailControl = this.loginForm.controls['email'];
         this.passwordControl = this.loginForm.controls['password'];
+        this.passwordResetForm = this.formBuilder.group({
+            email: [null, [Validators.email, Validators.required]],
+        });
     }
 
     authorizeUser(): void {
@@ -56,14 +60,17 @@ export class InternalLoginComponent implements OnInit {
     }
 
     onPasswordReset() {
+        this.passwordResetForm.controls['email'].setValue(
+            this.emailControl.value
+        );
         const dialogRef = this.dialog.open(
             PasswordResetComponent,
-            {width: '320px', data: this.loginForm}
+            {width: '320px', data: this.passwordResetForm}
         );
         dialogRef.afterClosed().subscribe(
             (result) => {
                 if (result) {
-                    this.loginForm.controls['email'].setValue(result);
+                    this.passwordResetForm.setValue(result);
                     this.resetPassword();
                 }
             }
@@ -76,7 +83,7 @@ export class InternalLoginComponent implements OnInit {
         const snackbarConfig = new MatSnackBarConfig();
         snackbarConfig.duration = fiveSeconds;
         snackbarConfig.panelClass = 'mycroft-no-action-snackbar';
-        this.authService.resetPassword(this.loginForm.controls['email']).subscribe(
+        this.authService.resetPassword(this.passwordResetForm.controls['email']).subscribe(
             () => { this.snackBar.open(successMessage, null, snackbarConfig); },
             () => { this.snackBar.open(errorMessage, null, snackbarConfig); }
         );
