@@ -1,6 +1,6 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'sso-password-reset',
@@ -11,7 +11,7 @@ export class PasswordResetComponent implements OnInit {
 
     constructor(
         public dialogRef: MatDialogRef<PasswordResetComponent>,
-        @Inject(MAT_DIALOG_DATA) public dialogData: FormGroup
+        @Inject(MAT_DIALOG_DATA) public dialogData: FormControl
     ) { }
 
     ngOnInit() {
