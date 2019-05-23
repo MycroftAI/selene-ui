@@ -19,7 +19,7 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
 import { ApiService } from '../../core/http/api.service';
 import { AuthenticationStepComponent } from './authentication-step/authentication-step.component';
-import { environment } from '@account/environments/environment';
+import { environment } from '../../../environments/environment';
 import { LoginToken } from '../../shared/models/login-token.model';
 import { SnackbarComponent } from 'shared';
 
