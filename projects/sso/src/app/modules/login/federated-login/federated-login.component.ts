@@ -39,9 +39,4 @@ export class FederatedLoginComponent implements OnInit {
         }
     }
 
-    // private gitHubLogin() {
-    //     const githubLoginUrl = 'https://github.com/login/oauth/authorize' +
-    //         '?scope=user:email&client_id=752bb0864dd667c902f4';
-    //     window.location.assign(githubLoginUrl);
-    // }
 }
