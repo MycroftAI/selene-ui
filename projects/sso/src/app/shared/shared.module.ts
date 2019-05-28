@@ -21,6 +21,8 @@ import { environment } from '../../environments/environment';
 
 
 export function getAuthServiceConfigs() {
+    console.log(environment.googleClientId);
+    console.log(environment.facebookClientId);
     return new AuthServiceConfig(
         [
             {
