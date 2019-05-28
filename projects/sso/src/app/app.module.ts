@@ -16,6 +16,7 @@ import { ChangePasswordModule } from './modules/change-password/change-password.
 import { GlobalnavModule } from 'globalnav';
 import { LoginModule } from './modules/login/login.module';
 import { LogoutModule } from './modules/logout/logout.module';
+import { NewAccountModule } from './modules/new-account/new-account.module';
 import { SharedModule as SharedLibModule } from 'shared';
 import { SharedModule } from './shared/shared.module';
 import { environment } from '../environments/environment';
@@ -52,6 +53,7 @@ export function getAuthServiceConfigs() {
         SharedModule,
         LoginModule,
         LogoutModule,
+        NewAccountModule,
         SocialLoginModule,
         AppRoutingModule
     ],
