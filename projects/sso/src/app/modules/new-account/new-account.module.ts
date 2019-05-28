@@ -19,6 +19,7 @@ import { NewAccountComponent } from './new-account.component';
 import { NewAccountRoutingModule } from './new-account-routing.module';
 import { SharedModule } from '../../shared/shared.module';
 import { SharedModule as SeleneModule} from 'shared';
+import { ApiService } from '../../core/http/api.service';
 
 
 @NgModule({
@@ -42,6 +43,9 @@ import { SharedModule as SeleneModule} from 'shared';
         ReactiveFormsModule,
         SeleneModule,
         NewAccountRoutingModule
-    ]
+    ],
+    providers: [
+        ApiService,
+    ],
 })
 export class NewAccountModule { }

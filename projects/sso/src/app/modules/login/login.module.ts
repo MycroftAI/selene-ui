@@ -16,7 +16,6 @@ import { RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { ApiService } from '../../core/http/api.service';
-import { environment } from '../../../environments/environment';
 import { FederatedLoginComponent } from './federated-login/federated-login.component';
 import { InternalLoginComponent } from './internal-login/internal-login.component';
 import { LoginComponent } from './login.component';
@@ -55,5 +54,6 @@ import { SharedModule } from '../../shared/shared.module';
         SharedModule,
         RouterModule
     ],
+    providers: [ApiService]
 })
 export class LoginModule { }
