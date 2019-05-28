@@ -13,12 +13,6 @@ import {
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
 
-import {
-    AuthServiceConfig,
-    FacebookLoginProvider,
-    GoogleLoginProvider,
-    SocialLoginModule
-} from 'angular-6-social-login';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { ApiService } from '../../core/http/api.service';
@@ -29,21 +23,6 @@ import { LoginComponent } from './login.component';
 import { PasswordResetComponent } from './password-reset/password-reset.component';
 import { SharedModule } from '../../shared/shared.module';
 
-
-export function getAuthServiceConfigs() {
-    return new AuthServiceConfig(
-        [
-            {
-                id: FacebookLoginProvider.PROVIDER_ID,
-                provider: new FacebookLoginProvider(environment.facebookClientId)
-            },
-            {
-                id: GoogleLoginProvider.PROVIDER_ID,
-                provider: new GoogleLoginProvider(environment.googleClientId)
-            }
-        ]
-    );
-}
 
 @NgModule({
     declarations: [
@@ -74,12 +53,7 @@ export function getAuthServiceConfigs() {
         MatSnackBarModule,
         ReactiveFormsModule,
         SharedModule,
-        SocialLoginModule,
         RouterModule
     ],
-    providers: [
-        ApiService,
-        { provide: AuthServiceConfig, useFactory: getAuthServiceConfigs }
-    ]
 })
 export class LoginModule { }

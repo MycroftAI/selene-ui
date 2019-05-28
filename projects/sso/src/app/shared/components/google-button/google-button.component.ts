@@ -23,7 +23,7 @@ export class GoogleButtonComponent {
             (userData) => {
                 this.googleToken.emit({platform: 'Google', token: userData.idToken});
             }
-    );
-}
+        );
+    }
 
 }
