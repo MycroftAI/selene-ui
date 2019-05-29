@@ -18,7 +18,6 @@ export class FacebookButtonComponent {
 
     facebookLogin() {
         const platformProvider = FacebookLoginProvider.PROVIDER_ID;
-        console.log(this.authService);
         this.authService.signIn(platformProvider).then(
             (userData) => {
                 this.facebookToken.emit({platform: 'Facebook', token: userData.token});

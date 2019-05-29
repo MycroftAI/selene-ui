@@ -19,7 +19,6 @@ export class GoogleButtonComponent {
 
     googleLogin() {
         const platformProvider = GoogleLoginProvider.PROVIDER_ID;
-        console.log(this.authService);
         this.authService.signIn(platformProvider).then(
             (userData) => {
                 this.googleToken.emit({platform: 'Google', token: userData.idToken});
