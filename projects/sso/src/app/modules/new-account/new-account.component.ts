@@ -48,15 +48,15 @@ export function loginValidator(): ValidatorFn {
 export function uniqueEmailValidator(apiService: ApiService): AsyncValidatorFn {
     return (control: AbstractControl): Observable<ValidationErrors | null> => {
         let loginToken: LoginToken;
-        let returnValue: any = null;
         if (control.value) {
             loginToken = {platform: 'Internal', token: btoa(control.value)};
-            returnValue = apiService.validateEmailAddress(loginToken).pipe(
-                map((response) => response.accountExists ? { duplicateEmail: true } : null),
-                catchError(() =>  null),
-            );
+        } else {
+            loginToken = {platform: 'Internal', token: ''};
         }
-        return returnValue;
+            return apiService.validateEmailAddress(loginToken).pipe(
+            map((response) => response.accountExists ? { duplicateEmail: true } : null),
+            catchError(() =>  null),
+        );
     };
 }
 
