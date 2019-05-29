@@ -53,6 +53,7 @@ export function uniqueEmailValidator(apiService: ApiService): AsyncValidatorFn {
         } else {
             loginToken = {platform: 'Internal', token: ''};
         }
+        console.log('in the unique email validator');
         return apiService.validateEmailAddress(loginToken).pipe(
             map((response) => response.accountExists ? { duplicateEmail: true } : null),
             catchError(() =>  null),
