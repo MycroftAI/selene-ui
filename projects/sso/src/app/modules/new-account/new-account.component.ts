@@ -91,7 +91,6 @@ export class NewAccountComponent implements OnInit {
     }
 
     ngOnInit() {
-        console.log(environment.facebookClientId);
         this.buildForm();
         this.route.queryParams.subscribe(
             (params) => { this.evaluateQueryParams(params); }

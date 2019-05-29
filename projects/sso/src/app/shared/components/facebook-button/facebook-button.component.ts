@@ -18,8 +18,6 @@ export class FacebookButtonComponent {
     constructor(private authService: AuthService) { }
 
     facebookLogin() {
-        console.log('facebook login: ' + environment.facebookClientId);
-        console.log(this.authService);
         const platformProvider = FacebookLoginProvider.PROVIDER_ID;
         this.authService.signIn(platformProvider).then(
             (userData) => {

@@ -21,7 +21,6 @@ export class AuthenticationStepComponent implements OnInit {
     constructor(private apiService: ApiService) { }
 
     ngOnInit() {
-        console.log('authentication step: ' + environment.facebookClientId);
         this.federatedLoginText = 'To use this option, you must allow the ' +
             'provider to share your email address with Mycroft.';
         this.internalLoginText = 'Login credentials stored on Mycroft ' +
