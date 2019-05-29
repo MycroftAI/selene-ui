@@ -48,16 +48,15 @@ export function loginValidator(): ValidatorFn {
 export function uniqueEmailValidator(apiService: ApiService): AsyncValidatorFn {
     return (control: AbstractControl): Observable<ValidationErrors | null> => {
         let loginToken: LoginToken;
+        let returnValue: any = null;
         if (control.value) {
             loginToken = {platform: 'Internal', token: btoa(control.value)};
-        } else {
-            loginToken = {platform: 'Internal', token: ''};
+            returnValue = apiService.validateEmailAddress(loginToken).pipe(
+                map((response) => response.accountExists ? { duplicateEmail: true } : null),
+                catchError(() =>  null),
+            );
         }
-        console.log('in the unique email validator');
-        return apiService.validateEmailAddress(loginToken).pipe(
-            map((response) => response.accountExists ? { duplicateEmail: true } : null),
-            catchError(() =>  null),
-        );
+        return returnValue;
     };
 }
 
@@ -92,6 +91,7 @@ export class NewAccountComponent implements OnInit {
     }
 
     ngOnInit() {
+        console.log(environment.facebookClientId);
         this.buildForm();
         this.route.queryParams.subscribe(
             (params) => { this.evaluateQueryParams(params); }
