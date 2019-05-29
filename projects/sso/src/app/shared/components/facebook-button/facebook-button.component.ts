@@ -4,6 +4,7 @@ import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { AuthService, FacebookLoginProvider } from 'angular-6-social-login';
 
 import { LoginToken } from '../../models/login-token.model';
+import { environment } from '../../../../environments/environment';
 
 @Component( {
     selector: 'sso-facebook-button',
@@ -17,6 +18,8 @@ export class FacebookButtonComponent {
     constructor(private authService: AuthService) { }
 
     facebookLogin() {
+        console.log('facebook login: ' + environment.facebookClientId);
+        console.log(AuthService);
         const platformProvider = FacebookLoginProvider.PROVIDER_ID;
         this.authService.signIn(platformProvider).then(
             (userData) => {

@@ -3,6 +3,8 @@ import { FormGroup } from '@angular/forms';
 import { ApiService } from '../../../core/http/api.service';
 import { LoginToken } from '../../../shared/models/login-token.model';
 
+import { environment } from '../../../../environments/environment';
+
 
 @Component({
     selector: 'sso-authentication-step',
@@ -19,6 +21,7 @@ export class AuthenticationStepComponent implements OnInit {
     constructor(private apiService: ApiService) { }
 
     ngOnInit() {
+        console.log('authentication step: ' + environment.facebookClientId);
         this.federatedLoginText = 'To use this option, you must allow the ' +
             'provider to share your email address with Mycroft.';
         this.internalLoginText = 'Login credentials stored on Mycroft ' +
