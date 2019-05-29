@@ -9,34 +9,11 @@ import {
 } from '@angular/material';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import {
-    AuthServiceConfig,
-    FacebookLoginProvider,
-    GoogleLoginProvider,
-    SocialLoginModule
-} from 'angular-6-social-login';
-
 import { SharedComponent } from './shared.component';
 import { SnackbarComponent } from './snackbar/snackbar.component';
 import { MaintenancePageComponent } from './maintenance-page/maintenance-page.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
-export function getAuthServiceConfigs() {
-    return new AuthServiceConfig(
-        [
-            {
-                id: FacebookLoginProvider.PROVIDER_ID,
-                provider: new FacebookLoginProvider('2266714353557295')
-            },
-            {
-                id: GoogleLoginProvider.PROVIDER_ID,
-                provider: new GoogleLoginProvider(
-                    '17489788035-6jpef494tdpiidg80vvfldh2biueiqfi.apps.googleusercontent.com'
-                )
-            }
-        ]
-    );
-}
 
 @NgModule({
     declarations: [
@@ -57,8 +34,7 @@ export function getAuthServiceConfigs() {
         MatButtonModule,
         MatButtonToggleModule,
         MatSnackBarModule,
-        MatProgressSpinnerModule,
-        SocialLoginModule
+        MatProgressSpinnerModule
     ],
     exports: [
         SharedComponent,
@@ -66,8 +42,5 @@ export function getAuthServiceConfigs() {
         MaintenancePageComponent,
         PageNotFoundComponent,
     ],
-    providers: [
-        { provide: AuthServiceConfig, useFactory: getAuthServiceConfigs }
-    ]
 })
 export class SharedModule { }
