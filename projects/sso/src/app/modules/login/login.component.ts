@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
      * @param queryParams: set by the GitHub authentication process
      */
     evaluateQueryParams(queryParams: any) {
-        console.log(queryParams);
         if (queryParams.redirect) {
             localStorage.setItem('redirect', queryParams.redirect);
         }
