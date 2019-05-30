@@ -15,14 +15,12 @@ import { SnackbarComponent } from 'shared';
 })
 export class LoginComponent implements OnInit {
     public environment = environment;
-    public createAccountUrl: string;
 
     constructor(
         private route: ActivatedRoute,
         private service: ApiService,
         private snackbar: MatSnackBar
     ) {
-        this.createAccountUrl = environment.mycroftUrls.account + '/new';
     }
 
     ngOnInit() {

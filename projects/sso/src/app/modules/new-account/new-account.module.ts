@@ -16,7 +16,6 @@ import { AgreementStepComponent } from './agreement-step/agreement-step.componen
 import { AuthenticationStepComponent } from './authentication-step/authentication-step.component';
 import { LoginModule } from '../login/login.module';
 import { NewAccountComponent } from './new-account.component';
-import { NewAccountRoutingModule } from './new-account-routing.module';
 import { SharedModule } from '../../shared/shared.module';
 import { SharedModule as SeleneModule} from 'shared';
 import { ApiService } from '../../core/http/api.service';
@@ -41,8 +40,7 @@ import { ApiService } from '../../core/http/api.service';
         MatStepperModule,
         SharedModule,
         ReactiveFormsModule,
-        SeleneModule,
-        NewAccountRoutingModule
+        SeleneModule
     ],
     providers: [
         ApiService,

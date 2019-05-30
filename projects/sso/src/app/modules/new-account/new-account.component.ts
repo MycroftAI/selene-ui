@@ -13,7 +13,7 @@ import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, debounceTime, map } from 'rxjs/operators';
 
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 
@@ -53,7 +53,7 @@ export function uniqueEmailValidator(apiService: ApiService): AsyncValidatorFn {
         } else {
             loginToken = {platform: 'Internal', token: ''};
         }
-            return apiService.validateEmailAddress(loginToken).pipe(
+        return apiService.validateEmailAddress(loginToken).pipe(
             map((response) => response.accountExists ? { duplicateEmail: true } : null),
             catchError(() =>  null),
         );

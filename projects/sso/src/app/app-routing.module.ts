@@ -6,13 +6,14 @@ import { LoginComponent } from './modules/login/login.component';
 import { LogoutComponent } from './modules/logout/logout.component';
 import { MaintenancePageComponent } from 'shared';
 import { PageNotFoundComponent } from 'shared';
+import { NewAccountComponent } from './modules/new-account/new-account.component';
 
 const routes: Routes = [
     { path: 'login',  component: LoginComponent },
     { path: 'logout', component: LogoutComponent },
     { path: 'change-password', component: ChangePasswordComponent},
     { path: 'maintenance', component: MaintenancePageComponent},
-    { path: 'new-account', loadChildren: './modules/new-account/new-account.module#NewAccountModule' },
+    { path: 'new-account', component:  NewAccountComponent},
     { path: '', redirectTo: '/login', pathMatch: 'full' },
     { path: '**', component: PageNotFoundComponent }
 ];
