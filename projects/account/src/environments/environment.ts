@@ -8,7 +8,7 @@ export const environment = {
         account: 'https://account.mycroft.test',
         chat: 'https://chat.mycroft.ai',
         forum: 'https://community.mycroft.ai',
-        marketplace: 'http://localhost:4202',
+        marketplace: 'http://market.mycroft.test',
         mimic: 'http://mimic.mycroft.ai',
         singleSignOn: 'https://sso.mycroft.test',
         translate: 'https://translate-test.mycroft.ai',
