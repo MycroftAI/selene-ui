@@ -20,6 +20,7 @@ import { SettingFieldComponent } from './setting-field/setting-field.component';
 import { SettingSectionComponent } from './setting-section/setting-section.component';
 import { SkillPanelComponent } from './skill-panel/skill-panel.component';
 import { SkillRoutingModule } from './skill-routing.module';
+import { SharedModule } from 'shared';
 
 @NgModule({
     declarations: [
@@ -40,6 +41,7 @@ import { SkillRoutingModule } from './skill-routing.module';
         MatInputModule,
         MatSelectModule,
         MatTabsModule,
+        SharedModule,
         SkillRoutingModule
     ]
 })
