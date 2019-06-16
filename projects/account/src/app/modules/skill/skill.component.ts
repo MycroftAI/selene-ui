@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { environment } from '../../../environments/environment';
-import { Skill } from '@account/models/skill.model';
+import { SkillFamily } from '@account/models/skill_family.model';
 import { SkillService } from '@account/http/skill.service';
 
 export interface WebApps {
@@ -26,7 +26,7 @@ export class SkillComponent implements OnInit {
     public marketplaceLink: string;
     public moreSkillsText: string;
     public mycroftUrls: WebApps = environment.mycroftUrls;
-    public skills$: Observable<Skill[]>;
+    public skills$: Observable<SkillFamily[]>;
     public deviceCount: number;
 
     constructor(private skillService: SkillService) {
@@ -39,7 +39,6 @@ export class SkillComponent implements OnInit {
             (result) => { this.deviceCount = result['deviceCount']; }
         );
     }
-
 
     private defineAssistiveText() {
         this.helpText = 'Select a skill below to update its settings, ' +
