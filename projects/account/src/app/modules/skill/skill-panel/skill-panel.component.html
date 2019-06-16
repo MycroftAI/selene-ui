@@ -10,10 +10,17 @@
     </mat-expansion-panel-header>
     <ng-template matExpansionPanelContent>
         <!-- Re-enable these buttons when the code to support them is ready -->
-        <!--<button mat-button id="marketplace-button">SKILL DETAILS</button>-->
+        <a
+                *ngIf="skill.marketId"
+                mat-button
+                id="marketplace-button"
+                [href]="marketUrl + skill.marketId"
+                [target]="'blank'"
+        >
+            SKILL DETAILS
+        </a>
         <!--<button mat-button id="remove-button">REMOVE SKILL</button>-->
         <account-skill-settings
-                *ngIf="skill.hasSettings"
                 [deviceCount]="deviceCount"
                 [skill]="skill"
                 (done)="closePanel()"

@@ -2,7 +2,8 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 
-import { Skill } from '@account/models/skill.model';
+import { environment } from '@account/environments/environment';
+import { SkillFamily } from '@account/models/skill_family.model';
 
 @Component({
     selector: 'account-skill-panel',
@@ -12,8 +13,9 @@ import { Skill } from '@account/models/skill.model';
 export class SkillPanelComponent implements OnInit {
     public settingsIcon = faCog;
     @Input() deviceCount: number;
-    @Input() skill: Skill;
+    @Input() skill: SkillFamily;
     public panelExpanded = false;
+    public marketUrl = environment.mycroftUrls.marketplace + '/skills/';
 
     constructor() {
     }
@@ -24,5 +26,4 @@ export class SkillPanelComponent implements OnInit {
     closePanel() {
         this.panelExpanded = false;
     }
-
 }
