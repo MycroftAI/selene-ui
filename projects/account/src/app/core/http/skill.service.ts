@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { Skill } from '@account/models/skill.model';
+import { SkillFamily } from '@account/models/skill_family.model';
 import { SkillSettings } from '@account/models/skill-settings.model';
 
 const accountSkillUrl = '/api/skills';
@@ -25,18 +25,18 @@ export class SkillService {
         return this.http.get<any[]>(accountDeviceCountUrl);
     }
 
-    getSkills(): Observable<Skill[]> {
-        return this.http.get<Skill[]>(accountSkillUrl);
+    getSkills(): Observable<SkillFamily[]> {
+        return this.http.get<SkillFamily[]>(accountSkillUrl);
     }
 
-    getSkillSettings(skillId: string): Observable<SkillSettings[]> {
-        return this.http.get<SkillSettings[]>(`/api/skills/${skillId}/settings`);
+    getSkillSettings(skillFamilyName: string): Observable<SkillSettings[]> {
+        return this.http.get<SkillSettings[]>(`/api/skills/${skillFamilyName}/settings`);
     }
 
-    updateSkillSettings(skillId: string, skillSettings: SkillSettings[]) {
+    updateSkillSettings(skillFamily: SkillFamily, skillSettings: SkillSettings[]) {
         return this.http.put(
-            `/api/skills/${skillId}/settings`,
-            {skillSettings: skillSettings}
+            `/api/skills/${skillFamily.familyName}/settings`,
+            {skillIds: skillFamily.skillIds, skillSettings: skillSettings}
         );
     }
 
