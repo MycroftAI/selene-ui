@@ -1,3 +1,4 @@
+import { A11yModule } from '@angular/cdk/a11y';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -29,6 +30,7 @@ import { ApiService } from '../../core/http/api.service';
     ],
     imports: [
         CommonModule,
+        A11yModule,
         FlexLayoutModule,
         FontAwesomeModule,
         FormsModule,
