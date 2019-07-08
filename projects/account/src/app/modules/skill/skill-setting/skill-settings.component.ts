@@ -57,7 +57,7 @@ export class SkillSettingsComponent implements OnInit {
 
     onSkillOauth(oauthId: string) {
         this.skillService.authenticateSkill(oauthId).subscribe(
-            (result) => { window.location.assign(result.url); }
+            (result) => { window.open(result.url); }
         );
     }
 
