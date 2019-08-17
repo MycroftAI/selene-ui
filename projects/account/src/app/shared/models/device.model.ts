@@ -27,12 +27,14 @@ export interface Device {
     city: City;
     coreVersion: string;
     country: Country;
+    disconnectDuration: string;
     enclosureVersion: string;
     id: string;
     name: string;
     placement: string;
     platform: string;
     region: Region;
+    status: string;
     timezone: Timezone;
     voice: Voice;
     wakeWord: WakeWord;
