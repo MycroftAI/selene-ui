@@ -18,29 +18,6 @@
             <img [src]="getDeviceIcon(device)"/>
             {{device.name}}
         </mat-card-title>
-        <ng-container [ngSwitch]="device.status">
-            <mat-card-subtitle
-                    class="status-active"
-                    matTooltip="Device is connected"
-                    *ngSwitchCase="'Connected'"
-            >
-                {{device.status}}
-            </mat-card-subtitle>
-            <mat-card-subtitle
-                    class="status-dormant"
-                    matTooltip="Device disconnected for more than 30 days."
-                    *ngSwitchCase="'Dormant'"
-            >
-                {{device.status}}
-            </mat-card-subtitle>
-            <mat-card-subtitle
-                    class="status-inactive"
-                    matTooltip="Device disconnected for {{device.disconnectDuration}}"
-                    *ngSwitchDefault
-            >
-                {{device.status}}
-            </mat-card-subtitle>
-        </ng-container>
         <account-device-info [device]="device"></account-device-info>
         <mat-card-actions>
             <button mat-flat-button color="primary" [routerLink]="['./', device.id]">
