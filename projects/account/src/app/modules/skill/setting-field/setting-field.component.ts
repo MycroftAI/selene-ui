@@ -36,7 +36,7 @@ export class SettingFieldComponent implements OnInit {
 
     onCheckboxChange(changeEvent: MatCheckboxChange) {
         this.newValue.emit(
-            {name: this.fieldDefinition.name, value: changeEvent.checked.toString()}
+            {name: this.fieldDefinition.name, value: changeEvent.checked}
         );
     }
 
