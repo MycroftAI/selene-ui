@@ -27,10 +27,17 @@ export class SettingFieldComponent implements OnInit {
         }
     }
 
-    onInputChange(changeEvent: Event) {
+    onTextChange(changeEvent: Event) {
         const element = changeEvent.currentTarget as HTMLInputElement;
         this.newValue.emit(
             {name: this.fieldDefinition.name, value: element.value}
+        );
+    }
+
+    onNumberChange(changeEvent: Event) {
+        const element = changeEvent.currentTarget as HTMLInputElement;
+        this.newValue.emit(
+            {name: this.fieldDefinition.name, value: Number(element.value)}
         );
     }
 
