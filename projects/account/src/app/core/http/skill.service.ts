@@ -34,6 +34,7 @@ export class SkillService {
     }
 
     updateSkillSettings(skillFamily: SkillFamily, skillSettings: SkillSettings[]) {
+        console.log(skillSettings);
         return this.http.put(
             `/api/skills/${skillFamily.familyName}/settings`,
             {skillIds: skillFamily.skillIds, skillSettings: skillSettings}
