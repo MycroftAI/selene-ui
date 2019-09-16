@@ -14,7 +14,7 @@ export class SettingFieldComponent implements OnInit {
     @Input() settingsValues: any;
     @Output() newValue = new EventEmitter<SettingChange>();
     @Output() skillAuthentication = new EventEmitter<string>();
-    public fieldValue: string;
+    public fieldValue: string | boolean | number;
 
     constructor() { }
 

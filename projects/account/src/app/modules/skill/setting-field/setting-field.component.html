@@ -13,7 +13,7 @@
     <mat-checkbox
             *ngSwitchCase="'checkbox'"
             [value]="fieldValue"
-            [checked]="fieldValue === 'true'"
+            [checked]="fieldValue === true"
             (change)="onCheckboxChange($event)"
     >
         {{fieldDefinition.label}}

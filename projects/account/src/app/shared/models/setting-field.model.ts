@@ -8,5 +8,5 @@ export interface SettingField {
     type: string;
     label: string;
     options?: SelectOptions[];
-    value?: string;
+    value?: string | boolean | number;
 }
