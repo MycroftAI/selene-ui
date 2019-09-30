@@ -30,7 +30,8 @@ import {
     MatInputModule,
     MatStepperModule,
     MatTabsModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatTooltipModule
 } from '@angular/material';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -100,6 +101,7 @@ import { WakeWordCardComponent } from './components/card/wake-word-card/wake-wor
         MatStepperModule,
         MatTabsModule,
         MatToolbarModule,
+        MatTooltipModule,
         SharedModule,
         DeviceRoutingModule
     ],

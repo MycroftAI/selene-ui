@@ -13,7 +13,7 @@
     <mat-checkbox
             *ngSwitchCase="'checkbox'"
             [value]="fieldValue"
-            [checked]="fieldValue === 'true'"
+            [checked]="fieldValue === true"
             (change)="onCheckboxChange($event)"
     >
         {{fieldDefinition.label}}
@@ -21,22 +21,22 @@
 
     <mat-form-field *ngSwitchCase="'text'" [appearance]="'outline'">
         <mat-label>{{fieldDefinition.label}}</mat-label>
-        <input matInput type="text" value="{{fieldValue}}" (change)="onInputChange($event)">
+        <input matInput type="text" value="{{fieldValue}}" (change)="onTextChange($event)">
     </mat-form-field>
 
     <mat-form-field *ngSwitchCase="'number'" [appearance]="'outline'">
         <mat-label>{{fieldDefinition.label}}</mat-label>
-        <input matInput type="number" value="{{fieldValue}}" (change)="onInputChange($event)">
+        <input matInput type="number" value="{{fieldValue}}" (change)="onNumberChange($event)">
     </mat-form-field>
 
     <mat-form-field *ngSwitchCase="'email'" [appearance]="'outline'">
         <mat-label>{{fieldDefinition.label}}</mat-label>
-        <input matInput type="email" value="{{fieldValue}}" (change)="onInputChange($event)">
+        <input matInput type="email" value="{{fieldValue}}" (change)="onTextChange($event)">
     </mat-form-field>
 
     <mat-form-field *ngSwitchCase="'password'" [appearance]="'outline'">
         <mat-label>{{fieldDefinition.label}}</mat-label>
-        <input matInput type="password" value="{{fieldValue}}" (change)="onInputChange($event)">
+        <input matInput type="password" value="{{fieldValue}}" (change)="onTextChange($event)">
     </mat-form-field>
 
     <button *ngSwitchCase="'oauth'" mat-button (click)="onSkillOauth()">Connect</button>

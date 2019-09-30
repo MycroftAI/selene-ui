@@ -52,6 +52,25 @@ mat-card {
         }
     }
 
+    mat-card-subtitle {
+        border-radius: 4px;
+        padding: 4px;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .status-active {
+        background-color: mat-color($mycroft-accent, A100);
+    }
+
+    .status-dormant {
+        background-color: mat-color($mycroft-warn, 300);
+    }
+
+    .status-inactive {
+        background-color: mat-color($mycroft-accent, A200);
+    }
+
     mat-divider {
         margin-left: 16px;
         width: 90%;

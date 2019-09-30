@@ -18,5 +18,5 @@ and limitations under the License.
 
 export interface SettingChange {
     name: string;
-    value: string;
+    value: string | boolean | number;
 }

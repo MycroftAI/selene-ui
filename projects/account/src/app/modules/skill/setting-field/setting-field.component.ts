@@ -32,7 +32,7 @@ export class SettingFieldComponent implements OnInit {
     @Input() settingsValues: any;
     @Output() newValue = new EventEmitter<SettingChange>();
     @Output() skillAuthentication = new EventEmitter<string>();
-    public fieldValue: string;
+    public fieldValue: string | boolean | number;
 
     constructor() { }
 
@@ -45,16 +45,23 @@ export class SettingFieldComponent implements OnInit {
         }
     }
 
-    onInputChange(changeEvent: Event) {
+    onTextChange(changeEvent: Event) {
         const element = changeEvent.currentTarget as HTMLInputElement;
         this.newValue.emit(
             {name: this.fieldDefinition.name, value: element.value}
         );
     }
 
+    onNumberChange(changeEvent: Event) {
+        const element = changeEvent.currentTarget as HTMLInputElement;
+        this.newValue.emit(
+            {name: this.fieldDefinition.name, value: Number(element.value)}
+        );
+    }
+
     onCheckboxChange(changeEvent: MatCheckboxChange) {
         this.newValue.emit(
-            {name: this.fieldDefinition.name, value: changeEvent.checked.toString()}
+            {name: this.fieldDefinition.name, value: changeEvent.checked}
         );
     }
 
