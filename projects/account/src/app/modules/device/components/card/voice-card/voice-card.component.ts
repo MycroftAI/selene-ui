@@ -31,7 +31,7 @@ export class VoiceCardComponent implements OnInit {
 
     constructor() {
         this.voiceOptionsConfig = {
-            options: ['British Male', 'American Female', 'American Male', 'Google Voice'],
+            options: ['British Male', 'American Male', 'Google Voice'],
             buttonWidth: '140px'
         };
     }
