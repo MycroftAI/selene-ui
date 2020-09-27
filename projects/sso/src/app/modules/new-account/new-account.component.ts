@@ -86,7 +86,7 @@ export function uniqueEmailValidator(apiService: ApiService): AsyncValidatorFn {
   styleUrls: ['./new-account.component.scss']
 })
 export class NewAccountComponent implements OnInit {
-    @ViewChild(AuthenticationStepComponent) authenticationStep: AuthenticationStepComponent;
+    @ViewChild(AuthenticationStepComponent, { static: false }) authenticationStep: AuthenticationStepComponent;
     public alignVertical: boolean;
     public loginForm: FormGroup;
     private mediaWatcher: Subscription;
