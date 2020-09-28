@@ -17,11 +17,8 @@ and limitations under the License.
 ***************************************************************************** */
 
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import {
-    MAT_DIALOG_DATA,
-    MatDialogRef,
-    MatSnackBar
-} from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { ElementOptions, StripeCardComponent, StripeService } from 'ngx-stripe';
 

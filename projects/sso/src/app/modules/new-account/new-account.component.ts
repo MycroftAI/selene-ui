@@ -28,7 +28,7 @@ import {
     Validators
 } from '@angular/forms';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
-import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { catchError, debounceTime, map } from 'rxjs/operators';

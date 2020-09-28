@@ -20,7 +20,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { AccountDefaults } from '@account/models/defaults.model';
 import { DeviceService } from '@account/http/device.service';
-import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 const fiveSeconds = 5000;
 

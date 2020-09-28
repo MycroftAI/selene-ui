@@ -18,7 +18,7 @@ and limitations under the License.
 
 import { Component, Input, forwardRef, ViewChild } from '@angular/core';
 import { OptionButtonsConfig } from '@account/models/option-buttons-config.model';
-import { MatButtonToggleGroup } from '@angular/material';
+import { MatButtonToggleGroup } from '@angular/material/button-toggle';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Component({

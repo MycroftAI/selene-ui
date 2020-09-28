@@ -18,7 +18,7 @@ and limitations under the License.
 
 import { Component, Input, OnDestroy } from '@angular/core';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 
 import { AccountMembership } from '@account/models/account-membership.model';

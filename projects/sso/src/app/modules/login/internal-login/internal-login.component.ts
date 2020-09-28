@@ -18,7 +18,8 @@ and limitations under the License.
 
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MatDialog, MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 import { ApiService } from '../../../core/http/api.service';
 import { PasswordResetComponent } from '../password-reset/password-reset.component';

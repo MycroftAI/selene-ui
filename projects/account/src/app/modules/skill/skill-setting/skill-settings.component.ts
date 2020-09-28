@@ -24,7 +24,7 @@ import { SettingChange } from '@account/models/setting-change.model';
 import { SkillFamily } from '@account/models/skill_family.model';
 import { SkillSettings } from '@account/models/skill-settings.model';
 import { SkillService } from '@account/http/skill.service';
-import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { SnackbarComponent } from 'shared';
 
 const fiveSeconds = 5000;
