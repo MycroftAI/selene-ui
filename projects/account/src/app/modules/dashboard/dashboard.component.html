@@ -10,14 +10,11 @@
                  we can continue building upon the Mycroft experience.  It is also motivating
                 knowing there is a community of people who believe in the same things we do.
             </p>
-            <p class="mat-body">
-                We keep brainstorming and working on benefits to offer you as a supporter.
-                For now, you can change your Mycroft’s voice to a higher quality one.
-            </p>
         </mat-card-content>
-        <mat-card-actions>
+        <!-- Commented out until premium voices are available -->
+        <!-- <mat-card-actions>
             <a mat-button [href]="voicesUrl">CHECK OUT PREMIUM VOICES</a>
-        </mat-card-actions>
+        </mat-card-actions> -->
     </mat-card>
 
     <mat-card *ngIf="!account.membership" fxFlex="40">
@@ -27,13 +24,14 @@
         <mat-card-title>Become a Member</mat-card-title>
         <mat-card-content>
             <p class="mat-body">
-                For less than one cup of coffee a month, you can help support our server costs,
-                hosting, and ongoing development. All of which all improve Mycroft's performance
-                and user experience.
-            </p>
+                Mycroft's voice assistant software is open source, which means it is free to use and
+                the underlying source code is available to the public.  Our entire platform is free
+                of advertisements.  The data we collect from those that opt in to our open dataset
+                is not sold to anyone.
             <p class="mat-body">
-                Your membership also gets you exclusive access to premium voices,
-                along with new features that are being prepared for the second half of 2019.
+                For less than one cup of coffee a month, you can help support our server costs,
+                hosting, and ongoing development.  All of which all improve Mycroft's performance
+                and user experience.
             </p>
         </mat-card-content>
         <mat-card-actions>
