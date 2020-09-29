@@ -25,11 +25,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
 import {
-    AuthServiceConfig,
     FacebookLoginProvider,
     GoogleLoginProvider,
+    SocialAuthServiceConfig,
     SocialLoginModule
-} from 'angular-6-social-login';
+} from 'angularx-social-login';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { EmailInputComponent } from './components/email-input/email-input.component';
@@ -38,23 +38,6 @@ import { GithubButtonComponent } from './components/github-button/github-button.
 import { GoogleButtonComponent } from './components/google-button/google-button.component';
 import { PasswordInputComponent } from './components/password-input/password-input.component';
 import { environment } from '../../environments/environment';
-
-
-export function getAuthServiceConfigs() {
-    return new AuthServiceConfig(
-        [
-            {
-                id: FacebookLoginProvider.PROVIDER_ID,
-                provider: new FacebookLoginProvider(environment.facebookClientId)
-            },
-            {
-                id: GoogleLoginProvider.PROVIDER_ID,
-                provider: new GoogleLoginProvider(environment.googleClientId)
-            }
-        ]
-    );
-}
-
 
 
 @NgModule({
@@ -84,8 +67,23 @@ export function getAuthServiceConfigs() {
         GoogleButtonComponent,
         PasswordInputComponent
     ],
-    providers: [
-        { provide: AuthServiceConfig, useFactory: getAuthServiceConfigs }
-    ],
+ providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(environment.facebookClientId),
+          },
+          {
+            id: FacebookLoginProvider.PROVIDER_ID,
+            provider: new FacebookLoginProvider(environment.googleClientId),
+          },
+        ],
+      } as SocialAuthServiceConfig,
+    }
+  ],
 })
 export class SharedModule { }

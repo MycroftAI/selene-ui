@@ -19,7 +19,7 @@ and limitations under the License.
 import { Component, EventEmitter, Output } from '@angular/core';
 
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
-import { AuthService, GoogleLoginProvider } from 'angular-6-social-login';
+import { SocialAuthService, GoogleLoginProvider } from 'angularx-social-login';
 
 import { LoginToken } from '../../models/login-token.model';
 
@@ -33,11 +33,10 @@ export class GoogleButtonComponent {
     public googleIcon = faGoogle;
     @Output() googleToken = new EventEmitter<LoginToken>();
 
-    constructor(private authService: AuthService) { }
+    constructor(private authService: SocialAuthService) { }
 
     googleLogin() {
-        const platformProvider = GoogleLoginProvider.PROVIDER_ID;
-        this.authService.signIn(platformProvider).then(
+        this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
             (userData) => {
                 this.googleToken.emit({platform: 'Google', token: userData.idToken});
             }
