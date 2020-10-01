@@ -18,7 +18,9 @@ and limitations under the License.
 
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
-import { MatButtonToggleChange, MatDialog, MatDialogConfig, MatSnackBar } from '@angular/material';
+import { MatButtonToggleChange } from '@angular/material/button-toggle';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Subscription } from 'rxjs';
 

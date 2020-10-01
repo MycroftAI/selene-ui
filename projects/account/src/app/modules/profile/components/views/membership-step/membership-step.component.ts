@@ -41,8 +41,7 @@ export class MembershipStepComponent implements OnInit {
             'of volunteer work by community  members, there is also a small team employed by Mycroft AI.  ' +
             'The team curates the software, supports the community and ensures the privacy of your data.  ' +
             'Your donation will help ensure our team can continue providing these services to our ' +
-            'users and community.',
-            'Members will receive benefits like access to premium voices.'
+            'users and community.'
         ];
 
     }

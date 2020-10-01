@@ -19,12 +19,10 @@ and limitations under the License.
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import {
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatSnackBarModule,
-    MatProgressSpinnerModule
-} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { SharedComponent } from './shared.component';

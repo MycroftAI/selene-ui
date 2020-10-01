@@ -17,7 +17,7 @@ and limitations under the License.
 ***************************************************************************** */
 
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 
 import { DeleteConfirmComponent } from '../../modals/delete-confirm/delete-confirm.component';
 

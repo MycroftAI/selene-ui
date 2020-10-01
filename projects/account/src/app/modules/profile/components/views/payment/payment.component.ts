@@ -17,13 +17,11 @@ and limitations under the License.
 ***************************************************************************** */
 
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import {
-    MAT_DIALOG_DATA,
-    MatDialogRef,
-    MatSnackBar
-} from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
-import { ElementOptions, StripeCardComponent, StripeService } from 'ngx-stripe';
+import { StripeCardComponent, StripeService } from 'ngx-stripe';
+import { StripeCardElementOptions} from '@stripe/stripe-js';
 
 import { ProfileService } from '@account/http/profile.service';
 
@@ -37,7 +35,7 @@ const twoSeconds = 2000;
 })
 export class PaymentComponent implements OnInit {
     @ViewChild(StripeCardComponent) card: StripeCardComponent;
-    public cardOptions: ElementOptions = {
+    public cardOptions: StripeCardElementOptions = {
         style: {
             base: {
                 iconColor: '#22a7f0',
@@ -63,7 +61,7 @@ export class PaymentComponent implements OnInit {
     }
 
     submitPaymentInfo() {
-        this.stripeService.createToken(this.card.getCard(), {}).subscribe(
+        this.stripeService.createToken(this.card.element, {}).subscribe(
             result => {
                 if (result.token) {
                     this.dialogRef.close(result.token.id);

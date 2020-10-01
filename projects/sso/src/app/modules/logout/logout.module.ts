@@ -19,7 +19,8 @@ and limitations under the License.
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatCardModule, MatProgressSpinnerModule } from '@angular/material';
+import { MatCardModule } from '@angular/material/card';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import { ApiService } from '../../core/http/api.service';
 import { LogoutComponent } from './logout.component';

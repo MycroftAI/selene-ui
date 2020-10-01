@@ -21,7 +21,6 @@ import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
 
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { InstallButtonComponent } from './install-button/install-button.component';
@@ -40,7 +39,6 @@ import { SkillSummaryComponent } from './skill-summary/skill-summary.component';
 @NgModule(
     {
         imports: [
-            AngularFontAwesomeModule,
             CommonModule,
             FlexLayoutModule,
             FontAwesomeModule,

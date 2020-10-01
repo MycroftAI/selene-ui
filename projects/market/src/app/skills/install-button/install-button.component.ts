@@ -26,7 +26,7 @@ import { InstallService } from '../install.service';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons/faPlusCircle';
 import { faTrash } from '@fortawesome/free-solid-svg-icons/faTrash';
 import { faLock } from '@fortawesome/free-solid-svg-icons/faLock';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 const fiveSeconds = 5000;
 const tenSeconds = 10000;

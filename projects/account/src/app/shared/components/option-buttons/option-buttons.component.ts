@@ -17,7 +17,7 @@ and limitations under the License.
 ***************************************************************************** */
 
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { MatButtonToggleChange } from '@angular/material';
+import { MatButtonToggleChange } from '@angular/material/button-toggle';
 
 import { OptionButtonsConfig } from '../../models/option-buttons-config.model';
 

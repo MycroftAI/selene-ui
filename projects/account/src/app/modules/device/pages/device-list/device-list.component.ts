@@ -17,7 +17,8 @@ and limitations under the License.
 ***************************************************************************** */
 
 import { Component, OnInit } from '@angular/core';
-import { MatDialog, MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { faPlus } from '@fortawesome/free-solid-svg-icons';

@@ -21,7 +21,7 @@ and limitations under the License.
  * for the skill and a Mycroft logo if the skill is authored by Mycroft AI.
  */
 import { Component, Input, OnInit} from '@angular/core';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { faComment } from '@fortawesome/free-solid-svg-icons';
 
