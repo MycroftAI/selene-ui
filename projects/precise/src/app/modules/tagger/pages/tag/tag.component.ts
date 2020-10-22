@@ -92,4 +92,8 @@ export class TagComponent implements OnInit {
             }
         );
     }
+
+    skipToNextEvent(): void {
+        this.isTagged = true;
+    }
 }
