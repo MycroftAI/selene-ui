@@ -33,6 +33,7 @@
     "angularx-social-login": "^3.2.2",
     "core-js": "^3.6.5",
     "font-awesome": "^4.7.0",
+    "ng-waveform": "^0.2.1",
     "ngx-cookie-service": "^10.0.1",
     "ngx-stripe": "^10.1.2",
     "rxjs": "~6.6.3",

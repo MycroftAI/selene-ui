@@ -1,0 +1,63 @@
+@import "~@angular/material/theming";
+@import "mycroft-colors";
+@import "components/buttons";
+
+mat-card {
+    height: 700px;
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+
+    h1 {
+        color: mat-color($mycroft-accent, A700);
+        font-size: 48px;
+        font-weight: bolder;
+        text-align: center;
+        padding: 16px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: -32px;
+    }
+
+    h2 {
+        color: mat-color($mycroft-primary);
+        font-size: 32px;
+        font-weight: bolder;
+        text-align: center;
+        padding: 16px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 60px;
+    }
+
+    mat-card-content {
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: -12px;
+
+        p {
+            color: mat-color($mycroft-primary);
+            font-style: italic;
+            margin-bottom: 32px;
+        }
+
+        button {
+            @include action-button;
+            background-color: mat-color($mycroft-accent, 100);
+            margin-top: 8px;
+        }
+
+    }
+
+    mat-card-actions {
+        padding: 16px;
+
+        a {
+            @include action-button-primary;
+            margin: 8px;
+        }
+    }
+}

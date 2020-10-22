@@ -112,8 +112,8 @@ export class GlobalnavComponent implements OnInit {
             children: [
                 {text: 'Source Code', url: 'https://github.com/MycroftAI', target: '_blank'},
                 {text: 'Translate', url: this.mycroftUrls.translate, target: '_blank'},
-                // TODO: uncomment these lines of code when the tools are converted to angular
-                // {text: 'Wake Word', url: this.mycroftUrls.account + '/#/precise', target: '_blank'},
+                {text: 'Wake Word', url: this.mycroftUrls.precise + '/tag/hey-mycroft', target: '_blank'},
+                // TODO: uncomment when the tool is converted to angular
                 // {text: 'Speech to Text', url: this.mycroftUrls.account + '/#/deepspeech', target: '_blank'},
                 {text: 'Text to Speech', url: this.mycroftUrls.mimic, target: '_blank'}
             ],

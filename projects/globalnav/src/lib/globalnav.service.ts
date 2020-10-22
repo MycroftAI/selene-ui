@@ -24,6 +24,7 @@ export interface WebApps {
     forum: string;
     marketplace: string;
     mimic: string;
+    precise: string;
     singleSignOn: string;
     translate: string;
     wordPress: string;
