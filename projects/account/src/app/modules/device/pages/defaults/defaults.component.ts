@@ -43,7 +43,7 @@ export class DefaultsComponent implements OnInit {
                 country: [this.defaults ? this.defaults.country.name : null],
                 region: [this.defaults ? this.defaults.region.name : null],
                 timezone: [this.defaults ? this.defaults.timezone.name : null],
-                wakeWord: [this.defaults ? this.defaults.wakeWord.displayName : null],
+                wakeWord: [this.defaults ? this.defaults.wakeWord.name : null],
                 voice: [this.defaults ? this.defaults.voice.displayName : null]
             }
         );

@@ -18,6 +18,6 @@ and limitations under the License.
 
 export interface WakeWord {
     id: string;
-    displayName: string;
-    settingName: string;
+    engine: string;
+    name: string;
 }
