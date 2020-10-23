@@ -894,8 +894,10 @@
                             "sourceMap": false,
                             "extractCss": true,
                             "namedChunks": false,
+                            "aot": true,
                             "extractLicenses": true,
                             "vendorChunk": false,
+                            "commonChunk": true,
                             "buildOptimizer": true,
                             "budgets": [
                                 {
@@ -909,8 +911,47 @@
                                     "maximumError": "10kb"
                                 }
                             ]
+                        },
+                        "development": {
+                            "budgets": [
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb"
+                                }
+                            ],
+                            "fileReplacements": [
+                                {
+                                    "replace": "projects/precise/src/environments/environment.ts",
+                                    "with": "projects/precise/src/environments/environment.dev.ts"
+                                }
+                            ]
+                        },
+                        "test": {
+                            "budgets": [
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb"
+                                }
+                            ],
+                            "fileReplacements": [
+                                {
+                                    "replace": "projects/precise/src/environments/environment.ts",
+                                    "with": "projects/precise/src/environments/environment.test.ts"
+                                }
+                            ],
+                            "optimization": true,
+                            "outputHashing": "all",
+                            "sourceMap": false,
+                            "extractCss": true,
+                            "namedChunks": true,
+                            "aot": true,
+                            "extractLicenses": true,
+                            "vendorChunk": true,
+                            "commonChunk": true,
+                            "buildOptimizer": true
                         }
                     }
+
                 },
                 "serve": {
                     "builder": "@angular-devkit/build-angular:dev-server",

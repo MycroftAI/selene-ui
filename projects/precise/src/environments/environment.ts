@@ -28,7 +28,7 @@ export const environment = {
         forum: 'https://community.mycroft.ai',
         marketplace: 'http://market.mycroft.test',
         mimic: 'http://mimic.mycroft.ai',
-        precise: 'https://precise.mycroft.test',
+        precise: 'http://precise.mycroft.test',
         singleSignOn: 'https://sso.mycroft.test',
         translate: 'https://translate-test.mycroft.ai',
         wordPress: 'https://test.mycroft.ai'

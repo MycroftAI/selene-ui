@@ -17,16 +17,16 @@ and limitations under the License.
 ***************************************************************************** */
 
 export const environment = {
-    production: true,
+    production: false,
     mycroftUrls: {
-        account: 'https://account.mycroft.ai',
+        account: 'https://home-test.mycroft.ai',
         chat: 'https://chat.mycroft.ai',
         forum: 'https://community.mycroft.ai',
-        marketplace: 'https://market.mycroft.ai',
+        marketplace: 'https://market.mycroft.test',
         mimic: 'https://mimic.mycroft.ai',
-        precise: 'http://precise.mycroft.ai',
-        singleSignOn: 'https://sso.mycroft.ai',
-        translate: 'https://translate.mycroft.ai',
-        wordPress: 'https://mycroft.ai'
+        precise: 'http://precise.mycroft.test',
+        singleSignOn: 'https://sso.mycroft.test',
+        translate: 'https://translate-test.mycroft.ai',
+        wordPress: 'https://test.mycroft.ai'
     }
 };
