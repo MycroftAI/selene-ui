@@ -69,6 +69,7 @@ export class TagComponent implements OnInit {
             tagId: this.tagEvent.tagId,
             tagValueId: tagValueId
         };
+        this.buttonsDisabled = true;
         this.taggerService.addTagEvent(fileTag).subscribe(
             (session) => {
                 this.sessionId = session.sessionId;
