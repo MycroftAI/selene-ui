@@ -95,6 +95,7 @@ export class TagComponent implements OnInit {
     }
 
     skipToNextEvent(): void {
+        this.buttonsDisabled = true;
         this.isTagged = true;
     }
 }
