@@ -22,7 +22,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 
 import { TagEvent } from '../../shared/models/tag-event.model';
-import { environment } from '@account/environments/environment';
+import { environment } from '../../../environments/environment';
 import { catchError } from 'rxjs/operators';
 
 export interface FileTag {
