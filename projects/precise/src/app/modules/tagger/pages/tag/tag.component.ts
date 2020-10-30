@@ -95,6 +95,7 @@ export class TagComponent implements OnInit {
     }
 
     skipToNextEvent(): void {
+        this.waveform.pause();
         this.buttonsDisabled = true;
         this.isTagged = true;
     }
