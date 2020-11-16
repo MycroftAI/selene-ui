@@ -3,7 +3,7 @@
 @import "components/buttons";
 
 mat-card {
-    height: 700px;
+    max-height: 1000px;
     max-width: 1000px;
     margin-left: auto;
     margin-right: auto;
@@ -55,7 +55,7 @@ mat-card {
     mat-card-actions {
         padding: 16px;
 
-        a {
+        button {
             @include action-button-primary;
             margin: 8px;
         }
