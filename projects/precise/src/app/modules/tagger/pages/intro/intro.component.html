@@ -1,0 +1,33 @@
+<mat-card>
+    <mat-card-title>Choose which wake word to improve</mat-card-title>
+    <mat-card-content>
+        <p class="mat-body">
+            Mycroft’s Precise Wake Word Spotter supports multiple different wake words that you
+            can choose to activate your Mycroft device. To ensure Precise wake words are trained
+            to work well with everyone, audio samples are subjected to classification process we
+            call "tagging".  The audio samples are provided by users who have agreed to share their
+            data with Mycroft for this purpose.
+        </p>
+        <p class="mat-body">
+            Wake word tagging enables the Mycroft community to contribute to improving Precise.
+            There are multiple characteristics of a sample that help the training process.
+            The audible presence of the wake word, the level of background noise and the perceived
+            gender of the speaker are examples of these characteristics.
+        </p>
+        <p class="mat-body">
+            To start tagging audio samples, select a wake word below.  A screen containing an audio
+            sample and a question will appear.  Play the audio and answer the question to the best
+            of your ability.  If you are unsure how to answer skip to the next sample.
+        </p>
+        <p class="mat-body">
+            Thank you for your contribution to Mycroft!
+        </p>
+    </mat-card-content>
+    <mat-card-actions align="center">
+        <a mat-button [routerLink]="['tag']">HEY MYCROFT</a>
+        <a mat-button [routerLink]="['tag']">CHRISTOPHER</a>
+        <a mat-button [routerLink]="['tag']">HEY JARVIS</a>
+        <a mat-button [routerLink]="['tag']">HEY EZRA</a>
+    </mat-card-actions>
+</mat-card>
+<router-outlet></router-outlet>

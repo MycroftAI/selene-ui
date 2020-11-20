@@ -22,9 +22,10 @@ export const environment = {
         account: 'https://home-test.mycroft.ai',
         chat: 'https://chat.mycroft.ai',
         forum: 'https://community.mycroft.ai',
-        singleSignOn: 'https://sso.mycroft.test',
         marketplace: 'https://market.mycroft.test',
         mimic: 'https://mimic.mycroft.ai',
+        precise: 'https://precise.mycroft.test',
+        singleSignOn: 'https://sso.mycroft.test',
         translate: 'https://translate-test.mycroft.ai',
         wordPress: 'https://test.mycroft.ai'
     },

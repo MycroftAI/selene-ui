@@ -116,7 +116,7 @@ export class AddComponent implements OnInit {
                 placement: [null],
                 region: [this.defaults ? this.defaults.region.name : null, Validators.required],
                 timezone: [this.defaults ? this.defaults.timezone.name : null, Validators.required],
-                wakeWord: [this.defaults ? this.defaults.wakeWord.displayName : null, Validators.required],
+                wakeWord: [this.defaults ? this.defaults.wakeWord.name : null, Validators.required],
                 voice: [this.defaults ? this.defaults.voice.displayName : null, Validators.required]
             }
         );

@@ -31,6 +31,7 @@ pipeline {
                 sh 'ng build --project globalnav'
                 sh 'ng build --project account --configuration test'
                 sh 'ng build --project market --configuration test'
+                sh 'ng build --project precise --configuration test'
                 sh 'ng build --project sso --configuration test'
             }
         }
@@ -55,10 +56,16 @@ pipeline {
                     sh 'scp -r dist/sso root@198.199.90.118:/var/www/'
 
                     // Deploy marketplace application and its associated libraries
-                    echo 'Deploying single sign on application...'
+                    echo 'Deploying marketplace application...'
                     sh 'scp -r dist/shared root@198.211.106.110:/var/www/'
                     sh 'scp -r dist/globalnav root@198.211.106.110:/var/www/'
                     sh 'scp -r dist/market root@198.211.106.110:/var/www/'
+
+                    // Deploy precise application and its associated libraries
+                    echo 'Deploying precise application...'
+                    sh 'scp -r dist/shared root@142.93.196.244:/var/www/'
+                    sh 'scp -r dist/globalnav root@142.93.196.244:/var/www/'
+                    sh 'scp -r dist/precise root@142.93.196.244:/var/www/'
                 }
             }
         }

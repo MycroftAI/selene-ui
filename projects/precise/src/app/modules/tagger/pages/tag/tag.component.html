@@ -1,0 +1,47 @@
+<mat-card [@newQuestion]="isTagged ? 'tagged' : 'untagged'" (@newQuestion.done)="onAnimationDone()">
+    <mat-card-title>
+        <h2>{{tagEvent.tagTitle}}</h2>
+        <h1>{{tagEvent.tagName}}?</h1>
+    </mat-card-title>
+    <mat-card-content>
+        <p class="mat-body">{{tagEvent.tagInstructions}}</p>
+        <ng-waveform
+            #waveform
+            class="waveform"
+            [src]="audioUrl"
+            height="100"
+            backgroundColor="#f5f5f5"
+            overlayBackgroundColor="rgba(91, 105, 132, 0.4)"
+            regionStartStickColor="#22a7f0"
+            regionEndStickColor="#22a7f0"
+            regionBackgroundColor="rgba(34, 168, 240, 0.4)"
+            waveColor="#2c3e50"
+            [useRegion]="false"
+        >
+        </ng-waveform>
+        <div fxFlexFill fxLayoutGap="8px" fxLayoutAlign="center">
+            <button mat-flat-button (click)="onPlayButtonClick()">
+                <fa-icon [icon]="playIcon"></fa-icon>
+            </button>
+            <button mat-flat-button (click)="onPauseButtonClick()">
+                <fa-icon [icon]="pauseIcon"></fa-icon>
+            </button>
+        </div>
+    </mat-card-content>
+    <mat-card-actions fxLayoutGap="12px">
+        <button
+            mat-flat-button
+            color="primary"
+            *ngFor="let tagValue of tagEvent.tagValues"
+            [disabled]="buttonsDisabled"
+            (click)="saveTagResult(tagValue.id)"
+        >
+            {{tagValue.display}}
+        </button>
+    </mat-card-actions>
+    <div style="margin-left: 32px; margin-right: 32px;">
+        <div fxLayout="row" fxLayoutAlign="end">
+            <button mat-flat-button color="primary" (click)="skipToNextEvent()">SKIP</button>
+        </div>
+    </div>
+</mat-card>

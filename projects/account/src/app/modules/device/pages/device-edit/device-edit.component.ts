@@ -71,7 +71,7 @@ export class DeviceEditComponent implements OnInit {
                 placement: [device.placement],
                 region: [device.region.name, Validators.required],
                 timezone: [device.timezone.name, Validators.required],
-                wakeWord: [device.wakeWord.displayName, Validators.required],
+                wakeWord: [device.wakeWord.name, Validators.required],
                 voice: [device.voice.displayName, Validators.required]
             }
         );

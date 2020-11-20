@@ -23,7 +23,8 @@ export const environment = {
         chat: 'https://chat.mycroft.ai',
         forum: 'https://community.mycroft.ai',
         marketplace: 'https://market.mycroft.test',
-        mimic: 'http://mimic.mycroft.ai',
+        mimic: 'https://mimic.mycroft.ai',
+        precise: 'https://precise.mycroft.test',
         singleSignOn: 'https://sso.mycroft.test',
         translate: 'https://translate-test.mycroft.ai',
         wordPress: 'https://test.mycroft.ai'
