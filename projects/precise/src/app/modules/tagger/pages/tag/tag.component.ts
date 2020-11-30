@@ -34,7 +34,6 @@ export class TagComponent implements OnInit {
     public isTagged = false;
     public playIcon = faPlay;
     public pauseIcon = faPause;
-    public sessionId: string;
     public tagEvent: TagEvent;
     public preciseUrl = environment.mycroftUrls.precise;
     public wakeWord: string;
@@ -66,15 +65,13 @@ export class TagComponent implements OnInit {
     saveTagResult(tagValueId: string): void {
         const fileTag: FileTag = {
             audioFileId: this.tagEvent.audioFileId,
+            sessionId: this.tagEvent.sessionId,
             tagId: this.tagEvent.tagId,
             tagValueId: tagValueId
         };
         this.buttonsDisabled = true;
         this.taggerService.addTagEvent(fileTag).subscribe(
-            (session) => {
-                this.sessionId = session.sessionId;
-                this.isTagged = true;
-            }
+            () => { this.isTagged = true; }
         );
     }
 
@@ -85,7 +82,7 @@ export class TagComponent implements OnInit {
     }
 
     getNextTaggableFile(): void {
-        this.taggerService.getTagEvent(this.wakeWord, this.sessionId).subscribe(
+        this.taggerService.getTagEvent(this.wakeWord, this.tagEvent.sessionId).subscribe(
             (tagEvent: TagEvent) => {
                 this.isTagged = false;
                 this.tagEvent = tagEvent;

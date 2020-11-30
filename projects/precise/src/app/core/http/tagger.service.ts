@@ -27,6 +27,7 @@ import { catchError } from 'rxjs/operators';
 
 export interface FileTag {
     audioFileId: string;
+    sessionId: string;
     tagId: string;
     tagValueId: string;
 }
