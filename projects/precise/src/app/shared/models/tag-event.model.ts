@@ -25,6 +25,7 @@ export interface TagValue {
 export interface TagEvent {
     audioFileId: string;
     audioFileName: string;
+    sessionId: string;
     tagId: string;
     tagName: string;
     tagTitle: string;
