@@ -75,11 +75,11 @@ import { environment } from '../../environments/environment';
         providers: [
           {
             id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(environment.facebookClientId),
+            provider: new GoogleLoginProvider(environment.googleClientId),
           },
           {
             id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider(environment.googleClientId),
+            provider: new FacebookLoginProvider(environment.facebookClientId),
           },
         ],
       } as SocialAuthServiceConfig,
