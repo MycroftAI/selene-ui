@@ -36,7 +36,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 export class OptionBtnComponent implements ControlValueAccessor {
     @Input() config: OptionButtonsConfig;
     @Input() disabled = false;
-    @ViewChild(MatButtonToggleGroup) options: MatButtonToggleGroup;
+    @ViewChild(MatButtonToggleGroup, { static: true }) private options: MatButtonToggleGroup;
     public onChange;
     public onTouched;
 
