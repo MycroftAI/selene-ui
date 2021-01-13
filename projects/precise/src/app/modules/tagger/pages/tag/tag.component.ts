@@ -30,7 +30,8 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 export class TagComponent implements OnInit {
     @ViewChild('waveform', { static: false }) waveform: NgWaveformComponent;
     public audioUrl: string;
-    public buttonsDisabled: boolean;
+    public tagButtonsDisabled: boolean;
+    public playbackButtonsDisabled: boolean;
     public isTagged = false;
     public playIcon = faPlay;
     public pauseIcon = faPause;
@@ -41,11 +42,13 @@ export class TagComponent implements OnInit {
     constructor(private route: ActivatedRoute, private taggerService: TaggerService) { }
 
     ngOnInit(): void {
-        this.buttonsDisabled = true;
+        this.tagButtonsDisabled = true;
+        this.playbackButtonsDisabled = true;
         this.route.data.subscribe(
             (data: {tagEvent: TagEvent}) => {
                 this.tagEvent = data.tagEvent;
                 this.audioUrl = this.preciseUrl + '/api/audio/' + this.tagEvent.audioFileName;
+                this.playbackButtonsDisabled = false;
             }
         );
         this.route.paramMap.subscribe(
@@ -54,7 +57,7 @@ export class TagComponent implements OnInit {
     }
 
     onPlayButtonClick(): void {
-        this.buttonsDisabled = false;
+        this.tagButtonsDisabled = false;
         this.waveform.play();
     }
 
@@ -69,7 +72,9 @@ export class TagComponent implements OnInit {
             tagId: this.tagEvent.tagId,
             tagValueId: tagValueId
         };
-        this.buttonsDisabled = true;
+        this.waveform.pause();
+        this.tagButtonsDisabled = true;
+        this.playbackButtonsDisabled = true;
         this.taggerService.addTagEvent(fileTag).subscribe(
             () => { this.isTagged = true; }
         );
@@ -87,13 +92,14 @@ export class TagComponent implements OnInit {
                 this.isTagged = false;
                 this.tagEvent = tagEvent;
                 this.audioUrl = this.preciseUrl + '/api/audio/' + this.tagEvent.audioFileName;
+                this.playbackButtonsDisabled = false;
             }
         );
     }
 
     skipToNextEvent(): void {
         this.waveform.pause();
-        this.buttonsDisabled = true;
+        this.tagButtonsDisabled = true;
         this.isTagged = true;
     }
 }

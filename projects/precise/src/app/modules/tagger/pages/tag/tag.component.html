@@ -20,10 +20,10 @@
         >
         </ng-waveform>
         <div fxFlexFill fxLayoutGap="8px" fxLayoutAlign="center">
-            <button mat-flat-button (click)="onPlayButtonClick()">
+            <button mat-flat-button (click)="onPlayButtonClick()" [disabled]="playbackButtonsDisabled">
                 <fa-icon [icon]="playIcon"></fa-icon>
             </button>
-            <button mat-flat-button (click)="onPauseButtonClick()">
+            <button mat-flat-button (click)="onPauseButtonClick()" [disabled]="playbackButtonsDisabled">
                 <fa-icon [icon]="pauseIcon"></fa-icon>
             </button>
         </div>
@@ -33,7 +33,7 @@
             mat-flat-button
             color="primary"
             *ngFor="let tagValue of tagEvent.tagValues"
-            [disabled]="buttonsDisabled"
+            [disabled]="tagButtonsDisabled"
             (click)="saveTagResult(tagValue.id)"
         >
             {{tagValue.display}}
