@@ -95,7 +95,6 @@ export class DeviceListComponent implements OnInit {
 
     getDeviceIcon(device: Device) {
         const knownPlatform = this.platforms[device.platform];
-        // TODO: get unknown product icon from design team.
-        return knownPlatform ? knownPlatform.icon : '../assets/mark-1-icon.svg';
+        return knownPlatform ? knownPlatform.icon : '../assets/generic-device-icon-white.svg';
     }
 }
