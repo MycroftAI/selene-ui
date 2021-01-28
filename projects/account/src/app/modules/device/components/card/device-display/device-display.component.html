@@ -1,16 +1,11 @@
 <mat-tab-group>
-    <mat-tab label="Configuration">
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <label matTooltip="Information">
+                <fa-icon [icon]=infoIcon></fa-icon>
+            </label>
+        </ng-template>
         <mat-card-content fxLayout="row wrap">
-            <account-display-field
-                    [label]="'Voice'"
-                    [value]="device.voice.displayName"
-            >
-            </account-display-field>
-            <account-display-field
-                    [label]="'Wake Word'"
-                    [value]="device.wakeWord.name"
-            >
-            </account-display-field>
             <account-display-field
                     [label]="'Platform'"
                     [value]="getPlatform(device)"
@@ -26,10 +21,55 @@
                     [value]="device.coreVersion"
             >
             </account-display-field>
+            <account-display-field
+                    [label]="'IP Address'"
+                    [value]="'0.0.0.0'"
+            >
+            </account-display-field>
         </mat-card-content>
     </mat-tab>
 
-    <mat-tab label="Location">
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <label matTooltip="Configuration">
+                <fa-icon [icon]=configIcon></fa-icon>
+            </label>
+        </ng-template>
+        <mat-card-content fxLayout="row wrap">
+            <account-display-field
+                    [label]="'Voice'"
+                    [value]="device.voice.displayName"
+            >
+            </account-display-field>
+            <account-display-field
+                    [label]="'Wake Word'"
+                    [value]="device.wakeWord.name"
+            >
+            </account-display-field>
+            <account-display-field
+                    [label]="'Automatic Updates'"
+                    [value]="'disabled'"
+            >
+            </account-display-field>
+            <account-display-field
+                    [label]="'Channel'"
+                    [value]="'stable'"
+            >
+            </account-display-field>
+            <account-display-field
+                    [label]="'SSH'"
+                    [value]="'enabled'"
+            >
+            </account-display-field>
+        </mat-card-content>
+    </mat-tab>
+
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <label matTooltip="Location">
+                <fa-icon [icon]=locationIcon></fa-icon>
+            </label>
+        </ng-template>
         <mat-card-content fxLayout="row wrap">
             <account-display-field
                     [label]="'Country'"
