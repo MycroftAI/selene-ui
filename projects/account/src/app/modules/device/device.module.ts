@@ -27,6 +27,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatStepperModule } from '@angular/material/stepper';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -52,6 +53,7 @@ import { PreferencesComponent } from './pages/preferences/preferences.component'
 import { RegionInputComponent } from './components/input/region-input/region-input.component';
 import { RemoveDeviceDialogComponent } from './components/modal/remove-device-dialog/remove-device-dialog.component';
 import { SharedModule } from '../../shared/shared.module';
+import { SshCardComponent } from './components/card/ssh-card/ssh-card.component';
 import { TimezoneInputComponent } from './components/input/timezone-input/timezone-input.component';
 import { PreferencesCardComponent } from './components/card/preferences-card/preferences-card.component';
 import { VoiceCardComponent } from './components/card/voice-card/voice-card.component';
@@ -75,6 +77,7 @@ import { WakeWordCardComponent } from './components/card/wake-word-card/wake-wor
         PreferencesComponent,
         RegionInputComponent,
         RemoveDeviceDialogComponent,
+        SshCardComponent,
         TimezoneInputComponent,
         VoiceCardComponent,
         WakeWordCardComponent,
@@ -96,6 +99,7 @@ import { WakeWordCardComponent } from './components/card/wake-word-card/wake-wor
         MatExpansionModule,
         MatFormFieldModule,
         MatInputModule,
+        MatSlideToggleModule,
         MatStepperModule,
         MatTabsModule,
         MatToolbarModule,
