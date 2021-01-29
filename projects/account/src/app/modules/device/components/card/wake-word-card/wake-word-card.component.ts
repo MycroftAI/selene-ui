@@ -38,6 +38,6 @@ export class WakeWordCardComponent implements OnInit {
     }
 
     ngOnInit() {
-  }
+    }
 
 }
