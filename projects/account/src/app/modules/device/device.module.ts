@@ -58,6 +58,8 @@ import { TimezoneInputComponent } from './components/input/timezone-input/timezo
 import { PreferencesCardComponent } from './components/card/preferences-card/preferences-card.component';
 import { VoiceCardComponent } from './components/card/voice-card/voice-card.component';
 import { WakeWordCardComponent } from './components/card/wake-word-card/wake-word-card.component';
+import { SoftwareUpdateCardComponent } from './components/card/software-update-card/software-update-card.component';
+import { SoftwareReleaseCardComponent } from './components/card/software-release-card/software-release-card.component';
 
 @NgModule({
     declarations: [
@@ -81,6 +83,8 @@ import { WakeWordCardComponent } from './components/card/wake-word-card/wake-wor
         TimezoneInputComponent,
         VoiceCardComponent,
         WakeWordCardComponent,
+        SoftwareUpdateCardComponent,
+        SoftwareReleaseCardComponent,
     ],
     entryComponents: [
         DeviceComponent,
