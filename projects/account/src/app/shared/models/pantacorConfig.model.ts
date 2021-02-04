@@ -21,5 +21,5 @@ export interface PantacorConfig {
     ipAddress: string;
     pantacorId: string;
     sshPublicKey: string;
-    release: string;
+    releaseChannel: string;
 }

@@ -21,9 +21,9 @@
                     [value]="device.coreVersion"
             >
             </account-display-field>
-            <account-display-field
+            <account-display-field *ngIf="device.pantacorConfig.pantacorId"
                     [label]="'IP Address'"
-                    [value]="'0.0.0.0'"
+                    [value]="device.pantacorConfig.ipAddress"
             >
             </account-display-field>
         </mat-card-content>
@@ -46,17 +46,17 @@
                     [value]="device.wakeWord.name"
             >
             </account-display-field>
-            <account-display-field
+            <account-display-field *ngIf="device.pantacorConfig.pantacorId"
                     [label]="'Automatic Updates'"
                     [value]="device.pantacorConfig.autoUpdate ? 'enabled' : 'disabled'"
             >
             </account-display-field>
-            <account-display-field
+            <account-display-field *ngIf="device.pantacorConfig.pantacorId"
                     [label]="'Channel'"
-                    [value]="device.pantacorConfig.release"
+                    [value]="device.pantacorConfig.releaseChannel"
             >
             </account-display-field>
-            <account-display-field
+            <account-display-field *ngIf="device.pantacorConfig.pantacorId"
                     [label]="'SSH'"
                     [value]="device.pantacorConfig.sshPublicKey ? 'enabled' : 'disabled'"
             >
