@@ -17,8 +17,9 @@ and limitations under the License.
 ***************************************************************************** */
 
 export interface PantacorConfig {
+    autoUpdate: string;
+    ipAddress: string;
     pantacorId: string;
     sshPublicKey: string;
-    autoUpdate: string;
     release: string;
 }
