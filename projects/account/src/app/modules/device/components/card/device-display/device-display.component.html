@@ -48,17 +48,17 @@
             </account-display-field>
             <account-display-field
                     [label]="'Automatic Updates'"
-                    [value]="'disabled'"
+                    [value]="device.pantacorConfig.autoUpdate ? 'enabled' : 'disabled'"
             >
             </account-display-field>
             <account-display-field
                     [label]="'Channel'"
-                    [value]="'stable'"
+                    [value]="device.pantacorConfig.release"
             >
             </account-display-field>
             <account-display-field
                     [label]="'SSH'"
-                    [value]="'enabled'"
+                    [value]="device.pantacorConfig.sshPublicKey ? 'enabled' : 'disabled'"
             >
             </account-display-field>
         </mat-card-content>
