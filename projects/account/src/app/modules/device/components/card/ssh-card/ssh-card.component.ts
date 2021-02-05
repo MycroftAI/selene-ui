@@ -28,14 +28,16 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 export class SshCardComponent implements OnInit {
     @Input() sshForm: FormGroup;
     public sshEnabled = false;
-    public sshKeyPlaceholder: string;
+    public sshKeyHint: string;
     public hideSshInput = true;
 
     constructor() {
-        this.sshKeyPlaceholder = 'This device requires a public SSH key to login';
+        this.sshKeyHint = 'Paste the public SSH key of the computer used to to login to this device';
     }
     ngOnInit() {
-  }
+        this.sshEnabled = !!this.sshForm.controls.sshPublicKey.value;
+        this.hideSshInput = !this.sshEnabled;
+    }
 
     onSshEnabledChange(changeEvent: MatSlideToggleChange) {
         this.sshEnabled = changeEvent.checked;

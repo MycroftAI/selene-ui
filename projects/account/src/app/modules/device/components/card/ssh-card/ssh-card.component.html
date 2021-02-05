@@ -7,8 +7,8 @@
         <p [hidden]="hideSshInput">
             <mat-form-field appearance="outline">
                 <mat-label>Public SSH Key</mat-label>
-                <textarea matInput required></textarea>
-                <mat-hint>{{sshKeyPlaceholder}}</mat-hint>
+                <textarea matInput required formControlName="sshPublicKey"></textarea>
+                <mat-hint>{{sshKeyHint}}</mat-hint>
             </mat-form-field>
         </p>
     </mat-card-content>
