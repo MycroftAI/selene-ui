@@ -13,7 +13,7 @@ export class SoftwareReleaseCardComponent implements OnInit {
 
     constructor() {
         this.releaseChannelConfig = {
-            options: ['Stable', 'Unstable'],
+            options: ['Stable', 'Latest'],
             buttonWidth: '130px'
         };
     }
