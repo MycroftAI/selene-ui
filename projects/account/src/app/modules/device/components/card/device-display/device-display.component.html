@@ -48,7 +48,7 @@
             </account-display-field>
             <account-display-field *ngIf="device.pantacorConfig.pantacorId"
                     [label]="'Automatic Updates'"
-                    [value]="device.pantacorConfig.autoUpdate ? 'enabled' : 'disabled'"
+                    [value]="device.pantacorConfig.autoUpdate ? 'Enabled' : 'Disabled'"
             >
             </account-display-field>
             <account-display-field *ngIf="device.pantacorConfig.pantacorId"
@@ -58,7 +58,7 @@
             </account-display-field>
             <account-display-field *ngIf="device.pantacorConfig.pantacorId"
                     [label]="'SSH'"
-                    [value]="device.pantacorConfig.sshPublicKey ? 'enabled' : 'disabled'"
+                    [value]="device.pantacorConfig.sshPublicKey ? 'Enabled' : 'Disabled'"
             >
             </account-display-field>
         </mat-card-content>
