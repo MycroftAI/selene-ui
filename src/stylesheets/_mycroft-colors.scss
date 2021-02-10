@@ -1,17 +1,17 @@
 // *****************************************************************************
 // SPDX-License-Identifier: Apache-2.0
-// 
-// 
+//
+//
 // Copyright (c) Mycroft AI Inc. All rights reserved.
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 // this file except in compliance with the License. You may obtain a copy of the
 // License at http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
 // KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
 // WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
 // MERCHANTABLITY OR NON-INFRINGEMENT.
-// 
+//
 // See the Apache Version 2.0 License for specific language governing permissions
 // and limitations under the License.
 // *****************************************************************************
@@ -119,20 +119,21 @@ $mycroft-warn-palette: (
 );
 
 $mycroft-light-theme-background: (
-  status-bar: map_get($mat-grey, 300),
-  app-bar:    map_get($mat-grey, 100),
-  background: #f1f3f4,
-  hover:      rgba(black, 0.04),
-  card:       white,
-  dialog:     white,
-  disabled-button: $black-12-opacity,
-  raised-button: white,
-  focused-button: $black-6-opacity,
-  selected-button: map_get($mat-grey, 300),
-  selected-disabled-button: map_get($mat-grey, 400),
-  disabled-button-toggle: map_get($mat-grey, 200),
-  unselected-chip: map_get($mat-grey, 700),
-  disabled-list-option: black,
+    status-bar: map_get($mat-grey, 300),
+    app-bar:    map_get($mat-grey, 100),
+    background: #f1f3f4,
+    hover:      rgba(black, 0.04),
+    card:       white,
+    dialog:     white,
+    disabled-button: $black-12-opacity,
+    raised-button: white,
+    focused-button: $black-6-opacity,
+    selected-button: map_get($mat-grey, 300),
+    selected-disabled-button: map_get($mat-grey, 400),
+    disabled-button-toggle: map_get($mat-grey, 200),
+    unselected-chip: map_get($mat-grey, 700),
+    tooltip: map_get($mat-grey, 700),
+    disabled-list-option: black,
 );
 
 $mycroft-light-theme-foreground: (

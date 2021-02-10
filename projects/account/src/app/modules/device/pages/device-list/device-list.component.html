@@ -49,6 +49,9 @@
             <button mat-flat-button color="warn" (click)="onRemove(device, i)">
                 REMOVE
             </button>
+            <button mat-flat-button color="accent" [disabled]="true" (click)="onRemove(device, i)">
+                UPDATE
+            </button>
         </mat-card-actions>
     </mat-card>
 </div>

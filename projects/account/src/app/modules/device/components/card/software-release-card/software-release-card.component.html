@@ -1,0 +1,10 @@
+<mat-card class="mat-elevation-z0" [formGroup]="softwareReleaseForm">
+    <mat-card-content>
+        <h2 class="mat-h2">Software Release</h2>
+        <account-option-btn
+                [config]="releaseChannelConfig"
+                formControlName="releaseChannel"
+        >
+        </account-option-btn>
+    </mat-card-content>
+</mat-card>

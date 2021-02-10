@@ -1,16 +1,11 @@
 <mat-tab-group>
-    <mat-tab label="Configuration">
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <label matTooltip="Information">
+                <fa-icon [icon]=infoIcon></fa-icon>
+            </label>
+        </ng-template>
         <mat-card-content fxLayout="row wrap">
-            <account-display-field
-                    [label]="'Voice'"
-                    [value]="device.voice.displayName"
-            >
-            </account-display-field>
-            <account-display-field
-                    [label]="'Wake Word'"
-                    [value]="device.wakeWord.name"
-            >
-            </account-display-field>
             <account-display-field
                     [label]="'Platform'"
                     [value]="getPlatform(device)"
@@ -26,10 +21,55 @@
                     [value]="device.coreVersion"
             >
             </account-display-field>
+            <account-display-field *ngIf="device.pantacorConfig.pantacorId"
+                    [label]="'IP Address'"
+                    [value]="device.pantacorConfig.ipAddress"
+            >
+            </account-display-field>
         </mat-card-content>
     </mat-tab>
 
-    <mat-tab label="Location">
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <label matTooltip="Configuration">
+                <fa-icon [icon]=configIcon></fa-icon>
+            </label>
+        </ng-template>
+        <mat-card-content fxLayout="row wrap">
+            <account-display-field
+                    [label]="'Voice'"
+                    [value]="device.voice.displayName"
+            >
+            </account-display-field>
+            <account-display-field
+                    [label]="'Wake Word'"
+                    [value]="device.wakeWord.name"
+            >
+            </account-display-field>
+            <account-display-field *ngIf="device.pantacorConfig.pantacorId"
+                    [label]="'Automatic Updates'"
+                    [value]="device.pantacorConfig.autoUpdate ? 'Enabled' : 'Disabled'"
+            >
+            </account-display-field>
+            <account-display-field *ngIf="device.pantacorConfig.pantacorId"
+                    [label]="'Channel'"
+                    [value]="device.pantacorConfig.releaseChannel"
+            >
+            </account-display-field>
+            <account-display-field *ngIf="device.pantacorConfig.pantacorId"
+                    [label]="'SSH'"
+                    [value]="device.pantacorConfig.sshPublicKey ? 'Enabled' : 'Disabled'"
+            >
+            </account-display-field>
+        </mat-card-content>
+    </mat-tab>
+
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <label matTooltip="Location">
+                <fa-icon [icon]=locationIcon></fa-icon>
+            </label>
+        </ng-template>
         <mat-card-content fxLayout="row wrap">
             <account-display-field
                     [label]="'Country'"

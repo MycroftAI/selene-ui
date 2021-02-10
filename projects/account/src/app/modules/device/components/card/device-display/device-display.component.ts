@@ -17,6 +17,9 @@ and limitations under the License.
 ***************************************************************************** */
 
 import { Component, Input, OnInit } from '@angular/core';
+
+import { faInfoCircle, faCog, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
+
 import { Device } from '@account/models/device.model';
 
 @Component({
@@ -32,6 +35,9 @@ export class DeviceDisplayComponent implements OnInit {
         'picroft': {icon: '../assets/picroft-icon.svg', displayName: 'Picroft'},
         'kde': {icon: '../assets/kde-icon.svg', displayName: 'KDE'}
     };
+    public infoIcon = faInfoCircle;
+    public configIcon = faCog;
+    public locationIcon = faMapMarkerAlt;
 
     constructor() { }
 

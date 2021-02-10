@@ -18,26 +18,29 @@ and limitations under the License.
 
 import { Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { OptionButtonsConfig } from '@account/models/option-buttons-config.model';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 @Component({
-    selector: 'account-wake-word-card',
-    templateUrl: './wake-word-card.component.html',
-    styleUrls: ['./wake-word-card.component.scss']
+    selector: 'account-ssh-card',
+    templateUrl: './ssh-card.component.html',
+    styleUrls: ['./ssh-card.component.scss']
 })
-export class WakeWordCardComponent implements OnInit {
-    @Input() wakeWordForm: FormGroup;
-    public wakeWordOptionsConfig: OptionButtonsConfig;
-
+export class SshCardComponent implements OnInit {
+    @Input() sshForm: FormGroup;
+    public sshEnabled = false;
+    public sshKeyHint: string;
+    public hideSshInput = true;
 
     constructor() {
-        this.wakeWordOptionsConfig = {
-            options: ['Hey Mycroft', 'Christopher', 'Hey Ezra', 'Hey Jarvis'],
-            buttonWidth: '130px'
-        };
+        this.sshKeyHint = 'Paste the public SSH key of the computer used to to login to this device';
     }
-
     ngOnInit() {
+        this.sshEnabled = !!this.sshForm.controls.sshPublicKey.value;
+        this.hideSshInput = !this.sshEnabled;
     }
 
+    onSshEnabledChange(changeEvent: MatSlideToggleChange) {
+        this.sshEnabled = changeEvent.checked;
+        this.hideSshInput = !this.sshEnabled;
+    }
 }

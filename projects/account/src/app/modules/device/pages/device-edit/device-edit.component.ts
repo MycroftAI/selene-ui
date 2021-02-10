@@ -72,7 +72,10 @@ export class DeviceEditComponent implements OnInit {
                 region: [device.region.name, Validators.required],
                 timezone: [device.timezone.name, Validators.required],
                 wakeWord: [device.wakeWord.name, Validators.required],
-                voice: [device.voice.displayName, Validators.required]
+                voice: [device.voice.displayName, Validators.required],
+                autoUpdate: [device.pantacorConfig.autoUpdate],
+                releaseChannel: [device.pantacorConfig.releaseChannel],
+                sshPublicKey: [device.pantacorConfig.sshPublicKey]
             }
         );
     }

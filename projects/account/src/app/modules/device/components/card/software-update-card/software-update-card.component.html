@@ -1,0 +1,14 @@
+<mat-card class="mat-elevation-z0" [formGroup]="softwareUpdateForm">
+    <mat-card-content>
+        <h2 class="mat-h2">Automatic Updates</h2>
+        <mat-slide-toggle
+                color="primary"
+                [checked]="automaticUpdate"
+                (change)="onAutoUpdateChange($event)"
+                formControlName="autoUpdate"
+        >
+            Enable automatic install of software updates when available
+        </mat-slide-toggle>
+    </mat-card-content>
+</mat-card>
+
