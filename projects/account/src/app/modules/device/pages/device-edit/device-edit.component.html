@@ -2,6 +2,7 @@
         *ngIf="device$ | async"
         [deviceForm]="deviceForm"
         [addDevice]="false"
+        [pantacorId]="pantacorId"
         (saveChanges)="onExit($event)"
 >
 </account-device-edit-card>
