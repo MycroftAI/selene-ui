@@ -31,6 +31,7 @@ const deviceUrl = '/api/devices';
 const geographyUrl = 'api/geographies';
 const pairingCodeUrl = '/api/pairing-code';
 const preferencesUrl = '/api/preferences';
+const softwareUpdateUrl = '/api/software-update';
 const voicesUrl = '/api/voices';
 const wakeWordUrl = '/api/wake-words';
 
@@ -99,5 +100,9 @@ export class DeviceService {
 
     getWakeWords() {
         return this.http.get<DeviceAttribute[]>(wakeWordUrl);
+    }
+
+    applySoftwareUpdate(pantacorUpdateId: string) {
+        return this.http.patch<any>(softwareUpdateUrl, {deploymentId: pantacorUpdateId});
     }
 }

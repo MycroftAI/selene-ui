@@ -11,13 +11,18 @@
                     [value]="getPlatform(device)"
             >
             </account-display-field>
-            <account-display-field
+            <account-display-field *ngIf="device.platform === 'mycroft_mark_1'"
                     [label]="'Enclosure Version'"
                     [value]="device.enclosureVersion"
             >
             </account-display-field>
+            <account-display-field *ngIf="device.platform === 'mycroft_mark_2'"
+                    [label]="'Hardware Version'"
+                    [value]="device.enclosureVersion"
+            >
+            </account-display-field>
             <account-display-field
-                    [label]="'Core Version'"
+                    [label]="'Mycroft Version'"
                     [value]="device.coreVersion"
             >
             </account-display-field>
@@ -26,6 +31,14 @@
                     [value]="device.pantacorConfig.ipAddress"
             >
             </account-display-field>
+            <button
+                mat-flat-button
+                *ngIf="!device.pantacorConfig.autoUpdate" (click)="applySoftwareUpdate()"
+                fxFlex
+                [disabled]="softwareUpdateDisabled"
+            >
+                {{softwareUpdateText}}
+            </button>
         </mat-card-content>
     </mat-tab>
 

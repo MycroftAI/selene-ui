@@ -17,10 +17,13 @@ and limitations under the License.
 ***************************************************************************** */
 
 import { Component, Input, OnInit } from '@angular/core';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 import { faInfoCircle, faCog, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
 import { Device } from '@account/models/device.model';
+import { DeviceService } from '@account/http/device.service';
+import { SnackbarComponent } from 'shared';
 
 @Component({
     selector: 'account-device-info',
@@ -38,15 +41,52 @@ export class DeviceDisplayComponent implements OnInit {
     public infoIcon = faInfoCircle;
     public configIcon = faCog;
     public locationIcon = faMapMarkerAlt;
+    public softwareUpdateText: string;
+    public softwareUpdateDisabled: boolean;
 
-    constructor() { }
+    constructor(
+        private deviceService: DeviceService,
+        private snackbar: MatSnackBar
+    ) { }
 
     ngOnInit() {
+        if (!this.device.pantacorUpdateId) {
+            this.softwareUpdateText = 'NO UPDATES AVAILABLE';
+            this.softwareUpdateDisabled = true;
+        } else {
+            this.softwareUpdateText = 'APPLY SOFTWARE UPDATE';
+            this.softwareUpdateDisabled = false;
+        }
     }
 
     getPlatform(device: Device) {
         const knownPlatform = this.platforms[device.platform];
         return knownPlatform ? knownPlatform.displayName : device.platform;
+    }
+
+    openErrorSnackbar() {
+        const config = new MatSnackBarConfig();
+        config.data = {type: 'error', message: 'An error occurred, device will not be updated.'};
+        this.snackbar.openFromComponent(SnackbarComponent, config);
+    }
+
+    openSuccessSnackbar() {
+        const config = new MatSnackBarConfig();
+        config.duration = 3000;
+        config.data = {type: 'success', message: 'The update will be applied to your device momentarily'};
+        this.snackbar.openFromComponent(SnackbarComponent, config);
+    }
+
+    applySoftwareUpdate() {
+        this.deviceService.applySoftwareUpdate(this.device.pantacorUpdateId).subscribe(
+            () => {
+                this.openSuccessSnackbar();
+                this.softwareUpdateText = 'NO UPDATES AVAILABLE';
+                this.softwareUpdateDisabled = true;
+
+            },
+            () => { this.openErrorSnackbar(); }
+        );
     }
 
 }
