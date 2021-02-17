@@ -33,7 +33,7 @@
             </account-display-field>
             <button
                 mat-flat-button
-                *ngIf="!device.pantacorConfig.autoUpdate" (click)="applySoftwareUpdate()"
+                *ngIf="device.pantacorConfig.autoUpdate === false" (click)="applySoftwareUpdate()"
                 fxFlex
                 [disabled]="softwareUpdateDisabled"
             >
