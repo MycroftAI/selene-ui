@@ -38,6 +38,7 @@ export class DeviceEditComponent implements OnInit {
     public deviceForm: FormGroup;
     private deviceId: string;
     public device$ = new Observable<Device>();
+    public pantacorId: string;
     private snackbarConfig = new MatSnackBarConfig();
 
     constructor(
@@ -57,6 +58,7 @@ export class DeviceEditComponent implements OnInit {
             switchMap((params: ParamMap) => this.deviceService.getDevice(params.get('deviceId'))),
             tap((device) => {
                     this.deviceId = device.id;
+                    this.pantacorId = device.pantacorConfig.pantacorId;
                     this.buildDeviceForm(device);
                 })
         );

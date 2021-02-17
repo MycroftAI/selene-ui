@@ -40,4 +40,5 @@ export interface Device {
     voice: Voice;
     wakeWord: WakeWord;
     pantacorConfig: PantacorConfig;
+    pantacorUpdateId: string;
 }

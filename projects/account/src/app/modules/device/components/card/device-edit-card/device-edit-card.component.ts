@@ -27,6 +27,7 @@ import { FormGroup } from '@angular/forms';
 export class DeviceEditCardComponent implements OnInit {
     @Input() deviceForm: FormGroup;
     @Input() addDevice = false;
+    @Input() pantacorId: string;
     @Output() saveChanges = new EventEmitter<boolean>();
 
     constructor() { }

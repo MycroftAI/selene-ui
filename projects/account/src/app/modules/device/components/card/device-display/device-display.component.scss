@@ -1,6 +1,14 @@
+@import "~@angular/material/theming";
+@import 'mycroft-colors';
+@import 'components/buttons';
+
 mat-tab-group {
     mat-card-content {
         margin-top: 32px;
         height: 180px;
+        button {
+            @include action-button-primary;
+            background-color: mat-color($mycroft-accent, 'A100');
+        }
     }
 }

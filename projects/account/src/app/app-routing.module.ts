@@ -28,6 +28,7 @@ const routes: Routes = [
     { path: 'dashboard', component: DashboardComponent, resolve: {account: AccountResolverService} },
     { path: 'maintenance', component: MaintenancePageComponent},
     { path: '', redirectTo: '/dashboard', pathMatch: 'full'},
+    { path: 'pair', redirectTo: '/devices/add', pathMatch: 'full'},
     { path: '**', component: PageNotFoundComponent }
 ];
 
