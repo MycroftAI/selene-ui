@@ -41,7 +41,19 @@ export function pairingCodeValidator(deviceService: DeviceService): AsyncValidat
     return (control: AbstractControl): Observable<ValidationErrors | null> => {
         return deviceService.validatePairingCode(control.value).pipe(
             map((response) => response.isValid ? null : { unknownPairingCode: true }),
-            catchError(() =>  null),
+            catchError(() => null),
+        );
+    };
+}
+
+
+export function deviceNameValidator(deviceService: DeviceService): AsyncValidatorFn {
+    return (control: AbstractControl): Observable<ValidationErrors | null> => {
+        return deviceService.getDevices().pipe(
+            map((response) =>
+                response.filter(device => device.name === control.value).length > 0 ? {duplicateDeviceName: true} : null
+            ),
+            catchError(() => null),
         );
     };
 }
@@ -102,7 +114,7 @@ export class AddComponent implements OnInit {
         this.deviceForm = this.formBuilder.group(
             {
                 city: [this.defaults ? this.defaults.city.name : null, Validators.required],
-                name: [null, Validators.required],
+                name: [null, [ Validators.required ], [ deviceNameValidator(this.deviceService) ]],
                 country: [this.defaults ? this.defaults.country.name : null, Validators.required],
                 pairingCode: [
                     null,
