@@ -32,6 +32,7 @@ const geographyUrl = 'api/geographies';
 const pairingCodeUrl = '/api/pairing-code';
 const preferencesUrl = '/api/preferences';
 const softwareUpdateUrl = '/api/software-update';
+const sshKeyUrl = '/api/ssh-key';
 const voicesUrl = '/api/voices';
 const wakeWordUrl = '/api/wake-words';
 
@@ -88,6 +89,10 @@ export class DeviceService {
 
     validatePairingCode(pairingCode: string): Observable<any> {
         return this.http.get<Observable<any>>(pairingCodeUrl + '/' + pairingCode);
+    }
+
+    validateSshKey(sshKey: string): Observable<any> {
+        return this.http.get<Observable<any>>(sshKeyUrl + '/' + sshKey);
     }
 
     getGeographies() {

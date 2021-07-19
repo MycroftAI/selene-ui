@@ -17,16 +17,29 @@ and limitations under the License.
 ***************************************************************************** */
 
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, AsyncValidatorFn, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { DeviceService } from '@account/http/device.service';
 import { Device } from '@account/models/device.model';
-import { Observable } from 'rxjs';
-import { switchMap, tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 
 const fiveSeconds = 5000;
+
+export function sshKeyValidator(deviceService: DeviceService): AsyncValidatorFn {
+    return (control: AbstractControl): Observable<ValidationErrors | null> => {
+        if (control.value) {
+            return deviceService.validateSshKey(control.value).pipe(
+                map((response) => response.isValid ? null : {invalidSshKey: true}),
+                catchError(() => null),
+            );
+        } else {
+            return of(null);
+        }
+    };
+}
 
 @Component({
     selector: 'account-device-edit',
@@ -77,7 +90,7 @@ export class DeviceEditComponent implements OnInit {
                 voice: [device.voice.displayName, Validators.required],
                 autoUpdate: [device.pantacorConfig.autoUpdate],
                 releaseChannel: [device.pantacorConfig.releaseChannel],
-                sshPublicKey: [device.pantacorConfig.sshPublicKey]
+                sshPublicKey: [device.pantacorConfig.sshPublicKey, [], [ sshKeyValidator(this.deviceService) ]]
             }
         );
     }
