@@ -1,15 +1,13 @@
 <mat-card class="mat-elevation-z0" [formGroup]="sshForm">
     <mat-card-content>
-        <h2 class="mat-h2">SSH</h2>
-        <mat-slide-toggle color="primary" [checked]="sshEnabled" (change)="onSshEnabledChange($event)">
-            Enable remote device access using SSH
-        </mat-slide-toggle>
-        <p [hidden]="hideSshInput">
-            <mat-form-field appearance="outline">
-                <mat-label>Public SSH Key</mat-label>
-                <textarea matInput required formControlName="sshPublicKey"></textarea>
-                <mat-hint>{{sshKeyHint}}</mat-hint>
-            </mat-form-field>
-        </p>
+        <h2 class="mat-h2">Command Line Access</h2>
+        <mat-form-field appearance="outline">
+            <mat-label>Public SSH Key</mat-label>
+            <textarea matInput formControlName="sshPublicKey"></textarea>
+            <mat-error *ngIf="sshForm.controls['sshPublicKey'].invalid">
+                Invalid RSA public key format
+            </mat-error>
+            <mat-hint>{{sshKeyHint}}</mat-hint>
+        </mat-form-field>
     </mat-card-content>
 </mat-card>
