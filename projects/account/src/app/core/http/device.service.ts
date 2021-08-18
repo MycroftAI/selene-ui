@@ -92,7 +92,7 @@ export class DeviceService {
     }
 
     validateSshKey(sshKey: string): Observable<any> {
-        return this.http.get<Observable<any>>(sshKeyUrl, {params: {key: encodeURIComponent(sshKey)}});
+        return this.http.get<Observable<any>>(sshKeyUrl + '/' + sshKey);
     }
 
     getGeographies() {
