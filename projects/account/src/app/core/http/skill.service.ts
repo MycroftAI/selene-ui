@@ -19,7 +19,9 @@ and limitations under the License.
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
+import { handleError } from '@account/app/app.service';
 import { SkillFamily } from '@account/models/skill_family.model';
 import { SkillSettings } from '@account/models/skill-settings.model';
 
@@ -44,7 +46,9 @@ export class SkillService {
     }
 
     getSkills(): Observable<SkillFamily[]> {
-        return this.http.get<SkillFamily[]>(accountSkillUrl);
+        return this.http.get<SkillFamily[]>(accountSkillUrl).pipe(
+            catchError(handleError)
+        );
     }
 
     getSkillSettings(skillFamilyName: string): Observable<SkillSettings[]> {
