@@ -18,13 +18,15 @@ and limitations under the License.
 
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
+import { AccountDefaults } from '@account/models/defaults.model';
 import { AccountPreferences } from '@account/models/preferences.model';
 import { Device } from '@account/models/device.model';
 import { DeviceAttribute } from '@account/models/deviceAttribute.model';
 import { FormGroup } from '@angular/forms';
-import { AccountDefaults } from '@account/models/defaults.model';
-import { Observable } from 'rxjs';
+import { handleError } from '@account/app/app.service';
 
 const defaultsUrl = '/api/defaults';
 const deviceUrl = '/api/devices';
@@ -44,7 +46,9 @@ export class DeviceService {
     }
 
     getDevices(): Observable<Device[]> {
-        return this.http.get<Device[]>(deviceUrl);
+        return this.http.get<Device[]>(deviceUrl).pipe(
+            catchError(handleError)
+        );
     }
 
     getDevice(deviceId: string): Observable<Device> {
@@ -68,7 +72,9 @@ export class DeviceService {
     }
 
     getAccountPreferences() {
-        return this.http.get<AccountPreferences>(preferencesUrl);
+        return this.http.get<AccountPreferences>(preferencesUrl).pipe(
+            catchError(handleError)
+        );
     }
 
     updateAccountPreferences(preferencesForm: FormGroup): Observable<any> {
@@ -84,7 +90,9 @@ export class DeviceService {
     }
 
     getAccountDefaults() {
-        return this.http.get<AccountDefaults>(defaultsUrl);
+        return this.http.get<AccountDefaults>(defaultsUrl).pipe(
+            catchError(handleError)
+        );
     }
 
     validatePairingCode(pairingCode: string): Observable<any> {

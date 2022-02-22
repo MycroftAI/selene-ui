@@ -15,3 +15,27 @@ MERCHANTABLITY OR NON-INFRINGEMENT.
 See the Apache Version 2.0 License for specific language governing permissions
 and limitations under the License.
 ***************************************************************************** */
+
+import { HttpErrorResponse } from '@angular/common/http';
+import { environment } from '@account/environments/environment';
+import { throwError } from 'rxjs';
+
+export function handleError(error: HttpErrorResponse) {
+    if (error.status === 401) {
+        console.log(error);
+        window.location.href = environment.mycroftUrls.singleSignOn + '/login?redirect=' + window.location.href;
+
+    } else if (error.error instanceof ErrorEvent) {
+        // A client-side or network error occurred. Handle it accordingly.
+        console.error('An error occurred:', error.error.message);
+    } else {
+        // The backend returned an unsuccessful response code.
+        // The response body may contain clues as to what went wrong,
+        console.error(
+            `Backend returned code ${error.status}, ` +
+            `body was: ${error.error}`);
+    }
+
+    return throwError(
+    'Something bad happened; please try again later.');
+}

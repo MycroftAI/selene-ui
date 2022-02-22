@@ -16,15 +16,16 @@ See the Apache Version 2.0 License for specific language governing permissions
 and limitations under the License.
 ***************************************************************************** */
 
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Observable, throwError } from 'rxjs';
+import { Observable } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import { Account } from '@account/models/account.model';
 import { environment } from '../../../environments/environment';
 import { MembershipType } from '@account/models/membership.model';
+import { handleError } from '@account/app/app.service';
 
 
 // URLs for the http requests
@@ -57,32 +58,12 @@ export class ProfileService {
     constructor(private http: HttpClient) {
     }
 
-    handleError(error: HttpErrorResponse) {
-        if (error.status === 401) {
-            console.log(error);
-            window.location.href = environment.mycroftUrls.singleSignOn + '/login?redirect=' + window.location.href;
-
-        } else if (error.error instanceof ErrorEvent) {
-            // A client-side or network error occurred. Handle it accordingly.
-            console.error('An error occurred:', error.error.message);
-        } else {
-            // The backend returned an unsuccessful response code.
-            // The response body may contain clues as to what went wrong,
-            console.error(
-                `Backend returned code ${error.status}, ` +
-                `body was: ${error.error}`);
-        }
-
-        return throwError(
-        'Something bad happened; please try again later.');
-    }
-
     /**
      * API call to retrieve account info to display.
      */
     getAccount(): Observable<Account> {
         return this.http.get<Account>(ACCOUNT_URL).pipe(
-            catchError(this.handleError)
+            catchError(handleError)
         );
     }
 
@@ -92,7 +73,7 @@ export class ProfileService {
 
     updateAccount(accountChanges: any) {
         return this.http.patch(ACCOUNT_URL, accountChanges).pipe(
-            catchError(this.handleError)
+            catchError(handleError)
         );
     }
 
