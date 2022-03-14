@@ -9,8 +9,10 @@
                 [required]="true"
         >
         </account-geography-card>
-        <account-voice-card [voiceForm]="defaultsForm"></account-voice-card>
-        <account-wake-word-card [wakeWordForm]="defaultsForm">x</account-wake-word-card>
+<!-- Temporarily commented out for MVP.  Only available wake word is "Hey Mycroft".  -->
+<!--  Only available voice is the Mimic 3 British Male voice. -->
+<!--        <account-voice-card [voiceForm]="defaultsForm"></account-voice-card>-->
+<!--        <account-wake-word-card [wakeWordForm]="defaultsForm">x</account-wake-word-card>-->
     </mat-card-content>
     <mat-card-actions *ngIf="!addingDevice" align="right">
         <button mat-button (click)="onSave()" [disabled]="!defaultsForm.valid">SAVE</button>
