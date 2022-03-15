@@ -26,11 +26,13 @@
                     [value]="device.coreVersion"
             >
             </account-display-field>
-            <account-display-field *ngIf="device.pantacorConfig.pantacorId"
-                    [label]="'IP Address'"
-                    [value]="device.pantacorConfig.ipAddress"
-            >
-            </account-display-field>
+<!-- This is temporarily commented out because the IP address can change and not get -->
+<!-- properly communicated to Selene.  Add back to display when this is fixed. -->
+<!--            <account-display-field *ngIf="device.pantacorConfig.pantacorId"-->
+<!--                    [label]="'IP Address'"-->
+<!--                    [value]="device.pantacorConfig.ipAddress"-->
+<!--            >-->
+<!--            </account-display-field>-->
             <button
                 mat-flat-button
                 *ngIf="device.pantacorConfig.autoUpdate === false" (click)="applySoftwareUpdate()"
