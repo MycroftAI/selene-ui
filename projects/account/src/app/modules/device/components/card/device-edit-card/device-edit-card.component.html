@@ -38,10 +38,8 @@
         </mat-card>
 
         <account-geography-card [geoForm]="deviceForm" [required]="true"></account-geography-card>
-<!-- Temporarily commented out for MVP.  Only available wake word is "Hey Mycroft".  -->
-<!--  Only available voice is the Mimic 3 British Male voice. -->
-<!--        <account-voice-card [voiceForm]="deviceForm"></account-voice-card>-->
-<!--        <account-wake-word-card [wakeWordForm]="deviceForm"></account-wake-word-card>-->
+        <account-voice-card [voiceForm]="deviceForm"></account-voice-card>
+        <account-wake-word-card [wakeWordForm]="deviceForm"></account-wake-word-card>
         <account-software-release-card
             *ngIf="pantacorId"
             [softwareReleaseForm]="deviceForm"
