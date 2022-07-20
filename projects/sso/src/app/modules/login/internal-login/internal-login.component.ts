@@ -17,7 +17,7 @@ and limitations under the License.
 ***************************************************************************** */
 
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
@@ -34,14 +34,14 @@ const fiveSeconds = 5000;
 })
 export class InternalLoginComponent implements OnInit {
     public emailControl: AbstractControl;
-    public loginForm: FormGroup;
+    public loginForm: UntypedFormGroup;
     public passwordControl: AbstractControl;
-    public passwordResetForm: FormGroup;
+    public passwordResetForm: UntypedFormGroup;
 
     constructor(
         private authService: ApiService,
         private snackBar: MatSnackBar,
-        private formBuilder: FormBuilder,
+        private formBuilder: UntypedFormBuilder,
         public dialog: MatDialog
     ) { }
 

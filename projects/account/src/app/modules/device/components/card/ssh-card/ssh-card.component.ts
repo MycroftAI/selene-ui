@@ -17,7 +17,7 @@ and limitations under the License.
 ***************************************************************************** */
 
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 @Component({
@@ -26,7 +26,7 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
     styleUrls: ['./ssh-card.component.scss']
 })
 export class SshCardComponent implements OnInit {
-    @Input() sshForm: FormGroup;
+    @Input() sshForm: UntypedFormGroup;
     public sshKeyHint: string;
 
     constructor() {

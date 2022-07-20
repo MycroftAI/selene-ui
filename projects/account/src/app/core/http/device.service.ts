@@ -25,7 +25,7 @@ import { AccountDefaults } from '@account/models/defaults.model';
 import { AccountPreferences } from '@account/models/preferences.model';
 import { Device } from '@account/models/device.model';
 import { DeviceAttribute } from '@account/models/deviceAttribute.model';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { handleError } from '@account/app/app.service';
 
 const defaultsUrl = '/api/defaults';
@@ -55,7 +55,7 @@ export class DeviceService {
         return this.http.get<Device>(deviceUrl + '/' + deviceId);
     }
 
-    addDevice(deviceForm: FormGroup) {
+    addDevice(deviceForm: UntypedFormGroup) {
         this.http.post<any>(deviceUrl, deviceForm.value).subscribe();
     }
 
@@ -63,11 +63,11 @@ export class DeviceService {
         return this.http.delete(deviceUrl + '/' + device.id);
     }
 
-    updateDevice(deviceId: string, deviceForm: FormGroup): Observable<any> {
+    updateDevice(deviceId: string, deviceForm: UntypedFormGroup): Observable<any> {
         return this.http.patch(deviceUrl + '/' + deviceId, deviceForm.value);
     }
 
-    addAccountPreferences(preferencesForm: FormGroup) {
+    addAccountPreferences(preferencesForm: UntypedFormGroup) {
         return this.http.post<any>(preferencesUrl, preferencesForm.value);
     }
 
@@ -77,15 +77,15 @@ export class DeviceService {
         );
     }
 
-    updateAccountPreferences(preferencesForm: FormGroup): Observable<any> {
+    updateAccountPreferences(preferencesForm: UntypedFormGroup): Observable<any> {
         return this.http.patch<any>(preferencesUrl, preferencesForm.value);
     }
 
-    addAccountDefaults(defaultsForm: FormGroup) {
+    addAccountDefaults(defaultsForm: UntypedFormGroup) {
         return this.http.post<any>(defaultsUrl, defaultsForm.value);
     }
 
-    updateAccountDefaults(defaultsForm: FormGroup) {
+    updateAccountDefaults(defaultsForm: UntypedFormGroup) {
         return this.http.patch<any>(defaultsUrl, defaultsForm.value);
     }
 

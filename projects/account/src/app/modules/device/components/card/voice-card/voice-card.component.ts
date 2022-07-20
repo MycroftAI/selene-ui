@@ -18,7 +18,7 @@ and limitations under the License.
 
 import { Component, Input, OnInit } from '@angular/core';
 import { OptionButtonsConfig } from '@account/models/option-buttons-config.model';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 
 @Component({
     selector: 'account-voice-card',
@@ -26,7 +26,7 @@ import { FormGroup } from '@angular/forms';
     styleUrls: ['./voice-card.component.scss']
 })
 export class VoiceCardComponent implements OnInit {
-    @Input() voiceForm: FormGroup;
+    @Input() voiceForm: UntypedFormGroup;
     public voiceOptionsConfig: OptionButtonsConfig;
 
     constructor() {

@@ -20,9 +20,9 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import {
     AbstractControl,
     AsyncValidatorFn,
-    FormBuilder,
-    FormControl,
-    FormGroup,
+    UntypedFormBuilder,
+    UntypedFormControl,
+    UntypedFormGroup,
     ValidationErrors,
     ValidatorFn,
     Validators
@@ -43,7 +43,7 @@ import { SnackbarComponent } from 'shared';
 
 
 export function loginValidator(): ValidatorFn {
-    return (loginGroup: FormGroup) => {
+    return (loginGroup: UntypedFormGroup) => {
         let valid = true;
         const federatedToken = loginGroup.controls['federatedToken'];
         const email  = loginGroup.controls['email'];
@@ -88,14 +88,14 @@ export function uniqueEmailValidator(apiService: ApiService): AsyncValidatorFn {
 export class NewAccountComponent implements OnInit {
     @ViewChild(AuthenticationStepComponent) authenticationStep: AuthenticationStepComponent;
     public alignVertical: boolean;
-    public loginForm: FormGroup;
+    public loginForm: UntypedFormGroup;
     private mediaWatcher: Subscription;
-    public newAcctForm: FormGroup;
+    public newAcctForm: UntypedFormGroup;
     public stepDoneIcon = faCheck;
 
     constructor(
         private apiService: ApiService,
-        private formBuilder: FormBuilder,
+        private formBuilder: UntypedFormBuilder,
         public mediaObserver: MediaObserver,
         private snackbar: MatSnackBar,
         private route: ActivatedRoute,
@@ -118,7 +118,7 @@ export class NewAccountComponent implements OnInit {
     buildForm() {
         // As of this writing there is an issue with using "update on blur" using the form builder.
         // Building the email control separately as a workaround.
-        const emailControl = new FormControl(
+        const emailControl = new UntypedFormControl(
             null,
             {
                 validators: [Validators.email],

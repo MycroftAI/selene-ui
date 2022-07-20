@@ -20,8 +20,8 @@ import { Component, OnInit } from '@angular/core';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import {
     AbstractControl,
-    FormBuilder,
-    FormGroup,
+    UntypedFormBuilder,
+    UntypedFormGroup,
     ValidatorFn,
     Validators
 } from '@angular/forms';
@@ -40,7 +40,7 @@ import {
 const noDelay = 0;
 
 export function loginValidator(): ValidatorFn {
-    return (loginGroup: FormGroup) => {
+    return (loginGroup: UntypedFormGroup) => {
         let valid = true;
         const federatedToken = loginGroup.controls['federatedToken'];
         const userEnteredEmail  = loginGroup.controls['userEnteredEmail'];
@@ -60,7 +60,7 @@ export function loginValidator(): ValidatorFn {
 }
 
 export function membershipValidator(): ValidatorFn {
-    return (supportGroup: FormGroup) => {
+    return (supportGroup: UntypedFormGroup) => {
         let valid = true;
         const membershipType = supportGroup.controls['membershipType'];
         const paymentToken  = supportGroup.controls['paymentToken'];
@@ -85,13 +85,13 @@ export class NewComponent implements OnInit {
     private mediaWatcher: Subscription;
     public membershipControl: AbstractControl;
     public membershipTypes: MembershipType[];
-    public newAcctForm: FormGroup;
+    public newAcctForm: UntypedFormGroup;
     public openDatasetControl: AbstractControl;
     public stepDoneIcon = faCheck;
     public usernameControl: AbstractControl;
 
     constructor(
-        private formBuilder: FormBuilder,
+        private formBuilder: UntypedFormBuilder,
         public mediaObserver: MediaObserver,
         private profileService: ProfileService,
         private route: ActivatedRoute,
