@@ -43,7 +43,10 @@
         </ng-container>
         <account-device-info [device]="device"></account-device-info>
         <mat-card-actions>
-            <button mat-flat-button color="primary" [routerLink]="['./', device.id]">
+            <button *ngIf="device.platform === 'mycroft_mark_2'" mat-flat-button color="primary" (click)="goToExternal()">
+                EDIT
+            </button>
+            <button *ngIf="device.platform != 'mycroft_mark_2'" mat-flat-button color="primary" [routerLink]="['./', device.id]">
                 EDIT
             </button>
             <button mat-flat-button color="warn" (click)="onRemove(device, i)">

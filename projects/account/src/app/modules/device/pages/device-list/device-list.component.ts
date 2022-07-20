@@ -97,4 +97,9 @@ export class DeviceListComponent implements OnInit {
         const knownPlatform = this.platforms[device.platform];
         return knownPlatform ? knownPlatform.icon : '../assets/generic-device-icon-blue.svg';
     }
+
+    goToExternal() {
+        const url = 'http://192.168.4.103:8080';
+        window.open(url, '_blank');
+    }
 }
