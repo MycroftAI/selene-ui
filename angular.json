@@ -49,7 +49,6 @@
                             "optimization": true,
                             "outputHashing": "all",
                             "sourceMap": false,
-                            "extractCss": true,
                             "namedChunks": false,
                             "aot": true,
                             "extractLicenses": true,
@@ -62,8 +61,8 @@
                                     "maximumError": "5mb"
                                 },
                                 {
-                                  "type": "anyComponentStyle",
-                                  "maximumWarning": "6kb"
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb"
                                 }
                             ]
                         }
@@ -215,7 +214,6 @@
                             "optimization": true,
                             "outputHashing": "all",
                             "sourceMap": false,
-                            "extractCss": true,
                             "namedChunks": false,
                             "aot": true,
                             "extractLicenses": true,
@@ -249,7 +247,6 @@
                             "optimization": true,
                             "outputHashing": "all",
                             "sourceMap": false,
-                            "extractCss": true,
                             "namedChunks": false,
                             "aot": true,
                             "extractLicenses": true,
@@ -419,7 +416,6 @@
                             "optimization": true,
                             "outputHashing": "all",
                             "sourceMap": false,
-                            "extractCss": true,
                             "namedChunks": false,
                             "aot": true,
                             "extractLicenses": true,
@@ -454,7 +450,6 @@
                             "optimization": true,
                             "outputHashing": "all",
                             "sourceMap": false,
-                            "extractCss": true,
                             "namedChunks": false,
                             "aot": true,
                             "extractLicenses": true,
@@ -567,7 +562,7 @@
             "prefix": "globalnav",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
                     "options": {
                         "tsConfig": "projects/globalnav/tsconfig.lib.json",
                         "project": "projects/globalnav/ng-package.json"
@@ -665,7 +660,6 @@
                             "optimization": true,
                             "outputHashing": "all",
                             "sourceMap": false,
-                            "extractCss": true,
                             "namedChunks": false,
                             "aot": true,
                             "extractLicenses": true,
@@ -679,8 +673,8 @@
                                     "maximumError": "5mb"
                                 },
                                 {
-                                  "type": "anyComponentStyle",
-                                  "maximumWarning": "6kb"
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "6kb"
                                 }
                             ]
                         },
@@ -714,7 +708,6 @@
                             "optimization": true,
                             "outputHashing": "all",
                             "sourceMap": false,
-                            "extractCss": true,
                             "namedChunks": true,
                             "aot": true,
                             "extractLicenses": true,
@@ -813,7 +806,7 @@
             "prefix": "shared",
             "architect": {
                 "build": {
-                    "builder": "@angular-devkit/build-ng-packagr:build",
+                    "builder": "@angular-devkit/build-angular:ng-packagr",
                     "options": {
                         "tsConfig": "projects/shared/tsconfig.lib.json",
                         "project": "projects/shared/ng-package.json"
@@ -892,7 +885,6 @@
                             "optimization": true,
                             "outputHashing": "all",
                             "sourceMap": false,
-                            "extractCss": true,
                             "namedChunks": false,
                             "aot": true,
                             "extractLicenses": true,
@@ -942,7 +934,6 @@
                             "optimization": true,
                             "outputHashing": "all",
                             "sourceMap": false,
-                            "extractCss": true,
                             "namedChunks": true,
                             "aot": true,
                             "extractLicenses": true,
