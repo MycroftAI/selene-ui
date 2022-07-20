@@ -17,7 +17,7 @@
 // *****************************************************************************
 
 @import url("https://fonts.googleapis.com/css?family=Noto+Sans");
-@import '~@angular/material/theming';
+@import '@angular/material/theming';
 @import 'stylesheets/mycroft-colors';
 
 $mycroft-typography: mat-typography-config(
