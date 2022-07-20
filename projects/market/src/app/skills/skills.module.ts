@@ -38,27 +38,26 @@ import { SkillSummaryComponent } from './skill-summary/skill-summary.component';
 
 @NgModule(
     {
-        imports: [
-            CommonModule,
-            FlexLayoutModule,
-            FontAwesomeModule,
-            FormsModule,
-            MaterialModule,
-            SkillsRoutingModule
-        ],
-        declarations: [
-            SkillCardComponent,
-            SkillCardHeaderComponent,
-            SkillDetailComponent,
-            SkillDetailBodyComponent,
-            SkillDetailHeaderComponent,
-            SkillSearchComponent,
-            SkillSummaryComponent,
-            InstallButtonComponent
-        ],
-        exports: [ SkillSummaryComponent, SkillDetailComponent ],
-        entryComponents: [ SkillDetailComponent ],
-        providers: [ InstallService, SkillsService ]
-    }
+    imports: [
+        CommonModule,
+        FlexLayoutModule,
+        FontAwesomeModule,
+        FormsModule,
+        MaterialModule,
+        SkillsRoutingModule
+    ],
+    declarations: [
+        SkillCardComponent,
+        SkillCardHeaderComponent,
+        SkillDetailComponent,
+        SkillDetailBodyComponent,
+        SkillDetailHeaderComponent,
+        SkillSearchComponent,
+        SkillSummaryComponent,
+        InstallButtonComponent
+    ],
+    exports: [SkillSummaryComponent, SkillDetailComponent],
+    providers: [InstallService, SkillsService]
+}
 )
 export class SkillsModule { }

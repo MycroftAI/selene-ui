@@ -34,9 +34,6 @@ import { PasswordResetComponent } from '../login/password-reset/password-reset.c
     declarations: [
         ChangePasswordComponent
     ],
-    entryComponents: [
-        PasswordResetComponent
-    ],
     imports: [
         CommonModule,
         FlexLayoutModule,

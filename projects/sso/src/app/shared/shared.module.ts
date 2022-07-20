@@ -59,7 +59,6 @@ import { environment } from '../../environments/environment';
         ReactiveFormsModule,
         SocialLoginModule
     ],
-    entryComponents: [],
     exports: [
         EmailInputComponent,
         FacebookButtonComponent,
@@ -67,23 +66,23 @@ import { environment } from '../../environments/environment';
         GoogleButtonComponent,
         PasswordInputComponent
     ],
- providers: [
-    {
-      provide: 'SocialAuthServiceConfig',
-      useValue: {
-        autoLogin: false,
-        providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(environment.googleClientId),
-          },
-          {
-            id: FacebookLoginProvider.PROVIDER_ID,
-            provider: new FacebookLoginProvider(environment.facebookClientId),
-          },
-        ],
-      } as SocialAuthServiceConfig,
-    }
-  ],
+    providers: [
+        {
+            provide: 'SocialAuthServiceConfig',
+            useValue: {
+                autoLogin: false,
+                providers: [
+                    {
+                        id: GoogleLoginProvider.PROVIDER_ID,
+                        provider: new GoogleLoginProvider(environment.googleClientId),
+                    },
+                    {
+                        id: FacebookLoginProvider.PROVIDER_ID,
+                        provider: new FacebookLoginProvider(environment.facebookClientId),
+                    },
+                ],
+            } as SocialAuthServiceConfig,
+        }
+    ]
 })
 export class SharedModule { }
