@@ -28,8 +28,9 @@ import {
     FacebookLoginProvider,
     GoogleLoginProvider,
     SocialAuthServiceConfig,
+
     SocialLoginModule
-} from 'angularx-social-login';
+} from '@abacritt/angularx-social-login';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { EmailInputComponent } from './components/email-input/email-input.component';
