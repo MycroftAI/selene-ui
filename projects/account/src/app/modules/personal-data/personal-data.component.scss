@@ -1,0 +1,42 @@
+@import "@angular/material/theming";
+@import "mycroft-colors";
+@import "components/buttons";
+
+.personal-data-page {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mat-h1 {
+    color: mat-color($mycroft-accent);
+    font-size: 32px;
+    margin-top: 32px;
+}
+
+mat-card {
+    border-radius: 12px;
+    margin: 16px;
+    max-width: 500px;
+    min-width: 300px;
+
+    mat-card-header {
+        fa-icon {
+            font-size: 32px;
+            color: mat-color($mycroft-primary);
+            padding-left: 16px;
+            padding-top: 8px;
+        }
+
+        mat-card-title {
+            font-weight: bold;
+            padding-top: 16px;
+        }
+    }
+
+    mat-card-content {
+        padding: 16px;
+
+    }
+
+}

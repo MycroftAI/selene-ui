@@ -1,0 +1,90 @@
+<h1 class="mat-h1" fxLayoutAlign="center">Data Mycroft Collects</h1>
+<div class="personal-data-page" fxLayout="row wrap" fxLayoutAlign="center" fxLayout.xs="column" fxLayoutGap="16px">
+    <mat-card fxFlex="70">
+        <mat-card-header>
+            <fa-icon mat-card-avatar [icon]="emailAddressIcon"></fa-icon>
+            <mat-card-title>Email Address</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p class="mat-body">
+                When you created this account, you provided your email address.  It is the method we
+                use to identify users.  It is also used to send you confirmation messages when
+                actions are taken against your account.  For example, a password reset request is
+                sent to this email address.
+            <p class="mat-body">
+                We do not use your email address for marketing purposes, unless you used the same
+                email address to sign up for our newsletter or other such mailing list.  Your email
+                address is never shared with third parties.
+            </p>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card fxFlex="70">
+        <mat-card-header>
+            <fa-icon mat-card-avatar [icon]="locationIcon"></fa-icon>
+            <mat-card-title>Geographical Location</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p class="mat-body">
+                When you register a device with Mycroft, the Add Device screen asks for the
+                geographical location of yor device.  This data is synchronized to your device when
+                it is registered and when it is changed via the Edit Device screen.  Your device
+                uses this data for location-specific services such as date, time and weather.
+            </p>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card fxFlex="70">
+        <mat-card-header>
+            <fa-icon mat-card-avatar [icon]="dataPresentationIcon"></fa-icon>
+            <mat-card-title>Data Presentation</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p class="mat-body">
+                When you register your first device, you are asked for your preferred date format,
+                time format, and measurement system.  This data is synchronized to each of your
+                devices when they are registered.  If the values of these preferences change, the
+                new values are synchronized to all your devices.  Your device uses this data for
+                when formatting data for presentation such as date, time and weather.
+            </p>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<h1 class="mat-h1" fxLayoutAlign="center">Data Sent to Third Parties</h1>
+<div class="personal-data-page" fxLayout="row wrap" fxLayoutAlign="center" fxLayout.xs="column" fxLayoutGap="16px">
+    <mat-card fxFlex="70">
+        <mat-card-header>
+            <fa-icon mat-card-avatar [icon]="voiceIcon"></fa-icon>
+            <mat-card-title>Speech Transcription</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p class="mat-body">
+                When you issue a command or request to your voice assistant, the audio data is
+                transcribed into text.  The transcription can be performed on your device, but
+                on-device transcription software does not provide the best user experience.
+                Transcriptions are more accurate when sent to a third party service provider
+                over the internet.
+            <p class="mat-body">
+                Mycroft has partnered with Assembly AI to provide a privacy focused solution for
+                speech transcription.  Your voice request will be sent for transcription, but will
+                not be saved.
+            </p>
+        </mat-card-content>
+    </mat-card>
+
+    <mat-card fxFlex="70">
+        <mat-card-header>
+            <fa-icon mat-card-avatar [icon]="queryIcon"></fa-icon>
+            <mat-card-title>Answering Queries</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p class="mat-body">
+                When you ask the Mycroft voice assistant a question that cannot be answered by one
+                of the installed skills, a textual representation of the question is sent to
+                services like Wolfram Alpha, Duck Duck Go and Wikipedia in an attempt to find the
+                answer.
+            </p>
+        </mat-card-content>
+    </mat-card>
+</div>
