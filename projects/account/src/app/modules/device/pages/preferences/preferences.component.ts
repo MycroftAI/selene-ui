@@ -17,7 +17,7 @@ and limitations under the License.
 ***************************************************************************** */
 
 import { Component, OnInit, Input } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 
 import { AccountPreferences } from '@account/models/preferences.model';
 import { DeviceService } from '@account/http/device.service';
@@ -32,12 +32,12 @@ import { ActivatedRoute } from '@angular/router';
 export class PreferencesComponent implements OnInit {
     @Input() deviceSetup: boolean;
     public preferences: AccountPreferences;
-    public preferencesForm: FormGroup;
+    public preferencesForm: UntypedFormGroup;
     public measurementOptionsConfig: OptionButtonsConfig;
     public timeFormatOptionsConfig: OptionButtonsConfig;
     public dateFormatOptionsConfig: OptionButtonsConfig;
 
-    constructor(private deviceService: DeviceService, private formBuilder: FormBuilder, private route: ActivatedRoute)   {
+    constructor(private deviceService: DeviceService, private formBuilder: UntypedFormBuilder, private route: ActivatedRoute)   {
         this.dateFormatOptionsConfig = {
             label: 'Date Format',
             options: ['DD/MM/YYYY', 'MM/DD/YYYY'],

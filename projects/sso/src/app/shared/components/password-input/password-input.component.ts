@@ -17,7 +17,7 @@ and limitations under the License.
 ***************************************************************************** */
 
 import { Component, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 
 @Component({
   selector: 'sso-password-input',
@@ -25,7 +25,7 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./password-input.component.scss']
 })
 export class PasswordInputComponent {
-    @Input() formGroup: FormGroup;
+    @Input() formGroup: UntypedFormGroup;
     @Input() readOnly = false;
     @Input() required = false;
 

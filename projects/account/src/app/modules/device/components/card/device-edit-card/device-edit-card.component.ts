@@ -17,7 +17,7 @@ and limitations under the License.
 ***************************************************************************** */
 
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 
 @Component({
     selector: 'account-device-edit-card',
@@ -25,7 +25,7 @@ import { FormGroup } from '@angular/forms';
     styleUrls: ['./device-edit-card.component.scss']
 })
 export class DeviceEditCardComponent implements OnInit {
-    @Input() deviceForm: FormGroup;
+    @Input() deviceForm: UntypedFormGroup;
     @Input() addDevice = false;
     @Input() pantacorId: string;
     @Output() saveChanges = new EventEmitter<boolean>();

@@ -61,37 +61,25 @@ import { MembershipStepComponent } from './components/views/membership-step/memb
         EditComponent,
         LoginComponent,
         MembershipComponent,
-
         // Profile add (i.e. new account)
         MembershipStepComponent,
         NewComponent,
         OpenDatasetStepComponent,
         UsernameStepComponent,
-
         // Stuff used in both edit and add components
         MembershipOptionsComponent,
         PaymentComponent,
         VerifyCardDialogComponent,
         DeleteConfirmComponent
     ],
-    entryComponents: [
-        DeleteConfirmComponent,
-        NewComponent,
-        EditComponent,
-        PaymentComponent,
-        VerifyCardDialogComponent
-    ],
     imports: [
         CommonModule,
-
         // "Make the UI pretty" libraries.
         FlexLayoutModule,
         FontAwesomeModule,
-
         // Angular Forms
         FormsModule,
         ReactiveFormsModule,
-
         // Material UI components
         MatBottomSheetModule,
         MatButtonModule,
@@ -104,13 +92,10 @@ import { MembershipStepComponent } from './components/views/membership-step/memb
         MatSnackBarModule,
         MatStepperModule,
         MatToolbarModule,
-
         // This guy will allow us to suck money from members
         NgxStripeModule.forRoot(environment.stripeApiKey),
-
         // The federated login buttons reside in a shared library
         SharedModule,
-
         // ...and finally, the router
         ProfileRoutingModule
     ],

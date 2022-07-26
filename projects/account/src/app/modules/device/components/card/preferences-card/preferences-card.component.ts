@@ -18,7 +18,7 @@ and limitations under the License.
 
 import { Component, Input, OnInit } from '@angular/core';
 import { OptionButtonsConfig } from '@account/models/option-buttons-config.model';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 
 @Component({
     selector: 'account-preferences-card',
@@ -27,7 +27,7 @@ import { FormGroup } from '@angular/forms';
 })
 export class PreferencesCardComponent implements OnInit {
     @Input() addingDevice = false;
-    @Input() preferencesForm: FormGroup;
+    @Input() preferencesForm: UntypedFormGroup;
     public measurementOptionsConfig: OptionButtonsConfig;
     public timeFormatOptionsConfig: OptionButtonsConfig;
     public dateFormatOptionsConfig: OptionButtonsConfig;

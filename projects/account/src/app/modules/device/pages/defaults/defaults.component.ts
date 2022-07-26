@@ -17,7 +17,7 @@ and limitations under the License.
 ***************************************************************************** */
 
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 import { AccountDefaults } from '@account/models/defaults.model';
@@ -29,9 +29,9 @@ import { AccountDefaults } from '@account/models/defaults.model';
 })
 export class DefaultsComponent implements OnInit {
     public defaults: AccountDefaults;
-    public defaultsForm: FormGroup;
+    public defaultsForm: UntypedFormGroup;
 
-    constructor(private formBuilder: FormBuilder, private route: ActivatedRoute) { }
+    constructor(private formBuilder: UntypedFormBuilder, private route: ActivatedRoute) { }
 
     ngOnInit() {
         this.route.data.subscribe(

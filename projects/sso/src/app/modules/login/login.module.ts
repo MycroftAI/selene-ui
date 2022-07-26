@@ -46,10 +46,6 @@ import { SharedModule } from '../../shared/shared.module';
         InternalLoginComponent,
         PasswordResetComponent
     ],
-    entryComponents: [
-        LoginComponent,
-        PasswordResetComponent,
-    ],
     exports: [
         LoginComponent,
         FederatedLoginComponent

@@ -34,26 +34,23 @@ import { TaggerService } from '../../core/http/tagger.service';
 
 @NgModule(
     {
-        declarations: [
-            IntroComponent,
-            TagComponent
-        ],
-        entryComponents: [
-            IntroComponent
-        ],
-        imports: [
-            CommonModule,
-            FlexLayoutModule,
-            FontAwesomeModule,
-            MatButtonModule,
-            MatCardModule,
-            MatProgressBarModule,
-            NgWaveformModule,
-            AppRoutingModule
-        ],
-        providers: [
-            TaggerService
-        ]
-    }
+    declarations: [
+        IntroComponent,
+        TagComponent
+    ],
+    imports: [
+        CommonModule,
+        FlexLayoutModule,
+        FontAwesomeModule,
+        MatButtonModule,
+        MatCardModule,
+        MatProgressBarModule,
+        NgWaveformModule,
+        AppRoutingModule
+    ],
+    providers: [
+        TaggerService
+    ]
+}
 )
 export class TaggerModule { }

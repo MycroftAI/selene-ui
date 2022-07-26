@@ -17,7 +17,7 @@ and limitations under the License.
 ***************************************************************************** */
 
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { ApiService } from '../../../core/http/api.service';
 import { LoginToken } from '../../../shared/models/login-token.model';
 
@@ -30,7 +30,7 @@ import { environment } from '../../../../environments/environment';
     styleUrls: ['./authentication-step.component.scss']
 })
 export class AuthenticationStepComponent implements OnInit {
-    @Input() loginForm: FormGroup;
+    @Input() loginForm: UntypedFormGroup;
     public disableInternal = false;
     public federatedErrorMessage: string;
     public federatedLoginText: string;

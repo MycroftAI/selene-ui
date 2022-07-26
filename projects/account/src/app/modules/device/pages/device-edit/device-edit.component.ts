@@ -17,7 +17,7 @@ and limitations under the License.
 ***************************************************************************** */
 
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, AsyncValidatorFn, FormBuilder, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { AbstractControl, AsyncValidatorFn, UntypedFormBuilder, UntypedFormGroup, ValidationErrors, Validators } from '@angular/forms';
 import { DeviceService } from '@account/http/device.service';
 import { Device } from '@account/models/device.model';
 import { Observable, of } from 'rxjs';
@@ -48,7 +48,7 @@ export function sshKeyValidator(deviceService: DeviceService): AsyncValidatorFn 
 })
 export class DeviceEditComponent implements OnInit {
     public advancedSettingsDesc: string[];
-    public deviceForm: FormGroup;
+    public deviceForm: UntypedFormGroup;
     private deviceId: string;
     public device$ = new Observable<Device>();
     public pantacorId: string;
@@ -56,7 +56,7 @@ export class DeviceEditComponent implements OnInit {
 
     constructor(
             private deviceService: DeviceService,
-            private formBuilder: FormBuilder,
+            private formBuilder: UntypedFormBuilder,
             private route: ActivatedRoute,
             private router: Router,
             private snackbar: MatSnackBar

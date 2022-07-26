@@ -86,10 +86,6 @@ import { SoftwareReleaseCardComponent } from './components/card/software-release
         SoftwareUpdateCardComponent,
         SoftwareReleaseCardComponent,
     ],
-    entryComponents: [
-        DeviceComponent,
-        RemoveDeviceDialogComponent
-    ],
     imports: [
         CommonModule,
         FlexLayoutModule,

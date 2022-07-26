@@ -17,7 +17,7 @@ and limitations under the License.
 ***************************************************************************** */
 
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
@@ -34,7 +34,7 @@ export class AgreementStepComponent implements OnInit {
     public acceptedIcon = faCheck;
     public agreementAccepted = false;
     public agreementContent: SafeHtml;
-    @Input() newAcctForm: FormGroup;
+    @Input() newAcctForm: UntypedFormGroup;
     @Input() step: string;
 
     constructor(private apiService: ApiService, private sanitizer: DomSanitizer) {

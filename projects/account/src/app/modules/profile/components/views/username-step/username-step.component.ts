@@ -17,7 +17,7 @@ and limitations under the License.
 ***************************************************************************** */
 
 import { Component, Input, OnInit } from '@angular/core';
-import { AbstractControl, FormGroup } from '@angular/forms';
+import { AbstractControl, UntypedFormGroup } from '@angular/forms';
 
 @Component({
     selector: 'account-username-step',
@@ -25,7 +25,7 @@ import { AbstractControl, FormGroup } from '@angular/forms';
     styleUrls: ['./username-step.component.scss']
 })
 export class UsernameStepComponent implements OnInit {
-    @Input() newAcctForm: FormGroup;
+    @Input() newAcctForm: UntypedFormGroup;
     public whyUsernameParagraph: string;
     public usernameControl: AbstractControl;
 

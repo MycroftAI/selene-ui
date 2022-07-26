@@ -17,7 +17,7 @@ and limitations under the License.
 ***************************************************************************** */
 
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { OptionButtonsConfig } from '@account/models/option-buttons-config.model';
 
 @Component({
@@ -26,7 +26,7 @@ import { OptionButtonsConfig } from '@account/models/option-buttons-config.model
     styleUrls: ['./wake-word-card.component.scss']
 })
 export class WakeWordCardComponent implements OnInit {
-    @Input() wakeWordForm: FormGroup;
+    @Input() wakeWordForm: UntypedFormGroup;
     public wakeWordOptionsConfig: OptionButtonsConfig;
 
 

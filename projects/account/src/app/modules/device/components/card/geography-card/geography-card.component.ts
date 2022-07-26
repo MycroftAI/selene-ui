@@ -17,7 +17,7 @@ and limitations under the License.
 ***************************************************************************** */
 
 import { Component, Input, OnInit } from '@angular/core';
-import { AbstractControl, FormGroup } from '@angular/forms';
+import { AbstractControl, UntypedFormGroup } from '@angular/forms';
 import { Country } from '@account/models/country.model';
 import { Region } from '@account/models/region.model';
 import { City } from '@account/models/city.model';
@@ -32,7 +32,7 @@ import { Subject } from 'rxjs';
 })
 export class GeographyCardComponent implements OnInit {
     @Input() geographyRequired: boolean;
-    @Input() geoForm: FormGroup;
+    @Input() geoForm: UntypedFormGroup;
     @Input() required: boolean;
     public countryControl: AbstractControl;
     public regionControl: AbstractControl;

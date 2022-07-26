@@ -18,7 +18,7 @@ and limitations under the License.
 
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { FormControl, FormGroup } from '@angular/forms';
+import { UntypedFormControl, FormGroup } from '@angular/forms';
 
 @Component({
     selector: 'sso-password-reset',
@@ -29,7 +29,7 @@ export class PasswordResetComponent implements OnInit {
 
     constructor(
         public dialogRef: MatDialogRef<PasswordResetComponent>,
-        @Inject(MAT_DIALOG_DATA) public dialogData: FormControl
+        @Inject(MAT_DIALOG_DATA) public dialogData: UntypedFormControl
     ) { }
 
     ngOnInit() {
