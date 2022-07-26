@@ -1,15 +1,18 @@
 pipeline {
     agent any
 
-    stages {
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '20'))
+    }
+        stages {
 
-        // Run the build in the against the dev branch to check for compile errors
-        stage('Build dev branch') {
+        // Run the build in the against a PR targeting the "dev" branch
+        stage('Dev PR') {
             when {
-                branch 'dev'
+                changeRequest target: 'dev'
             }
             steps {
-                echo 'Building code in the "dev" branch...'
+                echo 'Building code in the pull request...'
                 sh 'npm install'
                 sh 'ng build --project shared'
                 sh 'ng build --project globalnav'
@@ -19,10 +22,10 @@ pipeline {
             }
         }
 
-        // Deploy to the Test environment
-        stage('Build for Test') {
+        // Run the build in the against a PR targeting the "test" branch
+        stage('Test PR') {
             when {
-                branch 'test'
+                changeRequest target: 'test'
             }
             steps {
                 echo 'Building code in the "test" branch...'
@@ -36,7 +39,8 @@ pipeline {
             }
         }
 
-        stage('Deploy to Test') {
+        // Deploy to the Test environment
+        stage('Test Deploy') {
             when {
                 branch 'test'
             }
@@ -70,10 +74,10 @@ pipeline {
             }
         }
 
-        // Deploy to the Production environment
-        stage('Build for Production') {
+        // Run the build in the against a PR targeting the "master" branch
+        stage('Prod Build') {
             when {
-                branch 'master'
+                changeRequest target: 'master'
             }
             steps {
                 echo 'Building code in the "master" branch...'
@@ -86,7 +90,8 @@ pipeline {
             }
         }
 
-        stage('Deploy to Production') {
+        // Deploy to the Production environment
+        stage('Prod Deploy') {
             when {
                 branch 'master'
             }
