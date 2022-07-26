@@ -264,6 +264,9 @@
                     "configurations": {
                         "production": {
                             "browserTarget": "market:build:production"
+                        },
+                        "development": {
+                            "browserTarget": "market:build:development"
                         }
                     }
                 },
@@ -448,6 +451,9 @@
                     "configurations": {
                         "production": {
                             "browserTarget": "sso:build:production"
+                        },
+                        "development": {
+                            "browserTarget": "sso:build:development"
                         }
                     }
                 },
@@ -660,6 +666,9 @@
                     "configurations": {
                         "production": {
                             "browserTarget": "account:build:production"
+                        },
+                        "development": {
+                            "browserTarget": "account:build:development"
                         }
                     }
                 },
@@ -856,6 +865,9 @@
                     "configurations": {
                         "production": {
                             "browserTarget": "precise:build:production"
+                        },
+                        "development": {
+                            "browserTarget": "precise:build:development"
                         }
                     }
                 },
