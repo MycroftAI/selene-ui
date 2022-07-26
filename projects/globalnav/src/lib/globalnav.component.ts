@@ -26,6 +26,7 @@ import {
     faRocket,
     faRss,
     faStore,
+    faUser,
     faUsers
 } from '@fortawesome/free-solid-svg-icons';
 
@@ -67,6 +68,7 @@ export class GlobalnavComponent implements OnInit {
             this.defineForumNav(),
             this.defineContributeNav(),
             this.defineMarketNav(),
+            this.defineAccountNav()
         ];
 
         this.footerItems = [
@@ -142,5 +144,26 @@ export class GlobalnavComponent implements OnInit {
             icon: faStore,
             text: 'Marketplace'
         };
+    }
+
+    private defineAccountNav(): PrimaryNavItem {
+        const accountMenu = {
+            children: null,
+            icon: faUser,
+            text: 'Account',
+            url: null
+        };
+        if (this.isLoggedIn) {
+            accountMenu.children = [
+                {text: 'Dashboard', url: this.mycroftUrls.account + '/dashboard', target: '_self'},
+                {text: 'Devices', url: this.mycroftUrls.account + '/devices', target: '_self'},
+                {text: 'Skills', url: this.mycroftUrls.account + '/skills', target: '_self'},
+                {text: 'Personal Data', url: this.mycroftUrls.account + '/personal-data', target: '_self'},
+                {text: 'Profile', url: this.mycroftUrls.account + '/profile', target: '_self'}
+            ];
+        } else {
+            accountMenu.url = this.mycroftUrls.account;
+        }
+        return accountMenu;
     }
 }
