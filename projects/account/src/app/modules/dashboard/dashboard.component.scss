@@ -1,11 +1,6 @@
 @import "@angular/material/theming";
 @import "mycroft-colors";
 @import "components/buttons";
-iframe {
-    min-width: 350px;
-    width: 100%;
-    height: 100vh;
-}
 
 #dashboard {
     max-width: 1200px;
@@ -13,36 +8,37 @@ iframe {
     margin-right: auto;
 }
 mat-card {
-    min-height: 540px;
+    border-radius: 12px;
     margin: 16px;
-    max-width: 540px;
+    max-width: 500px;
     min-width: 300px;
 
-    fa-icon {
-        font-size: 60px;
-        color: mat-color($mycroft-primary)
-    }
+    mat-card-header {
+        fa-icon {
+            font-size: 32px;
+            color: mat-color($mycroft-primary);
+            padding-left: 16px;
+            padding-top: 8px;
+        }
 
-    mat-card-title {
-        font-size: 40px;
-        font-weight: bolder;
-        padding: 16px;
-    }
-
-    mat-card-content {
-        padding: 16px;
-
-        .mat-body {
-            font-size: 16px;
+        mat-card-title {
+            font-weight: bold;
+            padding-top: 16px;
         }
     }
 
+    mat-card-content {
+        padding-left: 16px;
+        padding-right: 16px;
+        padding-top: 16px;
+    }
+
     mat-card-actions {
-        padding: 16px;
+        padding-left: 16px;
 
         a {
             @include action-button-primary;
-            margin: 8px;
+            margin: 16px;
         }
     }
 }

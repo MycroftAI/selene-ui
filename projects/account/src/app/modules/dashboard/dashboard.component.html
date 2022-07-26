@@ -1,9 +1,64 @@
-<div id="dashboard" fxLayout="row" fxLayoutAlign="center" fxLayout.xs="column" fxLayoutGap="16px">
+<div id="dashboard" fxLayout="row wrap" fxLayoutAlign="center" fxLayout.xs="column" fxLayoutGap="16px">
+    <mat-card fxFlex="70">
+        <mat-card-header>
+            <fa-icon mat-card-avatar [icon]="privacyIcon"></fa-icon>
+            <mat-card-title>Your Privacy is Our Policy</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p class="mat-body">
+                Mycroft only collects the personally identifiable information (PII) necessary to
+                deliver a quality user experience when interacting with the voice assistant.  Any
+                PII we collect is stored securely on our servers.  It is not shared with anyone.
+            <p class="mat-body">
+                We continually investigate solutions to further minimize the PII we collect.  We
+                also strive to be transparent about the data we do collect and why it is collected.
+                To learn more about the go to My Data.
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <a mat-button [href]="personalDataUrl">MY DATA</a>
+        </mat-card-actions>
+    </mat-card>
+
+    <mat-card fxFlex="40">
+        <mat-card-header>
+            <fa-icon mat-card-avatar [icon]="addDeviceIcon"></fa-icon>
+            <mat-card-title>Add Mycroft Device</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p class="mat-body">
+                You just got your new device with Mycroft installed.  Congratulations!  Pairing your
+                device with Mycroft's servers provides you with instant access to software updates,
+                speech transcription, weather and other services.
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <a mat-button [href]="addDeviceUrl">ADD DEVICE</a>
+        </mat-card-actions>
+    </mat-card>
+
+    <mat-card fxFlex="40">
+        <mat-card-header>
+            <fa-icon mat-card-avatar [icon]="settingsIcon"></fa-icon>
+            <mat-card-title>Configure Skills</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <p class="mat-body">
+                Some skills include settings that can change how the skill behaves or provide
+                information to the skill that will improve the user experience.  To change the
+                settings of your skills, for instance the sound of your alarm, go to Skill Settings.
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <a mat-button [href]="settingsUrl">SKILL SETTINGS</a>
+        </mat-card-actions>
+    </mat-card>
+
     <mat-card *ngIf="account.membership" fxFlex="40">
         <mat-card-header>
-            <fa-icon [icon]="awardIcon"></fa-icon>
+            <fa-icon [icon]="membershipIcon"></fa-icon>
         </mat-card-header>
-        <mat-card-title>Mycroft likes you</mat-card-title>
+        <mat-card-title>Mycroft thanks you!</mat-card-title>
         <mat-card-content>
             <p class="mat-body">
                 Your support makes a big difference.  Thanks to you and other Mycroft supporters,
@@ -19,47 +74,43 @@
 
     <mat-card *ngIf="!account.membership" fxFlex="40">
         <mat-card-header>
-            <fa-icon [icon]="awardIcon"></fa-icon>
+            <fa-icon mat-card-avatar [icon]="membershipIcon"></fa-icon>
+            <mat-card-title>Become a Member</mat-card-title>
         </mat-card-header>
-        <mat-card-title>Become a Member</mat-card-title>
         <mat-card-content>
             <p class="mat-body">
                 Mycroft's voice assistant software is open source, which means it is free to use and
                 the underlying source code is available to the public.  Our entire platform is free
-                of advertisements.  The data we collect from those that opt in to our open dataset
-                is not sold to anyone.
+                of advertisements.  The data we collect, with your consent, is not sold to anyone.
             <p class="mat-body">
-                For less than one cup of coffee a month, you can help support our server costs,
-                hosting, and ongoing development.  All of which all improve Mycroft's performance
+                For less than one cup of coffee a month, you can help with the costs of our servers,
+                services, and ongoing development.  All of which all improve Mycroft's performance
                 and user experience.
             </p>
         </mat-card-content>
         <mat-card-actions>
-            <a mat-button [href]="accountUrl">MONTHLY MEMBERSHIP $1.99</a>
-            <a mat-button [href]="accountUrl">YEARLY MEMBERSHIP $19.99</a>
+            <a mat-button [href]="accountUrl">MEMBERSHIP OPTIONS</a>
         </mat-card-actions>
     </mat-card>
 
     <mat-card fxFlex="40">
         <mat-card-header>
-            <fa-icon [icon]="downloadIcon"></fa-icon>
+            <fa-icon mat-card-avatar [icon]="downloadIcon"></fa-icon>
+            <mat-card-title>Install New Skills</mat-card-title>
         </mat-card-header>
-        <mat-card-title>Install New Skills</mat-card-title>
         <mat-card-content>
             <p class="mat-body">
-                Your device comes with a set of pre-installed skills like Timers and Wikipedia.
-                To change the settings of your skills, for instance the sound of your alarm,
-                go to Skill Settings.
-            </p>
+                Mycroft devices include pre-installed essential skills like Timers, Alarms
+                and News.  There are many other skills available built by the Mycroft team or
+                our developer community. Skills can be fun (ISS Tracker), informational
+                (National Parks), or useful (Home Assistant).
             <p class="mat-body">
-                Our open source community extends the functionality of Mycroft. Their efforts have
-                produced skills like Fairytalez and ISS Tracker. To install new skills,
-                visit the Marketplace.
+                Visit the Marketplace for a list of Mycroft-approved skills.  To install,
+                say "Hey Mycroft, install" followed by the skill name.
             </p>
         </mat-card-content>
         <mat-card-actions>
             <a mat-button [href]="marketplaceUrl">SKILL MARKETPLACE</a>
-            <a mat-button [href]="settingsUrl">SKILL SETTINGS</a>
         </mat-card-actions>
     </mat-card>
 </div>
