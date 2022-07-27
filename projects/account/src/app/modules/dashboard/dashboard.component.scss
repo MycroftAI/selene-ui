@@ -7,38 +7,3 @@
     margin-left: auto;
     margin-right: auto;
 }
-mat-card {
-    border-radius: 12px;
-    margin: 16px;
-    max-width: 500px;
-    min-width: 300px;
-
-    mat-card-header {
-        fa-icon {
-            font-size: 32px;
-            color: mat-color($mycroft-primary);
-            padding-left: 16px;
-            padding-top: 8px;
-        }
-
-        mat-card-title {
-            font-weight: bold;
-            padding-top: 16px;
-        }
-    }
-
-    mat-card-content {
-        padding-left: 16px;
-        padding-right: 16px;
-        padding-top: 16px;
-    }
-
-    mat-card-actions {
-        padding-left: 16px;
-
-        a {
-            @include action-button-primary;
-            margin: 16px;
-        }
-    }
-}

@@ -1,0 +1,5 @@
+@import "components/cards";
+
+mat-card {
+    @include selene-card;
+}

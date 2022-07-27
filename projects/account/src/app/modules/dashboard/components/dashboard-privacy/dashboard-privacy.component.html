@@ -1,0 +1,20 @@
+<mat-card>
+    <mat-card-header>
+        <fa-icon mat-card-avatar [icon]="privacyIcon"></fa-icon>
+        <mat-card-title>Your Privacy is Our Policy</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <p class="mat-body">
+            Mycroft only collects the personally identifiable information (PII) necessary to
+            deliver a quality user experience when interacting with the voice assistant.  Any
+            PII we collect is stored securely on our servers.  It is not shared with anyone.
+        <p class="mat-body">
+            We continually investigate solutions to further minimize the PII we collect.  We
+            also strive to be transparent about the data we do collect and why it is collected.
+            To learn more about the go to My Data.
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <a mat-button [href]="personalDataUrl">MY DATA</a>
+    </mat-card-actions>
+</mat-card>

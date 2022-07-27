@@ -19,10 +19,7 @@ and limitations under the License.
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
-import { faAward, faDownload, faGear, faPlugCirclePlus, faUserLock } from '@fortawesome/free-solid-svg-icons';
-
 import { Account } from '@account/models/account.model';
-import { environment } from '@account/environments/environment';
 
 @Component({
     selector: 'account-dashboard',
@@ -31,17 +28,6 @@ import { environment } from '@account/environments/environment';
 })
 export class DashboardComponent implements OnInit {
     public account: Account;
-    public addDeviceIcon = faPlugCirclePlus;
-    public downloadIcon = faDownload;
-    public membershipIcon = faAward;
-    public privacyIcon = faUserLock;
-    public settingsIcon = faGear;
-    public addDeviceUrl = environment.mycroftUrls.account + '/devices/add';
-    public marketplaceUrl = environment.mycroftUrls.marketplace;
-    public personalDataUrl = environment.mycroftUrls.account + '/personal-data';
-    public settingsUrl = environment.mycroftUrls.account + '/skills';
-    public voicesUrl = environment.mycroftUrls.mimic;
-    public accountUrl = environment.mycroftUrls.account + '/profile';
 
     constructor(private route: ActivatedRoute) {
     }
