@@ -18,7 +18,7 @@ and limitations under the License.
 
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
-import { faFileAlt, faSignInAlt, faSignOutAlt, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { faFileAlt, faHandshake, faSignInAlt, faSignOutAlt, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 import { Account } from '@account/models/account.model';
 
@@ -30,6 +30,7 @@ import { Account } from '@account/models/account.model';
 export class AgreementsComponent implements OnInit {
     @Input() account: Account;
     @Output() openDatasetOptIn = new EventEmitter<boolean>();
+    public agreementIcon: IconDefinition = faHandshake;
     public documentIcon = faFileAlt;
     public optInOutIcon: IconDefinition;
     public openDatasetOptInDate: string;

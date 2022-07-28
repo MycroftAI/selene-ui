@@ -1,36 +1,21 @@
 <mat-card>
-    <mat-toolbar>
-        <span>Agreements</span>
-    </mat-toolbar>
-    <mat-card-content fxLayout="column" fxLayoutAlign="start none">
-        <ng-container *ngFor="let agreement of account.agreements">
-            <div
-                    *ngIf="agreement.type !== 'Open Dataset'"
-                    class="profile-text"
-                    fxLayout="row"
-                    fxLayout.lt-md="column"
-                    fxLayoutAlign="space-between center"
-            >
-                <span fxFlex.gt-sm="30" class="mat-subheading-2">{{agreement.type}}:</span>
-                <p fxFlex class="mat-body">Accepted {{agreement.acceptDate}}</p>
-                <a fxFlex.gt-sm="20" mat-button target="_blank" href="{{buildAgreementUrl(agreement.type)}}">
-                    <fa-icon [icon]="documentIcon"></fa-icon>
-                    View Document
-                </a>
-            </div>
-        </ng-container>
-        <div
-                class="profile-text"
-                fxLayout="row"
-                fxLayout.lt-md="column"
-                fxLayoutAlign="space-between center"
-        >
-            <span fxFlex.gt-sm="30" class="mat-subheading-2">Open Dataset:</span>
-            <p fxFlex class="mat-body">{{openDatasetOptInDate}}</p>
-            <button fxFlex.gt-sm="20" mat-button (click)="onOptInOrOut()">
-                <fa-icon [icon]="optInOutIcon"></fa-icon>
-                {{openDatasetButtonText}}
-            </button>
+    <mat-card-header>
+        <fa-icon mat-card-avatar [icon]="agreementIcon"></fa-icon>
+        <mat-card-title>Agreements</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="row">
+            <ng-container *ngFor="let agreement of account.agreements">
+                <div *ngIf="agreement.type !== 'Open Dataset'" fxFlex="50">
+                    <mat-card-subtitle>
+                        {{agreement.type}}
+                    <a mat-icon-button color="primary" target="_blank" href="{{buildAgreementUrl(agreement.type)}}">
+                        <fa-icon [icon]="documentIcon"></fa-icon>
+                    </a>
+                    </mat-card-subtitle>
+                    <p class="mat-body">Accepted {{agreement.acceptDate}}</p>
+                </div>
+            </ng-container>
         </div>
     </mat-card-content>
 </mat-card>
