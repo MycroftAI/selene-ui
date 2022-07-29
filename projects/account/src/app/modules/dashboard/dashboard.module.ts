@@ -25,10 +25,20 @@ import { MatCardModule } from '@angular/material/card';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { DashboardComponent } from './dashboard.component';
+import { DashboardPrivacyComponent } from './components/dashboard-privacy/dashboard-privacy.component';
+import { DashboardDeviceComponent } from './components/dashboard-device/dashboard-device.component';
+import { DashboardSkillComponent } from './components/dashboard-skill/dashboard-skill.component';
+import { DashboardMembershipComponent } from './components/dashboard-membership/dashboard-membership.component';
+import { DashboardMarketplaceComponent } from './components/dashboard-marketplace/dashboard-marketplace.component';
 
 @NgModule({
     declarations: [
-        DashboardComponent
+        DashboardComponent,
+        DashboardPrivacyComponent,
+        DashboardDeviceComponent,
+        DashboardSkillComponent,
+        DashboardMembershipComponent,
+        DashboardMarketplaceComponent
     ],
     imports: [
         CommonModule,

@@ -16,25 +16,28 @@ See the Apache Version 2.0 License for specific language governing permissions
 and limitations under the License.
 ***************************************************************************** */
 
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 
-import { Account } from '@account/models/account.model';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
-@Component({
-    selector: 'account-dashboard',
-    templateUrl: './dashboard.component.html',
-    styleUrls: ['./dashboard.component.scss']
+import { PersonalDataComponent } from './personal-data.component';
+import { PersonalDataRoutingModule } from './personal-data-routing.module';
+
+@NgModule({
+    declarations: [
+        PersonalDataComponent
+    ],
+    imports: [
+        CommonModule,
+        FlexLayoutModule,
+        FontAwesomeModule,
+        MatButtonModule,
+        MatCardModule,
+        PersonalDataRoutingModule
+    ]
 })
-export class DashboardComponent implements OnInit {
-    public account: Account;
-
-    constructor(private route: ActivatedRoute) {
-    }
-
-    ngOnInit() {
-        this.route.data.subscribe(
-            (data: {account: Account}) => { this.account = data.account; }
-        );
-    }
-}
+export class PersonalDataModule { }

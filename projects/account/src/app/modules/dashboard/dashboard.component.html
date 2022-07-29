@@ -1,65 +1,7 @@
-<div id="dashboard" fxLayout="row" fxLayoutAlign="center" fxLayout.xs="column" fxLayoutGap="16px">
-    <mat-card *ngIf="account.membership" fxFlex="40">
-        <mat-card-header>
-            <fa-icon [icon]="awardIcon"></fa-icon>
-        </mat-card-header>
-        <mat-card-title>Mycroft likes you</mat-card-title>
-        <mat-card-content>
-            <p class="mat-body">
-                Your support makes a big difference.  Thanks to you and other Mycroft supporters,
-                 we can continue building upon the Mycroft experience.  It is also motivating
-                knowing there is a community of people who believe in the same things we do.
-            </p>
-        </mat-card-content>
-        <!-- Commented out until premium voices are available -->
-        <!-- <mat-card-actions>
-            <a mat-button [href]="voicesUrl">CHECK OUT PREMIUM VOICES</a>
-        </mat-card-actions> -->
-    </mat-card>
-
-    <mat-card *ngIf="!account.membership" fxFlex="40">
-        <mat-card-header>
-            <fa-icon [icon]="awardIcon"></fa-icon>
-        </mat-card-header>
-        <mat-card-title>Become a Member</mat-card-title>
-        <mat-card-content>
-            <p class="mat-body">
-                Mycroft's voice assistant software is open source, which means it is free to use and
-                the underlying source code is available to the public.  Our entire platform is free
-                of advertisements.  The data we collect from those that opt in to our open dataset
-                is not sold to anyone.
-            <p class="mat-body">
-                For less than one cup of coffee a month, you can help support our server costs,
-                hosting, and ongoing development.  All of which all improve Mycroft's performance
-                and user experience.
-            </p>
-        </mat-card-content>
-        <mat-card-actions>
-            <a mat-button [href]="accountUrl">MONTHLY MEMBERSHIP $1.99</a>
-            <a mat-button [href]="accountUrl">YEARLY MEMBERSHIP $19.99</a>
-        </mat-card-actions>
-    </mat-card>
-
-    <mat-card fxFlex="40">
-        <mat-card-header>
-            <fa-icon [icon]="downloadIcon"></fa-icon>
-        </mat-card-header>
-        <mat-card-title>Install New Skills</mat-card-title>
-        <mat-card-content>
-            <p class="mat-body">
-                Your device comes with a set of pre-installed skills like Timers and Wikipedia.
-                To change the settings of your skills, for instance the sound of your alarm,
-                go to Skill Settings.
-            </p>
-            <p class="mat-body">
-                Our open source community extends the functionality of Mycroft. Their efforts have
-                produced skills like Fairytalez and ISS Tracker. To install new skills,
-                visit the Marketplace.
-            </p>
-        </mat-card-content>
-        <mat-card-actions>
-            <a mat-button [href]="marketplaceUrl">SKILL MARKETPLACE</a>
-            <a mat-button [href]="settingsUrl">SKILL SETTINGS</a>
-        </mat-card-actions>
-    </mat-card>
+<div id="dashboard" fxLayout="row wrap" fxLayoutAlign="center" fxLayout.xs="column">
+    <account-dashboard-privacy fxFlex="75"></account-dashboard-privacy>
+    <account-dashboard-device fxFlex="45"></account-dashboard-device>
+    <account-dashboard-skill fxFlex="45"></account-dashboard-skill>
+    <account-dashboard-membership fxFlex="45" [account]="account"></account-dashboard-membership>
+    <account-dashboard-marketplace fxFlex="45"></account-dashboard-marketplace>
 </div>

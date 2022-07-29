@@ -1,0 +1,7 @@
+@import "components/cards";
+
+mat-card {
+    @include selene-card;
+    max-width: 800px;
+
+}
