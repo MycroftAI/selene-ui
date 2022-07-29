@@ -30,9 +30,6 @@ import { DashboardComponent } from './dashboard.component';
     declarations: [
         DashboardComponent
     ],
-    entryComponents: [
-        DashboardComponent,
-    ],
     imports: [
         CommonModule,
         FlexLayoutModule,

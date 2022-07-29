@@ -20,7 +20,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
 import { Observable, throwError } from 'rxjs';
-import { AbstractControl, FormGroup } from '@angular/forms';
+import { AbstractControl, UntypedFormGroup } from '@angular/forms';
 import { environment } from '../../../environments/environment';
 import { Agreement } from '@account/models/agreement.model';
 import { catchError } from 'rxjs/operators';
@@ -67,7 +67,7 @@ export class ApiService {
      *
      * @param loginForm: form containing the email and password of a user not using federated login
      */
-    authorizeInternal (loginForm: FormGroup): Observable<any> {
+    authorizeInternal (loginForm: UntypedFormGroup): Observable<any> {
         const loginFormValues = loginForm.value;
         const rawCredentials = `${loginFormValues.email}:||:${loginFormValues.password}`;
         const codedCredentials = btoa(rawCredentials);
@@ -112,7 +112,7 @@ export class ApiService {
         return this.http.get<Agreement>(AGREEMENT_URL + '/' + url_suffix);
     }
 
-    addAccount(newAcctForm: FormGroup)  {
+    addAccount(newAcctForm: UntypedFormGroup)  {
         const formValues = newAcctForm.value;
         if (formValues.login.email) {
             formValues.login.email = btoa(formValues.login.email);

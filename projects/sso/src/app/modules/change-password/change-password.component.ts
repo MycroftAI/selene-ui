@@ -18,7 +18,7 @@ and limitations under the License.
 
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormControl, Validators } from '@angular/forms';
+import { UntypedFormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { Observable } from 'rxjs';
@@ -36,8 +36,8 @@ const fiveSeconds = 5000;
 })
 export class ChangePasswordComponent implements OnInit {
     public account$: Observable<PasswordChangeAccount>;
-    public emailControl = new FormControl(null, [Validators.required, Validators.email]);
-    public passwordControl = new FormControl(null, [Validators.required]);
+    public emailControl = new UntypedFormControl(null, [Validators.required, Validators.email]);
+    public passwordControl = new UntypedFormControl(null, [Validators.required]);
 
     constructor(
         private route: ActivatedRoute,

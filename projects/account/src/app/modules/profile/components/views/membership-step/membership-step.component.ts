@@ -19,7 +19,7 @@ and limitations under the License.
 import { Component, Input, OnInit } from '@angular/core';
 import { MembershipType } from '@account/models/membership.model';
 import { MembershipUpdate } from '@account/models/membership-update.model';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 
 @Component({
     selector: 'account-membership-step',
@@ -28,7 +28,7 @@ import { FormGroup } from '@angular/forms';
 })
 export class MembershipStepComponent implements OnInit {
     @Input() membershipTypes: MembershipType[];
-    @Input() newAcctForm: FormGroup;
+    @Input() newAcctForm: UntypedFormGroup;
     public membershipDescription: string[];
 
     constructor() {

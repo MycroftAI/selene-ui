@@ -3,11 +3,6 @@
     "dest": "../../dist/shared",
     "lib": {
     "entryFile": "src/projects.ts",
-        "cssUrl": "inline",
-        "umdModuleIds": {
-            "@fortawesome/angular-fontawesome": "angularFontawesome",
-            "@fortawesome/free-brands-svg-icons": "freeBrandsSvgIcons",
-            "@fortawesome/free-solid-svg-icons": "freeSolidSvgIcons"
-        }
+        "cssUrl": "inline"
     }
 }

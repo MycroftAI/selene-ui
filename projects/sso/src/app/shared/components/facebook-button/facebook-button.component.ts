@@ -19,7 +19,7 @@ and limitations under the License.
 import { Component, EventEmitter, Output } from '@angular/core';
 
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
-import { SocialAuthService, FacebookLoginProvider } from 'angularx-social-login';
+import { SocialAuthService, FacebookLoginProvider } from '@abacritt/angularx-social-login';
 
 import { LoginToken } from '../../models/login-token.model';
 

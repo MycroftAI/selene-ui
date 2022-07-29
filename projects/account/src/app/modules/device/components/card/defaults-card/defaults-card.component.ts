@@ -17,7 +17,7 @@ and limitations under the License.
 ***************************************************************************** */
 
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { AccountDefaults } from '@account/models/defaults.model';
 import { DeviceService } from '@account/http/device.service';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
@@ -33,7 +33,7 @@ const fiveSeconds = 5000;
 export class DefaultsCardComponent implements OnInit {
     @Input() addingDevice = false;
     @Input() defaults: AccountDefaults;
-    @Input() defaultsForm: FormGroup;
+    @Input() defaultsForm: UntypedFormGroup;
     private snackbarConfig = new MatSnackBarConfig();
 
     constructor(

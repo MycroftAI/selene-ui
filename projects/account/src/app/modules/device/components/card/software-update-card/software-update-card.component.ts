@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 import { OptionButtonsConfig } from '@account/models/option-buttons-config.model';
 
@@ -9,7 +9,7 @@ import { OptionButtonsConfig } from '@account/models/option-buttons-config.model
     styleUrls: ['./software-update-card.component.scss']
 })
 export class SoftwareUpdateCardComponent implements OnInit {
-    @Input() softwareUpdateForm: FormGroup;
+    @Input() softwareUpdateForm: UntypedFormGroup;
     public automaticUpdate = false;
 
     constructor() { }

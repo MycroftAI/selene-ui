@@ -17,7 +17,7 @@ and limitations under the License.
 ***************************************************************************** */
 
 import { Component, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { UntypedFormGroup } from '@angular/forms';
 
 @Component({
     selector: 'sso-email-input',
@@ -25,7 +25,7 @@ import { FormGroup } from '@angular/forms';
     styleUrls: ['./email-input.component.scss']
 })
 export class EmailInputComponent {
-    @Input() formGroup: FormGroup;
+    @Input() formGroup: UntypedFormGroup;
     @Input() readOnly: boolean;
     @Input() required: boolean;
 

@@ -45,9 +45,11 @@ export class MembershipComponent implements OnDestroy {
         private profileService: ProfileService,
         private snackbar: MatSnackBar
     ) {
-        this.mediaWatcher = mediaObserver.media$.subscribe(
-            (change: MediaChange) => {
-              this.alignVertical = ['xs', 'sm'].includes(change.mqAlias);
+        this.mediaWatcher = mediaObserver.asObservable().subscribe(
+            (change: MediaChange[]) => {
+                change.forEach((item) => {
+                  this.alignVertical = ['xs', 'sm'].includes(item.mqAlias);
+                });
           }
         );
     }

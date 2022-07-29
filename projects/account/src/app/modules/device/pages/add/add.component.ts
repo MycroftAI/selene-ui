@@ -21,8 +21,8 @@ import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import {
     AbstractControl,
     AsyncValidatorFn,
-    FormBuilder,
-    FormGroup,
+    UntypedFormBuilder,
+    UntypedFormGroup,
     ValidationErrors,
     Validators
 } from '@angular/forms';
@@ -67,22 +67,24 @@ export function deviceNameValidator(deviceService: DeviceService): AsyncValidato
 export class AddComponent implements OnInit {
     public alignVertical: boolean;
     public defaults: AccountDefaults;
-    public defaultsForm: FormGroup;
-    public deviceForm: FormGroup;
+    public defaultsForm: UntypedFormGroup;
+    public deviceForm: UntypedFormGroup;
     private mediaWatcher: Subscription;
-    public preferencesForm: FormGroup;
+    public preferencesForm: UntypedFormGroup;
     public preferences: AccountPreferences;
     public stepDoneIcon = faCheck;
 
     constructor(
-        private formBuilder: FormBuilder,
+        private formBuilder: UntypedFormBuilder,
         public mediaObserver: MediaObserver,
         private deviceService: DeviceService,
         private route: ActivatedRoute
     ) {
-        this.mediaWatcher = mediaObserver.media$.subscribe(
-            (change: MediaChange) => {
-                this.alignVertical = ['xs', 'sm'].includes(change.mqAlias);
+        this.mediaWatcher = mediaObserver.asObservable().subscribe(
+            (change: MediaChange[]) => {
+                change.forEach((item) => {
+                    this.alignVertical = ['xs', 'sm'].includes(item.mqAlias);
+                });
             }
         );
     }
@@ -153,6 +155,16 @@ export class AddComponent implements OnInit {
 
     onDefaultsSubmit() {
         this.deviceService.addAccountDefaults(this.defaultsForm).subscribe();
+        this.deviceForm.patchValue(
+            {
+                city: this.defaultsForm.controls['city'].value,
+                country: this.defaultsForm.controls['country'].value,
+                region: this.defaultsForm.controls['region'].value,
+                timezone: this.defaultsForm.controls['timezone'].value,
+                wakeWord: this.defaultsForm.controls['wakeWord'].value,
+                voice: this.defaultsForm.controls['voice'].value
+            }
+        );
     }
 
     onFinished() {

@@ -38,11 +38,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
         MaintenancePageComponent,
         PageNotFoundComponent,
     ],
-    entryComponents: [
-        SnackbarComponent,
-        MaintenancePageComponent,
-        PageNotFoundComponent,
-    ],
     imports: [
         CommonModule,
         FlexLayoutModule,
@@ -57,6 +52,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
         SnackbarComponent,
         MaintenancePageComponent,
         PageNotFoundComponent,
-    ],
+    ]
 })
 export class SharedModule { }
