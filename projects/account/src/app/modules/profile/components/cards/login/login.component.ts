@@ -18,7 +18,7 @@ and limitations under the License.
 
 import { Component, Input } from '@angular/core';
 
-import { Account } from '../../../../../shared/models/account.model';
+import { Account } from '@account/models/account.model';
 
 @Component({
     selector: 'account-login-edit',

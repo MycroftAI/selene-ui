@@ -1,0 +1,20 @@
+<mat-card>
+    <mat-card-header>
+        <fa-icon mat-card-avatar [icon]="downloadIcon"></fa-icon>
+        <mat-card-title>Install New Skills</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <p class="mat-body">
+            Mycroft devices include pre-installed essential skills like Timers, Alarms
+            and News.  There are many other skills available built by the Mycroft team or
+            our developer community. Skills can be fun (ISS Tracker), informational
+            (National Parks), or useful (Home Assistant).
+        <p class="mat-body">
+            Visit the Marketplace for a list of Mycroft-approved skills.  To install,
+            say "Hey Mycroft, install" followed by the skill name.
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <a mat-button [href]="marketplaceUrl">SKILL MARKETPLACE</a>
+    </mat-card-actions>
+</mat-card>
