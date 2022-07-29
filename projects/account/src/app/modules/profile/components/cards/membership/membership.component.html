@@ -1,17 +1,37 @@
-<mat-card>
-    <mat-toolbar>
-        <span>Support Mycroft</span>
-    </mat-toolbar>
-    <mat-card-content fxLayout="column" fxLayoutAlign="center center">
-        <span>Mycroft supporters ensure we can keep the services open and available.</span>
-        <account-membership-options
-                [accountMembership]="accountMembership"
-                [membershipTypes]="membershipTypes"
-                (membershipChange)="updateAccount($event)"
-        >
-        </account-membership-options>
-        <span *ngIf="accountMembership && accountMembership.duration" id="subscription-date" class="mat-body">
-            Proudly supporting Mycroft for {{accountMembership.duration}}!
-        </span>
+<mat-card *ngIf="!accountMembership">
+    <mat-card-header>
+        <fa-icon mat-card-avatar [icon]="membershipIcon"></fa-icon>
+        <mat-card-title>Membership Status</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <p class="mat-body">
+            You have chosen not to subscribe to Mycroft's membership program.
+        <p class="mat-body">
+            Mycroft supporters
+            ensure we can keep the services open and available.  Your credit card information is
+            sent to the payment service and not stored on Mycroft's servers.
+        </p>
     </mat-card-content>
+    <mat-card-actions>
+        <a mat-button>$1.99 USD MONTHLY</a>
+        <a mat-button>$19.99 USD YEARLY</a>
+    </mat-card-actions>
+</mat-card>
+
+<mat-card *ngIf="accountMembership">
+    <mat-card-header>
+        <fa-icon mat-card-avatar [icon]="membershipIcon"></fa-icon>
+        <mat-card-title>Membership Status</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <p *ngIf="accountMembership.duration" class="mat-body">
+            Proudly supporting Mycroft for {{accountMembership.duration}}!
+        </p>
+        <p *ngIf="!accountMembership.duration" class="mat-body">
+            Thank you for supporting Mycroft!
+        </p>
+    </mat-card-content>
+    <mat-card-actions>
+        <a mat-button color="warn">CANCEL MEMBERSHIP</a>
+    </mat-card-actions>
 </mat-card>

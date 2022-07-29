@@ -1,33 +1,19 @@
-@import "../../../../../../../../../node_modules/@angular/material/theming";
-@import "mycroft-colors";
-@import "../../../../../../../../../src/stylesheets/components/buttons";
-@import "../../../../../../../../../src/stylesheets/components/cards";
-
+@import "@angular/material/theming";
+@import "components/cards";
 
 mat-card {
-    @include section-card;
+    @include selene-card;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 800px;
 
     mat-card-content {
-        margin-left: 16px;
-        margin-right: 8px;
-
-        .mat-subheading-2 {
-            color: mat-color($mycroft-accent, A700);
-            font-weight: bold;
-            margin: 8px;
-            min-width: 120px;
+        mat-card-subtitle {
+            margin-bottom: 0;
         }
         .mat-body {
-            margin: 0;
-            min-width: 200px;
-        }
-
-        button {
-            @include action-button-primary;
-            margin: 8px;
+            margin-top: 4px;
+            margin-bottom: 16px;
         }
     }
 }
-
-
-
