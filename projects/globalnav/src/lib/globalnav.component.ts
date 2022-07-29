@@ -62,13 +62,13 @@ export class GlobalnavComponent implements OnInit {
 
     buildNavigationItems(): void {
         this.navigationItems = [
+            this.defineAccountNav(),
             this.defineAboutNav(),
             this.defineGetStartedNav(),
             this.defineBlogNav(),
             this.defineForumNav(),
             this.defineContributeNav(),
             this.defineMarketNav(),
-            this.defineAccountNav()
         ];
 
         this.footerItems = [
@@ -150,7 +150,7 @@ export class GlobalnavComponent implements OnInit {
         const accountMenu = {
             children: null,
             icon: faUser,
-            text: 'Account',
+            text: 'My Mycroft',
             url: null
         };
         if (this.isLoggedIn) {
