@@ -155,6 +155,16 @@ export class AddComponent implements OnInit {
 
     onDefaultsSubmit() {
         this.deviceService.addAccountDefaults(this.defaultsForm).subscribe();
+        this.deviceForm.patchValue(
+            {
+                city: this.defaultsForm.controls['city'].value,
+                country: this.defaultsForm.controls['country'].value,
+                region: this.defaultsForm.controls['region'].value,
+                timezone: this.defaultsForm.controls['timezone'].value,
+                wakeWord: this.defaultsForm.controls['wakeWord'].value,
+                voice: this.defaultsForm.controls['voice'].value
+            }
+        );
     }
 
     onFinished() {

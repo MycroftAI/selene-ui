@@ -19,7 +19,7 @@ and limitations under the License.
 export const environment = {
     production: false,
     mycroftUrls: {
-        account: 'https://home-test.mycroft.ai',
+        account: 'https://account.mycroft.test',
         chat: 'https://chat.mycroft.ai',
         forum: 'https://community.mycroft.ai',
         marketplace: 'https://market.mycroft.test',
