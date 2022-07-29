@@ -30,6 +30,7 @@ import { ProfileModule } from './modules/profile/profile.module';
 import { SharedModule as SharedLibModule } from 'shared';
 import { SharedModule } from 'shared';
 import { SkillModule } from './modules/skill/skill.module';
+import { PersonalDataModule } from './modules/personal-data/personal-data.module';
 
 @NgModule(
     {
@@ -41,6 +42,7 @@ import { SkillModule } from './modules/skill/skill.module';
             GlobalnavModule,
             HttpClientModule,
             DeviceModule,
+            PersonalDataModule,
             ProfileModule,
             SharedLibModule,
             SharedModule,
