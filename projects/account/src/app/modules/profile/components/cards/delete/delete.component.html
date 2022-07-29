@@ -1,12 +1,28 @@
 <mat-card>
-    <mat-toolbar>
-        <span>Delete Account</span>
-    </mat-toolbar>
-    <div fxLayout="column" fxLayoutAlign="start center">
+    <mat-card-header>
+        <fa-icon mat-card-avatar [icon]="deleteIcon"></fa-icon>
+        <mat-card-title>Delete Account</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
         <span class="mat-h3">CAUTION</span>
         <div id="delete-warning">
             <div *ngFor="let paragraph of deleteWarning" class="mat-body-2">{{paragraph}}</div>
         </div>
-        <button mat-raised-button color="warn" (click)="confirmDelete()">DELETE ACCOUNT</button>
-    </div>
+    </mat-card-content>
+    <mat-card-actions>
+        <button mat-button (click)="confirmDelete()">DELETE ACCOUNT</button>
+    </mat-card-actions>
 </mat-card>
+
+<!--<mat-card>-->
+<!--    <mat-toolbar>-->
+<!--        <span>Delete Account</span>-->
+<!--    </mat-toolbar>-->
+<!--    <div fxLayout="column" fxLayoutAlign="start center">-->
+<!--        <span class="mat-h3">CAUTION</span>-->
+<!--        <div id="delete-warning">-->
+<!--            <div *ngFor="let paragraph of deleteWarning" class="mat-body-2">{{paragraph}}</div>-->
+<!--        </div>-->
+<!--        <button mat-button color="warn" (click)="confirmDelete()">DELETE ACCOUNT</button>-->
+<!--    </div>-->
+<!--</mat-card>-->

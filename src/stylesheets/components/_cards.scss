@@ -68,7 +68,6 @@
     margin: 16px;
     max-width: 500px;
     min-width: 300px;
-    //padding: 16px;
 
     mat-card-header {
         fa-icon {
@@ -91,11 +90,12 @@
     }
 
     mat-card-actions {
-        padding-left: 16px;
+        padding-left: 32px;
 
         a {
             @include action-button-primary;
-            margin: 16px;
+            margin-right: 16px;
+            margin-bottom: 16px;
         }
     }
 }

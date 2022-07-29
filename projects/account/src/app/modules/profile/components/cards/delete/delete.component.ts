@@ -19,6 +19,8 @@ and limitations under the License.
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
+import { faUserXmark, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+
 import { DeleteConfirmComponent } from '../../modals/delete-confirm/delete-confirm.component';
 
 @Component({
@@ -27,6 +29,7 @@ import { DeleteConfirmComponent } from '../../modals/delete-confirm/delete-confi
     styleUrls: ['./delete.component.scss']
 })
 export class DeleteComponent implements OnInit {
+    public deleteIcon: IconDefinition = faUserXmark;
     public deleteWarning: string[];
 
     constructor(public confirmDialog: MatDialog) { }

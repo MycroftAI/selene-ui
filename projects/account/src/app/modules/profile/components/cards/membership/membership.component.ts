@@ -21,6 +21,8 @@ import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Subscription } from 'rxjs';
 
+import { faCreditCard, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+
 import { AccountMembership } from '@account/models/account-membership.model';
 import { MembershipType } from '@account/models/membership.model';
 import { MembershipUpdate } from '@account/models/membership-update.model';
@@ -39,6 +41,7 @@ export class MembershipComponent implements OnDestroy {
     @Input() membershipTypes: MembershipType[];
     public alignVertical: boolean;
     private mediaWatcher: Subscription;
+    public membershipIcon: IconDefinition = faCreditCard;
 
     constructor(
         public mediaObserver: MediaObserver,

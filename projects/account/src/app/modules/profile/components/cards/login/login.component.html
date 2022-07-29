@@ -1,21 +1,26 @@
 <mat-card>
-    <mat-toolbar>
-        <span>Profile</span>
-    </mat-toolbar>
-    <mat-card-content fxLayout="row" fxLayout.lt-md="column"  fxLayoutAlign="space-between center">
-        <div fxFlex>
-            <div class="profile-text" fxLayout="row" fxLayoutAlign="start center">
-                <span class="mat-subheading-2">Email:</span>
+    <mat-card-header>
+        <fa-icon mat-card-avatar [icon]="loginIcon"></fa-icon>
+        <mat-card-title>Login Information</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <div fxLayout="row">
+            <div fxFlex="50">
+                <mat-card-subtitle>Email Address*</mat-card-subtitle>
                 <p class="mat-body">{{account.emailAddress}}</p>
             </div>
-            <div fxLayout="row" fxLayoutAlign="start center">
-                <span class="mat-subheading-2">Username:</span>
+            <div fxFlex="50">
+                <mat-card-subtitle>Username</mat-card-subtitle>
                 <p class="mat-body">{{account.username}}</p>
             </div>
         </div>
-        <div fxLayout="column" fxLayoutAlign="center">
-            <!--<button mat-button>CHANGE USERNAME</button>-->
-            <!--<button mat-button>CHANGE PASSWORD</button>-->
-        </div>
+        <p class="mat-body">
+            * Your email address uniquely identifies your account.  It will be used to send
+            messages related to actions taken on your account, such as a password change request.
+        </p>
     </mat-card-content>
+    <mat-card-actions>
+        <a mat-button>CHANGE EMAIL ADDRESS</a>
+        <a mat-button>CHANGE PASSWORD</a>
+    </mat-card-actions>
 </mat-card>

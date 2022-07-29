@@ -18,6 +18,8 @@ and limitations under the License.
 
 import { Component, Input } from '@angular/core';
 
+import { faAddressCard, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+
 import { Account } from '@account/models/account.model';
 
 @Component({
@@ -27,6 +29,7 @@ import { Account } from '@account/models/account.model';
 })
 export class LoginComponent {
     @Input() account: Account;
+    public loginIcon: IconDefinition = faAddressCard;
 
     constructor() { }
 }
