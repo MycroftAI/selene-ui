@@ -15,7 +15,14 @@
 // See the Apache Version 2.0 License for specific language governing permissions
 // and limitations under the License.
 // *****************************************************************************
+@forward "components/buttons";
+@forward "components/cards";
+@forward "mycroft-theme";
 
+.mat-app-background {
+    background-color: #e4f1fe;
+    margin: 0;
+}
 .app-body {
     height: 100vh;
     margin: 3vmin;

@@ -1,5 +1,23 @@
-@import '@angular/material/theming';
-@import 'mycroft-colors';
+// *****************************************************************************
+// SPDX-License-Identifier: Apache-2.0
+//
+//
+// Copyright (c) Mycroft AI Inc. All rights reserved.
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+// this file except in compliance with the License. You may obtain a copy of the
+// License at http://www.apache.org/licenses/LICENSE-2.0
+//
+// THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+// KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
+// WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+// MERCHANTABLITY OR NON-INFRINGEMENT.
+//
+// See the Apache Version 2.0 License for specific language governing permissions
+// and limitations under the License.
+// *****************************************************************************
+
+@use '@angular/material' as mat;
+@use 'mycroft-theme' as theme;
 
 @mixin install-status {
     border-radius: 4px;
@@ -27,13 +45,13 @@ fa-icon {
 
 #install-button {
     @include install-status;
-    background-color: mat-color($mycroft-primary) ;
-    color: mat-contrast($mycroft-primary, 500);
+    background-color: mat.get-color-from-palette(theme.$mycroft-primary, 500) ;
+    color: mat.get-contrast-color-from-palette(theme.$mycroft-primary, 500);
 }
 #install-button:hover {
     @include install-status;
-    background-color: mat-color($mycroft-accent, A100);
-    color: mat-color($mycroft-accent);
+    background-color: mat.get-color-from-palette(theme.$mycroft-accent, A100);
+    color: mat.get-color-from-palette(theme.$mycroft-accent, 500);
 }
 
 #installed-button {
@@ -42,8 +60,8 @@ fa-icon {
 
 #installing-button {
     @include install-status;
-    background-color: mat-color($mycroft-accent, A100);;
-    color: mat-color($mycroft-accent);
+    background-color: mat.get-color-from-palette(theme.$mycroft-accent, A100);;
+    color: mat.get-color-from-palette(theme.$mycroft-accent);
     mat-spinner {
         float: left;
         margin-right: 10px;
@@ -52,30 +70,30 @@ fa-icon {
 }
 #installing-spinner {
     @include spinner-common;
-    border-right-color: mat-color($mycroft-accent);
-    border-top-color: mat-color($mycroft-accent);
+    border-right-color: mat.get-color-from-palette(theme.$mycroft-accent, 800);
+    border-top-color: mat.get-color-from-palette(theme.$mycroft-accent, 800);
 }
 
 
 #uninstall-button {
     @include install-status;
-    background-color: mat-color($mycroft-accent, A700);
-    color: mat-contrast($mycroft-accent, 500);
+    background-color: mat.get-color-from-palette(theme.$mycroft-accent, A700);
+    color: mat.get-color-from-palette(theme.$mycroft-accent, 500);
 }
 .uninstall-button:hover {
     @include install-status;
     border: none;
-    background-color: mat-color($mycroft-warn);
-    color: mat-contrast($mycroft-primary, 500);
+    background-color: mat.get-color-from-palette(theme.$mycroft-warn, 400);
+    color: mat.get-contrast-color-from-palette(theme.$mycroft-primary, 500);
 }
 
 #uninstalling-button {
     @include install-status;
-    background-color: mat-color($mycroft-warn);
-    color: mat-contrast($mycroft-primary, 500);
+    background-color: mat.get-color-from-palette(theme.$mycroft-warn, 400);
+    color: mat.get-contrast-color-from-palette(theme.$mycroft-primary, 500);
 }
 #uninstalling-spinner {
     @include spinner-common;
-    border-right-color: mat-contrast($mycroft-primary, 500);
-    border-top-color: mat-contrast($mycroft-primary, 500);
+    border-right-color: mat.get-contrast-color-from-palette(theme.$mycroft-primary, 500);
+    border-top-color: mat.get-contrast-color-from-palette(theme.$mycroft-primary, 500);
 }

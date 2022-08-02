@@ -175,8 +175,7 @@
                             "projects/market/src/assets"
                         ],
                         "styles": [
-                            "src/styles.scss",
-                            "src/theme.scss"
+                            "src/styles.scss"
                         ],
                         "stylePreprocessorOptions": {
                             "includePaths": [
@@ -362,8 +361,7 @@
                             "projects/sso/src/assets"
                         ],
                         "styles": [
-                            "src/styles.scss",
-                            "src/theme.scss"
+                            "src/styles.scss"
                         ],
                         "stylePreprocessorOptions": {
                             "includePaths": [
@@ -577,8 +575,7 @@
                             "projects/account/src/assets"
                         ],
                         "styles": [
-                            "src/styles.scss",
-                            "src/theme.scss"
+                            "src/styles.scss"
                         ],
                         "stylePreprocessorOptions": {
                             "includePaths": [

@@ -1,6 +1,24 @@
-@import "@angular/material/theming";
-@import "mycroft-colors";
-@import "components/buttons";
+// *****************************************************************************
+// SPDX-License-Identifier: Apache-2.0
+//
+//
+// Copyright (c) Mycroft AI Inc. All rights reserved.
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+// this file except in compliance with the License. You may obtain a copy of the
+// License at http://www.apache.org/licenses/LICENSE-2.0
+//
+// THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+// KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
+// WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+// MERCHANTABLITY OR NON-INFRINGEMENT.
+//
+// See the Apache Version 2.0 License for specific language governing permissions
+// and limitations under the License.
+// *****************************************************************************
+
+@use "@angular/material" as mat;
+@use "components/buttons" as buttons;
+@use "mycroft-theme" as theme;
 
 mat-card {
     max-height: 1000px;
@@ -9,7 +27,7 @@ mat-card {
     margin-right: auto;
 
     h1 {
-        color: mat-color($mycroft-accent, A700);
+        color: mat.get-color-from-palette(theme.$mycroft-accent, A700);
         font-size: 48px;
         font-weight: bolder;
         text-align: center;
@@ -21,7 +39,7 @@ mat-card {
     }
 
     h2 {
-        color: mat-color($mycroft-primary);
+        color: mat.get-color-from-palette(theme.$mycroft-primary, 500);
         font-size: 32px;
         font-weight: bolder;
         text-align: center;
@@ -39,14 +57,14 @@ mat-card {
         margin-top: -12px;
 
         p {
-            color: mat-color($mycroft-primary);
+            color: mat.get-color-from-palette(theme.$mycroft-primary, 500);
             font-style: italic;
             margin-bottom: 32px;
         }
 
         button {
-            @include action-button;
-            background-color: mat-color($mycroft-accent, 100);
+            @include buttons.action-button;
+            background-color: mat.get-color-from-palette(theme.$mycroft-accent, 100);
             margin-top: 8px;
         }
 
@@ -56,7 +74,7 @@ mat-card {
         padding: 16px;
 
         button {
-            @include action-button-primary;
+            @include buttons.action-button-primary;
             margin: 8px;
         }
     }

@@ -1,60 +1,35 @@
 // *****************************************************************************
 // SPDX-License-Identifier: Apache-2.0
-// 
-// 
+//
+//
 // Copyright (c) Mycroft AI Inc. All rights reserved.
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 // this file except in compliance with the License. You may obtain a copy of the
 // License at http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
 // KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
 // WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
 // MERCHANTABLITY OR NON-INFRINGEMENT.
-// 
+//
 // See the Apache Version 2.0 License for specific language governing permissions
 // and limitations under the License.
 // *****************************************************************************
 
-@import url("https://fonts.googleapis.com/css?family=Noto+Sans");
-@import '@angular/material/theming';
-@import 'stylesheets/mycroft-colors';
-
-$mycroft-typography: mat-typography-config(
-    $font-family: '"Noto Sans", display'
-);
-
-// Be sure that you only ever include 'mat-core' mixin once!
-// it should not be included for each theme.
-@include mat-core($mycroft-typography);
-
-// instead of creating a theme with mat-light-theme like a sane person,
-// we will create our own theme-creating function that lets us apply our own
-// foreground and background palettes.
-@function mycroft-light-theme($primary, $accent, $warn: mat-palette($mat-red)) {
-  @return (
-    primary: $primary,
-    accent: $accent,
-    warn: $warn,
-    is-dark: false,
-    foreground: $mycroft-light-theme-foreground,
-    background: $mycroft-light-theme-background,
-  );
-}
-
-// include the custom theme components into a theme object
-$custom-theme: mycroft-light-theme(
-    $mycroft-primary,
-    $mycroft-accent,
-    $mycroft-warn
-);
-
-@mixin mycroft-theme($theme) {
-    $primary: map-get($theme, primary);
-    $accent: map-get($theme, accent);
-    $warn: map-get($theme, warn);
-}
-
-// include the custom theme object into the angular material theme
-@include angular-material-theme($custom-theme);
-@include mycroft-theme($custom-theme);
+// *****************************************************************************
+// SPDX-License-Identifier: Apache-2.0
+//
+//
+// Copyright (c) Mycroft AI Inc. All rights reserved.
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+// this file except in compliance with the License. You may obtain a copy of the
+// License at http://www.apache.org/licenses/LICENSE-2.0
+//
+// THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+// KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
+// WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+// MERCHANTABLITY OR NON-INFRINGEMENT.
+//
+// See the Apache Version 2.0 License for specific language governing permissions
+// and limitations under the License.
+// *****************************************************************************
