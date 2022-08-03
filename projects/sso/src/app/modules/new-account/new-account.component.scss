@@ -18,12 +18,13 @@
 
 @use "components/buttons" as buttons;
 
-button {
+.mat-button {
     @include buttons.action-button-primary;
 }
 
 mat-horizontal-stepper {
     margin-left: auto;
     margin-right: auto;
+    margin-top: 32px;
     max-width: 1000px;
 }

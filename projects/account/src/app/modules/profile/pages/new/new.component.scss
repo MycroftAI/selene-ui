@@ -20,16 +20,13 @@
 @use "components/buttons" as buttons;
 @use "mycroft-theme" as theme;
 
-button {
+.mat-button {
     @include buttons.action-button-primary;
-}
-
-button:disabled {
-    background-color: mat.get-color-from-palette(theme.$mycroft-accent, 200);
 }
 
 mat-horizontal-stepper {
     margin-left: auto;
     margin-right: auto;
+    margin-top: 32px;
     max-width: 1200px;
 }
