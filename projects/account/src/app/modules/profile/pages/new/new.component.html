@@ -23,16 +23,7 @@
         <mat-step label="Membership" [stepControl]="membershipControl">
             <account-membership-step [membershipTypes]="membershipTypes" [newAcctForm]="newAcctForm"></account-membership-step>
             <div fxLayout="row" fxLayoutAlign="end">
-                <button mat-button matStepperNext  type="button" [disabled]="!membershipControl.valid">
-                    NEXT
-                </button>
-            </div>
-        </mat-step>
-
-        <mat-step label="Open Dataset" [stepControl]="openDatasetControl">
-            <account-open-dataset-step [newAcctForm]="newAcctForm"></account-open-dataset-step>
-            <div fxLayout="row" fxLayoutAlign="end">
-                <button mat-button type="submit" [disabled]="!openDatasetControl.valid">
+                <button mat-button type="submit" [disabled]="!membershipControl.valid">
                     FINISHED
                 </button>
             </div>
@@ -61,16 +52,7 @@
         <mat-step label="Membership" [stepControl]="membershipControl">
             <account-membership-step [membershipTypes]="membershipTypes" [newAcctForm]="newAcctForm"></account-membership-step>
             <div fxLayout="row" fxLayoutAlign="end">
-                <button mat-button matStepperNext  type="button" [disabled]="!membershipControl.valid">
-                    NEXT
-                </button>
-            </div>
-        </mat-step>
-
-        <mat-step label="Open Dataset" [stepControl]="openDatasetControl">
-            <account-open-dataset-step [newAcctForm]="newAcctForm"></account-open-dataset-step>
-            <div fxLayout="row" fxLayoutAlign="end">
-                <button mat-button type="submit" [disabled]="!openDatasetControl.valid">
+                <button mat-button type="submit" [disabled]="!membershipControl.valid">
                     FINISHED
                 </button>
             </div>

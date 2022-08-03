@@ -86,7 +86,6 @@ export class NewComponent implements OnInit {
     public membershipControl: AbstractControl;
     public membershipTypes: MembershipType[];
     public newAcctForm: UntypedFormGroup;
-    public openDatasetControl: AbstractControl;
     public stepDoneIcon = faCheck;
     public usernameControl: AbstractControl;
 
@@ -130,15 +129,13 @@ export class NewComponent implements OnInit {
 
         this.newAcctForm = this.formBuilder.group({
             username: ['', Validators.required],
-            membership: membershipGroup,
-            openDataset: [null, Validators.required],
+            membership: membershipGroup
         });
     }
 
     private setControlFormAliases() {
         this.usernameControl = this.newAcctForm.controls['username'];
         this.membershipControl = this.newAcctForm.controls['membership'];
-        this.openDatasetControl = this.newAcctForm.controls['openDataset'];
     }
 
     onFormSubmit() {
@@ -146,7 +143,6 @@ export class NewComponent implements OnInit {
         if (!newValues.membership.newMembership) {
             delete newValues.membership;
         }
-        console.log(newValues);
         this.profileService.updateAccount(newValues).subscribe(
             () => { this.router.navigate(['/']); }
         );
