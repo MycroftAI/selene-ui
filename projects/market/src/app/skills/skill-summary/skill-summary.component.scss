@@ -1,9 +1,28 @@
-@import "@angular/material/theming";
-@import 'mycroft-colors';
+// *****************************************************************************
+// SPDX-License-Identifier: Apache-2.0
+//
+//
+// Copyright (c) Mycroft AI Inc. All rights reserved.
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+// this file except in compliance with the License. You may obtain a copy of the
+// License at http://www.apache.org/licenses/LICENSE-2.0
+//
+// THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+// KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
+// WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+// MERCHANTABLITY OR NON-INFRINGEMENT.
+//
+// See the Apache Version 2.0 License for specific language governing permissions
+// and limitations under the License.
+// *****************************************************************************
+
+@use "@angular/material" as mat;
+@use "mycroft-theme" as theme;
 
 #skill-category {
     mat-toolbar {
-        color: mat-color($mycroft-accent, A700);
+        background-color: #e4f1fe;
+        color: mat.get-color-from-palette(theme.$mycroft-accent, A700);
         font-size: xx-large;
         font-weight: bold;
         margin-top: 20px;

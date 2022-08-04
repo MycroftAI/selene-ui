@@ -1,23 +1,24 @@
 // *****************************************************************************
 // SPDX-License-Identifier: Apache-2.0
-// 
-// 
+//
+//
 // Copyright (c) Mycroft AI Inc. All rights reserved.
 // Licensed under the Apache License, Version 2.0 (the "License"); you may not use
 // this file except in compliance with the License. You may obtain a copy of the
 // License at http://www.apache.org/licenses/LICENSE-2.0
-// 
+//
 // THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
 // KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
 // WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
 // MERCHANTABLITY OR NON-INFRINGEMENT.
-// 
+//
 // See the Apache Version 2.0 License for specific language governing permissions
 // and limitations under the License.
 // *****************************************************************************
 
-@import "@angular/material/theming";
-@import "mycroft-colors";
+// This stylesheet defines buttons used throughout the Selene applications
+@use "@angular/material" as mat;
+@use "mycroft-theme" as theme;
 
 $button-border-radius: 4px;
 
@@ -27,39 +28,45 @@ $button-border-radius: 4px;
     letter-spacing: 0.5px;
 }
 
+// Define the style for the default action button
 @mixin action-button-primary {
     @include action-button;
-    background-color: mat-color($mycroft-primary);
-    color: mat-contrast($mycroft-primary, 500);
+    background-color: mat.get-color-from-palette(theme.$mycroft-primary, 500);
+    color: mat.get-contrast-color-from-palette(theme.$mycroft-primary, 500);
 
     &:hover {
-        background-color: mat-color($mycroft-accent, A100);
-        color: mat-color($mycroft-accent);
+        background-color: mat.get-color-from-palette(theme.$mycroft-accent, A100);
+        color: mat.get-contrast-color-from-palette(theme.$mycroft-accent, 500);
     }
 
     &:disabled {
-        background-color: mat-color($mycroft-accent, 50);
-        color: mat-color($mycroft-accent, 200);
+        background-color: mat.get-color-from-palette(theme.$mycroft-accent, 50);
+        color: mat.get-contrast-color-from-palette(theme.$mycroft-accent, 200);
     }
 }
 
+// Define the style for danger danger action buttons
 @mixin action-button-warn {
-    background-color: mat-color($mycroft-warn);
-    color: mat-contrast($mycroft-warn, 500)
+    background-color: mat.get-color-from-palette(theme.$mycroft-warn, 400);
+    color: mat.get-contrast-color-from-palette(theme.$mycroft-warn, 500)
 }
 
+// Selene uses button groups instead of radio buttons in many cases.  Define
+// the style used for these button groups.
 @mixin options-button-group {
     border: none;
 
     .mat-button-toggle {
-        background-color: mat-color($mycroft-accent, 50);
+        background-color: mat.get-color-from-palette(
+            theme.$mycroft-accent, 50
+        );
         border: none;
         border-radius: 4px;
         margin: 8px;
     }
 
     .mat-button-toggle-checked {
-        background-color: mat-color($mycroft-primary);
-        color: mat-contrast($mycroft-primary, 500);
+        background-color: mat.get-color-from-palette(theme.$mycroft-primary, 500);
+        color: mat.get-contrast-color-from-palette(theme.$mycroft-primary, 500);
     }
 }

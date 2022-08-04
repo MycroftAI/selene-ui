@@ -1,9 +1,27 @@
-@import '@angular/material/theming';
-@import 'mycroft-colors';
-@import "components/text";
+// *****************************************************************************
+// SPDX-License-Identifier: Apache-2.0
+//
+//
+// Copyright (c) Mycroft AI Inc. All rights reserved.
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+// this file except in compliance with the License. You may obtain a copy of the
+// License at http://www.apache.org/licenses/LICENSE-2.0
+//
+// THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+// KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
+// WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+// MERCHANTABLITY OR NON-INFRINGEMENT.
+//
+// See the Apache Version 2.0 License for specific language governing permissions
+// and limitations under the License.
+// *****************************************************************************
+
+@use '@angular/material' as mat;
+@use 'mycroft-theme' as theme;
+@use "components/text" as text;
 
 .skill-detail-body {
-    background-color: mat-contrast($mycroft-primary, 500);
+    background-color: mat.get-contrast-color-from-palette(theme.$mycroft-primary, 500);
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
     margin-bottom: 50px;
@@ -13,15 +31,14 @@
     padding-top: 3vh;
 
     .mat-subheading-1 {
-        color: mat-color($mycroft-accent, A700);
-        //font-size: 20px;
+        color: mat.get-color-from-palette(theme.$mycroft-accent, A700);
         font-variant: small-caps;
         font-weight: 500;
         margin-bottom: 5px;
     }
 
     .mat-body-1 {
-        color: mat-color($mycroft-accent);
+        color: mat.get-color-from-palette(theme.$mycroft-accent);
     }
 
     .kde-icon {
@@ -37,8 +54,8 @@
         min-width: 340px;
         margin-right: 50px;
         .skill-trigger {
-            @include skill-trigger;
-            @include ellipsis-overflow;
+            @include text.skill-trigger;
+            @include text.ellipsis-overflow;
             margin-right: 10px;
             margin-bottom: 10px;
             max-width: 340px;

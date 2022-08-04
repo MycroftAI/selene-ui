@@ -1,10 +1,12 @@
 <mat-card [ngClass]="{'mat-elevation-z0': addDevice}" [formGroup]="deviceForm">
 
-    <mat-card-title *ngIf="addDevice">Configure your new device</mat-card-title>
-    <mat-card-title *ngIf="!addDevice">Manage your device configuration</mat-card-title>
+    <mat-card-header>
+        <fa-icon *ngIf="!addDevice" mat-card-avatar [icon]="settingsIcon"></fa-icon>
+        <mat-card-title *ngIf="addDevice">Device Configuration</mat-card-title>
+        <mat-card-title *ngIf="!addDevice">Device Settings</mat-card-title>
+    </mat-card-header>
 
     <mat-card-content fxLayout="column">
-
         <mat-card id="id-card" class="mat-elevation-z0" fxLayout="column">
             <mat-form-field *ngIf="addDevice" [appearance]="'outline'">
                 <mat-label>Pairing Code</mat-label>
@@ -37,25 +39,25 @@
             </div>
         </mat-card>
 
+        <mat-divider></mat-divider>
         <account-geography-card [geoForm]="deviceForm" [required]="true"></account-geography-card>
+        <mat-divider></mat-divider>
         <account-voice-card [voiceForm]="deviceForm"></account-voice-card>
+        <mat-divider></mat-divider>
         <account-wake-word-card [wakeWordForm]="deviceForm"></account-wake-word-card>
-        <account-software-release-card
-            *ngIf="pantacorId"
-            [softwareReleaseForm]="deviceForm"
-        >
-        </account-software-release-card>
-        <account-software-update-card
-            *ngIf="pantacorId"
-            [softwareUpdateForm]="deviceForm"
-        >
-        </account-software-update-card>
-        <account-ssh-card *ngIf="pantacorId" [sshForm]="deviceForm"></account-ssh-card>
+        <div *ngIf="pantacorId">
+            <mat-divider></mat-divider>
+            <account-software-release-card [softwareReleaseForm]="deviceForm"></account-software-release-card>
+            <mat-divider></mat-divider>
+            <account-software-update-card [softwareUpdateForm]="deviceForm"></account-software-update-card>
+            <mat-divider></mat-divider>
+            <account-ssh-card [sshForm]="deviceForm"></account-ssh-card>
+        </div>
     </mat-card-content>
 
     <mat-card-actions *ngIf=!addDevice align="right">
-        <button mat-button id="cancel-button" (click)="onCancel()">CANCEL</button>
         <button mat-button [disabled]="!deviceForm.valid" (click)="onSave()">SAVE</button>
+        <button mat-button id="cancel-button" (click)="onCancel()">CANCEL</button>
     </mat-card-actions>
 
 </mat-card>

@@ -43,10 +43,10 @@
         </ng-container>
         <account-device-info [device]="device"></account-device-info>
         <mat-card-actions>
-            <button mat-flat-button color="primary" [routerLink]="['./', device.id]">
+            <button id="edit-button" mat-flat-button [routerLink]="['./', device.id]">
                 EDIT
             </button>
-            <button mat-flat-button color="warn" (click)="onRemove(device, i)">
+            <button id="remove-button" mat-flat-button (click)="onRemove(device, i)">
                 REMOVE
             </button>
         </mat-card-actions>

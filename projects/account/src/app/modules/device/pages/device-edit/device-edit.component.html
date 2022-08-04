@@ -1,20 +1,25 @@
-<account-device-edit-card
-        *ngIf="device$ | async"
-        [deviceForm]="deviceForm"
-        [addDevice]="false"
-        [pantacorId]="pantacorId"
-        (saveChanges)="onExit($event)"
->
-</account-device-edit-card>
+<div id="edit-device">
+    <account-device-edit-card
+            *ngIf="device$ | async"
+            [deviceForm]="deviceForm"
+            [addDevice]="false"
+            [pantacorId]="pantacorId"
+            (saveChanges)="onExit($event)"
+    >
+    </account-device-edit-card>
 
-<mat-card id="advanced-settings-card">
-    <mat-card-title>Advanced Settings</mat-card-title>
-    <mat-card-content fxLayout="column" class="section-content">
-        <div class="mat-body" *ngFor="let paragraph of advancedSettingsDesc">
-            <p>{{paragraph}}</p>
-        </div>
-    </mat-card-content>
-    <mat-card-actions align="center">
-        <button mat-button (click)="navigateToDocs()">VIEW DOCUMENTATION</button>
-    </mat-card-actions>
-</mat-card>
+    <mat-card>
+        <mat-card-header>
+            <fa-icon mat-card-avatar [icon]="advancedSettingsIcon"></fa-icon>
+            <mat-card-title>Advanced Settings</mat-card-title>
+        </mat-card-header>
+        <mat-card-content fxLayout="column" class="section-content">
+            <div class="mat-body" *ngFor="let paragraph of advancedSettingsDesc">
+                <p>{{paragraph}}</p>
+            </div>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button (click)="navigateToDocs()">VIEW DOCUMENTATION</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

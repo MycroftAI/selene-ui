@@ -1,0 +1,139 @@
+// *****************************************************************************
+// SPDX-License-Identifier: Apache-2.0
+//
+//
+// Copyright (c) Mycroft AI Inc. All rights reserved.
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+// this file except in compliance with the License. You may obtain a copy of the
+// License at http://www.apache.org/licenses/LICENSE-2.0
+//
+// THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+// KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
+// WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+// MERCHANTABLITY OR NON-INFRINGEMENT.
+//
+// See the Apache Version 2.0 License for specific language governing permissions
+// and limitations under the License.
+// *****************************************************************************
+
+// This stylesheet contains all the Material Design theming configurations
+@use "@angular/material" as mat;
+
+// Define the typography used in the Selene web applications.
+$mycroft-typography: mat.define-typography-config(
+    $font-family: "Noto Sans, display"
+);
+
+@include mat.core($mycroft-typography);
+
+// Define custom color palettes using the Mycroft colors
+$mycroft-primary-palette: (
+    50 : #e1f5fe,
+    100: #b4e5fb,
+    200: #83d3f8,
+    300: #55c2f4,
+    400: #36b5f3,
+    500: #22a7f0,
+    600: #1f9ae1,
+    700: #1c87cd,
+    800: #1976b9,
+    900: #135697,
+    contrast: (
+        50: #2c3e50,
+        100: #2c3e50,
+        200: #2c3e50,
+        300: #2c3e50,
+        400: #ffffff,
+        500: #ffffff,
+        600: #ffffff,
+        700: #ffffff,
+        800: #ffffff,
+        900: #ffffff,
+    )
+);
+
+$mycroft-accent-palette: (
+    50: #e6eefa,
+    100: #c6d5e3,
+    200: #a7b8ca,
+    300: #879bb2,
+    400: #6f869f,
+    500: #57728d,
+    600: #4a647c,
+    700: #3a5066,
+    800: #2c3e50,
+    900: #1a2a39,
+    A200: #fee255,
+    A100: #40dbb0,
+    A400: #fd9e66,
+    A700: #5b6984,
+    contrast: (
+        50 : #2c3e50,
+        100 : #2c3e50,
+        200 : #ffffff,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+    )
+);
+
+$mycroft-warn-palette: (
+    50 : #feebef,
+    100 : #fcced4,
+    200 : #ec9c9d,
+    300 : #e17678,
+    400 : #eb5757,
+    500 : #f0483f,
+    600 : #e13f3d,
+    700 : #cf3637,
+    800 : #c22f30,
+    900 : #b32425,
+    contrast: (
+        50 : #2c3e50,
+        100 : #2c3e50,
+        200 : #2c3e50,
+        300 : #2c3e50,
+        400 : #2c3e50,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+    )
+);
+$mycroft-primary: mat.define-palette($mycroft-primary-palette, 500, 200, 900);
+$mycroft-accent: mat.define-palette($mycroft-accent-palette, 800, 500, 900);
+$mycroft-warn: mat.define-palette($mycroft-warn-palette, 400, 200, 900);
+
+// Define the light theme
+$mycroft-theme: mat.define-light-theme((
+    color: (
+        primary: $mycroft-primary,
+        accent: $mycroft-accent,
+        warn: $mycroft-warn
+    ),
+    typography: mat.define-typography-config(
+        $font-family: "Noto Sans, display"
+    )
+));
+
+// Add the Mycroft theme to all the Material Design components used in the apps
+@include mat.core-theme($mycroft-theme);
+@include mat.autocomplete-theme($mycroft-theme);
+@include mat.bottom-sheet-theme($mycroft-theme);
+@include mat.button-theme($mycroft-theme);
+@include mat.card-theme($mycroft-theme);
+@include mat.dialog-theme($mycroft-theme);
+@include mat.divider-theme($mycroft-theme);
+@include mat.form-field-theme($mycroft-theme);
+@include mat.input-theme($mycroft-theme);
+@include mat.menu-theme($mycroft-theme);
+@include mat.sidenav-theme($mycroft-theme);
+@include mat.snack-bar-theme($mycroft-theme);
+@include mat.stepper-theme($mycroft-theme);
+@include mat.tabs-theme($mycroft-theme);
+@include mat.toolbar-theme($mycroft-theme);

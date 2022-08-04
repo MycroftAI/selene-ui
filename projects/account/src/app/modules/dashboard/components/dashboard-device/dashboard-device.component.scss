@@ -1,5 +1,5 @@
-@import "components/cards";
+@use "components/cards" as cards;
 
 mat-card {
-    @include selene-card;
+    @include cards.selene-card;
 }

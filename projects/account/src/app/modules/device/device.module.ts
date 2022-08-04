@@ -24,6 +24,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDivider, MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -96,6 +97,7 @@ import { SoftwareReleaseCardComponent } from './components/card/software-release
         MatButtonModule,
         MatCardModule,
         MatDialogModule,
+        MatDividerModule,
         MatExpansionModule,
         MatFormFieldModule,
         MatInputModule,

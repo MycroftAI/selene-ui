@@ -1,6 +1,24 @@
-@import "@angular/material/theming";
-@import 'mycroft-colors';
-@import 'components/buttons';
+// *****************************************************************************
+// SPDX-License-Identifier: Apache-2.0
+//
+//
+// Copyright (c) Mycroft AI Inc. All rights reserved.
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+// this file except in compliance with the License. You may obtain a copy of the
+// License at http://www.apache.org/licenses/LICENSE-2.0
+//
+// THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+// KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
+// WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+// MERCHANTABLITY OR NON-INFRINGEMENT.
+//
+// See the Apache Version 2.0 License for specific language governing permissions
+// and limitations under the License.
+// *****************************************************************************
+
+@use "@angular/material" as mat;
+@use 'components/buttons' as buttons;
+@use 'mycroft-theme' as theme;
 
 @mixin panel-defaults {
     border-radius: 12px;
@@ -9,7 +27,7 @@
 }
 
 #add-device-button {
-    @include action-button-primary;
+    @include buttons.action-button-primary;
     @include panel-defaults;
     cursor: pointer;
     height: 50px;
@@ -17,7 +35,7 @@
     min-width: 350px;
 
     fa-icon {
-        color: mat-color($mycroft-accent, 'A200');
+        color: mat.get-color-from-palette(theme.$mycroft-accent, 'A200');
         margin-right: 16px;
     }
 
@@ -33,6 +51,14 @@
 
 }
 
+#edit-button {
+    @include buttons.action-button-primary
+}
+
+#remove-button {
+    @include buttons.action-button-warn
+}
+
 mat-card {
     @include panel-defaults;
 
@@ -43,7 +69,7 @@ mat-card {
     }
 
     mat-card-title {
-        color: mat-color($mycroft-primary);
+        color: mat.get-color-from-palette(theme.$mycroft-primary, 500);
         font-weight: bold;
 
         img {
@@ -60,15 +86,15 @@ mat-card {
     }
 
     .status-active {
-        background-color: mat-color($mycroft-accent, A100);
+        background-color: mat.get-color-from-palette(theme.$mycroft-accent, A100);
     }
 
     .status-dormant {
-        background-color: mat-color($mycroft-warn, 300);
+        background-color: mat.get-color-from-palette(theme.$mycroft-warn, 300);
     }
 
     .status-inactive {
-        background-color: mat-color($mycroft-accent, A200);
+        background-color: mat.get-color-from-palette(theme.$mycroft-accent, A200);
     }
 
     mat-divider {
@@ -82,7 +108,5 @@ mat-card {
         mat-card-content {
             margin-top: 32px;
         }
-
     }
-
 }

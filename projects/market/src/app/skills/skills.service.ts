@@ -23,6 +23,9 @@ import { Observable } from 'rxjs';
 import { Subject } from 'rxjs/internal/Subject';
 import { tap } from 'rxjs/operators';
 
+export interface AvailableSkills {
+    skills: AvailableSkill[];
+}
 export interface AvailableSkill {
     displayName: string;
     icon: Object;
@@ -77,9 +80,9 @@ export class SkillsService {
     /**
      * API call to retrieve all the skills available to the user
      */
-    getAvailableSkills(): Observable<AvailableSkill[]> {
-        return this.http.get<AvailableSkill[]>(availableSkillsUrl).pipe(
-            tap((skills) => { this.availableSkills = skills; })
+    getAvailableSkills(): Observable<AvailableSkills> {
+        return this.http.get<AvailableSkills>(availableSkillsUrl).pipe(
+            tap((response) => { this.availableSkills = response.skills; })
         );
     }
 

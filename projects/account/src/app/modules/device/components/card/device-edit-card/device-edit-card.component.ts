@@ -19,6 +19,8 @@ and limitations under the License.
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 
+import { faGear, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+
 @Component({
     selector: 'account-device-edit-card',
     templateUrl: './device-edit-card.component.html',
@@ -29,6 +31,7 @@ export class DeviceEditCardComponent implements OnInit {
     @Input() addDevice = false;
     @Input() pantacorId: string;
     @Output() saveChanges = new EventEmitter<boolean>();
+    public settingsIcon: IconDefinition = faGear;
 
     constructor() { }
 

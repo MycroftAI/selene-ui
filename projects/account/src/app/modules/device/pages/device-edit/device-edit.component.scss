@@ -1,36 +1,32 @@
-@import "../../../../../../../../node_modules/@angular/material/theming";
-@import "mycroft-colors";
-@import "../../../../../../../../src/stylesheets/components/buttons";
-@import "../../../../../../../../src/stylesheets/components/cards";
+// *****************************************************************************
+// SPDX-License-Identifier: Apache-2.0
+//
+//
+// Copyright (c) Mycroft AI Inc. All rights reserved.
+// Licensed under the Apache License, Version 2.0 (the "License"); you may not use
+// this file except in compliance with the License. You may obtain a copy of the
+// License at http://www.apache.org/licenses/LICENSE-2.0
+//
+// THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+// KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
+// WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
+// MERCHANTABLITY OR NON-INFRINGEMENT.
+//
+// See the Apache Version 2.0 License for specific language governing permissions
+// and limitations under the License.
+// *****************************************************************************
 
-mat-card {
-    @include section-card;
-    max-width: 700px;
-    margin-bottom: 16px;
+@use "@angular/material" as mat;
+@use "components/buttons" as buttons;
+@use "components/cards" as cards;
+@use "mycroft-theme" as theme;
+
+#edit-device {
     margin-top: 32px;
-
-    mat-card-title {
-        color: mat-color($mycroft-primary)
-    }
-
-    mat-card-content {
-        margin: 16px;
-
-        .mat-h2 {
-            color: mat-color($mycroft-accent, A700);
-            margin-top: 32px;
-        }
-
-        mat-form-field {
-            max-width: 280px;
-        }
-    }
-
-    mat-card-actions {
-        button {
-            @include action-button-primary;
-            margin-bottom: 16px;
-            margin-right: 16px;
-        }
-    }
+}
+mat-card {
+    @include cards.section-card;
+    max-width: 700px;
+    margin-bottom: 32px;
+    margin-top: 32px;
 }

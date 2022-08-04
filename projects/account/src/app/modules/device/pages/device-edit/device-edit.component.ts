@@ -18,13 +18,15 @@ and limitations under the License.
 
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, AsyncValidatorFn, UntypedFormBuilder, UntypedFormGroup, ValidationErrors, Validators } from '@angular/forms';
-import { DeviceService } from '@account/http/device.service';
-import { Device } from '@account/models/device.model';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { catchError, map, switchMap, tap } from 'rxjs/operators';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
+import { faUserGear, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+
+import { DeviceService } from '@account/http/device.service';
+import { Device } from '@account/models/device.model';
 
 const fiveSeconds = 5000;
 
@@ -48,6 +50,7 @@ export function sshKeyValidator(deviceService: DeviceService): AsyncValidatorFn 
 })
 export class DeviceEditComponent implements OnInit {
     public advancedSettingsDesc: string[];
+    public advancedSettingsIcon: IconDefinition = faUserGear;
     public deviceForm: UntypedFormGroup;
     private deviceId: string;
     public device$ = new Observable<Device>();

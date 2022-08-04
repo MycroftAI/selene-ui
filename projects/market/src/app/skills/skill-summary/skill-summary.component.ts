@@ -43,8 +43,8 @@ export class SkillSummaryComponent implements OnInit {
     /** Issue and API call to retrieve all the available skills. */
     getAvailableSkills(): void {
         this.skillsService.getAvailableSkills().subscribe(
-            (skills) => {
-                this.availableSkills = skills;
+            (response) => {
+                this.availableSkills = response.skills;
                 this.skillCategories = this.skillsService.getSkillCategories();
                 this.installService.getSkillInstallations();
             }
