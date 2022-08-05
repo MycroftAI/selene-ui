@@ -19,10 +19,11 @@ and limitations under the License.
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AccountResolverService } from '../../core/guards/account-resolver.service';
-import { MembershipResolverService } from '../../core/guards/membership-resolver.service';
+import { AccountResolverService } from '@account/app/core/guards/account-resolver.service';
+import { MembershipResolverService } from '@account/app/core/guards/membership-resolver.service';
 import { EditComponent } from './pages/edit/edit.component';
 import { NewComponent } from './pages/new/new.component';
+import { ChangePasswordComponent } from '@account/app/modules/profile/pages/change-password/change-password.component';
 
 const profileRoutes: Routes = [
     {
@@ -39,6 +40,10 @@ const profileRoutes: Routes = [
             account: AccountResolverService,
             membershipTypes: MembershipResolverService
         }
+    },
+    {
+        path: 'password-change',
+        component: ChangePasswordComponent
     }
 ];
 

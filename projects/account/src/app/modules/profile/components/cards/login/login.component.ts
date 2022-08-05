@@ -21,6 +21,7 @@ import { Component, Input } from '@angular/core';
 import { faAddressCard, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 import { Account } from '@account/models/account.model';
+import { environment } from '@account/environments/environment';
 
 @Component({
     selector: 'account-login-edit',
@@ -30,6 +31,7 @@ import { Account } from '@account/models/account.model';
 export class LoginComponent {
     @Input() account: Account;
     public loginIcon: IconDefinition = faAddressCard;
+    public changePasswordUrl = environment.mycroftUrls.account + '/password-change';
 
     constructor() { }
 }
