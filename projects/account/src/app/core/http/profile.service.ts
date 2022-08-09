@@ -83,8 +83,8 @@ export class ProfileService {
         return this.http.delete(ACCOUNT_URL);
     }
 
-    changePassword(passwordControl: AbstractControl) {
-        const codedPassword = btoa(passwordControl.value);
+    changePassword(newPassword: string) {
+        const codedPassword = btoa(newPassword);
         return this.http.put(CHANGE_PASSWORD_URL, {password: codedPassword});
     }
 }

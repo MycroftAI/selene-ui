@@ -17,17 +17,13 @@ and limitations under the License.
 ***************************************************************************** */
 
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 import { UntypedFormControl, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { MatDialogRef } from '@angular/material/dialog';
 
-import {faEye, faEyeSlash, faUserSecret, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import {faEye, faEyeSlash, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 import { ProfileService } from '@account/http/profile.service';
-import { SnackbarComponent } from 'shared';
 
-const fiveSeconds = 5000;
 
 @Component({
     selector: 'account-change-password',
@@ -35,49 +31,27 @@ const fiveSeconds = 5000;
     styleUrls: ['./change-password.component.scss']
 })
 export class ChangePasswordComponent implements OnInit {
-    public changePasswordIcon: IconDefinition = faUserSecret;
     public hideIcon: IconDefinition = faEyeSlash;
     public passwordControl = new UntypedFormControl(null, [Validators.required]);
     public showIcon: IconDefinition = faEye;
     public showPassword = false;
 
     constructor(
-        private route: ActivatedRoute,
         private profileService: ProfileService,
-        private snackbar: MatSnackBar,
-        private dialog: MatDialog,
-        private router: Router
+        private dialogRef: MatDialogRef<ChangePasswordComponent>,
     ) {
     }
 
     ngOnInit() {
     }
 
-    onChangePassword() {
-        this.profileService.changePassword(this.passwordControl).subscribe({
-            next: () => { this.openSuccessSnackbar(); },
-            error: () => { this.openErrorSnackbar(); }
-        });
+    changePassword() {
+        this.dialogRef.close(this.passwordControl.value);
     }
 
-    openErrorSnackbar() {
-        const config = new MatSnackBarConfig();
-        config.data = {type: 'error', message: 'An error occurred changing the password'};
-        this.snackbar.openFromComponent(SnackbarComponent, config);
-    }
-
-    openSuccessSnackbar() {
-        const config = new MatSnackBarConfig();
-        config.duration = fiveSeconds;
-        config.data = {type: 'success', message: 'Password successfully changed'};
-        const successSnackbar = this.snackbar.openFromComponent(SnackbarComponent, config);
-        successSnackbar.afterDismissed().subscribe(
-            () => { this.router.navigate(['/profile']); }
-        );
-    }
 
     onCancel() {
-        this.router.navigate(['/profile']);
+        this.dialogRef.close();
     }
 
     showHidePassword() {

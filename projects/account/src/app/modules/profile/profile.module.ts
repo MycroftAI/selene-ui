@@ -36,7 +36,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgxStripeModule } from 'ngx-stripe';
 
 import { AgreementsComponent } from './components/cards/agreements/agreements.component';
-import { ChangePasswordComponent } from './pages/change-password/change-password.component';
+import { ChangePasswordComponent } from './components/views/change-password/change-password.component';
 import { DeleteComponent } from './components/cards/delete/delete.component';
 import { EditComponent } from './pages/edit/edit.component';
 import { environment} from '../../../environments/environment';

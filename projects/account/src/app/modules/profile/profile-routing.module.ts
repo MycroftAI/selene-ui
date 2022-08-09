@@ -23,7 +23,6 @@ import { AccountResolverService } from '@account/app/core/guards/account-resolve
 import { MembershipResolverService } from '@account/app/core/guards/membership-resolver.service';
 import { EditComponent } from './pages/edit/edit.component';
 import { NewComponent } from './pages/new/new.component';
-import { ChangePasswordComponent } from '@account/app/modules/profile/pages/change-password/change-password.component';
 
 const profileRoutes: Routes = [
     {
@@ -41,10 +40,6 @@ const profileRoutes: Routes = [
             membershipTypes: MembershipResolverService
         }
     },
-    {
-        path: 'password-change',
-        component: ChangePasswordComponent
-    }
 ];
 
 @NgModule({
