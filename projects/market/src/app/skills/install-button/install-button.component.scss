@@ -61,7 +61,7 @@ fa-icon {
 #installing-button {
     @include install-status;
     background-color: mat.get-color-from-palette(theme.$mycroft-accent, A100);;
-    color: mat.get-color-from-palette(theme.$mycroft-accent);
+    color: mat.get-color-from-palette(theme.$mycroft-accent, 800);
     mat-spinner {
         float: left;
         margin-right: 10px;
