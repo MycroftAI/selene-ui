@@ -47,7 +47,6 @@ import { PaymentComponent } from './components/views/payment/payment.component';
 import { ProfileService } from '@account/http/profile.service';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { SharedModule } from 'shared';
-import { OpenDatasetStepComponent } from './components/views/open-dataset-step/open-dataset-step.component';
 import { UsernameStepComponent } from './components/views/username-step/username-step.component';
 import { VerifyCardDialogComponent } from './components/views/payment/verify-card-dialog.component';
 import { DeleteConfirmComponent } from './components/modals/delete-confirm/delete-confirm.component';
@@ -64,7 +63,6 @@ import { MembershipStepComponent } from './components/views/membership-step/memb
         // Profile add (i.e. new account)
         MembershipStepComponent,
         NewComponent,
-        OpenDatasetStepComponent,
         UsernameStepComponent,
         // Stuff used in both edit and add components
         MembershipOptionsComponent,
