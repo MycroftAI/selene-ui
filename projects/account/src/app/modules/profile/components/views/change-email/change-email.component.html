@@ -1,0 +1,31 @@
+<mat-card  class="mat-elevation-z0">
+    <mat-card-header>
+        <mat-card-title>Enter your new email address</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <p class="mat-body">
+            Email messages will be sent to both the current and new email addresses.
+            The message sent to the new email address contains a verification link.
+            This change will not be applied to the account until the new email address
+            been verified.
+        </p>
+        <mat-form-field [appearance]="'outline'">
+            <mat-label>Email</mat-label>
+            <input matInput required [type]="'email'" [formControl]="emailControl">
+            <mat-error *ngIf="emailControl.invalid">
+                {{getEmailError()}}
+            </mat-error>
+        </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions>
+        <button
+                mat-button
+                id="submit-button"
+                [disabled]="emailControl.invalid"
+                (click)="changeEmail()"
+        >
+            SUBMIT
+        </button>
+        <button mat-button id="cancel-button" (click)="onCancel()">CANCEL</button>
+    </mat-card-actions>
+</mat-card>

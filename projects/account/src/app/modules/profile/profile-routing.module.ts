@@ -23,6 +23,7 @@ import { AccountResolverService } from '@account/app/core/guards/account-resolve
 import { MembershipResolverService } from '@account/app/core/guards/membership-resolver.service';
 import { EditComponent } from './pages/edit/edit.component';
 import { NewComponent } from './pages/new/new.component';
+import { VerifyEmailComponent } from './pages/verify-email/verify-email.component';
 
 const profileRoutes: Routes = [
     {
@@ -39,6 +40,10 @@ const profileRoutes: Routes = [
             account: AccountResolverService,
             membershipTypes: MembershipResolverService
         }
+    },
+    {
+        path: 'verify-email',
+        component: VerifyEmailComponent,
     },
 ];
 

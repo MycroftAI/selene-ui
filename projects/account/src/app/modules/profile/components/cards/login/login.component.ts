@@ -26,6 +26,7 @@ import { Account } from '@account/models/account.model';
 import { ChangePasswordComponent } from '@account/app/modules/profile/components/views/change-password/change-password.component';
 import { ProfileService } from '@account/http/profile.service';
 import { SnackbarComponent } from 'shared';
+import { ChangeEmailComponent } from '@account/app/modules/profile/components/views/change-email/change-email.component';
 
 const fiveSeconds = 5000;
 
@@ -40,19 +41,16 @@ export class LoginComponent {
 
     constructor(
         private profileService: ProfileService,
-        public passwordDialog: MatDialog,
+        private changeEmailDialog: MatDialog,
+        public changePasswordDialog: MatDialog,
         private snackbar: MatSnackBar
     ) { }
 
-    onPasswordChange() {
-        this.openPasswordDialog();
-    }
-
-    openPasswordDialog() {
+    openPasswordChangeDialog() {
         const dialogConfig = new MatDialogConfig();
         dialogConfig.disableClose = true;
         dialogConfig.restoreFocus = true;
-        const dialogRef = this.passwordDialog.open(ChangePasswordComponent, dialogConfig);
+        const dialogRef = this.changePasswordDialog.open(ChangePasswordComponent, dialogConfig);
         dialogRef.afterClosed().subscribe(
             (newPassword) => {
                 if (newPassword) {
@@ -61,24 +59,37 @@ export class LoginComponent {
         );
     }
 
-    updatePassword (newPassword) {
+    updatePassword (newPassword): void {
         this.profileService.changePassword(newPassword).subscribe({
-            next: () => { this.openSuccessSnackbar(); },
-            error: () => { this.openErrorSnackbar(); }
+            next: () => { this.openSnackbar('success', 'Password successfully changed'); },
+            error: () => { this.openSnackbar('error', 'An error occurred changing the password'); }
         });
     }
 
-    openErrorSnackbar() {
-        const config = new MatSnackBarConfig();
-        config.duration = fiveSeconds;
-        config.data = {type: 'error', message: 'An error occurred changing the password'};
-        this.snackbar.openFromComponent(SnackbarComponent, config);
+    openEmailAddressChangeDialog() {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.disableClose = true;
+        dialogConfig.restoreFocus = true;
+        const dialogRef = this.changeEmailDialog.open(ChangeEmailComponent, dialogConfig);
+        dialogRef.afterClosed().subscribe(
+            (newEmailAddress) => {
+                if (newEmailAddress) {
+                    this.updateEmailAddress(newEmailAddress);
+                }}
+        );
     }
 
-    openSuccessSnackbar() {
+    updateEmailAddress (newEmailAddress): void {
+        this.profileService.changeEmailAddress(newEmailAddress).subscribe({
+            next: () => { this.openSnackbar('info', 'Check your inbox for a link to verify the new email address'); },
+            error: () => { this.openSnackbar('error', 'An error occurred changing the email address'); }
+        });
+    }
+
+    openSnackbar(type: string, message: string): void {
         const config = new MatSnackBarConfig();
         config.duration = fiveSeconds;
-        config.data = {type: 'success', message: 'Password successfully changed'};
+        config.data = {type: type, message: message};
         this.snackbar.openFromComponent(SnackbarComponent, config);
     }
 }

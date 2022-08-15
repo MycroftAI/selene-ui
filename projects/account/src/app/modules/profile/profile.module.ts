@@ -36,13 +36,16 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgxStripeModule } from 'ngx-stripe';
 
 import { AgreementsComponent } from './components/cards/agreements/agreements.component';
+import { ChangeEmailComponent } from './components/views/change-email/change-email.component';
 import { ChangePasswordComponent } from './components/views/change-password/change-password.component';
 import { DeleteComponent } from './components/cards/delete/delete.component';
+import { DeleteConfirmComponent } from './components/modals/delete-confirm/delete-confirm.component';
 import { EditComponent } from './pages/edit/edit.component';
 import { environment} from '../../../environments/environment';
 import { LoginComponent } from './components/cards/login/login.component';
 import { MembershipComponent } from './components/cards/membership/membership.component';
 import { MembershipOptionsComponent } from './components/controls/membership-options/membership-options.component';
+import { MembershipStepComponent } from './components/views/membership-step/membership-step.component';
 import { NewComponent } from './pages/new/new.component';
 import { PaymentComponent } from './components/views/payment/payment.component';
 import { ProfileService } from '@account/http/profile.service';
@@ -50,15 +53,16 @@ import { ProfileRoutingModule } from './profile-routing.module';
 import { SharedModule } from 'shared';
 import { UsernameStepComponent } from './components/views/username-step/username-step.component';
 import { VerifyCardDialogComponent } from './components/views/payment/verify-card-dialog.component';
-import { DeleteConfirmComponent } from './components/modals/delete-confirm/delete-confirm.component';
-import { MembershipStepComponent } from './components/views/membership-step/membership-step.component';
+import { VerifyEmailComponent } from './pages/verify-email/verify-email.component';
 
 @NgModule({
     declarations: [
         // Profile view and edit
         AgreementsComponent,
+        ChangeEmailComponent,
         ChangePasswordComponent,
         DeleteComponent,
+        DeleteConfirmComponent,
         EditComponent,
         LoginComponent,
         MembershipComponent,
@@ -70,7 +74,7 @@ import { MembershipStepComponent } from './components/views/membership-step/memb
         MembershipOptionsComponent,
         PaymentComponent,
         VerifyCardDialogComponent,
-        DeleteConfirmComponent
+        VerifyEmailComponent
     ],
     imports: [
         CommonModule,

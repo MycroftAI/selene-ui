@@ -1,0 +1,7 @@
+@use 'components/cards' as cards;
+
+mat-card {
+    @include cards.selene-card;
+    margin-left: auto;
+    margin-right: auto;
+}
