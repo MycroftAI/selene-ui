@@ -26,10 +26,12 @@ import { Account } from '@account/models/account.model';
 import { environment } from '../../../environments/environment';
 import { MembershipType } from '@account/models/membership.model';
 import { handleError } from '@account/app/app.service';
+import { AbstractControl } from '@angular/forms';
 
 
 // URLs for the http requests
 const ACCOUNT_URL = '/api/account';
+const CHANGE_PASSWORD_URL = '/api/password-change';
 const MEMBERSHIP_URL = '/api/memberships';
 
 
@@ -79,5 +81,10 @@ export class ProfileService {
 
     deleteAccount() {
         return this.http.delete(ACCOUNT_URL);
+    }
+
+    changePassword(newPassword: string) {
+        const codedPassword = btoa(newPassword);
+        return this.http.put(CHANGE_PASSWORD_URL, {password: codedPassword});
     }
 }

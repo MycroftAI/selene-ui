@@ -17,10 +17,17 @@ and limitations under the License.
 ***************************************************************************** */
 
 import { Component, Input } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 import { faAddressCard, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 import { Account } from '@account/models/account.model';
+import { ChangePasswordComponent } from '@account/app/modules/profile/components/views/change-password/change-password.component';
+import { ProfileService } from '@account/http/profile.service';
+import { SnackbarComponent } from 'shared';
+
+const fiveSeconds = 5000;
 
 @Component({
     selector: 'account-login-edit',
@@ -31,5 +38,48 @@ export class LoginComponent {
     @Input() account: Account;
     public loginIcon: IconDefinition = faAddressCard;
 
-    constructor() { }
+    constructor(
+        private profileService: ProfileService,
+        public passwordDialog: MatDialog,
+        private snackbar: MatSnackBar
+    ) { }
+
+    onPasswordChange() {
+        this.openPasswordDialog();
+    }
+
+    openPasswordDialog() {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.disableClose = true;
+        dialogConfig.restoreFocus = true;
+        const dialogRef = this.passwordDialog.open(ChangePasswordComponent, dialogConfig);
+        dialogRef.afterClosed().subscribe(
+            (newPassword) => {
+                if (newPassword) {
+                    this.updatePassword(newPassword);
+                }}
+        );
+    }
+
+    updatePassword (newPassword) {
+        this.profileService.changePassword(newPassword).subscribe({
+            next: () => { this.openSuccessSnackbar(); },
+            error: () => { this.openErrorSnackbar(); }
+        });
+    }
+
+    openErrorSnackbar() {
+        const config = new MatSnackBarConfig();
+        config.duration = fiveSeconds;
+        config.data = {type: 'error', message: 'An error occurred changing the password'};
+        this.snackbar.openFromComponent(SnackbarComponent, config);
+    }
+
+    openSuccessSnackbar() {
+        const config = new MatSnackBarConfig();
+        config.duration = fiveSeconds;
+        config.data = {type: 'success', message: 'Password successfully changed'};
+        this.snackbar.openFromComponent(SnackbarComponent, config);
+    }
 }
+
