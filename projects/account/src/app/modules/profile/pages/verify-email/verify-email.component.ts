@@ -30,7 +30,7 @@ export class VerifyEmailComponent implements OnInit {
             },
             error: (error) => {
                 if (error.status === 401) {
-                    this.verificationMessage = 'Your need to be logged in to verify your email address.  ' +
+                    this.verificationMessage = 'You need to be logged in to verify your email address.  ' +
                         'The new email address has not yet been applied to your account so login using the email address being replaced.';
                     this.emailVerified = false;
                 }
