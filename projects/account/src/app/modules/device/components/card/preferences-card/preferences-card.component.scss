@@ -17,11 +17,11 @@
 // *****************************************************************************
 @use "@angular/material" as mat;
 @use "components/buttons" as buttons;
-@use "components/cards" as cads;
+@use "components/cards" as cards;
 @use "mycroft-theme" as theme;
 
 mat-card {
-    @include cads.section-card;
+    @include cards.section-card;
     max-width: 700px;
 
     mat-card-title {
