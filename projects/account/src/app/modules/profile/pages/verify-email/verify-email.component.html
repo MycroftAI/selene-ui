@@ -1,0 +1,27 @@
+<mat-card>
+    <mat-card-header>
+        <fa-icon mat-card-avatar [icon]="emailAddressIcon"></fa-icon>
+        <mat-card-title>Email address verification</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <p class="mat-body">{{verificationMessage}}</p>
+    </mat-card-content>
+    <mat-card-actions>
+        <button
+            *ngIf="!emailVerified"
+            mat-button
+            id="login-button"
+            (click)="loginToAccount()"
+        >
+            LOGIN
+        </button>
+        <button
+            *ngIf="emailVerified"
+            mat-button
+            id="success-button"
+            (click)="navigateToDashboard()"
+        >
+            OK
+        </button>
+    </mat-card-actions>
+</mat-card>

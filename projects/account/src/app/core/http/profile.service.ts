@@ -26,13 +26,15 @@ import { Account } from '@account/models/account.model';
 import { environment } from '../../../environments/environment';
 import { MembershipType } from '@account/models/membership.model';
 import { handleError } from '@account/app/app.service';
-import { AbstractControl } from '@angular/forms';
 
 
 // URLs for the http requests
 const ACCOUNT_URL = '/api/account';
-const CHANGE_PASSWORD_URL = '/api/password-change';
+const CHANGE_EMAIL_ADDRESS_URL = '/api/change-email';
+const CHANGE_PASSWORD_URL = '/api/change-password';
 const MEMBERSHIP_URL = '/api/memberships';
+const VALIDATE_EMAIL_URL = '/api/validate-email';
+const VERIFY_EMAIL_URL = '/api/verify-email';
 
 
 export function storeRedirect() {
@@ -86,5 +88,19 @@ export class ProfileService {
     changePassword(newPassword: string) {
         const codedPassword = btoa(newPassword);
         return this.http.put(CHANGE_PASSWORD_URL, {password: codedPassword});
+    }
+
+    validateEmailAddress(token: string): Observable<any> {
+        const queryParams = {platform: 'Internal', token: token};
+        return this.http.get(VALIDATE_EMAIL_URL, {params: queryParams});
+    }
+
+    changeEmailAddress(newEmailAddress: string) {
+        const codedEmailAddress = btoa(newEmailAddress);
+        return this.http.put(CHANGE_EMAIL_ADDRESS_URL, {token: codedEmailAddress});
+    }
+
+    verifyEmailAddress(newEmailAddress: string) {
+        return this.http.put<string>(VERIFY_EMAIL_URL, {token: newEmailAddress});
     }
 }
