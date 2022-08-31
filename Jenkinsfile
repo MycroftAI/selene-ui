@@ -3,7 +3,7 @@ pipeline {
 
     stages {
 
-        // Run the build in the against the dev branch to check for compile errors
+        // Run the build against the dev branch to check for compile errors
         stage('Build dev branch') {
             when {
                 branch 'dev'
@@ -45,21 +45,21 @@ pipeline {
                 withCredentials([sshUserPrivateKey(credentialsId: '6413826d-79f6-4d03-9902-ee1b73a96efd', keyFileVariable: 'JENKINS_SSH_KEY', passphraseVariable: '', usernameVariable: 'SERVER_USER')]) {
                     // Deploy account application and its associated libraries
                     echo 'Deploying account application...'
-                    sh 'scp -r dist/shared root@192.241.152.213:/var/www/'
-                    sh 'scp -r dist/globalnav root@192.241.152.213:/var/www/'
-                    sh 'scp -r dist/account root@192.241.152.213:/var/www/'
+                    sh 'scp -r dist/shared root@159.223.106.61:/var/www/'
+                    sh 'scp -r dist/globalnav root@159.223.106.61:/var/www/'
+                    sh 'scp -r dist/account root@159.223.106.61:/var/www/'
 
                     // Deploy single sign on application and its associated libraries
                     echo 'Deploying single sign on application...'
-                    sh 'scp -r dist/shared root@198.199.90.118:/var/www/'
-                    sh 'scp -r dist/globalnav root@198.199.90.118:/var/www/'
-                    sh 'scp -r dist/sso root@198.199.90.118:/var/www/'
+                    sh 'scp -r dist/shared root@167.99.7.101:/var/www/'
+                    sh 'scp -r dist/globalnav root@167.99.7.101:/var/www/'
+                    sh 'scp -r dist/sso root@167.99.7.101:/var/www/'
 
                     // Deploy marketplace application and its associated libraries
                     echo 'Deploying marketplace application...'
-                    sh 'scp -r dist/shared root@198.211.106.110:/var/www/'
-                    sh 'scp -r dist/globalnav root@198.211.106.110:/var/www/'
-                    sh 'scp -r dist/market root@198.211.106.110:/var/www/'
+                    sh 'scp -r dist/shared root@159.223.129.231:/var/www/'
+                    sh 'scp -r dist/globalnav root@159.223.129.231:/var/www/'
+                    sh 'scp -r dist/market root@159.223.129.231:/var/www/'
 
                     // Deploy precise application and its associated libraries
                     echo 'Deploying precise application...'
