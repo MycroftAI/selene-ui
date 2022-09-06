@@ -21,6 +21,7 @@
 @use "mycroft-theme" as theme;
 
 .mat-expansion-panel {
+    background-color: white;
     border-radius: 10px;
     margin-bottom: 16px;
     margin-left: auto;
@@ -33,7 +34,7 @@
         margin-right: 16px;
     }
 
-    mat-panel-title {
+    .mat-h1 {
         color: mat.get-color-from-palette(theme.$mycroft-accent, A700);
         font-weight: bold;
         margin: 0;
