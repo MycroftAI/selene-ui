@@ -20,7 +20,7 @@
 @use "components/buttons" as buttons;
 @use "mycroft-theme" as theme;
 
-mat-expansion-panel {
+.mat-expansion-panel {
     border-radius: 10px;
     margin-bottom: 16px;
     margin-left: auto;

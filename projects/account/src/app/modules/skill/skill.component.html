@@ -1,12 +1,14 @@
 <router-outlet></router-outlet>
-<h1 class="mat-h1">Configure Your Skills</h1>
-<p class="mat-subheading-1">{{helpText}}</p>
-<p class="mat-subheading-1">
-    {{moreSkillsText}}
-    <a [href]="mycroftUrls.marketplace">{{marketplaceLink}}</a>
-</p>
-<account-skill-panel
-        *ngFor="let skill of skills$ | async" [skill]="skill"
-        [deviceCount]="deviceCount"
->
-</account-skill-panel>
+<div fxLayout="column" fxLayoutAlign="none center">
+    <h1 class="mat-h1">Configure Your Skills</h1>
+    <p class="mat-subheading-1">{{helpText}}</p>
+    <p class="mat-subheading-1">
+        {{moreSkillsText}}
+        <a [href]="mycroftUrls.marketplace">{{marketplaceLink}}</a>
+    </p>
+    <account-skill-panel
+            *ngFor="let skill of skills$ | async" [skill]="skill"
+            [deviceCount]="deviceCount"
+    >
+    </account-skill-panel>
+</div>

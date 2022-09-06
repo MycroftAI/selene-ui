@@ -19,12 +19,13 @@
 @use "@angular/material" as mat;
 @use "mycroft-theme" as theme;
 
-h1 {
+.mat-h1 {
     color: mat.get-color-from-palette(theme.$mycroft-primary, 700);
     font-weight: bold;
     text-align: center;
-    margin-right: auto;
     margin-left: auto;
+    margin-right: auto;
+    padding-top: 32px;
     max-width: 700px;
 }
 
