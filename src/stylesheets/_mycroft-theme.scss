@@ -134,6 +134,7 @@ $mycroft-theme: mat.define-light-theme((
 @include mat.menu-theme($mycroft-theme);
 @include mat.sidenav-theme($mycroft-theme);
 @include mat.snack-bar-theme($mycroft-theme);
+@include mat.slide-toggle-theme($mycroft-theme);
 @include mat.stepper-theme($mycroft-theme);
 @include mat.tabs-theme($mycroft-theme);
 @include mat.toolbar-theme($mycroft-theme);
