@@ -17,8 +17,8 @@ and limitations under the License.
 ***************************************************************************** */
 
 export interface MembershipUpdate {
+    action: string;
     membershipType?: string;
-    newMembership: boolean;
     paymentMethod?: string;
     paymentToken?: string;
 }

@@ -119,7 +119,7 @@ export class NewComponent implements OnInit {
     private buildForm() {
         const membershipGroup = this.formBuilder.group(
             {
-                newMembership: [null],
+                action: [null],
                 membershipType: [null],
                 paymentMethod: [null],
                 paymentToken: [null]
@@ -140,9 +140,6 @@ export class NewComponent implements OnInit {
 
     onFormSubmit() {
         const newValues = this.newAcctForm.value;
-        if (!newValues.membership.newMembership) {
-            delete newValues.membership;
-        }
         this.profileService.updateAccount(newValues).subscribe(
             () => { this.router.navigate(['/']); }
         );

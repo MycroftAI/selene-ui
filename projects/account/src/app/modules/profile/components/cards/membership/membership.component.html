@@ -5,16 +5,16 @@
     </mat-card-header>
     <mat-card-content>
         <p class="mat-body">
-            You have chosen not to subscribe to Mycroft's membership program.
+            You are not subscribed to Mycroft's membership program.
         <p class="mat-body">
-            Mycroft supporters
-            ensure we can keep the services open and available.  Your credit card information is
-            sent to the payment service and not stored on Mycroft's servers.
+            If would like to become a member, select one of the below options.
+            Supporting Mycroft with a membership helps keep Mycroft's services open and available.
         </p>
     </mat-card-content>
     <mat-card-actions>
-        <a mat-button>$1.99 USD MONTHLY</a>
-        <a mat-button>$19.99 USD YEARLY</a>
+        <button mat-button *ngFor="let membershipType of membershipTypes" (click)="openPaymentDialog(membershipType)">
+            {{membershipType.rate + '/' + membershipType.ratePeriod.toUpperCase() + ' (USD)'}}
+        </button>
     </mat-card-actions>
 </mat-card>
 
@@ -28,10 +28,14 @@
             Proudly supporting Mycroft for {{accountMembership.duration}}!
         </p>
         <p *ngIf="!accountMembership.duration" class="mat-body">
-            Thank you for supporting Mycroft!
+            Thank you for supporting Mycroft with your membership!
+        </p>
+        <p class="mat-body">
+            You can cancel your membership at any time.  You can also update your credit card
+            information.
         </p>
     </mat-card-content>
     <mat-card-actions>
-        <a mat-button color="warn">CANCEL MEMBERSHIP</a>
+        <a mat-button id="cancel-button" (click)="openCancelConfirmDialog()">CANCEL MEMBERSHIP</a>
     </mat-card-actions>
 </mat-card>

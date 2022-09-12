@@ -20,6 +20,8 @@ import { Component, Input, OnInit } from '@angular/core';
 import { MembershipType } from '@account/models/membership.model';
 import { MembershipUpdate } from '@account/models/membership-update.model';
 import { UntypedFormGroup } from '@angular/forms';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { PaymentComponent } from '@account/app/modules/profile/components/views/payment/payment.component';
 
 @Component({
     selector: 'account-membership-step',
@@ -31,7 +33,7 @@ export class MembershipStepComponent implements OnInit {
     @Input() newAcctForm: UntypedFormGroup;
     public membershipDescription: string[];
 
-    constructor() {
+    constructor(public paymentDialog: MatDialog) {
         this.membershipDescription = [
             'Mycroft\'s voice assistant software is open source, which means it is free to use and ' +
             'the underlying source code is available to the public.  Our entire platform is free ' +
@@ -49,11 +51,31 @@ export class MembershipStepComponent implements OnInit {
     ngOnInit() {
   }
 
+    openPaymentDialog(membershipType: MembershipType) {
+        const dialogConfig = new MatDialogConfig();
+        dialogConfig.data = {newAccount: false, membershipType: membershipType};
+        dialogConfig.disableClose = true;
+        dialogConfig.maxWidth = 520;
+        dialogConfig.restoreFocus = true;
+        const dialogRef = this.paymentDialog.open(PaymentComponent, dialogConfig);
+        dialogRef.afterClosed().subscribe(
+            (stripeToken) => {
+                const membershipUpdate: MembershipUpdate = {
+                    action: 'add',
+                    membershipType: membershipType.type,
+                    paymentMethod: 'Stripe',
+                    paymentToken: stripeToken
+                };
+                this.updateNewAccountForm(membershipUpdate);
+            }
+        );
+    }
+
     updateNewAccountForm(membershipUpdate: MembershipUpdate): void {
         this.newAcctForm.patchValue(
             {
                 membership: {
-                    newMembership: membershipUpdate.newMembership,
+                    action: membershipUpdate.action,
                     membershipType: membershipUpdate.membershipType,
                     paymentMethod: membershipUpdate.paymentMethod,
                     paymentToken: membershipUpdate.paymentToken

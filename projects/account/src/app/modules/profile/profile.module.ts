@@ -44,7 +44,7 @@ import { EditComponent } from './pages/edit/edit.component';
 import { environment} from '../../../environments/environment';
 import { LoginComponent } from './components/cards/login/login.component';
 import { MembershipComponent } from './components/cards/membership/membership.component';
-import { MembershipOptionsComponent } from './components/controls/membership-options/membership-options.component';
+import { MembershipCancelConfirmComponent } from './components/modals/membership-cancel-confirm/membership-cancel-confirm.component';
 import { MembershipStepComponent } from './components/views/membership-step/membership-step.component';
 import { NewComponent } from './pages/new/new.component';
 import { PaymentComponent } from './components/views/payment/payment.component';
@@ -66,12 +66,12 @@ import { VerifyEmailComponent } from './pages/verify-email/verify-email.componen
         EditComponent,
         LoginComponent,
         MembershipComponent,
+        MembershipCancelConfirmComponent,
         // Profile add (i.e. new account)
         MembershipStepComponent,
         NewComponent,
         UsernameStepComponent,
         // Stuff used in both edit and add components
-        MembershipOptionsComponent,
         PaymentComponent,
         VerifyCardDialogComponent,
         VerifyEmailComponent
