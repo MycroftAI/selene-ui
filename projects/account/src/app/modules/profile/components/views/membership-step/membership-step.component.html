@@ -5,11 +5,13 @@
         <p *ngFor="let paragraph of membershipDescription" class="mat-body">
             {{paragraph}}
         </p>
-        <account-membership-options
-                [membershipTypes]="membershipTypes"
-                (membershipChange)="updateNewAccountForm($event)"
+        <button
+            mat-button
+            type="button"
+            *ngFor="let membershipType of membershipTypes" (click)="openPaymentDialog(membershipType)"
         >
-        </account-membership-options>
+            {{membershipType.rate + '/' + membershipType.ratePeriod.toUpperCase() + ' (USD)'}}
+        </button>
     </mat-card-content>
 </mat-card>
 

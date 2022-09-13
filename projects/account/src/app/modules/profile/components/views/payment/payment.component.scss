@@ -20,43 +20,22 @@
 @use "components/buttons" as buttons;
 @use "mycroft-theme" as theme;
 
-mat-card {
-    margin-right: auto;
+h1 {
+    color: mat.get-color-from-palette(theme.$mycroft-primary, 700);
+    font-weight: bold;
+}
+
+.stripe-card {
+    border-style: solid;
+    border-color: #6c7a89;
+    border-radius: 8px;
+    border-width: thin;
     margin-left: auto;
-    max-width: 500px;
-    padding: 0;
+    margin-right: auto;
+    padding: 8px;
+    width: 400px;
+}
 
-    mat-card-title {
-        color: mat.get-color-from-palette(theme.$mycroft-primary, 700);
-        font-weight: bold;
-    }
-
-    mat-card-content {
-        p {
-            margin-top: 32px;
-            margin-left: auto;
-            margin-right: auto;
-            width: 320px;
-        }
-
-        mat-card {
-            border-radius: 10px;
-            border-style: solid;
-            border-width: 1px;
-            border-color: mat.get-color-from-palette(theme.$mycroft-accent, 200);
-            padding: 16px;
-            margin-bottom: 40px;
-            width: 320px;
-        }
-    }
-
-    .mat-card-actions.mat-card-actions {
-        padding: 0;
-        margin: 0;
-
-        .submit-button {
-            @include buttons.action-button-primary;
-        }
-    }
-
+.submit-button {
+    @include buttons.action-button-primary;
 }

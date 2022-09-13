@@ -15,32 +15,15 @@
 // See the Apache Version 2.0 License for specific language governing permissions
 // and limitations under the License.
 // *****************************************************************************
-.options-button-group {
-    border: none;
-    padding: 16px;
 
-    .mat-button-toggle {
-        background-color: #e6e8ea;
-        border: none;
-        border-radius: 4px;
-        height: 80px;
-        margin: 8px;
-        padding: 8px;
-        width: 200px;
+@use "@angular/material" as mat;
+@use "components/buttons" as buttons;
+@use "mycroft-theme" as theme;
 
-        .mat-h3 {
-            font-weight: bold;
-            margin-top: 8px;
-            margin-bottom: 8px;
-        }
+h1 {
+    color: mat.get-color-from-palette(theme.$mycroft-warn, 400);
+}
 
-        #non-supporter {
-            margin-top: 24px;
-        }
-    }
-
-    .mat-button-toggle-checked {
-        background-color: #22a7f0;
-        color: white;
-    }
+#confirm-button {
+    @include buttons.action-button-warn;
 }

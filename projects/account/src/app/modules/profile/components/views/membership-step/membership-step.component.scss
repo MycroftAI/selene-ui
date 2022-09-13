@@ -32,8 +32,10 @@ mat-card {
         color: mat.get-color-from-palette(theme.$mycroft-primary, 500);
         font-weight: bold;
     }
-}
-
-mat-button-toggle-group {
-    @include buttons.options-button-group
+    button {
+        @include buttons.action-button-primary;
+        margin-bottom: 32px;
+        margin-right: 16px;
+        margin-top: 32px;
+    }
 }

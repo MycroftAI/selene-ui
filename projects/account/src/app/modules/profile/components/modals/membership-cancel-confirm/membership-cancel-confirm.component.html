@@ -1,0 +1,21 @@
+<h1 mat-dialog-title>Are you sure?</h1>
+<mat-dialog-content>
+    <p class="mat-body">
+        You know how this goes.  You click a red button, we make sure you meant to do it.
+    </p>
+    <p class="mat-body">
+        Your membership supports continued development of an open, privacy focused voice assistant.
+        We hope you are seeing this as a result of an unintended mouse click (those buttons can be
+        touchy!). If so, click the "cancel" button below.
+    </p>
+    <p class="mat-body">
+        If you really do want to cancel your membership, that's a bummer.  You can re-activate your
+        membership at any time.  Click the "confirm" button below and we will cancel your
+        subscription immediately.
+    </p>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button id="confirm-button" mat-button (click)="onConfirm()">CONFIRM</button>
+    <button id="cancel-button" mat-button (click)="onCancel()">CANCEL</button>
+</mat-dialog-actions>
+
