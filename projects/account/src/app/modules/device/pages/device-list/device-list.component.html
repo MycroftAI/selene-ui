@@ -14,10 +14,10 @@
 
 <div fxLayout="row wrap" fxLayoutAlign="center" fxLayoutGap.gt-xs="16px">
     <mat-card *ngFor="let device of devices; let i = index">
-        <mat-card-title fxLayout="row" fxLayoutAlign="start center">
-            <img [src]="getDeviceIcon(device)"/>
-            {{device.name}}
-        </mat-card-title>
+        <mat-card-header>
+            <img mat-card-avatar [src]="getDeviceIcon(device)"/>
+            <mat-card-title class="mat-h1">{{device.name}}</mat-card-title>
+        </mat-card-header>
         <ng-container [ngSwitch]="device.status">
             <mat-card-subtitle
                     class="status-active"

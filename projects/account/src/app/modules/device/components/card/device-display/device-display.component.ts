@@ -50,7 +50,7 @@ export class DeviceDisplayComponent implements OnInit {
     ) { }
 
     ngOnInit() {
-        if (!this.device.pantacorUpdateId) {
+        if (!this.device.pantacorConfig.deploymentId) {
             this.softwareUpdateText = 'NO UPDATES AVAILABLE';
             this.softwareUpdateDisabled = true;
         } else {
@@ -64,6 +64,17 @@ export class DeviceDisplayComponent implements OnInit {
         return knownPlatform ? knownPlatform.displayName : device.platform;
     }
 
+    applySoftwareUpdate() {
+        this.deviceService.applySoftwareUpdate(this.device.pantacorConfig.deploymentId).subscribe({
+            next: () => {
+                this.openSuccessSnackbar();
+                this.softwareUpdateText = 'NO UPDATES AVAILABLE';
+                this.softwareUpdateDisabled = true;
+            },
+            error: () => { this.openErrorSnackbar(); }
+        });
+    }
+
     openErrorSnackbar() {
         const config = new MatSnackBarConfig();
         config.data = {type: 'error', message: 'An error occurred, device will not be updated.'};
@@ -75,18 +86,6 @@ export class DeviceDisplayComponent implements OnInit {
         config.duration = 3000;
         config.data = {type: 'success', message: 'The update will be applied to your device momentarily'};
         this.snackbar.openFromComponent(SnackbarComponent, config);
-    }
-
-    applySoftwareUpdate() {
-        this.deviceService.applySoftwareUpdate(this.device.pantacorUpdateId).subscribe(
-            () => {
-                this.openSuccessSnackbar();
-                this.softwareUpdateText = 'NO UPDATES AVAILABLE';
-                this.softwareUpdateDisabled = true;
-
-            },
-            () => { this.openErrorSnackbar(); }
-        );
     }
 
 }

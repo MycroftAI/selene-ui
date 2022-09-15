@@ -18,6 +18,7 @@ and limitations under the License.
 import { Component, Input, OnInit } from '@angular/core';
 import { UntypedFormGroup } from '@angular/forms';
 import { OptionButtonsConfig } from '@account/models/option-buttons-config.model';
+import { environment } from '@account/environments/environment';
 
 @Component({
     selector: 'account-software-release-card',
@@ -29,8 +30,14 @@ export class SoftwareReleaseCardComponent implements OnInit {
     public releaseChannelConfig: OptionButtonsConfig;
 
     constructor() {
+        let channels: string[];
+        if (environment.production) {
+            channels = ['Beta', 'Stable', 'LTS'];
+        } else {
+            channels = ['Development', 'Beta QA', 'Stable QA', 'LTS QA'];
+        }
         this.releaseChannelConfig = {
-            options: ['Stable', 'Latest', 'QA'],
+            options: channels,
             buttonWidth: '130px'
         };
     }
