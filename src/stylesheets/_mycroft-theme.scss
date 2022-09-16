@@ -140,3 +140,4 @@ $mycroft-theme: mat.define-light-theme((
 @include mat.stepper-theme($mycroft-theme);
 @include mat.tabs-theme($mycroft-theme);
 @include mat.toolbar-theme($mycroft-theme);
+@include mat.tooltip-theme($mycroft-theme);

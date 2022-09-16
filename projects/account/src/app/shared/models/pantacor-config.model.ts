@@ -20,6 +20,7 @@ export interface PantacorConfig {
     autoUpdate: boolean;
     ipAddress: string;
     pantacorId: string;
+    deploymentId: string;
     sshPublicKey: string;
     releaseChannel: string;
 }

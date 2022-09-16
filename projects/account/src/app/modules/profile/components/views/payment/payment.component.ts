@@ -18,12 +18,13 @@ and limitations under the License.
 
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 import { StripeCardComponent, StripeService } from 'ngx-stripe';
 import { StripeCardElementOptions} from '@stripe/stripe-js';
 
 import { ProfileService } from '@account/http/profile.service';
+import { SnackbarComponent } from 'shared';
 
 const twoSeconds = 2000;
 
@@ -36,13 +37,14 @@ const twoSeconds = 2000;
 export class PaymentComponent implements OnInit {
     @ViewChild(StripeCardComponent) card: StripeCardComponent;
     public cardOptions: StripeCardElementOptions = {
+        iconStyle: 'solid',
         style: {
             base: {
                 iconColor: '#22a7f0',
                 color: '#2c3e50',
                 '::placeholder': {
-                    color: '#969fa8'
-                }
+                    color: '#6c7a89'
+                },
             }
         }
     };
@@ -61,26 +63,21 @@ export class PaymentComponent implements OnInit {
     }
 
     submitPaymentInfo() {
-        this.stripeService.createToken(this.card.element, {}).subscribe(
-            result => {
+        this.stripeService.createToken(this.card.element, {}).subscribe({
+            next: (result) => {
                 if (result.token) {
                     this.dialogRef.close(result.token.id);
                 } else if (result.error) {
                     this.showStripeError(result.error.message);
                 }
-            },
-            (result) => { this.showStripeError(result.toString()); }
-        );
-
+            }
+        });
     }
 
     showStripeError(errorMessage: string) {
-        this.dialogRef.close();
-        this.snackbar.open(
-            errorMessage,
-            null,
-            {panelClass: 'mycroft-no-action-snackbar', duration: twoSeconds}
-        );
+        const config = new MatSnackBarConfig();
+        config.data = {type: 'error', message: errorMessage};
+        this.snackbar.openFromComponent(SnackbarComponent, config);
     }
 
     onCancel() {

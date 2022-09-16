@@ -4,6 +4,7 @@
     <account-membership-edit
             [accountMembership]="account.membership"
             [membershipTypes]="membershipTypes"
+            (membershipUpdated)="refreshAccount()"
     >
     </account-membership-edit>
     <account-agreements-edit [account]="account"></account-agreements-edit>

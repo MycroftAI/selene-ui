@@ -18,7 +18,7 @@ and limitations under the License.
 
 import { City } from '@account/models/city.model';
 import { Country } from '@account/models/country.model';
-import { PantacorConfig } from '@account/models/pantacorConfig.model';
+import { PantacorConfig } from '@account/models/pantacor-config.model';
 import { Region } from '@account/models/region.model';
 import { Timezone } from '@account/models/timezone.model';
 import { WakeWord } from '@account/models/wake-word.model';
@@ -40,5 +40,4 @@ export interface Device {
     voice: Voice;
     wakeWord: WakeWord;
     pantacorConfig: PantacorConfig;
-    pantacorUpdateId: string;
 }

@@ -18,19 +18,15 @@
 
 @use "@angular/material" as mat;
 @use 'components/buttons' as buttons;
+@use 'components/cards' as cards;
 @use 'mycroft-theme' as theme;
-
-@mixin panel-defaults {
-    border-radius: 12px;
-    width: 330px;
-    margin-bottom: 16px;
-}
 
 #add-device-button {
     @include buttons.action-button-primary;
-    @include panel-defaults;
+    border-radius: 12px;
     cursor: pointer;
     height: 50px;
+    margin-bottom: 16px;
     max-width: 362px;
     min-width: 350px;
 
@@ -51,37 +47,28 @@
 
 }
 
-#edit-button {
-    @include buttons.action-button-primary
-}
-
-#remove-button {
-    @include buttons.action-button-warn
-}
-
 mat-card {
-    @include panel-defaults;
+    @include cards.selene-card;
+    width: 330px;
 
-    button {
-        margin-bottom: 8px;
-        margin-left: 8px;
-        margin-right: 8px;
-    }
-
-    mat-card-title {
-        color: mat.get-color-from-palette(theme.$mycroft-primary, 500);
-        font-weight: bold;
-
+    mat-card-header {
         img {
             height: 60px;
-            margin-right: 16px;
+            width: 60px;
+        }
+
+        .mat-h1 {
+            color: mat.get-color-from-palette(theme.$mycroft-primary, 500);
+            font-size: 24px;
+            font-weight: bold;
         }
     }
 
     mat-card-subtitle {
         border-radius: 4px;
-        padding: 4px;
         font-weight: bold;
+        margin-top: 4px;
+        padding: 4px;
         text-align: center;
     }
 
@@ -110,3 +97,12 @@ mat-card {
         }
     }
 }
+
+#edit-button {
+    @include buttons.action-button-primary
+}
+
+#remove-button {
+    @include buttons.action-button-warn
+}
+
