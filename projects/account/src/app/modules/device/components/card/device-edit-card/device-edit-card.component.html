@@ -55,7 +55,7 @@
         </div>
     </mat-card-content>
 
-    <mat-card-actions *ngIf=!addDevice align="right">
+    <mat-card-actions *ngIf=!addDevice align="end">
         <button mat-button [disabled]="!deviceForm.valid" (click)="onSave()">SAVE</button>
         <button mat-button id="cancel-button" (click)="onCancel()">CANCEL</button>
     </mat-card-actions>

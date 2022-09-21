@@ -34,7 +34,7 @@ export class SoftwareReleaseCardComponent implements OnInit {
         if (environment.production) {
             channels = ['Beta', 'Stable', 'LTS'];
         } else {
-            channels = ['Development', 'Beta QA', 'Stable QA', 'LTS QA'];
+            channels = ['Development', 'Beta QA'];
         }
         this.releaseChannelConfig = {
             options: channels,
