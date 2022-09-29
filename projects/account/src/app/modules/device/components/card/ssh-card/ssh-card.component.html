@@ -1,7 +1,23 @@
 <mat-card class="mat-elevation-z0" [formGroup]="sshForm">
     <mat-card-content>
-        <h2 class="mat-h2">Command Line Access</h2>
-        <mat-form-field appearance="outline">
+        <h3 class="mat-h3">Advanced Settings</h3>
+        <p class="mat-body">
+            This device can be further configured for software development and experimentation
+            purposes. For example, alternative speech transcription, voice synthesis and wake word
+            technologies can be specified.
+        <p class="mat-body">
+            These advanced settings can be managed by logging into your device and editing a
+            configuration file. Proceed with caution; a bad configuration file could render your
+            device unusable.
+        </p>
+        <a [href]="'https://mycroft-ai.gitbook.io/docs/using-mycroft-ai/customizations/mycroft-conf'">
+            Device Configuration Documentation
+        </a>
+        <p *ngIf="pantacorDevice" class="mat-body">
+            To access this device via the command line, provide the public SSH key for the computer
+            that will be used to access the device below.
+        </p>
+        <mat-form-field *ngIf="pantacorDevice" appearance="outline">
             <mat-label>Public SSH Key</mat-label>
             <textarea matInput formControlName="sshPublicKey"></textarea>
             <mat-error *ngIf="sshForm.controls['sshPublicKey'].invalid">

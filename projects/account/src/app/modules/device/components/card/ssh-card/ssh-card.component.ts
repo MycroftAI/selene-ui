@@ -27,6 +27,7 @@ import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 })
 export class SshCardComponent implements OnInit {
     @Input() sshForm: UntypedFormGroup;
+    @Input() pantacorDevice: boolean;
     public sshKeyHint: string;
 
     constructor() {

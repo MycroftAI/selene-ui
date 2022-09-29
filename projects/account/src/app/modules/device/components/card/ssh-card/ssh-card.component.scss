@@ -16,10 +16,19 @@
 // and limitations under the License.
 // *****************************************************************************
 
-mat-slide-toggle {
-    margin-left: 32px;
+a {
+    margin-left: 16px;
 }
+.mat-h3 {
+    font-weight: bold;
+}
+
+.mat-body {
+    margin-left: 16px;
+}
+
 mat-form-field {
+    margin-top: 16px;
     margin-left: 32px;
     width: 90%;
     textarea {

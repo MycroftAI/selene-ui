@@ -23,10 +23,5 @@
 
 #edit-device {
     margin-top: 32px;
-}
-mat-card {
-    @include cards.section-card;
-    max-width: 700px;
     margin-bottom: 32px;
-    margin-top: 32px;
 }

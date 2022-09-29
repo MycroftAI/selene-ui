@@ -1,6 +1,10 @@
 <mat-card class="mat-elevation-z0" [formGroup]="softwareReleaseForm">
     <mat-card-content>
-        <h2 class="mat-h2">Software Release</h2>
+        <h3 class="mat-h3">Software Release</h3>
+        <p *ngIf="!softwareReleaseForm.get('releaseChannel').value" class="mat-body">
+            The software release running on this device is no longer supported.  Select one of
+            the options below to update your device to a supported release.
+        </p>
         <account-option-btn
                 [config]="releaseChannelConfig"
                 formControlName="releaseChannel"
