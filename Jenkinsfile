@@ -95,21 +95,21 @@ pipeline {
                 withCredentials([sshUserPrivateKey(credentialsId: '6413826d-79f6-4d03-9902-ee1b73a96efd', keyFileVariable: 'JENKINS_SSH_KEY', passphraseVariable: '', usernameVariable: 'SERVER_USER')]) {
                     // Deploy account application and its associated libraries
                     echo 'Deploying account application...'
-                    sh 'scp -r dist/shared root@104.248.15.155:/var/www/'
-                    sh 'scp -r dist/globalnav root@104.248.15.155:/var/www/'
-                    sh 'scp -r dist/account root@104.248.15.155:/var/www/'
+                    sh 'scp -r dist/shared root@157.245.89.226:/var/www/'
+                    sh 'scp -r dist/globalnav root@157.245.89.226:/var/www/'
+                    sh 'scp -r dist/account root@157.245.89.226:/var/www/'
 
                     // Deploy single sign on application and its associated libraries
                     echo 'Deploying single sign on application...'
-                    sh 'scp -r dist/shared root@134.209.165.129:/var/www/'
-                    sh 'scp -r dist/globalnav root@134.209.165.129:/var/www/'
-                    sh 'scp -r dist/sso root@134.209.165.129:/var/www/'
+                    sh 'scp -r dist/shared root@157.245.88.54:/var/www/'
+                    sh 'scp -r dist/globalnav root@157.245.88.54:/var/www/'
+                    sh 'scp -r dist/sso root@157.245.88.54:/var/www/'
 
                     // Deploy marketplace application and its associated libraries
-                    echo 'Deploying single sign on application...'
-                    sh 'scp -r dist/shared root@174.138.48.128:/var/www/'
-                    sh 'scp -r dist/globalnav root@174.138.48.128:/var/www/'
-                    sh 'scp -r dist/market root@174.138.48.128:/var/www/'
+                    echo 'Deploying marketplace application...'
+                    sh 'scp -r dist/shared root@174.138.33.122:/var/www/'
+                    sh 'scp -r dist/globalnav root@174.138.33.122:/var/www/'
+                    sh 'scp -r dist/market root@174.138.33.122:/var/www/'
                 }
             }
         }
