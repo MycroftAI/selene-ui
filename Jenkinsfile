@@ -80,9 +80,9 @@ pipeline {
                 sh 'npm install'
                 sh 'ng build --project shared'
                 sh 'ng build --project globalnav'
-                sh 'ng build --project account --prod'
-                sh 'ng build --project market --prod'
-                sh 'ng build --project sso --prod'
+                sh 'ng build --project account --configuration production'
+                sh 'ng build --project market --configuration production'
+                sh 'ng build --project sso --configuration production'
             }
         }
 
@@ -95,21 +95,21 @@ pipeline {
                 withCredentials([sshUserPrivateKey(credentialsId: '6413826d-79f6-4d03-9902-ee1b73a96efd', keyFileVariable: 'JENKINS_SSH_KEY', passphraseVariable: '', usernameVariable: 'SERVER_USER')]) {
                     // Deploy account application and its associated libraries
                     echo 'Deploying account application...'
-                    sh 'scp -r dist/shared root@157.245.89.226:/var/www/'
-                    sh 'scp -r dist/globalnav root@157.245.89.226:/var/www/'
-                    sh 'scp -r dist/account root@157.245.89.226:/var/www/'
+                    sh 'scp -r dist/shared root@64.225.58.125:/var/www/'
+                    sh 'scp -r dist/globalnav root@64.225.58.125:/var/www/'
+                    sh 'scp -r dist/account root@64.225.58.125:/var/www/'
 
                     // Deploy single sign on application and its associated libraries
                     echo 'Deploying single sign on application...'
-                    sh 'scp -r dist/shared root@157.245.88.54:/var/www/'
-                    sh 'scp -r dist/globalnav root@157.245.88.54:/var/www/'
-                    sh 'scp -r dist/sso root@157.245.88.54:/var/www/'
+                    sh 'scp -r dist/shared root@64.225.52.161:/var/www/'
+                    sh 'scp -r dist/globalnav root@64.225.52.161:/var/www/'
+                    sh 'scp -r dist/sso root@64.225.52.161:/var/www/'
 
                     // Deploy marketplace application and its associated libraries
                     echo 'Deploying marketplace application...'
-                    sh 'scp -r dist/shared root@174.138.33.122:/var/www/'
-                    sh 'scp -r dist/globalnav root@174.138.33.122:/var/www/'
-                    sh 'scp -r dist/market root@174.138.33.122:/var/www/'
+                    sh 'scp -r dist/shared root@165.227.117.75:/var/www/'
+                    sh 'scp -r dist/globalnav root@165.227.117.75:/var/www/'
+                    sh 'scp -r dist/market root@165.227.117.75:/var/www/'
                 }
             }
         }
