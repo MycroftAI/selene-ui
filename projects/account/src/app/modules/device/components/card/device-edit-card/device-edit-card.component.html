@@ -40,12 +40,6 @@
 
         <mat-divider></mat-divider>
         <account-geography-card [geoForm]="deviceForm" [required]="true"></account-geography-card>
-<!--        *** The ability to choose a wake word and voice is being removed until functionality  *** -->
-<!--        *** is introduced that uses a device's capabilities to determine the possible values.  *** -->
-<!--        <mat-divider></mat-divider>-->
-<!--        <account-voice-card [voiceForm]="deviceForm"></account-voice-card>-->
-<!--        <mat-divider></mat-divider>-->
-<!--        <account-wake-word-card [wakeWordForm]="deviceForm"></account-wake-word-card>-->
         <div *ngIf="pantacorId">
             <mat-divider></mat-divider>
             <account-software-release-card [softwareReleaseForm]="deviceForm"></account-software-release-card>
