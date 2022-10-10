@@ -102,7 +102,6 @@ export class AddComponent implements OnInit {
                 timeFormat: [null, Validators.required],
             }
         );
-
         this.defaultsForm = this.formBuilder.group(
             {
                 city: [null],
@@ -115,9 +114,9 @@ export class AddComponent implements OnInit {
         );
         this.deviceForm = this.formBuilder.group(
             {
-                city: [this.defaults ? this.defaults.city.name : null, Validators.required],
+                city: [this.defaults.city.name, Validators.required],
                 name: [null, [ Validators.required ], [ deviceNameValidator(this.deviceService) ]],
-                country: [this.defaults ? this.defaults.country.name : null, Validators.required],
+                country: [this.defaults.country.name, Validators.required],
                 pairingCode: [
                     null,
                     [
@@ -125,13 +124,13 @@ export class AddComponent implements OnInit {
                         Validators.maxLength(6),
                         Validators.minLength(6)
                     ],
-                    [ pairingCodeValidator(this.deviceService) ],
+                    // [ pairingCodeValidator(this.deviceService) ],
                 ],
                 placement: [null],
-                region: [this.defaults ? this.defaults.region.name : null, Validators.required],
-                timezone: [this.defaults ? this.defaults.timezone.name : null, Validators.required],
-                wakeWord: [this.defaults ? this.defaults.wakeWord.name : null, Validators.required],
-                voice: [this.defaults ? this.defaults.voice.displayName : null, Validators.required]
+                region: [this.defaults.region.name, Validators.required],
+                timezone: [this.defaults.timezone.name, Validators.required],
+                wakeWord: [this.defaults.wakeWord.name ? this.defaults.wakeWord.name : 'Hey Mycroft', Validators.required],
+                voice: [this.defaults.voice.displayName ? this.defaults.voice.displayName : 'American Male', Validators.required]
             }
         );
     }

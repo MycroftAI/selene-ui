@@ -39,12 +39,12 @@ export class DefaultsComponent implements OnInit {
         );
         this.defaultsForm = this.formBuilder.group(
             {
-                city: [this.defaults ? this.defaults.city.name : null],
-                country: [this.defaults ? this.defaults.country.name : null],
-                region: [this.defaults ? this.defaults.region.name : null],
-                timezone: [this.defaults ? this.defaults.timezone.name : null],
-                wakeWord: [this.defaults ? this.defaults.wakeWord.name : null],
-                voice: [this.defaults ? this.defaults.voice.displayName : null]
+                city: [this.defaults.city.name],
+                country: [this.defaults.country.name],
+                region: [this.defaults.region.name],
+                timezone: [this.defaults.timezone.name],
+                wakeWord: [this.defaults.wakeWord.name],
+                voice: [this.defaults.voice.displayName]
             }
         );
 
