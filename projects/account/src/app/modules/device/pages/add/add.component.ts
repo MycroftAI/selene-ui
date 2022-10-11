@@ -102,6 +102,7 @@ export class AddComponent implements OnInit {
                 timeFormat: [null, Validators.required],
             }
         );
+
         this.defaultsForm = this.formBuilder.group(
             {
                 city: [null],
@@ -114,9 +115,9 @@ export class AddComponent implements OnInit {
         );
         this.deviceForm = this.formBuilder.group(
             {
-                city: [this.defaults.city.name, Validators.required],
+                city: [this.defaults ? this.defaults.city.name : null, Validators.required],
                 name: [null, [ Validators.required ], [ deviceNameValidator(this.deviceService) ]],
-                country: [this.defaults.country.name, Validators.required],
+                country: [this.defaults ? this.defaults.country.name : null, Validators.required],
                 pairingCode: [
                     null,
                     [
@@ -127,12 +128,21 @@ export class AddComponent implements OnInit {
                     // [ pairingCodeValidator(this.deviceService) ],
                 ],
                 placement: [null],
-                region: [this.defaults.region.name, Validators.required],
-                timezone: [this.defaults.timezone.name, Validators.required],
-                wakeWord: [this.defaults.wakeWord.name ? this.defaults.wakeWord.name : 'Hey Mycroft', Validators.required],
-                voice: [this.defaults.voice.displayName ? this.defaults.voice.displayName : 'American Male', Validators.required]
+                region: [this.defaults ? this.defaults.region.name : null, Validators.required],
+                timezone: [this.defaults ? this.defaults.timezone.name : null, Validators.required],
+                wakeWord: [this.defaults ? this.defaults.wakeWord.name : null, Validators.required],
+                voice: [this.defaults ? this.defaults.voice.displayName : null, Validators.required]
             }
         );
+
+        // Sometimes the defaults are not null but the values within them are null.
+        if (!this.deviceForm.controls['wakeWord'].value) {
+            this.deviceForm.controls['wakeWord'].setValue('Hey Mycroft');
+        }
+        if (!this.deviceForm.controls['voice'].value) {
+            this.deviceForm.controls['voice'].setValue('American Male');
+        }
+        console.log(this.deviceForm);
     }
 
     getResolverData() {
