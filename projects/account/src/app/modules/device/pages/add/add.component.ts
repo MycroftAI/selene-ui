@@ -125,7 +125,7 @@ export class AddComponent implements OnInit {
                         Validators.maxLength(6),
                         Validators.minLength(6)
                     ],
-                    // [ pairingCodeValidator(this.deviceService) ],
+                    [ pairingCodeValidator(this.deviceService) ],
                 ],
                 placement: [null],
                 region: [this.defaults ? this.defaults.region.name : null, Validators.required],
@@ -142,7 +142,6 @@ export class AddComponent implements OnInit {
         if (!this.deviceForm.controls['voice'].value) {
             this.deviceForm.controls['voice'].setValue('American Male');
         }
-        console.log(this.deviceForm);
     }
 
     getResolverData() {

@@ -23,9 +23,9 @@ mat-card-title {
     color: mat,mat.get-color-from-palette(theme.$mycroft-primary, 500)
 }
 
-    button {
-        @include buttons.action-button-primary;
-    }
+.mat-button {
+    @include buttons.action-button-primary;
+}
 
 mat-horizontal-stepper {
     margin-left: auto;
