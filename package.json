@@ -14,7 +14,7 @@
   },
   "private": true,
   "dependencies": {
-    "@abacritt/angularx-social-login": "^1.2.1",
+    "@abacritt/angularx-social-login": "^1.2.4",
     "@angular/animations": "^14.1.0",
     "@angular/cdk": "^14.1.0",
     "@angular/common": "^14.1.0",
@@ -32,7 +32,6 @@
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@stripe/stripe-js": "^1.9.0",
     "core-js": "^3.6.5",
-    "ng-waveform": "^0.2.1",
     "ngx-stripe": "^14.1.0",
     "rxjs": "~7.5.6",
     "tslib": "^2.4.0",
