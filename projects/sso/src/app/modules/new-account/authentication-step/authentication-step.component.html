@@ -6,12 +6,14 @@
         <mat-card class="mat-elevation-z0">
             <h2 class="mat-h2">Log In With...</h2>
             <p class="mat-body">{{federatedLoginText}}</p>
-            <sso-google-button (googleToken)="onFederatedLogin($event)"></sso-google-button>
-            <sso-facebook-button (facebookToken)="onFederatedLogin($event)"></sso-facebook-button>
-            <sso-github-button [newAccount]="true"></sso-github-button>
-            <p [hidden]="!federatedErrorMessage" id="federated-error" class="mat-body">
-                {{federatedErrorMessage}}
-            </p>
+            <div id="federated-buttons">
+                <sso-google-button (googleToken)="onFederatedLogin($event)"></sso-google-button>
+                <sso-facebook-button (facebookToken)="onFederatedLogin($event)"></sso-facebook-button>
+                <sso-github-button [newAccount]="true"></sso-github-button>
+                <p [hidden]="!federatedErrorMessage" id="federated-error" class="mat-body">
+                    {{federatedErrorMessage}}
+                </p>
+            </div>
         </mat-card>
 
         <h1 class="mat-h1">OR</h1>

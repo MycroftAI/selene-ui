@@ -1,5 +1,5 @@
-@import "@angular/material/theming";
-@import "src/stylesheets/mycroft-theme";
+@use "@angular/material" as mat;
+@use "mycroft-theme" as theme;
 
 mat-card {
     margin-left: auto;
@@ -7,7 +7,7 @@ mat-card {
     max-width: 800px;
 
     mat-card-title {
-        color: mat-color($mycroft-primary);
+        color: mat.get-color-from-palette(theme.$mycroft-primary, 500);
     }
 
     mat-card {
@@ -15,16 +15,16 @@ mat-card {
         max-width: 400px;
 
         .mat-h2 {
-            color: mat-color($mycroft-accent, A700);
+            color: mat.get-color-from-palette(theme.$mycroft-accent, A700);
             font-size: 20px;
         }
         #federated-error {
-            color: mat-color($mycroft-warn)
+            color: mat.get-color-from-palette(theme.$mycroft-warn, 500);
         }
     }
 
     .mat-h1 {
-        color: mat-color($mycroft-primary);
+        color: mat.get-color-from-palette(theme.$mycroft-primary, 500);
         padding: 32px;
     }
 }
