@@ -18,7 +18,7 @@ and limitations under the License.
 
 import { Component, Input } from '@angular/core';
 
-import { faGithub } from '@fortawesome/free-brands-svg-icons';
+import { faGithubSquare } from '@fortawesome/free-brands-svg-icons';
 
 import { environment } from '../../../../environments/environment';
 
@@ -30,7 +30,7 @@ import { environment } from '../../../../environments/environment';
 })
 export class GithubButtonComponent {
     @Input() newAccount = false;
-    public githubIcon = faGithub;
+    public githubIcon = faGithubSquare;
     public stateParam: string;
 
     constructor() { }

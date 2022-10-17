@@ -1,4 +1,6 @@
 <button fxFlex mat-button id="github-button" type="button" (click)="gitHubLogin()">
-    <fa-icon [icon]="githubIcon"></fa-icon>
-    Log in with GitHub
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <fa-icon [icon]="githubIcon"></fa-icon>
+        <span id="button-text" fxFlex>Sign in with GitHub</span>
+    </div>
 </button>

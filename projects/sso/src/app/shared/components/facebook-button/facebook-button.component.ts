@@ -18,7 +18,7 @@ and limitations under the License.
 
 import { Component, EventEmitter, Output } from '@angular/core';
 
-import { faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { faFacebookSquare } from '@fortawesome/free-brands-svg-icons';
 import { SocialAuthService, FacebookLoginProvider } from '@abacritt/angularx-social-login';
 
 import { LoginToken } from '../../models/login-token.model';
@@ -29,7 +29,7 @@ import { LoginToken } from '../../models/login-token.model';
     styleUrls: ['./facebook-button.component.scss']
 })
 export class FacebookButtonComponent {
-    public facebookIcon = faFacebook;
+    public facebookIcon = faFacebookSquare;
     @Output() facebookToken = new EventEmitter<LoginToken>();
 
     constructor(private authService: SocialAuthService) { }

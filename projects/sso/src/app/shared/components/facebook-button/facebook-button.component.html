@@ -1,4 +1,6 @@
 <button fxFlex mat-button id="facebook-button" type="button" (click)="facebookLogin()">
-    <fa-icon [icon]="facebookIcon"></fa-icon>
-    Log In with Facebook
+    <div fxLayout="row" fxLayoutAlign="start center">
+        <fa-icon [icon]="facebookIcon"></fa-icon>
+        <span id="button-text" fxFlex>Sign in with Facebook</span>
+    </div>
 </button>
