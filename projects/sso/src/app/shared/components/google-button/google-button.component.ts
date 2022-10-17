@@ -16,10 +16,9 @@ See the Apache Version 2.0 License for specific language governing permissions
 and limitations under the License.
 ***************************************************************************** */
 
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
-import { faGoogle } from '@fortawesome/free-brands-svg-icons';
-import { SocialAuthService, GoogleLoginProvider } from '@abacritt/angularx-social-login';
+import { SocialAuthService } from '@abacritt/angularx-social-login';
 
 import { LoginToken } from '../../models/login-token.model';
 
@@ -29,18 +28,16 @@ import { LoginToken } from '../../models/login-token.model';
     templateUrl: './google-button.component.html',
     styleUrls: ['./google-button.component.scss']
 })
-export class GoogleButtonComponent {
-    public googleIcon = faGoogle;
+export class GoogleButtonComponent implements OnInit {
     @Output() googleToken = new EventEmitter<LoginToken>();
 
     constructor(private authService: SocialAuthService) { }
 
-    googleLogin() {
-        this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
-            (userData) => {
-                this.googleToken.emit({platform: 'Google', token: userData.idToken});
+    ngOnInit() {
+        this.authService.authState.subscribe((user) => {
+            if (user != null) {
+                this.googleToken.emit({platform: 'Google', token: user.idToken});
             }
-        );
+        });
     }
-
 }
