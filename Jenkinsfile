@@ -31,7 +31,6 @@ pipeline {
                 sh 'ng build --project globalnav'
                 sh 'ng build --project account --configuration test'
                 sh 'ng build --project market --configuration test'
-                sh 'ng build --project precise --configuration test'
                 sh 'ng build --project sso --configuration test'
             }
         }
@@ -65,7 +64,6 @@ pipeline {
                     echo 'Deploying precise application...'
                     sh 'scp -r dist/shared root@142.93.196.244:/var/www/'
                     sh 'scp -r dist/globalnav root@142.93.196.244:/var/www/'
-                    sh 'scp -r dist/precise root@142.93.196.244:/var/www/'
                 }
             }
         }
