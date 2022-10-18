@@ -133,10 +133,10 @@ export class SkillsService {
      *
      * @param searchTerm string used to search skills
      */
-    searchSkills(searchTerm: string): Observable<AvailableSkill[]> {
+    searchSkills(searchTerm: string): Observable<AvailableSkills> {
         this.isFiltered.next(!!searchTerm);
-        return this.http.get<AvailableSkill[]>(
-            availableSkillsUrl + searchQuery + searchTerm
+        return this.http.get<AvailableSkills>(availableSkillsUrl  + searchQuery + searchTerm).pipe(
+            tap((response) => { this.availableSkills = response.skills; })
         );
     }
 }

@@ -61,7 +61,6 @@ export class SkillSummaryComponent implements OnInit {
     /** Change the view to display only those matching the search criteria. */
     showSearchResults(searchResults): void {
         this.availableSkills = searchResults;
-        this.skillsService.availableSkills = searchResults;
         this.skillCategories = this.skillsService.getSkillCategories();
     }
 
