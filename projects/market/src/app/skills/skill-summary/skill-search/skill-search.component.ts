@@ -62,9 +62,9 @@ export class SkillSearchComponent implements OnInit, OnDestroy {
     /** Call the skill search API to return skills matching the search criteria. */
     searchSkills(): void {
         this.skillsService.searchSkills(this.searchTerm).subscribe(
-            (skills) => {
+            (response) => {
                 this.skillsService.getSkillCategories();
-                this.searchResults.emit(skills);
+                this.searchResults.emit(response.skills);
                 this.installService.getSkillInstallations();
             }
         );
