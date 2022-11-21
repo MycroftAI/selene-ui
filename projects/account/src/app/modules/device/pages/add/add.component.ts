@@ -173,6 +173,15 @@ export class AddComponent implements OnInit {
                 voice: this.defaultsForm.controls['voice'].value
             }
         );
+
+        // Hack to get around not allowing a user to select a wake word or voice.
+        // If this functionality is restored, this code should be removed.
+        if (!this.deviceForm.controls['wakeWord'].value) {
+            this.deviceForm.controls['wakeWord'].setValue('Hey Mycroft');
+        }
+        if (!this.deviceForm.controls['voice'].value) {
+            this.deviceForm.controls['voice'].setValue('American Male');
+        }
     }
 
     onFinished() {
